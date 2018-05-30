@@ -1,0 +1,70 @@
+\documentclass[a4paper]{article}
+% Packages
+\usepackage[top=3cm, bottom=3cm, left=2.54cm, right=2.54cm]{geometry}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{macros}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{verbatim}
+\usepackage{Sweave}
+\usepackage{xargs}
+\usepackage{fancyhdr}
+
+%% new environments
+\newenvironment{question}{\item}{}
+\newenvironment{solution}{\comment}{\endcomment}
+\newenvironment{answerlist}{\renewcommand{\labelenumi}{(\alph{enumi})}\begin{enumerate}}{\end{enumerate}}
+
+%% compatibility with pandoc
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+%% fonts: Helvetica
+% \renewcommand{\sfdefault}{phv}
+% \IfFileExists{sfmath.sty}{
+%   \RequirePackage{sfmath}
+%   \renewcommand{\rmdefault}{phv}
+% }{}
+
+%% new commands
+\makeatletter
+\newcommand{\Subject}[1]{\def\@Subject{#1}}
+\newcommand{\Degree}[1]{\def\@Degree{#1}}
+\newcommand{\Date}[1]{\def\@Date{#1}}
+\newcommand{\Version}[1]{\def\@Version{#1}}
+\newcommand{\Time}[1]{\def\@Time{#1}}
+\Subject{Subject}
+\Degree{Degree}
+\Date{Date}
+\Version{Version}
+\Time{Duration}
+
+%% \exinput{header}
+
+\newcommand{\mySubject}{\@Subject}
+\newcommand{\myDegree}{\@Degree}
+\newcommand{\myDate}{\@Date}
+\newcommand{\myVersion}{\@Version}
+\newcommand{\myTime}{\@Time}
+\makeatother
+
+%% headings
+\pagestyle{fancy}
+\lhead{\textsc{CEU San Pablo University}}
+\rhead{\textsl{\textsf{Department of Applied Mathematics and Statistics}}}
+\cfoot{}
+\renewcommand{\headrulewidth}{0pt}
+
+\begin{document}
+\exam{EXAM OF \mySubject}{\myDegree}{\myDate}{Version \myVersion}
+\noindent\textbf{Duration}: \myTime. \vskip 1cm
+
+\begin{enumerate}[leftmargin=*]
+%% \exinput{exercises}
+
+\end{enumerate}
+
+\end{document}

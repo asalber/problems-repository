@@ -1,0 +1,35 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+sen <- 0.91
+spe <- 0.98
+pre <- 0.2
+## QUESTION/ANSWER GENERATION
+@
+
+\begin{question}
+\puntos{2.5}An ultrasonic technique is used to diagnose a disease with a sensitivity of \Sexpr{sen*100}\% and a specificity of \Sexpr{spe*100}\%.
+The prevalence of the disease is \Sexpr{pre*100}\%, 
+\begin{enumerate}
+\item If we apply the technique to an individual and the outcome is positive, what is the probability of having the disease for that individual?
+\item If the outcome was negative,  what is the probability of not having the disease?
+\item Is this technique more reliable to confirm or to rule out the disease?
+Justify the answer. 
+\item Compute the probability of having a correct diagnose with this technique.
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item Uno
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{\Sexpr{1}}
+%% \exname{test-med-1}
+%% \extol{0.001}
+%% \degree{Medicina}
+ 

@@ -1,0 +1,51 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+library(xtable)
+set.seed(123)
+x <- c(15, 35, 22, 28, 21, 18, 25, 30, 23, 20)
+y <- round(exp(-0.15*x+6) + rnorm(length(x)))
+table <- matrix(c(x,y), nrow = 2, byrow = T)
+rownames(table) <- c("Warm-up time", "Injuries")
+## QUESTION/ANSWER GENERATION
+
+@
+
+\begin{question}
+\puntos{5}The table below shows the number of injuries of several teams during a league and the average varm-up time of its players. 
+
+\begin{center}
+<<echo=FALSE, results=tex>>=
+print(xtable(table, auto=T), include.colnames = F, floating=F, hline.after = c(0,nrow(table)), booktabs = T)
+@
+\end{center}
+
+\begin{enumerate}
+\item Draw the scatter plot.
+\item Which regression model is more suitable to predict the number of injuries as a function of the warm-up time, the logarithmic or the exponential? 
+Use that regression model to predict the expected number of injuries for a team whose players warm-up 20 minutes a day.
+\item Which regression model is more suitable to predict the warm-up time as a function of the number of injuries, the logarithmic or the exponential? 
+Use that regression model to predict the warm-up time required to have no more than 10 injuries in a league.
+\item Are these predictions reliable? Which one is more reliable?
+\end{enumerate}
+
+Use the following sums for the computations ($X$ warm-up time and $Y$ number of injuries):  
+$\sum x_i=\Sexpr{sum(x)}$, $\sum \log(x_i)=\Sexpr{round(sum(log(x)),4)}$, $\sum y_j=\Sexpr{sum(y)}$, $\sum \log(y_j)=\Sexpr{round(sum(log(y)),4)}$,\\  
+$\sum x_i^2=\Sexpr{sum(x^2)}$, $\sum \log(x_i)^2=\Sexpr{round(sum(log(x)^2),4)}$, $\sum y_j^2=\Sexpr{sum(y^2)}$, $\sum \log(y_j)^2=\Sexpr{round(sum(log(y)^2),4)}$,\\  
+$\sum x_iy_j=\Sexpr{sum(x*y)}$, $\sum x_i\log(y_j)=\Sexpr{round(sum(x*log(y)),4)}$, $\sum \log(x_i)y_j=\Sexpr{round(sum(log(x)*y),4)}$, $\sum \log(x_i)\log(y_j)=\Sexpr{round(sum(log(x)*log(y)),4)}$.
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item Uno
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{\Sexpr{1}}
+%% \exname{regnol-fis-1}
+%% \extol{0.001}
+%% \degree{Physiotherapy}
+ 

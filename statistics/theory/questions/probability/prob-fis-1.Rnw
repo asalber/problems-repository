@@ -1,0 +1,46 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+library(MASS)
+pA <- 4/5
+pB <- 0.5
+pNoANoB <- 1/20
+
+## QUESTION/ANSWER GENERATION
+pAoB <- 1-pNoANoB
+pAB <- pA + pB - pAoB
+pNoAB <- pB-pAB
+pNoA <- 1-pA
+pNoB <- 1-pB
+pBSiA <- pAB/pA
+pBSiNoA <- pNoAB/pNoA
+@
+
+\begin{question}
+\puntos{2.5}The probability that an injury $A$ is repeated is $\Sexpr{fractions(pA)}$, the probability that another injury $B$ is repeated is $\Sexpr{fractions(pB)}$, and the probability that none of them are repeated is $\Sexpr{fractions(pNoANoB)}$.
+Compute the probability of the following events:
+\begin{enumerate}
+\item At least one injury is repeated.
+\item Only injury $B$ is repeated.
+\item Injury $B$ is repeated if injury $A$ has been repeated.
+\item Injury $B$ is repeated if injury $A$ has not been repeated. 
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item $P(A\cup B)=\Sexpr{fractions(pAoB)}$.
+\item $P(B\cap\overline{A})=\Sexpr{fractions(pNoAB)}$.
+\item $P(B/A)=\Sexpr{fractions(pBSiA)}$.
+\item $P(B/\overline{A})=\Sexpr{fractions(pBSiNoA)}$.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{\Sexpr{fmt(pAoB, 3)}}
+%% \exname{prob-fis-1}
+%% \extol{0.001}
+%% \degree{Physiotherapy}
+ 
