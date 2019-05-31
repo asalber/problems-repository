@@ -1,0 +1,38 @@
+```{r data-generation, echo=F, results="hide"}
+## DATA GENERATION
+mean.day <- 12
+hours <- 1
+patients <- 4
+employees <- patients
+hours.day <- 6
+
+## QUESTION/ANSWER GENERATION
+lambda1 <- mean.day/hours.day*hours
+sol1 <- ppois(patients, lambda1, lower.tail = F)
+sol2 <- pbinom(0, hours.day, sol1, lower.tail = F)
+sol3 <- ppois(patients+1, lambda1, lower.tail = F)
+sol4 <- pbinom(0, hours.day, sol3, lower.tail = F)
+```
+
+## Question
+
+A physical therapy clinic opens `r hours.day} hours a day and the average number of patients that arrive to the clinic is `r mean.day} a day.
+
+1. Compute the probability of arriving more than `r patients} patients in `r hours} hours.
+2. If the clinic has `r employees} physiotherapists and each of them can treat one patient per hour, what is the probability that a day there was some hour in which some patient can not be attended?
+How many physiotherapists must be in the clinic to guarantee that this probability is less than 10\%?
+
+## Solution
+
+1. Let $X$ be the number of patients that arrive in `r hours} hours. 
+$X\sim P(`r lambda1})$ and $P(X>`r patients})=`r round(sol1,4)`$.
+2. Let $Y$ be the number of hours in a day in which some patient can not be treated.
+$Y\sim B(`r hours.day}, `r round(sol1,4)})$ and $P(Y>0)=`r round(sol2,4)`$.  
+The clinic requires 5 phisiotherapists, since $P(X>`r patients+1})=`r round(sol1,4)`$ and $P(Y>0)=`r round(sol4,4)`$, with $Y\sim B(`r hours.day}, `r round(sol3,4)})$ now.
+
+%% META-INFORMATION
+exsolution: `r 1`
+exname: vad-fis-1
+degree: Physiotherapy
+
+ 

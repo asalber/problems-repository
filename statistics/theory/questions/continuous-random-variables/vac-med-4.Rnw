@@ -1,0 +1,37 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+m <- 44
+s <- 2
+x1 <- 46
+x2 <- 49
+p1 <- 0.8
+## QUESTION/ANSWER GENERATION
+sol1 <- pnorm(x1, m, s, lower.tail = F)
+sol2 <- pnorm(x2, m, s) - pnorm(x1, m, s)
+a <- qnorm((1-p1)/2, m, s)
+b <- qnorm(1-(1-p1)/2, m, s)
+@
+
+\begin{question}
+\puntos{4}It has been observed that the concentration of a metabolite in urine can be used as a diagnostic test for a disease.
+The concentration (in mg/dl) in healthy individuals follows a normal distribution with mean 90 and standard deviation 8, while in sick individuals follows a normal distribution with mean 120 and standard deviation 10.
+\begin{enumerate}
+\item If the cut-off point is set at 105 mg/dl (positive above and negative below), what is the sensitivity and the specificity of the test?
+\item If the cut-off point is set at 105 mg/dl and we assume a prevalence of 10\%, what is the probability of a correct diagnostic?
+\item If we want a sensitivity of 95\%, where must we set the cut-off point? What would the specificity of the test be  ?
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{\Sexpr{1}}
+%% \exname{vac-med-1}
+%% \extol{0.001}
+%% \degree{Medicina}
+ 

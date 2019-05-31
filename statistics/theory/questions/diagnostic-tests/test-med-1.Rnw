@@ -4,6 +4,12 @@ sen <- 0.91
 spe <- 0.98
 pre <- 0.2
 ## QUESTION/ANSWER GENERATION
+tp <- pre*sen
+fn <- pre*(1-sen)
+fp <- (1-pre)*(1-spe)
+tn <- (1-pre)*spe
+ppv <- tp/(tp+fp)
+npv <- tn/(tn+fn)
 @
 
 \begin{question}
@@ -21,8 +27,12 @@ Justify the answer.
 
 %% SOLUTIONS
 \begin{solution}
+Let $D$ the event corresponding to have the disease and + and - the events corresponding to have a positive and negative outcome respectively in the test.
 \begin{enumerate}
-\item Uno
+\item $PPV=\Sexpr{round(ppv,4)}$.
+\item $NPV=\Sexpr{round(npv,4)}$.
+\item It is more reliable to rule out the disease since the NPV is greater than the PPV.
+\item $P(D\cap +)+P(\overline D\cap -) = \Sexpr{round(tp+tn,4)}$.
 \end{enumerate}
 \end{solution}
 
@@ -31,5 +41,5 @@ Justify the answer.
 %% \exsolution{\Sexpr{1}}
 %% \exname{test-med-1}
 %% \extol{0.001}
-%% \degree{Medicina}
+%% \degree{Medicine}
  

@@ -1,0 +1,87 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+library(xtable)
+x <- c(4, 8, 12, 16, 20, 24)
+y <- c(25.4, 24, 22.8, 22, 21.6, 21.4)
+table <- matrix(c(x,y), nrow = 2, byrow = T)
+rownames(table) <- c("\\mbox{Time of exercise}", "\\mbox{BMI}")
+## QUESTION/ANSWER GENERATION
+# sample size
+n <- length(x)
+# means
+mx <- mean(x)
+mlogx <- mean(log(x))
+my <- mean(y)
+mlogy <- mean(log(y))
+# variances
+s2x <- sum(x^2)/n-mx^2
+s2logx <- sum(log(x)^2)/n-mlogx^2
+s2y <- sum(y^2)/n-my^2
+s2logy <- sum(log(y)^2)/n-mlogy^2
+# Covariances
+sxy <- sum(x*y)/n-mx*my
+sxlogy <- sum(x*log(y))/n-mx*mlogy
+slogxy <- sum(log(x)*y)/n-mlogx*my
+# Linera model
+reglin <- lm(y~x)
+# Exponential regression model
+regexp <- lm(log(y)~x)
+# Logarithmic regression model
+reglog <- lm(y~log(x))
+# Determination coeff
+r2xy <- sxy^2/(s2x*s2y)
+r2xlogy <- sxlogy^2/(s2x*s2logy)
+r2logxy <- slogxy^2/(s2logx*s2y)
+@
+
+\begin{question}
+\puntos{5}A person followed a program of exercises to reduce its body mass index (BMI).
+The table below shows the BMI at different number of weeks doing exercise.
+
+$$
+<<echo=FALSE, results=tex>>=
+print(xtable(table, auto=T), tabular.environment="array", include.colnames = F, floating=F, hline.after = c(0,nrow(table)), sanitize.text.function = function(x) { x })
+@
+$$
+
+\begin{enumerate}
+\item Compute the BMI after 30 weeks doing exercise  using the linear, logarithmic and exponential regression models.
+\item Which prediction is more reliable? Justify the answer.
+\end{enumerate}
+
+Use the following sums for the computations ($X$ time of exercise and $Y$ BMI):\\  
+$\sum x_i=\Sexpr{sum(x)}$, $\sum \log(x_i)=\Sexpr{round(sum(log(x)),4)}$, $\sum y_j=\Sexpr{sum(y)}$, $\sum \log(y_j)=\Sexpr{round(sum(log(y)),4)}$,\\  
+$\sum x_i^2=\Sexpr{sum(x^2)}$, $\sum \log(x_i)^2=\Sexpr{round(sum(log(x)^2),4)}$, $\sum y_j^2=\Sexpr{sum(y^2)}$, $\sum \log(y_j)^2=\Sexpr{round(sum(log(y)^2),4)}$,\\  
+$\sum x_iy_j=\Sexpr{sum(x*y)}$, $\sum x_i\log(y_j)=\Sexpr{round(sum(x*log(y)),4)}$, $\sum \log(x_i)y_j=\Sexpr{round(sum(log(x)*y),4)}$, $\sum \log(x_i)\log(y_j)=\Sexpr{round(sum(log(x)*log(y)),4)}$.
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item $\bar x=\Sexpr{round(mx,4)}$ min, $s_x^2=\Sexpr{round(s2x,4)}$ min$^2$.\\
+$\overline{\log(x)}=\Sexpr{round(mlogx,4)}$ log(min), $s_{\log(x)}^2=\Sexpr{round(s2logx,4)}$ log(min)$^2$.\\
+$\bar y=\Sexpr{round(my,4)}$ kg/m$^2$, $s_y^2=\Sexpr{round(s2y,4)}$ (kg/m$^2$)$^2$.\\
+$\overline{\log(y)}=\Sexpr{round(mlogy,4)}$ log(kg/m$^2$), $s_{\log(y)}^2=\Sexpr{round(s2logy,4)}$ log(kg/m$^2$)$^2$.\\
+$s_{xy}=\Sexpr{round(sxy,4)}$ min$\cdot$kg/m$^2$, $s_{x\log(y)}=\Sexpr{round(sxlogy,4)}$ log(min)kg/m$^2$, $s_{\log(x)y}=\Sexpr{round(slogxy,4)}$ min$\cdot$log(kg/m$^2$)\\
+Linear regression model: $y=\Sexpr{round(reglin$coefficients[1],4)}+\Sexpr{round(reglin$coefficients[2],4)}x$.
+Predicción: $y(30)=\Sexpr{round(reglin$coefficients[1] + reglin$coefficients[2]*30,4)}$ kg/m$^2$.\\
+Logarithmic regression model: $y=\Sexpr{round(reglog$coefficients[1],4)}+\Sexpr{round(reglog$coefficients[2],4)}\log(x)$.
+Predicción: $y(30)=\Sexpr{round(reglog$coefficients[1] + reglog$coefficients[2]*log(30),4)}$ kg/m$^2$.\\
+Exponential regression model: $y=e^{\Sexpr{round(regexp$coefficients[1],4)}+\Sexpr{round(regexp$coefficients[2],4)}x}$.
+Predicción: $y(30)=\Sexpr{round(exp(regexp$coefficients[1] + regexp$coefficients[2]*30),4)}$ kg/m$^2$.
+
+\item Linear coef. of determination: $r^2=\Sexpr{round(r2xy,4)}$\\
+Logarithmic coef. of determination: $r^2=\Sexpr{round(r2logxy,4)}$\\
+Exponential coef. of determination: $r^2=\Sexpr{round(r2xlogy,4)}$\\
+Therefore the prediction of the logarithmic model is more reliable sinde the logarithmic coef. of determination is greater.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{regnol-fis-2}
+%% \extol{0.001}
+%% \degree{Physiotherapy}
+ 

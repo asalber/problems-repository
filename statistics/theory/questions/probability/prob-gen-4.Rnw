@@ -1,0 +1,42 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+library(MASS)
+pA <- 4/5
+pB <- 0.5
+pNoANoB <- 1/20
+
+## QUESTION/ANSWER GENERATION
+pAoB <- 1-pNoANoB
+pAB <- pA + pB - pAoB
+pNoAB <- pB-pAB
+pNoA <- 1-pA
+pNoB <- 1-pB
+pBSiA <- pAB/pA
+pBSiNoA <- pNoAB/pNoA
+@
+
+\begin{question}
+\puntos{3}Let $A$ and $B$ be two events of a random experiment, such that $A$ is three times as likely as $B$, $P(A\cup B)=0.8$ and $P(A\cap B)=0.2$.
+
+\begin{enumerate}
+\item Compute $P(A)$ and $P(B)$.
+\item Compute $P(A-B)$ and $P(B-A)$.
+\item Compute $P(\bar A \cup \bar B)$ and $P(\bar A \cap \bar B)$.
+\item Compute $P(A|B)$ and $P(B|A)$.
+\item Are $A$ and $B$ independent?
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solución}
+%% \exname{prob-fis-3}
+%% \extol{0.001}
+%% \degree{Fisioterapia}
+ 

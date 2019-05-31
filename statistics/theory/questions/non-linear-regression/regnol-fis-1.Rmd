@@ -1,0 +1,82 @@
+```{r data-generation, echo=F, results=hide}
+## DATA GENERATION
+library(xtable)
+set.seed(123)
+x <- c(15, 35, 22, 28, 21, 18, 25, 30, 23, 20)
+y <- round(exp(-0.15*x+6) + rnorm(length(x)))
+table <- matrix(c(x,y), nrow = 2, byrow = T)
+rownames(table) <- c("Warm-up time", "Injuries")
+## QUESTION/ANSWER GENERATION
+# sample size
+n <- length(x)
+# means
+mx <- mean(x)
+mlogx <- mean(log(x))
+my <- mean(y)
+mlogy <- mean(log(y))
+# variances
+s2x <- sum(x^2)/n-mx^2
+s2logx <- sum(log(x)^2)/n-mlogx^2
+s2y <- sum(y^2)/n-my^2
+s2logy <- sum(log(y)^2)/n-mlogy^2
+# Covariances
+sxlogy <- sum(x*log(y))/n-mx*mlogy
+slogxy <- sum(log(x)*y)/n-mlogx*my
+# Determination coeff
+r2xlogy <- sxlogy^2/(s2x*s2logy)
+r2logxy <- slogxy^2/(s2logx*s2y)
+# Exponential regression model
+regexp <- lm(log(y)~x)
+# Logarithmic regression model
+reglog <- lm(y~log(x))
+```
+
+## Question
+
+The table below shows the number of injuries of several teams during a league and the average varm-up time of its players. 
+
+```{r data-table, echo=F}
+print(xtable(table, auto=T), include.colnames = F, floating=F, hline.after = c(0,nrow(table)), booktabs = T)
+```
+
+1. Draw the scatter plot.
+2. Which regression model is more suitable to predict the number of injuries as a function of the warm-up time, the logarithmic or the exponential? 
+Use that regression model to predict the expected number of injuries for a team whose players warm-up 20 minutes a day.
+3. Which regression model is more suitable to predict the warm-up time as a function of the number of injuries, the logarithmic or the exponential? 
+Use that regression model to predict the warm-up time required to have no more than 10 injuries in a league.
+4. Are these predictions reliable? Which one is more reliable?
+
+Use the following sums for the computations ($X$ warm-up time and $Y$ number of injuries):  
+$\sum x_i=`r sum(x)`$, $\sum \log(x_i)=`r round(sum(log(x)),4)`$, $\sum y_j=`r sum(y)`$, $\sum \log(y_j)=`r round(sum(log(y)),4)`$,    
+$\sum x_i^2=`r sum(x^2)`$, $\sum \log(x_i)^2=`r round(sum(log(x)^2),4)`$, $\sum y_j^2=`r sum(y^2)`$, $\sum \log(y_j)^2=`r round(sum(log(y)^2),4)`$,  
+$\sum x_iy_j=`r sum(x*y)`$, $\sum x_i\log(y_j)=`r round(sum(x*log(y)),4)`$, $\sum \log(x_i)y_j=`r round(sum(log(x)*y),4)`$, $\sum \log(x_i)\log(y_j)=`r round(sum(log(x)*log(y)),4)`$.
+
+
+## Solution
+
+1. 
+```{r scatterplot-injuries-warm-up, fig=T, echo=F, height=3, width=4, dev=svg, fig.path="images"}
+plot(x, y, main="Scatter plot of warm-up time and injuries", xlab = "Warm-up time", ylab="Injuries")
+```
+
+2. $\bar x=`r round(mx,4)`$ min, $s_x^2=`r round(s2x,4)`$ min$^2$.  
+$\bar \log(x)=`r round(mlogx,4)`$ log(min), $s_{\log(x)}^2=`r round(s2logx,4)`$ log(min)$^2$.  
+$\bar y=`r round(my,4)`$ injuries, $s_y^2=`r round(s2y,4)`$ injuries$^2$.  
+$\bar \log(y)=`r round(mlogy,4)`$ log(injuries), $s_{\log(y)}^2=`r round(s2logy,4)`$ log(injuries)$^2$.  
+$s_{x\log(y)}=`r round(sxlogy,4)`$, $s_{\log(x)y}=`r round(slogxy,4)`$  
+Exponential determination coefficient: $r^2=`r round(r2xlogy,4)`$  
+Logarithmic determination coefficient: $r^2=`r round(r2logxy,4)`$  
+So the exponential regression model es better to predict the number of injuries as a function of the warm-up time.  
+Exponential regression model: $y=e^{`r round(regexp$coefficients[1],4)`+`r round(regexp$coefficients[2],4)`x}$.  
+Prediction: $y(20)=`r round(exp(regexp$coefficients[1] + regexp$coefficients[2]*20),4)`$ injuries.
+3. The logarithmic model is better to predict the warm-up time as a function of the number or injuries.  
+Logarithmic regression model: $x=`r round(reglog$coefficients[1],4)`+`r round(reglog$coefficients[2],4)`\log(y)$.  
+Prediction: $x(10)=`r reglog$coefficients[1]+reglog$coefficients[2]*log(10)`$ min.
+4. Both predictions are very reliable since de deternation coefficient is very high but the last one is a little less reliable as it is for a value further from the data range.
+
+%% META-INFORMATION
+exsolution: `r 1`
+exname: regnol-fis-1
+degree: Physiotherapy
+
+ 

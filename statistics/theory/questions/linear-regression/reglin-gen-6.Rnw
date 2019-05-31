@@ -1,0 +1,32 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+
+@
+
+\begin{question}
+\puntos{1.5}In a regression study about the relation between two variables $X$ and $Y$ we got $\bar x=7$ and $r^2=0.9$.
+If the equation of the regression line of $Y$ on $X$ is $y-x=1$, compute
+\begin{enumerate}
+\item The mean of $Y$.
+\item The equation of the regression line of $X$ on $Y$.
+\item What value does this regression model predict for $x=6$? And for $y=10$?
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item $\bar y=8$.
+\item Regression line of $X$ on $Y$: $x=0.9y-0.2$.
+\item $y(6)=7$ and $x(10)=8.8$.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{reglin-gen-6}
+%% \extol{0.001}
+%% \degree{Todos}
+ 

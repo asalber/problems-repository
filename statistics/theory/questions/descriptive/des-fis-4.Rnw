@@ -1,0 +1,84 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+require(xtable)
+classes <- c("(30,35]", "(35,40]", "(40,45]", "(45,50]")
+xi <- c(32.5, 37.5, 42.5, 47.5)
+ni <- c(15, 35, 40, 10)
+x <- rep(xi,ni)
+data <- data.frame(classes, ni)
+colnames(data) <- c("\\mbox{Time (min)}", "\\mbox{Num runners}")
+## QUESTION/ANSWER GENERATION
+# sample size
+nx <- length(x)
+# quartiles
+q1 <- quantile(x, probs = c(0.25), type=1)
+q2 <- quantile(x, probs = c(0.5), type=1)
+q3 <- quantile(x, probs = c(0.75), type=1)
+# interquartile range
+iqr <- q3-q1
+#fences
+f1 <- q1-1.5*iqr
+f2 <- q3+1.5*iqr
+# outliers
+outliers <- x[x < f1 | x > f2]
+# means
+mx <- mean(x)
+my <- 40
+# variances
+s2x <- sum(x^2)/nx-mx^2
+# standard deviation
+sx <- sqrt(s2x)
+sy <- 5
+# coef. variation
+cvx <- sx/mx
+cvy <- sy/my
+# coef. skewness
+g1x <- sum((x-mx)^3)/(nx*sx^3)
+g1y <- 0.75
+# standard scores
+zx <- (39-mx)/sx
+zy <- (39-my)/sy
+@
+
+\begin{question}
+\puntos{5}The table below summarize the time that took to the runners to reach the finish in a long-distance race in Madrid: 
+
+$$
+<<echo=FALSE, results=tex>>=
+print(xtable(data, auto=T), tabular.environment="array", include.rownames = F, floating=F, hline.after = c(0,nrow(data)), sanitize.text.function = function(x) { x })
+@
+$$
+
+In a another race in Paris, the mean of time was 40 minutes, the standard deviation 5 minutes and the coeffitient of skewness $0.75$.
+
+\begin{enumerate}
+\item What percentage of runners took less than 42 minutes to reach the finish in Madrid?
+\item Compute and interpret the interquartile range of the time for Madrid race.
+\item In which race the mean of the time is more representative?
+\item In which race the time have a more simmetric distribution?
+\item In which race a time of 39 minutes to reach the finish is relatively smaller?
+\end{enumerate}
+
+Use the following sums for the computations: $\sum x_i=\Sexpr{sum(x)}$ min, $\sum x_i^2=\Sexpr{sum(x^2)}$ min$^2$, $\sum (x_i-\bar x)^3=\Sexpr{round(sum((x-mx)^3),2)}$ min$^3$ y $\sum (x_i-\bar x)^4=\Sexpr{round(sum((x-mx)^4),2)}$ min$^4$.
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item \null
+\item $Q_1=\Sexpr{round(q1,4)}$ min, $Q_3=\Sexpr{round(q3,4)}$ min, $IQR=\Sexpr{round(iqr,4)}$ min.
+\item Madrid statistics: $\bar x=\Sexpr{round(mx,4)}$ min, $s^2=\Sexpr{round(s2x,4)}$ min$^2$, $s=\Sexpr{round(sx,4)}$ min and $cv=\Sexpr{round(cvx,4)}$.\\
+Paris statistics: $cv=\Sexpr{round(cvy,4)}$. Thus, the mean of time in Madrid is a little bit more representative since the coef. of variation is smaller.
+\item $g_1=\Sexpr{round(g1x,4)}$, that is closer to 0 than the distribution of times in Paris, thus the distribution of times in Madrid is more simmetric.
+\item The standard score of the Madrid sample is $z(39)=\Sexpr{round(zx,4)}$ and the standard score of the Paris one $z(39)=\Sexpr{round(zy,4)}$, thus a time of 39 min is relatively greater in the sample of Madrid.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solución}
+%% \exname{des-far-2}
+%% \extol{0.001}
+%% \degree{Farmacia}
+ 

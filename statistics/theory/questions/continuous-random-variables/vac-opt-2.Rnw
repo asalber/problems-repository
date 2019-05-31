@@ -1,0 +1,61 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+m1 <- 26
+s1 <- 2.1
+m2 <- 15
+s2 <- 2.8
+x1 <- 22
+pre <- 0.06
+n1 <- 10
+x2 <- 8
+n2 <- 70
+x3 <- 2
+x4 <- 5
+## QUESTION/ANSWER GENERATION
+sen <- pnorm(x1, m1, s1, lower.tail = F)
+spe <- pnorm(x1, m2, s2)
+tp <- pre*sen
+fn <- pre*(1-sen)
+fp <- (1-pre)*(1-spe)
+tn <- (1-pre)*spe
+ppv <- tp/(tp+fp)
+npv <- tn/(tn+fn)
+p <- tp+fp
+p1 <- pbinom(x2,n1,ppv,lower.tail = F)
+lambda <- n2*p
+p2 <- ppois(x4,lambda)-ppois(x3-1,lambda)
+@
+
+\begin{question}
+\puntos{7}It is known that eye pressure in patients with glaucoma follows a normal distributions with mean $\Sexpr{m1}$ mmHg and standard deviation $\Sexpr{s1}$ mmHg, while in people without glaucoma follows a normal distribution with mean $\Sexpr{m2}$ mmHg and standard deviation $\Sexpr{s2}$ mmHg.
+A test for detecting glaucoma gives a positive outcome when the eye pressure is above \Sexpr{x1} mmHg and a negative outcome if not. 
+
+\begin{enumerate}
+\item Compute the sensitivity and the specificity of the test.\\
+\textbf{Remark}: If you are not able to compute this values, assume a sensitivity of $0.95$ and a specificity of $0.97$ for the following parts.
+\item If there are \Sexpr{pre*100}\% of persons with glaucoma in the population, what are the positive and negative predictive values of the test?
+\item If we consider \Sexpr{n1} persons with a positive outcome in the test, what is the probability that more than \Sexpr{x2} suffer glaucoma?
+\item If we apply the test to \Sexpr{n2} persons, what is the probability of getting between \Sexpr{x3} and \Sexpr{x4} positive outcomes, both included?
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item Let $X_1$ the eye pressure in patients with glaucoma and $X_2$ in people without glaucoma.\\
+Sensitivity: $P(+|D)=P(X_1>22)=\Sexpr{round(sen,4)}$.\\
+Specificity: $P(-|\overline{D})=P(X_2\leq 22)=\Sexpr{round(spe,4)}$.
+\item $PPV=P(D|+)=\Sexpr{round(ppv,4)}$ and $NPV=P(\overline D|-)=\Sexpr{round(npv,4)}$.
+\item Let $Y$ be the number of persons with glaucoma in a sample of 10 persons with a positive outcome in the test. $Y\sim B(\Sexpr{n1},\Sexpr{round(ppv,4)})$ and $P(Y>\Sexpr{x2})=\Sexpr{round(p1,4)}$.
+\item Let $U$ be the numer of persons with a positive outcome in the test in a sample of 70 persons. $U\sim B(\Sexpr{n2},\Sexpr{round(p,4)})\approx P(\Sexpr{round(lambda,4)})$ and $P(\Sexpr{x3}\leq U\leq \Sexpr{x4})=\Sexpr{round(p2,4)}$.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solución}
+%% \exname{vac-opt-2}
+%% \extol{0.001}
+%% \degree{Óptica}
+ 

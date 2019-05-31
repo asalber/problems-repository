@@ -1,0 +1,129 @@
+\begin{enumerate}
+\item
+  \textbf{Question}\\
+  An ultrasonic technique is used to diagnose a disease with a
+  sensitivity of 91\% and a specificity of 98\%. The prevalence of the
+  disease is 20\%,
+
+  \begin{enumerate}
+  \item
+    If we apply the technique to an individual and the outcome is
+    positive, what is the probability of having the disease for that
+    individual?
+  \item
+    If the outcome was negative, what is the probability of not having
+    the disease?
+  \item
+    Is this technique more reliable to confirm or to rule out the
+    disease? Justify the answer.
+  \item
+    Compute the probability of having a correct diagnose with this
+    technique.
+  \end{enumerate}
+
+  \textbf{Solution}\\
+  Let \(D\) the event corresponding to have the disease and + and - the
+  events corresponding to have a positive and negative outcome
+  respectively in the test.
+
+  \begin{enumerate}
+  \item
+    \(PPV=0.9192\).
+  \item
+    \(NPV=0.9776\).
+  \item
+    It is more reliable to rule out the disease since the NPV is greater
+    than the PPV.
+  \item
+    \(P(D\cap +)+P(\overline D\cap -) = 0.966\).
+  \end{enumerate}
+\item
+  \textbf{Question}\\
+  It is known that the femur length of a fetus with 25 weeks of
+  pregnancy follows a normal distribution with mean 44 mm and standard
+  deviation 2 mm.
+
+  \begin{enumerate}
+  \item
+    Compute the probability that the femur length of a fetus with 25
+    weeks is greater than 46 mm.
+  \item
+    Compute the probability that the femur lenght of a fetus with 25
+    weeks is between 46 and 49 mm.
+  \item
+    Compute an interval \((a,b)\) centered at the mean, such that it
+    contains 80\% of the femur lengths of fetus with 25 weeks.
+  \end{enumerate}
+
+  \textbf{Solution}\\
+  Let \(X\sim N(44,2)\) be the femur length of fetus with 25 weeks of
+  pregnancy.
+
+  \begin{enumerate}
+  \item
+    \(P(X>46)=0.1587\).
+  \item
+    \(P(46<X<49))=0.1524\).
+  \item
+    The interval centered at \(44\) that contains 80\% of the femur
+    lengths of fetus with 25 weeks is \((41.4369,46.5631)\).
+  \end{enumerate}
+\item
+  \textbf{Question}\\
+  The probability that an injury \(A\) is repeated is \(4/5\), the
+  probability that another injury \(B\) is repeated is \(1/2\), and the
+  probability that none of them are repeated is \(1/20\). Compute the
+  probability of the following events:
+
+  \begin{enumerate}
+  \item
+    At least one injury is repeated.
+  \item
+    Only injury \(B\) is repeated.
+  \item
+    Injury \(B\) is repeated if injury \(A\) has been repeated.
+  \item
+    Injury \(B\) is repeated if injury \(A\) has not been repeated.
+  \end{enumerate}
+
+  \textbf{Solution}\\
+
+  \begin{enumerate}
+  \item
+    \(P(A\cup B)=19/20\).
+  \item
+    \(P(B\cap\overline{A})=3/20\).
+  \item
+    \(P(B/A)=7/16\).
+  \item
+    \(P(B/\overline{A})=3/4\).
+  \end{enumerate}
+\item
+  \textbf{Question}\\
+  A physical therapy clinic opens 6 hours a day and the average number
+  of patients that arrive to the clinic is 12 a day.
+
+  \begin{enumerate}
+  \item
+    Compute the probability of arriving more than 4 patients in 1 hours.
+  \item
+    If the clinic has 4 physiotherapists and each of them can treat one
+    patient per hour, what is the probability that a day there was some
+    hour in which some patient can not be attended? How many
+    physiotherapists must be in the clinic to guarantee that this
+    probability is less than 10\%?
+  \end{enumerate}
+
+  \textbf{Solution}\\
+
+  \begin{enumerate}
+  \item
+    Let \(X\) be the number of patients that arrive in 1 hours.
+    \(X\sim P(2)\) and \(P(X>4)=0.0527\).
+  \item
+    Let \(Y\) be the number of hours in a day in which some patient can
+    not be treated. \(Y\sim B(6, 0.0527)\) and \(P(Y>0)=0.2771\).\\
+    The clinic requires 5 phisiotherapists, since \(P(X>5)=0.0527\) and
+    \(P(Y>0)=0.0954\), with \(Y\sim B(6, 0.0166)\) now.
+  \end{enumerate}
+\end{enumerate}

@@ -1,3 +1,4 @@
+library("knitr")
 library("exams")
 
 questions <- c("des-fis-1.Rnw", "regnol-fis-1.Rnw")
@@ -15,3 +16,19 @@ exams2pdf(questions, n=1, name = c("exam-physio-2018-05-31-des", "solucion-physi
   )
 )
 
+# Remove directory of exam images
+unlink("img/exam1", recursive = TRUE) 
+exams2pandoc(questions, n=1, 
+             name = "exam-physiotherapy-2018-05-31-des", 
+             encoding = "UTF-8", 
+             type="latex",
+             dir = "latex",
+             edir = "../questions",
+             sdir = "img",
+             template = c("templates/plain.tex"),
+             svg=T,
+             png=T,
+             resolution=300
+)
+
+pandoc("latex/exam-physiotherapy-2018-05-31-des1.latex", format="markdown")

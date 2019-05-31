@@ -1,0 +1,83 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+library(xtable)
+sumx <- 15.9
+sumlogx <- 3.852
+sumy <- 41.5
+sumlogy <- 11.511
+sumx2 <- 42.23
+sumlogx2 <- 5.559
+sumy2 <- 274.25
+sumlogy2 <- 20.742
+sumxy <- 103.3
+sumxlogy <- 28.047
+sumlogxy <- 32.616
+n <- 8
+
+## QUESTION/ANSWER GENERATION
+# means
+mx <- sumx/n
+mlogx <- sumlogx/n
+my <- sumy/n
+mlogy <- sumlogy/n
+# variances
+s2x <- sumx2/n-mx^2
+s2logx <- sumlogx2/n-mlogx^2
+s2y <- sumy2/n-my^2
+s2logy <- sumlogy2/n-mlogy^2
+# Covariances
+sxlogy <- sumxlogy/n-mx*mlogy
+slogxy <- sumlogxy/n-mlogx*my
+# Deterhoursation coeff
+r2xlogy <- sxlogy^2/(s2x*s2logy)
+r2logxy <- slogxy^2/(s2logx*s2y)
+# Exponential regression model
+aexp <- mlogy - sxlogy/s2x*mx
+bexp <- sxlogy/s2x
+# Logarithmic regression model
+alog <- my - slogxy/s2logx*mlogx
+blog <- slogxy/s2logx
+# Prediction
+y0 <- alog+blog*3.2
+@
+
+\begin{question}
+\puntos{2.5}We have measured the average number of weekly hours of study $X$ and the score in a clinic entrance test $Y$ of 8 candidates, getting the following results:
+
+$\sum x_i=\Sexpr{sumx}$, $\sum \log(x_i)=\Sexpr{sumlogx}$, $\sum y_j=\Sexpr{sumy}$, $\sum \log(y_j)=\Sexpr{sumlogy}$,\\  
+$\sum x_i^2=\Sexpr{sumx2}$, $\sum \log(x_i)^2=\Sexpr{sumlogx2}$, $\sum y_j^2=\Sexpr{sumy2}$, $\sum \log(y_j)^2=\Sexpr{sumlogy2}$,\\
+$\sum x_iy_j=\Sexpr{sumxy}$, $\sum x_i\log(y_j)=\Sexpr{sumxlogy}$, $\sum \log(x_i)y_j=\Sexpr{sumlogxy}$.
+
+\begin{enumerate}
+\item Compute the equations of the logarithmic and exponential regression models of the score as a function of the average number of hours of study.
+\item Use the best of the previous models to predict the score for somebody that study $3.2$ hours a week.
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+
+\begin{enumerate}
+\item $\bar x=\Sexpr{round(mx,4)}$ hours, $s_x^2=\Sexpr{round(s2x,4)}$ hours$^2$.\\
+$\overline{\log(x)}=\Sexpr{round(mlogx,4)}$ log(hours), $s_{\log(x)}^2=\Sexpr{round(s2logx,4)}$ log(hours)$^2$.\\
+$\bar y=\Sexpr{round(my,4)}$ points, $s_y^2=\Sexpr{round(s2y,4)}$ points$^2$.\\
+$\overline{\log(y)}=\Sexpr{round(mlogy,4)}$ log(points), $s_{\log(y)}^2=\Sexpr{round(s2logy,4)}$ log(points)$^2$.\\
+$s_{x\log(y)}=\Sexpr{round(sxlogy,4)}$, $s_{\log(x)y}=\Sexpr{round(slogxy,4)}$\\
+Logarithmic regression model: $y=\Sexpr{round(alog,4)}+\Sexpr{round(blog,4)}\log(x)$\\
+Exponential regression model: $y=e^{\Sexpr{round(aexp,4)}+\Sexpr{round(bexp,4)}x}$
+
+\item Logarithmic coefficient of determination: $r^2=\Sexpr{round(r2logxy,4)}$\\
+Exponential coefficient of determination: $r^2=\Sexpr{round(r2xlogy,4)}$\\
+Therefore, the best regression model to predict is the exponential.\\
+Prediction: $y(3.2)=\Sexpr{round(y0,4)}$.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{regnol-fis-3}
+%% \extol{0.001}
+%% \degree{Physiotherapy}
+ 

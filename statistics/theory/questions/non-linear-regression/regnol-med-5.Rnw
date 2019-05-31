@@ -1,0 +1,87 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+library(xtable)
+x <- c(10, 14, 8, 11, 7, 6, 2, 5, 9, 9, 4, 6)
+y <- c(2.55, 2.44, 2.68, 2.65, 2.71, 2.85, 3.45, 2.93, 2.67, 2.59, 3.02, 2.72)
+table <- matrix(c(x,y), nrow = 2, byrow = T)
+rownames(table) <- c("\\mbox{Daily num cigarettes}", "\\mbox{Weight (kg)}")
+## QUESTION/ANSWER GENERATION
+# colors
+col1 <- "#05A1E6"
+# sample size
+n <- length(x)
+# means
+mx <- mean(x)
+mlogx <- mean(log(x))
+my <- mean(y)
+mlogy <- mean(log(y))
+# variances
+s2x <- sum(x^2)/n-mx^2
+s2logx <- sum(log(x)^2)/n-mlogx^2
+s2y <- sum(y^2)/n-my^2
+s2logy <- sum(log(y)^2)/n-mlogy^2
+# Covariances
+sxy <- sum(x*y)/n-mx*my
+sxlogy <- sum(x*log(y))/n-mx*mlogy
+slogxy <- sum(log(x)*y)/n-mlogx*my
+# Determination coeff
+r2xy <- sxy^2/(s2x*s2y)
+r2xlogy <- sxlogy^2/(s2x*s2logy)
+r2logxy <- slogxy^2/(s2logx*s2y)
+# Linear regression model
+reglin <- lm(y~x)
+# Exponential regression model
+regexp <- lm(log(y)~x)
+# Logarithmic regression model
+reglog <- lm(y~log(x))
+@
+
+\begin{question}
+\puntos{5}A study tries to determine the effect of smoking during the pregnancy in the weight of newborns. The table below shows the daily number of cigarretes smoked by mothers ($X$) and the weight of the newborn (all of them are males) ($Y$).
+
+$$
+<<echo=FALSE, results=tex>>=
+print(xtable(table, auto=T), tabular.environment="array", include.colnames = F, floating=F, hline.after = c(0,nrow(table)), sanitize.text.function = function(x) { x })
+@
+$$
+
+\begin{enumerate}
+\item Give the equation of the regression line of the weight of newborns on the daily number of cigarettes and interpret the slope.
+\item Which regression model is better to predict the weight of newborns, the  logarithmic or the exponential?
+\item Use the best of the two previous regression models to predict the weight of a newborn whose mother smokes 12 cigarettes a day. Is this prediction reliable?
+\end{enumerate}
+Use the following sums for the computations:\\
+$\sum x_i=\Sexpr{round(sum(x), 4)}$ cigarettes, $\sum \log(x_i)=\Sexpr{round(sum(log(x)), 4)}$ $\log(\mbox{cigarettes})$, $\sum y_j=\Sexpr{round(sum(y), 4)}$ kg, $\sum \log(y_j)=\Sexpr{round(sum(log(y)), 4)}$ $\log(\mbox{kg})$,\\  
+$\sum x_i^2=\Sexpr{round(sum(x^2), 4)}$ cigarettes$^2$, $\sum \log(x_i)^2=\Sexpr{round(sum(log(x)^2), 4)}$ $\log(\mbox{cigarettes})^2$, $\sum y_j^2=\Sexpr{round(sum(y^2), 4)}$ kg$^2$, $\sum \log(y_j)^2=\Sexpr{round(sum(log(y)^2), 4)}$ $\log(\mbox{kg})^2$,\\
+$\sum x_iy_j=\Sexpr{round(sum(x*y), 4)}$ cigarettes$\cdot$kg, $\sum x_i\log(y_j)=\Sexpr{round(sum(x*log(y)), 4)}$ cigarettes$\cdot\log(\mbox{kg})$, $\sum \log(x_i)y_j=\Sexpr{round(sum(log(x)*y), 4)}$ $\log(\mbox{cigarettes})$kg, $\sum \log(x_i)\log(y_j)=\Sexpr{round(sum(log(x)*log(y)), 4)}$ $\log(\mbox{cigarettes})\log(\mbox{kg})$.
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item $\bar x=\Sexpr{round(mx,4)}$ cigarettes, $s_x^2=\Sexpr{round(s2x,4)}$ cigarettes$^2$.\\
+$\bar y=\Sexpr{round(my,4)}$ kg, $s_y^2=\Sexpr{round(s2y,4)}$ kg$^2$.\\
+$s_{xy}=\Sexpr{round(sxy,4)}.$ cigarettes$\cdot$kg\\
+Regression line: $y=\Sexpr{round(reglin$coefficients[2],4)}x + \Sexpr{round(reglin$coefficients[1],4)}$.
+
+\item $\overline{\log(x)}=\Sexpr{round(mlogx,4)}$ log(cigarettes), $s_{\log(x)}^2=\Sexpr{round(s2logx,4)}$ log(cigarettes)$^2$.\\
+$\overline{\log(y)}=\Sexpr{round(mlogy,4)}$ log(kg), $s_{\log(y)}^2=\Sexpr{round(s2logy,4)}$ log(kg)$^2$.\\
+$s_{x\log(y)}=\Sexpr{round(sxlogy,4)}$ log(cigarettes)$\cdot$kg, $s_{\log(x)y}=\Sexpr{round(slogxy,4)}$ cigarettes$\cdot$log(kg)\\
+Logarithmic coef. determination: $r^2=\Sexpr{round(r2logxy,4)}$\\
+Exponential coef. determination: $r^2=\Sexpr{round(r2xlogy,4)}$\\
+Therefore, the logarithmic models fits better the data and is better to predict the weight.
+
+\item Logarithmic regression model: $y=\Sexpr{round(reglog$coefficients[1],4)}+\Sexpr{round(reglog$coefficients[2],4)}\log(x)$.\\
+Prediction: $y(12)=\Sexpr{round(reglog$coefficients[1]+reglog$coefficients[2]*log(12), 4)}$ kg.
+The coefficient of determination is high but the sample size small, so the prediction is not enterely reliable.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solución}
+%% \exname{regnol-fis-4}
+%% \extol{0.001}
+%% \degree{Fisioterapia}
+ 

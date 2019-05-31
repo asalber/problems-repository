@@ -1,0 +1,30 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+
+## QUESTION/ANSWER GENERATION
+# sample size
+
+@
+
+\begin{question}
+\puntos{3}The population of a microorganism increases at a rate proportional to the population size and after one hour from the begining of the culture the population has doubled.
+
+\begin{enumerate}
+\item How long will it take to the initial population to be multiplied by 10?
+\item How many times will the population have been multiplied by after 5 hours from the begining of the culture?
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{edo-far-1}
+%% \extol{0.001}
+%% \degree{Pharmacy}
+ 

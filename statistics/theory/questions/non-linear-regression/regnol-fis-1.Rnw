@@ -5,19 +5,40 @@ set.seed(123)
 x <- c(15, 35, 22, 28, 21, 18, 25, 30, 23, 20)
 y <- round(exp(-0.15*x+6) + rnorm(length(x)))
 table <- matrix(c(x,y), nrow = 2, byrow = T)
-rownames(table) <- c("Warm-up time", "Injuries")
+rownames(table) <- c("\\mbox{Warm-up time}", "\\mbox{Injuries}")
 ## QUESTION/ANSWER GENERATION
-
+# sample size
+n <- length(x)
+# means
+mx <- mean(x)
+mlogx <- mean(log(x))
+my <- mean(y)
+mlogy <- mean(log(y))
+# variances
+s2x <- sum(x^2)/n-mx^2
+s2logx <- sum(log(x)^2)/n-mlogx^2
+s2y <- sum(y^2)/n-my^2
+s2logy <- sum(log(y)^2)/n-mlogy^2
+# Covariances
+sxlogy <- sum(x*log(y))/n-mx*mlogy
+slogxy <- sum(log(x)*y)/n-mlogx*my
+# Determination coeff
+r2xlogy <- sxlogy^2/(s2x*s2logy)
+r2logxy <- slogxy^2/(s2logx*s2y)
+# Exponential regression model
+regexp <- lm(log(y)~x)
+# Logarithmic regression model
+reglog <- lm(y~log(x))
 @
 
 \begin{question}
 \puntos{5}The table below shows the number of injuries of several teams during a league and the average varm-up time of its players. 
 
-\begin{center}
+$$
 <<echo=FALSE, results=tex>>=
-print(xtable(table, auto=T), include.colnames = F, floating=F, hline.after = c(0,nrow(table)), booktabs = T)
+print(xtable(table, auto=T), tabular.environment="array", include.colnames = F, floating=F, hline.after = c(0,nrow(table)), sanitize.text.function = function(x) { x })
 @
-\end{center}
+$$
 
 \begin{enumerate}
 \item Draw the scatter plot.
@@ -38,7 +59,28 @@ $\sum x_iy_j=\Sexpr{sum(x*y)}$, $\sum x_i\log(y_j)=\Sexpr{round(sum(x*log(y)),4)
 %% SOLUTIONS
 \begin{solution}
 \begin{enumerate}
-\item Uno
+\item 
+
+<<scatterplot-injuries-warm-up, fig=T, echo=F, height=4, width=5, dev=svg, fig.path="img">>=
+plot(x, y, main="Scatter plot of warm-up time and injuries", xlab = "Warm-up time", ylab="Injuries")
+@
+
+\item $\bar x=\Sexpr{round(mx,4)}$ min, $s_x^2=\Sexpr{round(s2x,4)}$ min$^2$.\\
+$\bar \log(x)=\Sexpr{round(mlogx,4)}$ log(min), $s_{\log(x)}^2=\Sexpr{round(s2logx,4)}$ log(min)$^2$.\\
+$\bar y=\Sexpr{round(my,4)}$ injuries, $s_y^2=\Sexpr{round(s2y,4)}$ injuries$^2$.\\
+$\bar \log(y)=\Sexpr{round(mlogy,4)}$ log(injuries), $s_{\log(y)}^2=\Sexpr{round(s2logy,4)}$ log(injuries)$^2$.\\
+$s_{x\log(y)}=\Sexpr{round(sxlogy,4)}$, $s_{\log(x)y}=\Sexpr{round(slogxy,4)}$\\
+Exponential determination coefficient: $r^2=\Sexpr{round(r2xlogy,4)}$\\
+Logarithmic determination coefficient: $r^2=\Sexpr{round(r2logxy,4)}$\\
+So the exponential regression model es better to predict the number of injuries as a function of the warm-up time.\\
+Exponential regression model: $y=e^{\Sexpr{round(regexp$coefficients[1],4)}+\Sexpr{round(regexp$coefficients[2],4)}x}$.\\
+Prediction: $y(20)=\Sexpr{round(exp(regexp$coefficients[1] + regexp$coefficients[2]*20),4)}$ injuries.
+
+\item The logarithmic model is better to predict the warm-up time as a function of the number or injuries.\\
+Logarithmic regression model: $x=\Sexpr{round(reglog$coefficients[1],4)}+\Sexpr{round(reglog$coefficients[2],4)}\log(y)$.\\
+Prediction: $x(10)=\Sexpr{round(reglog$coefficients[1]+reglog$coefficients[2]*log(10),4)}$ min.
+
+\item Both predictions are very reliable since de deternation coefficient is very high but the last one is a little less reliable as it is for a value further from the data range.
 \end{enumerate}
 \end{solution}
 

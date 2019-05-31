@@ -1,0 +1,38 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+
+## QUESTION/ANSWER GENERATION
+# sample size
+
+@
+
+\begin{question}
+\puntos{4}A type of bacteria requires constant PH in order to reproduce.
+It is known that the PH of a medium depends on three substances $x$, $y$ and $z$ according to the function
+
+$$ph(x,y,z)=14e^{-(xy+y\sqrt{z})}.$$
+
+If the concentration of the substances are $x=1/2$, $y=1$ and $z=1/4$:
+
+\begin{enumerate}
+\item What is the direction where the variation of the PH is maximum at that point?
+Is there any direction where the PH does not vary?
+How much will change the PH if the concentration of $y$ increases at a rate double of the concentration of $x$ and the concentration of $z$ decreases at the same rate than the concentration of $x$?
+\item If we pretend the reproduction of the bacteria, how and how much must the concentration of $z$ change if the concentration of $y$ changes at a rate double of the concentration of $x$?
+%\item Compute the polynomial of degree 1 that best approximate the PH for the concentrations of $x$, $y$ and $z$ given.
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solución}
+%% \exname{derpar-bio-1}
+%% \extol{0.001}
+%% \degree{Biotecnología}
+ 

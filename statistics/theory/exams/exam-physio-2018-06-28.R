@@ -1,0 +1,34 @@
+library("knitr")
+library("exams")
+
+questions <- c("des-far-2.Rnw", "prob-fis-3.Rnw", "regnol-fis-3.Rnw", "vad-fis-2.Rnw", "vac-fis-3.Rnw")
+
+exams2pdf(questions, n=1, name = c("exam-physio-2019-03-26", "solution-physio-2019-03-26"), encoding = "UTF-8",
+  dir = "pdf",
+  edir = "../questions",
+  template = c("templates/examceu.tex", "templates/solutionceu.tex"),
+  header = list(
+    Subject = "STATISTICS",
+    Degree= "2nd Physiotherapy",
+    Date = "March, 26 2019",
+    Version = "A",
+    Time = "1 hour and 15 minutes"
+  )
+)
+
+# Remove directory of exam images
+unlink("img/exam1", recursive = TRUE) 
+exams2pandoc(questions, n=1, 
+             name = "exam-physio-2018-06-28", 
+             encoding = "UTF-8", 
+             type="latex",
+             dir = "latex",
+             edir = "../questions",
+             sdir = "img",
+             template = c("templates/plain.tex"),
+             svg=T
+)
+
+pandoc("latex/exam-physio-2018-06-281.latex", format="markdown")
+
+

@@ -1,0 +1,46 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+mean.day <- 12
+hours <- 1
+patients <- 4
+employees <- patients
+hours.day <- 6
+
+## QUESTION/ANSWER GENERATION
+lambda1 <- mean.day/hours.day*hours
+sol1 <- ppois(patients, lambda1, lower.tail = F)
+sol2 <- pbinom(0, hours.day, sol1, lower.tail = F)
+sol3 <- ppois(patients+1, lambda1, lower.tail = F)
+sol4 <- pbinom(0, hours.day, sol3, lower.tail = F)
+@
+
+\begin{question}
+\puntos{3}The employees of a courier company send an average of $246.2$ messages in a period of 12 hours. It is also known that the mean of messages sent by males is $256.2$ and by females is $237.4$ in the same period.
+
+\begin{enumerate}
+\item Compute the probability that a random person of the company sends 5 messages in a period of half an hour.
+\item If we draw randomly 10 women of this company, what is the probability that at least 3 of them sends more than one message in a period of one hour?
+\item If we draw randomly 100 men of this company, what is the probability that none of them sends less than 2 messages in a period of a quarter of an hour?
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item Sea $X$ el número de pacientes que llegan en \Sexpr{hours} horas. 
+$X\sim P(\Sexpr{lambda1})$ y $P(X>\Sexpr{patients})=\Sexpr{round(sol1,4)}$.
+\item Sea $Y$ el número de horas en un día en las que algún paciente no puede ser atendido. 
+$Y\sim B(\Sexpr{hours.day}, \Sexpr{round(sol1,4)})$ y $P(Y>0)=\Sexpr{round(sol2,4)}$.
+Se necesitan 5 empleados para que esta probabilidad sea menor del 10\%.\\
+Se necesitan 5 empleados para que esta probabilidad sea menor del 10\%, ya que $P(X>\Sexpr{patients+1})=\Sexpr{round(sol1,4)}$ y $P(Y>0)=\Sexpr{round(sol4,4)}$, siendo ahora $Y\sim B(\Sexpr{hours.day}, \Sexpr{round(sol3,4)})$.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solución}
+%% \exname{vad-fis-2}
+%% \extol{0.01}
+%% \degree{Fisioterapia}
+ 

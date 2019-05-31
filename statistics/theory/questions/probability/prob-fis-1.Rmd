@@ -1,0 +1,39 @@
+```{r data-generation, echo=F, results=hide}
+## DATA GENERATION
+library(MASS)
+pA <- 4/5
+pB <- 0.5
+pNoANoB <- 1/20
+
+## QUESTION/ANSWER GENERATION
+pAoB <- 1-pNoANoB
+pAB <- pA + pB - pAoB
+pNoAB <- pB-pAB
+pNoA <- 1-pA
+pNoB <- 1-pB
+pBSiA <- pAB/pA
+pBSiNoA <- pNoAB/pNoA
+```
+
+## Question
+
+The probability that an injury $A$ is repeated is $`r fractions(pA)`$, the probability that another injury $B$ is repeated is $`r fractions(pB)`$, and the probability that none of them are repeated is $`r fractions(pNoANoB)`$.
+Compute the probability of the following events:
+
+1. At least one injury is repeated.
+2. Only injury $B$ is repeated.
+3. Injury $B$ is repeated if injury $A$ has been repeated.
+4. Injury $B$ is repeated if injury $A$ has not been repeated. 
+
+## Solution
+
+1. $P(A\cup B)=`r fractions(pAoB)`$.
+2. $P(B\cap\overline{A})=`r fractions(pNoAB)`$.
+3. $P(B/A)=`r fractions(pBSiA)`$.
+4. $P(B/\overline{A})=`r fractions(pBSiNoA)`$.
+
+%% META-INFORMATION
+exsolution: `r 1`
+exname: prob-fis-1
+degree: Physiotherapy
+

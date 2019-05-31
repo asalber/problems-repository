@@ -1,0 +1,29 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+
+## QUESTION/ANSWER GENERATION
+# sample size
+
+@
+
+\begin{question}
+\puntos{3}Given the function $f(x,y) = A-(x^2+Bx+y^2+Cy)$:
+\begin{enumerate}
+\item Find the values of $A$, $B$ y $C$ that give $f$ a local maximum value of 15 at the point $(-2,1)$.
+\item For that values, compute the equation of the tangent plane and the normal line to $f$ at the point $(-2,1)$.
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{edo-gen-1}
+%% \extol{0.001}
+%% \degree{All}
+ 

@@ -2,24 +2,34 @@
 ## DATA GENERATION
 m <- 44
 s <- 2
+x1 <- 46
+x2 <- 49
+p1 <- 0.8
 ## QUESTION/ANSWER GENERATION
+sol1 <- pnorm(x1, m, s, lower.tail = F)
+sol2 <- pnorm(x2, m, s) - pnorm(x1, m, s)
+a <- qnorm((1-p1)/2, m, s)
+b <- qnorm(1-(1-p1)/2, m, s)
 @
 
 \begin{question}
 \puntos{2.5}It is known that the femur length of a fetus with 25 weeks of pregnancy follows a normal distribution with mean \Sexpr{m} mm and standard deviation \Sexpr{s} mm. 
 
 \begin{enumerate}
-\item Compute the probability that the femur length of a fetus with 25 weeks is greater than 46 mm.
-\item Compute the probability that the femur lenght of a fetus with 25 weeks is between 46 and 49 mm.
-\item Compute an interval $(a,b)$ centered at the mean, such that it contains 80\% of the femur lengths of fetus with 25 weeks.
+\item Compute the probability that the femur length of a fetus with 25 weeks is greater than \Sexpr{x1} mm.
+\item Compute the probability that the femur lenght of a fetus with 25 weeks is between \Sexpr{x1} and \Sexpr{x2} mm.
+\item Compute an interval $(a,b)$ centered at the mean, such that it contains \Sexpr{p1*100}\% of the femur lengths of fetus with 25 weeks.
 \end{enumerate}
 \end{question}
 
 
 %% SOLUTIONS
 \begin{solution}
+Let $X\sim N(44,2)$ be the femur length of fetus with 25 weeks of pregnancy. 
 \begin{enumerate}
-\item Uno
+\item $P(X>\Sexpr{x1})=\Sexpr{round(sol1,4)}$.
+\item $P(\Sexpr{x1}<X<\Sexpr{x2}))=\Sexpr{round(sol2,4)}$.
+\item The interval centered at $\Sexpr{m}$ that contains \Sexpr{p1*100}\% of the femur lengths of fetus with 25 weeks is $(\Sexpr{round(a,4)},\Sexpr{round(b,4)})$.
 \end{enumerate}
 \end{solution}
 

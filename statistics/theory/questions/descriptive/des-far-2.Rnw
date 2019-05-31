@@ -1,0 +1,88 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+require(xtable)
+classes <- c("(0,5]", "(5,10]", "(10,15]", "(15,20]", "(20,30]", "(30,60]")
+xi <- c(2.5, 7.5, 12.5, 17.5, 25, 45)
+ni <- c(5, 15, 32, 36, 42, 20)
+x <- rep(xi,ni)
+data <- data.frame(classes, ni)
+colnames(data) <- c("\\mbox{Response time}", "\\mbox{Patients}")
+## QUESTION/ANSWER GENERATION
+# sample size
+n <- length(x)
+# cum rel frequencies
+f <- cumsum(ni)/sum(ni)
+# Q1
+q1 <- 10 + (0.25-f[2])/(f[3]-f[2])*(15-10)
+q3 <- 20 + (0.75-f[4])/(f[5]-f[4])*(30-20)
+p80 <- 20 + (0.8-f[4])/(f[5]-f[4])*(30-20)
+# interquartile range
+iqr <- q3-q1
+#fences
+f1 <- q1-1.5*iqr
+f2 <- q3+1.5*iqr
+# outliers
+outliers <- x[x < f1 | x > f2]
+# means
+m <- mean(x)
+# variances
+s2 <- sum(x^2)/n-m^2
+# standard deviation
+s <- sqrt(s2)
+# coef. variation
+cv <- s/m
+# coef. skewness
+g1 <- sum((x-m)^3)/(n*s^3)
+# coef. kurtosis
+g2 <- sum((x-m)^4)/(n*s^4)-3
+# standard scores
+z1 <- (25-m)/s
+z2 <- (25-18)/15
+@
+
+\begin{question}
+\puntos{5}The time required by a drug $A$ to be effective has been measured (in minutes) in a sample of 150 patients.
+The table below summarize the results.
+
+$$
+<<echo=FALSE, results=tex>>=
+print(xtable(data, auto=T), tabular.environment="array", include.rownames = F, floating=F, hline.after = c(0,nrow(data)), sanitize.text.function = function(x) { x })
+@
+$$
+
+\begin{enumerate}
+\item Are there outliers in the sample?
+Justify the answer.
+\item What is the minimum time for the 20\% of patients with highest response time?
+\item What is the average response time?
+Is the mean representative?
+%\item There is another drug $B$ with response time $Y=5+0.5X$. ($Y$= Response time of drug $B$, $X$= Response time of drug $A$) 
+%What is the average response time of drug $B$?
+%Is more or less respresentative than the one of drug $A$?
+\item Can we assume that the sample comes from a normal population?
+\item If we take another sample of patients with mean 18 min and standard deviation 15 min, in which group is greater a response time of 25 min?
+\end{enumerate}
+
+Use the following sums for the computations: $\sum x_i=\Sexpr{sum(x)}$ min, $\sum x_i^2=\Sexpr{sum(x^2)}$ min$^2$, $\sum (x_i-\bar x)^3=\Sexpr{round(sum((x-m)^3),2)}$ min$^3$ y $\sum (x_i-\bar x)^4=\Sexpr{round(sum((x-m)^4),2)}$ min$^4$.
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item $Q_1=\Sexpr{round(q1,4)}$ min, $Q_3=\Sexpr{round(q3,4)}$ min, $IQR=\Sexpr{round(iqr,4)}$ min, $f_1=\Sexpr{round(f1,4)}$ min and $f_2=\Sexpr{round(f2,4)}$ min. Therefore there are outliers in the sample since the upper limit of the last interval is above the upper fence.
+\item $P_{80}=\Sexpr{round(p80,4)}$ min.
+\item $\bar x=\Sexpr{round(m,4)}$ min, $s^2=\Sexpr{round(s2,4)}$ min$^2$, $s=\Sexpr{round(s,4)}$ min and $cv=\Sexpr{round(cv,4)}$.
+The mean is not very representative since the $cv>0.5$. 
+\item $g_1=\Sexpr{round(g1,4)}$ and $g_2=\Sexpr{round(g2,4)}$. Since $g_1$ and $g_2$ are between -2 and 2, we can assumme that the sample comes from a normal (bell-shaped) population.
+\item The standard score of the first sample is $z(25)=\Sexpr{round(z1,4)}$ and the standard score of the second one $z(25)=\Sexpr{round(z2,4)}$, thus a time of 25 min is relatively greater in the second sample.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{des-far-2}
+%% \extol{0.001}
+%% \degree{Pharmacy}
+ 

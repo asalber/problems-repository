@@ -1,0 +1,48 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+# H hipertension and S smoke
+pH <- 0.36
+pHsiS <- 0.6 
+pnoSsinoH <- 0.75
+
+## QUESTION/ANSWER GENERATION
+pnoH <- 1-pH
+pnoHyS <- pnoH*(1-pnoSsinoH)
+pnoHynoS <- pnoH*pnoSsinoH
+pS <- pnoHyS/(1-pHsiS) 
+pHyS <- pS-pnoHyS
+pSsiH <- pHyS/pH
+pHynoS <- pH*(1-pSsiH)
+pHoS <- 1-pnoHynoS
+pnoHsinoS <- pnoHynoS/(1-pS)
+@
+
+\begin{question}
+\puntos{3}A study about hypertension has found that \Sexpr{pH*100}\% of people suffer hypertension, that \Sexpr{pHsiS*100}\% of smokers suffer hypertension and that \Sexpr{pnoSsinoH*100}\% of people without hypertension are non smokers.
+
+\begin{enumerate}
+\item Compute the probability that a person is a smoker.
+\item Compute the probability that a person is a smoker or suffers hypertension.
+\item Compute the probability that a non smoker person does not suffer hypertension.
+\item Does suffering hypertension depend on smoking?
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item $P(S)=\Sexpr{round(pS,4)}$.
+\item $P(H\cup S)=\Sexpr{round(pHoS,4)}$.
+\item $P(\overline H|\overline S)=\Sexpr{round(pnoHsinoS,4)}$.
+\item Yes, because $P(S)=\Sexpr{round(pS,4)}\neq \Sexpr{round(pSsiH,4)}=P(S|H)$.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{prob-med-2}
+%% \extol{0.001}
+%% \degree{Medicine}
+ 

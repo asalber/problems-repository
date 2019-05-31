@@ -2,21 +2,50 @@
 ## DATA GENERATION
 x <- c(51,63,61,44,63,57,53,63,44,59,51,56,58,59,25,30,58,58)
 y <- c(66,71,82,85,72,70,68,74)
-mx <- mean(x)
-my <- mean(y)
-#sx <- stdev(x)
-#sy <- stdev(y)
-edades <- sort(c(x,y))
+ages <- sort(c(x,y))
 
 ## QUESTION/ANSWER GENERATION
+# sample size
+nx <- length(x)
+ny <- length(y)
+n <- nx+ny
+# quartiles
+q1 <- quantile(ages,probs = c(0.25), type=1)
+q2 <- quantile(ages,probs = c(0.5), type=1)
+q3 <- quantile(ages,probs = c(0.75), type=1)
+# interquartile range
+iqr <- q3-q1
+#fences
+f1 <- q1-1.5*iqr
+f2 <- q3+1.5*iqr
+# outliers
+outliers <- ages[ages<f1 | ages >f2]
+# means
+mx <- mean(x)
+my <- mean(y)
+# variances
+s2x <- sum(x^2)/nx-mx^2
+s2y <- sum(y^2)/ny-my^2
+# standard deviation
+sx <- sqrt(s2x)
+sy <- sqrt(s2y)
+# coef. variation
+cvx <- sx/mx
+cvy <- sy/my
+# coef. skewness
+g1x <- sum((x-mx)^3)/(nx*sx^3)
+g1y <- sum((y-my)^3)/(ny*sy^3)
+# standard scores
+zx <- (50-mx)/sx
+zy <- (72-my)/sy
 @
 
 \begin{question}
 \puntos{5} The ages of a sample of patients of a physical therapy clinic are:
 
 \begin{center}
-<<echo=FALSE, results=tex>>=
-cat(paste(as.character(edades), collapse=", "))
+<<echo=F, results=tex>>=
+cat(paste(as.character(ages), collapse=", "))
 @
 \end{center}
 
@@ -26,7 +55,7 @@ cat(paste(as.character(edades), collapse=", "))
 \item Split the sample into two groups, patients younger and older than 65.
 In which group is the mean more representative.
 Justify the answer.
-\item Which distribution is less simmetric, the one of patients younger than 65 or the one of patients older?
+\item Which distribution is less symmetric, the one of patients younger than 65 or the one of patients older?
 \item Which age is relatively smaller with respect to its group, 50 years in the group of patients younger than 65 or 72 years in the group of patients older than 65?
 \end{enumerate}
 
@@ -39,7 +68,26 @@ Older than 65: $\sum x_i=\Sexpr{sum(y)}$ years, $\sum x_i^2=\Sexpr{sum(y^2)}$ ye
 %% SOLUTIONS
 \begin{solution}
 \begin{enumerate}
-\item Uno
+\item $Q_1=\Sexpr{q1}$ years, $Q_2=\Sexpr{q2}$ years and $Q_3=\Sexpr{q3}$ years.
+\item There are \Sexpr{length(outliers)} outliers: \Sexpr{paste(outliers, collapse=", ")}.
+
+<<boxplot-ages, fig=T, echo=F, height=3, width=4, dev="svg", fig.path="images">>=
+boxplot(ages, horizontal=T, main="Boxplot of patients ages")
+# require(ggplot2)
+# data <- data.frame(ages)
+# g <- ggplot(data, aes(x="", y=ages)) + geom_boxplot() + 
+#   labs(title="Boxplot of patients ages", x="Patients", y = "Ages") + 
+#   coord_flip() + 
+#   theme(plot.title = element_text(hjust = 0.5))
+# print(g)
+@
+
+\item Let $x$ be the age in patients younger than 65 and $y$ the age in patients older than 65.\\
+$\bar x=\Sexpr{round(mx,4)}$ years, $s_x^2=\Sexpr{round(s2x,4)}$ years$^2$, $s_x=\Sexpr{round(sx,4)}$ years and $cv_x=\Sexpr{round(cvx,4)}$.\\
+$\bar y=\Sexpr{round(my,4)}$ years, $s_y^2=\Sexpr{round(s2y,4)}$ years$^2$, $s_y=\Sexpr{round(sy,4)}$ years and $cv_y=\Sexpr{round(cvy,4)}$.\\
+The mean is more representative in patients older than 65 since the coefficient of variation is smaller. 
+\item $g_{1x}=\Sexpr{round(g1x,4)}$ and $g_{1y}=\Sexpr{round(g1y,4)}$, thus the distribution of ages of people younger than 65 is less symmetric.
+\item The standard scores are $z_x(50)=\Sexpr{round(zx,4)}$ and $z_y(72)=\Sexpr{round(zy,4)}$, thus 50 years is relative smaller in the group of people younger than 65.
 \end{enumerate}
 \end{solution}
 

@@ -1,0 +1,45 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+m1 <- 4.5
+s1 <- 0.2
+m2 <- 3
+s2 <- 0.3
+x1 <- 4
+pre <- 0.1
+## QUESTION/ANSWER GENERATION
+sen <- pnorm(x1,m1,s1,lower.tail = F)
+spe <- pnorm(x1,m2,s2)
+tp <- pre*sen
+fn <- pre*(1-sen)
+fp <- (1-pre)*(1-spe)
+tn <- (1-pre)*spe
+ppv <- tp/(tp+fp)
+npv <- tn/(tn+fn)
+@
+
+\begin{question}
+\puntos{2}A diagnostic test to determine doping of athletes returns a positive outcome when the concentration of a substance in blood is greater than \Sexpr{x1} $\mu$g/ml.
+If the distribution of the substance concentration in doped athletes follows a normal distribution model with mean $\Sexpr{m1}$ $\mu$g/ml and standard deviation $\Sexpr{s1}$ $\mu$g/ml, and in non-doped athletes is normally distributed with mean $\Sexpr{m2}$ $\mu$g/ml and standard deviation $\Sexpr{s2}$ $\mu$g/ml,
+\begin{enumerate}
+\item what is the sensitivity and specificity of the test?
+\item If there is a \Sexpr{pre}\% of doped athletes in a competition, what are the positive and the negative predicted values? Interpret them.
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+Let $X\sim N(\Sexpr{m1},\Sexpr{s1})$ be the substance concentration in doped athletes and $Y\sim N(\Sexpr{m2},\Sexpr{s2})$ the substance concentration in non-doped athletes. 
+\begin{enumerate}
+\item Sensitivity $P(+|D)=P(X>\Sexpr{x1})=\Sexpr{round(sen,4)}$ and specificity $P(-|\overline D)=P(Y<\Sexpr{x1})=\Sexpr{round(spe,4)}$.
+\item PPV $P(D|+)=\Sexpr{round(ppv,4)}$ and NPV $P(\overline D|-)=\Sexpr{round(npv,4)}$.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{\Sexpr{1}}
+%% \exname{vac-med-1}
+%% \extol{0.001}
+%% \degree{Medicine}
+ 
