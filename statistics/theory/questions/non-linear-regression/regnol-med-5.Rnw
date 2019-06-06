@@ -67,7 +67,7 @@ Regression line: $y=\Sexpr{round(reglin$coefficients[2],4)}x + \Sexpr{round(regl
 
 \item $\overline{\log(x)}=\Sexpr{round(mlogx,4)}$ log(cigarettes), $s_{\log(x)}^2=\Sexpr{round(s2logx,4)}$ log(cigarettes)$^2$.\\
 $\overline{\log(y)}=\Sexpr{round(mlogy,4)}$ log(kg), $s_{\log(y)}^2=\Sexpr{round(s2logy,4)}$ log(kg)$^2$.\\
-$s_{x\log(y)}=\Sexpr{round(sxlogy,4)}$ log(cigarettes)$\cdot$kg, $s_{\log(x)y}=\Sexpr{round(slogxy,4)}$ cigarettes$\cdot$log(kg)\\
+$s_{x\log(y)}=\Sexpr{round(sxlogy,4)}$ cigarettes$\cdot$log(kg), $s_{\log(x)y}=\Sexpr{round(slogxy,4)}$ log(cigarettes)$\cdot$kg\\
 Logarithmic coef. determination: $r^2=\Sexpr{round(r2logxy,4)}$\\
 Exponential coef. determination: $r^2=\Sexpr{round(r2xlogy,4)}$\\
 Therefore, the logarithmic models fits better the data and is better to predict the weight.

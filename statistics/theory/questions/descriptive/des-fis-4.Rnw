@@ -11,9 +11,8 @@ colnames(data) <- c("\\mbox{Time (min)}", "\\mbox{Num runners}")
 # sample size
 nx <- length(x)
 # quartiles
-q1 <- quantile(x, probs = c(0.25), type=1)
-q2 <- quantile(x, probs = c(0.5), type=1)
-q3 <- quantile(x, probs = c(0.75), type=1)
+q1 <- 36.4286
+q3 <- 43.125
 # interquartile range
 iqr <- q3-q1
 #fences
@@ -66,12 +65,12 @@ Use the following sums for the computations: $\sum x_i=\Sexpr{sum(x)}$ min, $\su
 %% SOLUTIONS
 \begin{solution}
 \begin{enumerate}
-\item \null
-\item $Q_1=\Sexpr{round(q1,4)}$ min, $Q_3=\Sexpr{round(q3,4)}$ min, $IQR=\Sexpr{round(iqr,4)}$ min.
+\item $F(42)=0.66$, thus approximately $66\%$ of runners finished before 42 minutes.
+\item $Q_1=\Sexpr{round(q1,4)}$ min, $Q_3=\Sexpr{round(q3,4)}$ min, $IQR=\Sexpr{round(iqr,4)}$ min. The central 50\% of times fall in a range of $\Sexpr{round(iqr,4)}$ minutes.
 \item Madrid statistics: $\bar x=\Sexpr{round(mx,4)}$ min, $s^2=\Sexpr{round(s2x,4)}$ min$^2$, $s=\Sexpr{round(sx,4)}$ min and $cv=\Sexpr{round(cvx,4)}$.\\
 Paris statistics: $cv=\Sexpr{round(cvy,4)}$. Thus, the mean of time in Madrid is a little bit more representative since the coef. of variation is smaller.
 \item $g_1=\Sexpr{round(g1x,4)}$, that is closer to 0 than the distribution of times in Paris, thus the distribution of times in Madrid is more simmetric.
-\item The standard score of the Madrid sample is $z(39)=\Sexpr{round(zx,4)}$ and the standard score of the Paris one $z(39)=\Sexpr{round(zy,4)}$, thus a time of 39 min is relatively greater in the sample of Madrid.
+\item The standard score of the Madrid sample is $z(39)=\Sexpr{round(zx,4)}$ and the standard score of the Paris one $z(39)=\Sexpr{round(zy,4)}$, thus a time of 39 min is relatively smaller in the sample of Paris.
 \end{enumerate}
 \end{solution}
 

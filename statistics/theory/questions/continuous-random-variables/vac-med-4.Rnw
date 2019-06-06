@@ -1,15 +1,18 @@
 <<echo=FALSE, results=hide>>=
 ## DATA GENERATION
-m <- 44
-s <- 2
-x1 <- 46
-x2 <- 49
-p1 <- 0.8
+m1 <- 90
+s1 <- 8
+m2 <- 120
+s2 <- 10
+x1 <- 105
+pre <- 0.1
+p5 <- 0.95
 ## QUESTION/ANSWER GENERATION
-sol1 <- pnorm(x1, m, s, lower.tail = F)
-sol2 <- pnorm(x2, m, s) - pnorm(x1, m, s)
-a <- qnorm((1-p1)/2, m, s)
-b <- qnorm(1-(1-p1)/2, m, s)
+sen <- pnorm(x1, m2, s2, lower.tail = F)
+spe <- pnorm(x1, m1, s1)
+pcorrect <- pre * sen + (1-pre) * spe
+cut <- qnorm(p5, m2, s2, lower.tail = F)
+spe2 <- pnorm(cut, m1, s1)
 @
 
 \begin{question}
@@ -25,7 +28,14 @@ The concentration (in mg/dl) in healthy individuals follows a normal distributio
 
 %% SOLUTIONS
 \begin{solution}
-
+Let $X$ and $Y$ be the distributions of the concentration of metabolitte in healthy and sick individuals respectively.
+\begin{enumerate}
+\item Sensitivity: $P(+|D) = P(Y>105) = \Sexpr{round(sen, 4)}$.\\
+Specificity: $P(-|\overline D) = P(X<105) = \Sexpr{round(spe, 4)}$.
+\item $P(\mbox{correct diagnostic}) = P(D\cap +) + P(\overline D \cap -) = \Sexpr{round(pcorrect, 4)}$. 
+\item Cut-off point $\Sexpr{round(cut, 4)}$ mg/dl.\\
+Specificity: $P(-|\overline D) = P(X<\Sexpr{round(cut, 4)}) = \Sexpr{round(spe2, 4)}$.
+\end{enumerate}
 \end{solution}
 
 %% META-INFORMATION

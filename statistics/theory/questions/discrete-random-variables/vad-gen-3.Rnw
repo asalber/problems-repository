@@ -1,17 +1,22 @@
 <<echo=FALSE, results=hide>>=
 ## DATA GENERATION
-mean.day <- 12
-hours <- 1
-patients <- 4
-employees <- patients
-hours.day <- 6
+m1 <- 246.2/24
+x1 <- 5
+m2 <- 237.4/12
+x2 <- 1
+x3 <- 2
+m3 <- 256.2/48
+x4 <- 1
+x5 <- 0
+n2 <- 10
+n3 <- 100
 
 ## QUESTION/ANSWER GENERATION
-lambda1 <- mean.day/hours.day*hours
-sol1 <- ppois(patients, lambda1, lower.tail = F)
-sol2 <- pbinom(0, hours.day, sol1, lower.tail = F)
-sol3 <- ppois(patients+1, lambda1, lower.tail = F)
-sol4 <- pbinom(0, hours.day, sol3, lower.tail = F)
+sol1 <- dpois(x1, m1)
+p2 <- ppois(x2, m2, lower.tail = F)
+sol2 <- pbinom(x3, n2, p2, lower.tail = F)
+p3 <- ppois(x4, m3)
+sol4 <- dbinom(x5, n3, p3)
 @
 
 \begin{question}
@@ -28,12 +33,9 @@ sol4 <- pbinom(0, hours.day, sol3, lower.tail = F)
 %% SOLUTIONS
 \begin{solution}
 \begin{enumerate}
-\item Sea $X$ el número de pacientes que llegan en \Sexpr{hours} horas. 
-$X\sim P(\Sexpr{lambda1})$ y $P(X>\Sexpr{patients})=\Sexpr{round(sol1,4)}$.
-\item Sea $Y$ el número de horas en un día en las que algún paciente no puede ser atendido. 
-$Y\sim B(\Sexpr{hours.day}, \Sexpr{round(sol1,4)})$ y $P(Y>0)=\Sexpr{round(sol2,4)}$.
-Se necesitan 5 empleados para que esta probabilidad sea menor del 10\%.\\
-Se necesitan 5 empleados para que esta probabilidad sea menor del 10\%, ya que $P(X>\Sexpr{patients+1})=\Sexpr{round(sol1,4)}$ y $P(Y>0)=\Sexpr{round(sol4,4)}$, siendo ahora $Y\sim B(\Sexpr{hours.day}, \Sexpr{round(sol3,4)})$.
+\item Let $X$ be the number of messages sent in 1 hour. Then $X\sim P(\Sexpr{round(m1, 4)})$ and $P(X=\Sexpr{x1})=\Sexpr{round(sol1, 4)}$.
+\item Let $Y$ be the number of women in a sample of 10 that sent more than 1 message in 1 hour. Then $Y\sim B(\Sexpr{n2}, \Sexpr{round(p2, 4)})$ and $P(Y\geq 3)=\Sexpr{round(sol2, 4)}$.
+\item Let $Z$ be the number of men in a sample of 100 that sent less than 2 messages in a quarter of hour. Then $Z\sim B(\Sexpr{n3}, \Sexpr{round(p3, 4)})$ and $P(Z=0)=\Sexpr{round(sol3, 4)}$.
 \end{enumerate}
 \end{solution}
 

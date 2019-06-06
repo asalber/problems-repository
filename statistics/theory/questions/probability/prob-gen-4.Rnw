@@ -1,18 +1,19 @@
 <<echo=FALSE, results=hide>>=
 ## DATA GENERATION
 library(MASS)
-pA <- 4/5
-pB <- 0.5
-pNoANoB <- 1/20
-
+pA <- 0.75
+pB <- 0.25
+pAoB <- 0.8
+pAB <- 0.2
 ## QUESTION/ANSWER GENERATION
-pAoB <- 1-pNoANoB
-pAB <- pA + pB - pAoB
+pANoB <- pA-pAB
 pNoAB <- pB-pAB
 pNoA <- 1-pA
 pNoB <- 1-pB
 pBSiA <- pAB/pA
-pBSiNoA <- pNoAB/pNoA
+pASiB <- pAB/pB
+pNoANoB <- 1-pAoB
+pNoAoNoB <- 1-pAB
 @
 
 \begin{question}
@@ -30,7 +31,13 @@ pBSiNoA <- pNoAB/pNoA
 
 %% SOLUTIONS
 \begin{solution}
-
+\begin{enumerate}
+\item $P(A) = \Sexpr{round(pA, 4)}$ and $P(B) = \Sexpr{round(pB, 4)}$.
+\item $P(A-B) = \Sexpr{round(pANoB, 4)}$ and $P(B-A) = \Sexpr{round(pNoAB, 4)}$.
+\item $P(\bar A \cup \bar B) = \Sexpr{round(pNoAoNoB, 4)}$ and $P(\bar A \cap \bar B) = \Sexpr{round(pNoANoB, 4)}$.
+\item $P(A|B) = \Sexpr{round(pASiB, 4)}$ and $P(B|A) = \Sexpr{round(pBSiA, 4)}$.
+\item No, they are dependent since $P(A|B)\neq P(A)$.
+\end{enumerate}
 \end{solution}
 
 %% META-INFORMATION
