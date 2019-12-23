@@ -1,0 +1,54 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+tp <- 60
+fn <- 10
+fp <- 80
+tn <- 200
+n <- tp + fn + fp + tn
+pre <- 0.02
+## QUESTION/ANSWER GENERATION
+sen <- tp / (tp + fn)
+spe <- tn / (fp + tn)
+ppv <- tp / (tp + fp)
+npv <- tn / (tn + fn)
+ppv2 <- (pre * sen) / (pre * sen + (1 - pre) * (1 - spe))
+npv2 <- ((1 -pre) * spe) / (pre * (1 - sen) + (1 - pre) * spe)
+@
+
+\begin{question}
+\puntos{3}The table below shows the results of a study to evaluate the usefulness of a reactive strip to diagnose an urinary infection.
+$$
+\begin{array}{ccc}
+\hline
+\mbox{Outcome} & \mbox{Infection} & \mbox{No infection}\\
+\mbox{Positive} & 60 & 80\\
+\mbox{Negative} & 10 & 200\\
+\hline
+\end{array}
+$$
+
+\begin{enumerate}
+\item Compute the sensitivity and the specificity of the test.
+\item Compute the positive and the negative predictive values. Is this test better to confirm or to rule out the infection?
+\item If another study has determined that the true prevalence of the infection is 2\%, how does this affect to the predictive values?
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+Let $D$ be the event corresponding to suffering the urinary infection and $+$ and $-$ the events corresponding to get a positive and negative outcome in the test respectively.
+\begin{enumerate}
+\item Sensitivity = $\Sexpr{round(sen, 4)}$ and Specificity = $\Sexpr{round(spe, 4)}$.
+\item $PPV=\Sexpr{round(ppv, 4)}$ and $NPV=\Sexpr{round(npv,4)}$. Since the $PPV<NPV$ the test is better to rule out the infection.
+\item $PPV=\Sexpr{round(ppv2, 4)}$ and $NPV=\Sexpr{round(npv2,4)}$. The positive predictive value descreases a lot while the negative predictive value increases al little bit.
+\end{enumerate}
+\end{solution}
+  
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solución}
+%% \exname{test-med-1}
+%% \extol{0.001}
+%% \degree{Medicina}
+ 

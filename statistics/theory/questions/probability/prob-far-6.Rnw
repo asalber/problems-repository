@@ -1,0 +1,44 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+pANoB <- 0.12
+pNoAB <- 0.24
+pBSiA <- 0.8 
+
+## QUESTION/ANSWER GENERATION
+pA <- pANoB/(1-pBSiA)
+pAB <- pA * pBSiA
+pAoB <- pAB + pANoB + pNoAB
+pNoANoB <- 1 - pAoB
+pB <- pAB + pNoAB
+@
+
+\begin{question}
+\puntos{2.5}In a study about the efectiveness of two flu drugs $A$ and $B$ it has been observed in a clinical trial that in 12\% of cases only drug $A$ is effective, in 24\% of cases only drug $B$ is effective and in 80\% of cases where drug $A$ was effective, also was effective the drug $B$.
+
+\begin{enumerate}
+\item What is the probability that both drugs are efective at the same time?
+\item What is the probability that only one of the drugs is effective?
+\item What is the probability that none of the drugs are effective?
+\item Are the effectiveness of the two drugs independent?
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+According to the problem statement, $P(A\cap \overline B) = \Sexpr{pANoB}$, $P(\overline A\cap B)=\Sexpr{pNoAB}$ and $P(B|A)=\Sexpr{pBSiA}$.
+\begin{enumerate}
+\item $P(A\cap B)=\Sexpr{pAB}$.
+\item $P(A\cap \overline B) + P(\overline A\cap B) =\Sexpr{pANoB + pNoAB}$.
+\item $P(\overline A \cap \overline B) = \Sexpr{pNoANoB}$.
+\item The events are dependent because $P(B)=\Sexpr{pB} \neq P(B|A)=\Sexpr{pBSiA}$.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solución}
+%% \exname{prob-med-2}
+%% \extol{0.001}
+%% \degree{Medicina}
+ 

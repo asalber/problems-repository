@@ -1,0 +1,55 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+n <- 500
+n11 <- 12
+n12 <- 21
+n21 <- 32
+n22 <- 48
+n1 <- n11 + n12
+n2 <- n21 + n22
+## QUESTION/ANSWER GENERATION
+i5 <- (n11 + n21) / 500
+i10 <- (n1 + n2) / 500
+rt <- n1 / (n/2)
+rc <- n2 / (n/2)
+rr <- rt / rc
+ot <- n1 / (n/2 - n1)
+oc <- n2 / (n/2 - n2)
+or <- ot / oc
+@
+
+\begin{question}
+\puntos{2}A study tries to determine the effectiveness of an occupational risk prevention program in jobs that require to be sit a lot of hours.
+A sample of 500 individuals between 40 and 50 years that spent more than 5 hours sitting was drawn. Half of the individuals followed the prevention program (treatment group) and the other half not (control group). After 5 years it was observed that 12 individuals suffered spinal injuries in the group following the prevention program while 32 individuals suffered spinal injuries in the other group. In the following 5 years it was observed that 21 individuals suffered spinal injuries in the group following the prevention program while 48 individuals suffered spinal injuries in the other group. 
+
+\begin{enumerate}
+\item Compute the cumulative incidence of spinal injuries in the total sample after 5 years and after 10 years.
+\item Compute the absolute risk of suffering spinal injuries in 10 years in the treatment and control groups.
+\item Compute the relative risk of suffering spinal injuries in 10 years in the treatment group compared to the control group. Interpret it.
+\item Compute the odds ratio of suffering spinal injuries in 10 years in the treatment group compared to the control group. Interpret it.
+\item Which statistics, the relative risk or the odds ratio, is more suitable in this study? Justify the answer.
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+Let $D$ be the event of suffering spinal injuries.
+\begin{enumerate}
+\item Cumulative incidence after 5 years: $R(D)=\Sexpr{round(i5, 4)}$.\\
+Cumulative incidence after 10 years: $R(D)=\Sexpr{round(i10, 4)}$.
+\item Risk in the treatment group: $R_T(D)=\Sexpr{round(rt,4)}$.\\
+Risk in the control group: $R_C(D)=\Sexpr{round(rc,4)}$.
+\item $RR(D)=\Sexpr{round(rr, 4)}$. Thus, the risk of suffering spinal injuries is less than half following the prevention program.
+\item $OR(D)=\Sexpr{round(or, 4)}$. Thus, the odd of suffering spinal injuries is less than one third following the prevention program.
+\item Since the study is prospective and we can estimate the prevalence of $D$, both statistics are suitable, but relative risk is easier to interpret.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solución}
+%% \exname{des-far-2}
+%% \extol{0.001}
+%% \degree{Farmacia}
+ 

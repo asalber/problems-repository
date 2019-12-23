@@ -1,0 +1,39 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+mx <- 3
+s2x <- 2
+s2y <- 10.8
+byx <- -2.3
+reglin <- function(x) return(90.9 - 2.3 * x)
+## QUESTION/ANSWER GENERATION
+my <- reglin(mx)
+sxy <- byx * s2x
+bxy <- sxy / s2y
+r2 <- byx * bxy
+r <- -sqrt(r2)
+@
+
+\begin{question}
+\puntos{1}In a linear regression study between two variables $X$ and $Y$ we know $\bar x = 3$, $s_x^2=2$, $s_y^2=10.8$ and the regression line of $Y$ on $X$ is $y=90.9-2.3x$.
+\begin{enumerate}
+\item Compute the mean of $Y$.
+\item Compute and interpret the linear correlation coefficient.
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item $\bar y = \Sexpr{round(my, 4)}$.
+\item $r=\Sexpr{round(r, 4)}$.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solución}
+%% \exname{reglin-gen-6}
+%% \extol{0.001}
+%% \degree{Todos}
+ 

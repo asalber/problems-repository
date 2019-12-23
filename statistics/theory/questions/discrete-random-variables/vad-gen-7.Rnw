@@ -1,0 +1,38 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+lambda <- 2
+
+## QUESTION/ANSWER GENERATION
+sol1 <- ppois(2, lambda, lower.tail = F)
+sol2 <- sol1/ppois(0, lambda, lower.tail = F)
+sol3 <- dpois(14, lambda*7)
+@
+
+\begin{question}
+\puntos{2.5}In a stretch of a road there is an average of 2 accidents per day.
+\begin{enumerate}
+\item Compute the probability of having more than 2 accidents a random day.
+\item Compute the probability of having more than 2 accidents a random day, knowing that there is at least one accident that day.
+\item Compute the probability of having 14 accidents a random week.
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item Let $X$ be the number of accidents in a day.
+$X\sim P(\Sexpr{lambda})$ and $P(X>2)=\Sexpr{round(sol1,4)}$.
+\item $P(X>2|X\geq 1)=\Sexpr{round(sol2,4)}$.
+\item Let $Y$ be the number of accidents in a week.
+$X\sim P(\Sexpr{lambda*7})$ and $P(X=14)=\Sexpr{round(sol3,4)}$.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solución}
+%% \exname{vad-fis-2}
+%% \extol{0.01}
+%% \degree{Fisioterapia}
+ 
