@@ -1,0 +1,53 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+A <- 40
+B <- 50
+C <- 60
+pA <- A/(A + B + C)
+pB <- B/(A + B + C)
+pC <- C/(A + B + C)
+pRSiA <- 0.8
+pRSiB <- 0.82
+pRSiC <- 0.78
+
+## QUESTION/ANSWER GENERATION
+pNoRSiA <- 1 - pRSiA 
+pNoRSiB <- 1 - pRSiB
+pNoRSiC <- 1 - pRSiC
+pNoR <- pA * pNoRSiA + pB * pNoRSiB + pC * pNoRSiC
+pR <- 1 - pNoR
+pBSiNoR <- pB * pNoRSiB / pNoR
+pASiR <- pA * pRSiA / pR
+pBSiR <- pB * pRSiB / pR
+pCSiR <- pC * pRSiC / pR
+@
+
+\begin{question}
+\puntos{2.5}	
+A hospital orders a DNA compatibility test to three labs A, B and C. Lab A performs 40 test a day, lab B 50, and lab C 60. It is known that the probability of a wrong diagnose is 20\% in lab A, 18\% in lab B and 22\% in lab C. If we select a random test of the hospital,
+
+\begin{enumerate}
+\item Compute the probability of wrong diagnose in that test.
+\item If the test is wrong, what is the probability that it has been performed by lab B?
+\item If the test is right, which lab is more likely to have performed the test?
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+Let $A$, $B$ and $C$ be the events of performing the test in labs $A$, $B$ and $C$ respectively, and $R$ the event of getting a right diagnose. According to the statement $P(A)=\Sexpr{round(pA, 4)}$, $P(B)=\Sexpr{round(pB, 4)}$, $P(C)=\Sexpr{round(pC, 4)}$, $P(R|A)=\Sexpr{pRSiA}$, $P(R|B)=\Sexpr{pRSiB}$ and $P(R|C)=\Sexpr{pRSiC}$.
+\begin{enumerate}
+\item $P(\overline R) = \Sexpr{round(pNoR, 4)}$.
+\item $P(B|\overline R) = \Sexpr{round(pBSiNoR, 4)}$.
+\item $P(A|R) = \Sexpr{round(pASiR, 4)}$, $P(B|R) = \Sexpr{round(pBSiR, 4)}$ and $P(C|R) = \Sexpr{round(pCSiR, 4)}$, thus, it is more likely that it has been performed in lab $C$.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{prob-med-7}
+%% \extol{0.001}
+%% \degree{Medicine}
+ 

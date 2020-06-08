@@ -1,0 +1,108 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+require(xtable)
+classes <- c("0-1", "1-2", "2-3", "3-4", "4-5", "5-6", "6-7", "7-8")
+xi <- seq(0.5, 7.5, 1)
+nxi <- c(11, 18, 10, 8, 6, 4, 1, 2)
+x <- rep(xi, nxi)
+nyi <- c(5, 13, 6, 10, 9, 1, 0, 8)
+y <- rep(xi, nyi)
+data <- data.frame(classes, nxi, nyi)
+colnames(data) <- c("\\mbox{Postoperative months}", "\\mbox{Patients without suture}", "\\mbox{Patients with suture}")
+## QUESTION/ANSWER GENERATION
+# sample size
+nx <- length(x)
+ny <- length(y)
+# quartiles
+q1 <- 1.222
+q2 <- quantile(x, probs = c(0.5), type=8)
+q3 <- 3.7502
+# interquartile range
+iqr <- q3-q1
+#fences
+f1 <- q1-1.5*iqr
+f2 <- q3+1.5*iqr
+# outliers
+outliers <- x[x < f1 | x > f2]
+# means
+mx <- mean(x)
+my <- mean(y)
+# variances
+s2x <- sum(x^2)/nx-mx^2
+s2y <- sum(y^2)/ny-my^2
+# standard deviation
+sx <- sqrt(s2x)
+sy <- sqrt(s2y)
+# coef. variation
+cvx <- sx/mx
+cvy <- sy/my
+# coef. skewness
+g1x <- sum((x-mx)^3)/(nx*sx^3)
+g1y <- sum((y-my)^3)/(ny*sy^3)
+# coef. kurtosis
+g2x <- sum((x-mx)^4)/(nx*sx^4)-3
+g2y <- sum((y-my)^4)/(ny*sy^4)-3
+# standard scores
+zx <- (5-mx)/sx
+zy <- (6-my)/sy
+@
+
+\begin{question}
+\puntos{5}In a study on the reconstruction of the anterior cruciate ligament (ACL), the postoperative recovery time was evaluated depending on whether the patients underwent a meniscal suture or not. The table below contains the results:
+
+$$
+<<echo=FALSE, results=tex>>=
+print(xtable(data, align=c("c", "c", "r", "r"), auto=T), tabular.environment="array", include.rownames = F, floating=F, hline.after = c(0,nrow(data)), sanitize.text.function = function(x) { x })
+@
+$$
+
+\begin{enumerate}
+\item Plot the ogive for the sample of patients without meniscal suture.
+\item Are there outliers in the number of postoperative moths of patients without meniscal suture?
+\item In which of the two groups is more representative the mean of the postoperative months?
+\item Can we assume that the sample of patients with meniscal suture comes from a normal population?
+\item What value is relatively greater, 5 months for a patient without meniscal suture, or 6 for a patient with meniscal suture?
+\end{enumerate}
+
+Use the following sums for the computations:\\
+Without meniscal suture: $\sum x_in_i=\Sexpr{sum(x)}$ months, $\sum x_i^2n_i=\Sexpr{sum(x^2)}$ months$^2$, $\sum (x_i-\bar x)^3n_i=\Sexpr{round(sum((x-mx)^3),2)}$ months$^3$ y $\sum (x_i-\bar x)^4n_i=\Sexpr{round(sum((x-mx)^4),2)}$ months$^4$.\\
+With meniscal suture: $\sum y_in_i=\Sexpr{sum(y)}$ months, $\sum y_i^2n_i=\Sexpr{sum(y^2)}$ months$^2$, $\sum (y_i-\bar y)^3n_i=\Sexpr{round(sum((y-my)^3),2)}$ months$^3$ y $\sum (y_i-\bar y)^4n_i=\Sexpr{round(sum((y-my)^4),2)}$ months$^4$.
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item 
+
+<<cumulative-frequencies-polygon, fig=T, echo=F, height=3, width=4, dev="svg", fig.path="img">>=
+library(ggplot2)
+u <- seq(0, 8)
+v <- cumsum(c(0, nxi)) / nx
+data <- data.frame(u, v)
+p <- ggplot(data, aes(x=u, y=v)) + 
+  geom_line(color='steelblue') + xlab("Postoperatory months") + 
+  ylab("Cumulative relative frequency") +
+  scale_x_continuous(breaks = 0:8) +
+  scale_y_continuous(breaks = 0:10/10) +
+  theme(plot.title = element_text(hjust = 0.5), axis.title=element_text(size=10))
+print(p)
+@
+\item $Q_1=\Sexpr{round(q1,4)}$ months, $Q_3=\Sexpr{round(q3,4)}$ months, $IQR=\Sexpr{round(iqr,4)}$ month, $f_1=\Sexpr{round(f1,4)}$ and $f_2=\Sexpr{round(f2,4)}$. Since the upper limit of the last interval is greater than the upper fence, there could be outliers in the sample.
+\item Without suture: $\bar x=\Sexpr{round(mx,4)}$ months, $s^2=\Sexpr{round(s2x,4)}$ months$^2$, $s=\Sexpr{round(sx,4)}$ months and $cv=\Sexpr{round(cvx,4)}$.\\
+With suture: $\bar y=\Sexpr{round(my,4)}$ months, $s^2=\Sexpr{round(s2y,4)}$ months$^2$, $s=\Sexpr{round(sy,4)}$ months and $cv=\Sexpr{round(cvy,4)}$.\\
+Thus, the mean of the sample with suture is more representative since its coefficient of variation is smaller.
+\item $g_1=\Sexpr{round(g1y,4)}$ and $g_2=\Sexpr{round(g2y,4)}$. Since both coefficients are between -2 and 2, we can assume that the sample comes from a normal population.
+\item Without suture: $z(5)=\Sexpr{round(zx,4)}$.\\
+With suture: $z(6)=\Sexpr{round(zy,4)}$.\\
+Thus, 5 months in the sample without suture is relatively greater, since its standard score is greater.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{des-fis-8}
+%% \extol{0.001}
+%% \degree{Physioterapy}
+ 

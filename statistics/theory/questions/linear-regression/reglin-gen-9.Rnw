@@ -1,0 +1,74 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+x <- c(5.5, 7.5, 2.5, 6, 8, 4, 7, 9.5, 10, 1)
+y <- c(3.2, 6.5, 4, 4, 7.5, 3.5, 5.5, 10, 9.5, 3)
+z <- c(5, 2, 1, 6, 6, 1, 4, 9, 8, 0.5)
+data <- data.frame(x, y, z)
+colnames(data) <- c("\\mbox{Exam 1} (X)", "\\mbox{Exam 2} (Y)", "\\mbox{Exam 3} (Z)")
+
+## QUESTION/ANSWER GENERATION
+n <- length(x)
+# means
+mx <- sum(x) / n
+my <- sum(y) / n
+mz <- sum(z) / n
+# variances
+s2x <- sum(x^2)/n-mx^2
+s2y <- sum(y^2)/n-my^2
+s2z <- sum(z^2)/n-mz^2
+# Covariances
+sxy <- sum(x*y)/n-mx*my
+syz <- sum(y*z)/n-my*mz
+sxz <- sum(x*z)/n-mx*mz
+# Determination coeff
+r2xy <- sxy^2/(s2x*s2y)
+r2xz <- sxz^2/(s2x*s2z)
+r2yz <- syz^2/(s2y*s2z)
+# Regression lines
+lyx <- lm(y~x)
+lzx <- lm(z~x)
+predy <- lyx$coefficients[1]+lyx$coefficients[2]*6.5
+predz <- lzx$coefficients[1]+lzx$coefficients[2]*6.5
+@
+
+\begin{question}
+\puntos{5}The table below summarizes the scores of a group of 10 students in three practical exams of Maths.
+$$
+<<echo=FALSE, results=tex>>=
+print(xtable(data, auto=T), tabular.environment="array", include.rownames = F, floating=F, hline.after = c(0,nrow(data)), sanitize.text.function = function(x) { x })
+@
+$$
+  
+\begin{enumerate}
+\item Which two scores are more linearly correlated?
+\item Using linear models, what are the expected scores of the second and third exams for a student with a score $6.5$ in the first exam?
+\end{enumerate}
+
+Use the following sums for the computations:\\
+$\sum x_i=\Sexpr{sum(x)}$, $\sum y_i=\Sexpr{sum(y)}$, $\sum z_i=\Sexpr{sum(z)}$,\\
+$\sum x_i^2=\Sexpr{sum(x^2)}$, $\sum y_i^2=\Sexpr{sum(y^2)}$, $\sum z_i^2=\Sexpr{sum(z^2)}$,\\
+$\sum x_iy_j=\Sexpr{sum(x*y)}$, $\sum x_iz_j=\Sexpr{sum(x*z)}$, $\sum y_jz_j=\Sexpr{sum(y*z)}$.
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item $\bar x=\Sexpr{round(mx,4)}$, $s_x^2=\Sexpr{round(s2x,4)}$,\\
+$\bar y=\Sexpr{round(my,4)}$, $s_y^2=\Sexpr{round(s2y,4)}$,\\
+$\bar z=\Sexpr{round(mz,4)}$, $s_z^2=\Sexpr{round(s2z,4)}$,\\
+$s_{xy}=\Sexpr{round(sxy,4)}$, $s_{xz}=\Sexpr{round(sxz,4)}$, $s_{yz}=\Sexpr{round(syz,4)}$,\\
+$r^2_{xy}=\Sexpr{round(r2xy,4)}$, $r^2_{xz}=\Sexpr{round(r2xz,4)}$ and $r^2_{yz}=\Sexpr{round(r2yz,4)}$.\\
+Thus, the two variables more linearly related are $X$ and $Y$, since their coefficient of determination is greater.
+\item Regression line of $Y$ on $X$: $y=\Sexpr{round(lyx$coefficients[1],4)} + \Sexpr{round(lyx$coefficients[2],4)}x$ and $y(6.5)=\Sexpr{round(predy, 4)}$.\\
+Regression line of $Z$ on $X$: $z=\Sexpr{round(lzx$coefficients[1],4)} + \Sexpr{round(lzx$coefficients[2],4)}x$ and $z(6.5)=\Sexpr{round(predz, 4)}$.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solución}
+%% \exname{reglin-far-8}
+%% \extol{0.001}
+%% \degree{Farmacia}
+ 

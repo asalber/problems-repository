@@ -12,9 +12,9 @@ exams2pdf(questions, n=1, name = c("exam-physio-2020-03-04", "solution-physio-20
   header = list(
     Subject = "STATISTICS\\\\[2mm] (DESCRIPTIVE STATISTICS AND REGRESSION)",
     Degree= "2nd Physiotherapy",
-    Date = "March, 26 2019",
+    Date = "March, 3 2020",
     Version = "A",
-    Time = "1 hour and 15 minutes"
+    Time = "1 hour"
   )
 )
 

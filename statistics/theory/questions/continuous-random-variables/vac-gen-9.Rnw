@@ -1,0 +1,47 @@
+    <<echo=FALSE, results=hide>>=
+## DATA GENERATION
+x1 <- 130
+p1 <- 1 - (10 / 200)
+x2 <- 60
+p2 <- 30 / 200
+
+## QUESTION/ANSWER GENERATION
+q1 <- qnorm(p1)
+q2 <- qnorm(p2)
+# Define the matrices for the system of equations
+A <- matrix(c(1, 1, q1, q2), nrow = 2)
+B <- matrix(c(x1, x2), nrow = 2)
+X <- solve(A, B)
+mean <- X[1]
+sd <- X[2]
+p <- pnorm(95, mean, sd) - pnorm(90, mean, sd)
+llim <- qnorm(0.025, mean, sd)
+ulim <- qnorm(0.975, mean, sd)
+@
+
+\begin{question}
+\puntos{3}In a course with 200 students the score of a test to measure the intelligence quotient follows a normal distribution. After applying the test to the students 10 of them got a score above 130 and 30 of them a score below 60.
+\begin{enumerate}
+\item Compute the mean and the standard deviation of the score.
+\item How many students will have a score between 90 and 95?
+\item Compute the limits of the interval centered at the mean that accumulates 95\% of the scores.
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item Let $X$ be the score of the test then $X\sim N(\Sexpr{round(mean, 4)}, \Sexpr{round(sd, 4)})$
+\item $P(90\leq X \leq 95) = \Sexpr{round(p, 4)}$, that is, around $\Sexpr{round(p * 200, 4)}$ students.
+\item Interval with 95\% of probability $(\Sexpr{round(llim, 4)}, \Sexpr{round(ulim, 4)})$.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{vac-med-9}
+%% \extol{0.001}
+%% \degree{General}
+ 

@@ -1,0 +1,74 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+set.seed(123)
+x <- rnorm(40, 6, 1.5)
+y <- rnorm(30, 5.5, 1.5)
+z <- c(6.5, 6.1, 8.0, 6.3, 6.3, 6.4, 6.7, 6.2, 6.3, 6.1, 6.4, 7.4, 6.3, 7.6, 6.4, 6.5, 8.1, 6.2, 6.2, 8.1, 8.0, 7.5, 7.2, 6.4, 6.1)
+data <- data.frame(score=c(x,y,z), group=c(rep('A',40), rep('B',30), rep('C',25)))
+library(tidyverse)
+boxplot <- ggplot(data) + geom_boxplot(aes(x=group, y=score))
+sum(x)
+sum(y)
+sum(z)
+sum(x^2)
+sum(y^2)
+sum(z^2)
+mx <- mean(x)
+my <- mean(y)
+mz <- mean(z)
+
+
+## QUESTION/ANSWER GENERATION
+nx <- length(x)
+ny <- length(y)
+nz <- length(z)
+s2x <- sum(x^2)/nx - mx^2
+s2y <- sum(y^2)/ny - my^2
+s2z <- sum(z^2)/nz - mz^2
+sx <- sqrt(s2x)
+sy <- sqrt(s2y)
+sz <- sqrt(s2z)
+cvx <- sx / mx
+cvy <- sy / my
+cvz <- sz / mz
+g1x <- sum((x-mx)^3) / (nx*sx^3)
+g1y <- sum((y-my)^3) / (ny*sy^3)
+g1z <- sum((z-mz)^3) / (nz*sz^3)
+g2x <- sum((x-mx)^4) / (nx*sx^4) - 3
+g2y <- sum((y-my)^4) / (ny*sy^4) - 3
+g2z <- sum((z-mz)^4) / (nz*sz^4) - 30
+zB <- (7-my) / sy
+zC <- (8-mz) / sz
+mu <- 1.05 * mx
+s2u <- 1.05^2 * s2x
+@
+
+\begin{question}
+\puntos{1}In a symmetric distribution the mean is 15, the first quartile 12 and the maximum value is 25. 
+
+\begin{enumerate}
+\item Draw the box and whiskers plot.
+\item Could an hypothetical value of 2 be considered an outlier in this distribution? 
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item $Q_1=12$, $Q_2=15$, $Q_3=18$, $IQR=6$, $f_1=3$, $f_2=27$, $Min=5$ and $Max=25$.
+<<boxplot, fig=T, echo=F, height=3, width=4, dev="svg", fig.path="img">>=
+boxplot(x, horizontal = T)
+@
+ 
+\item Yes, because $2<f_1$.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{\Sexpr{1}}
+%% \exname{des-gen-7}
+%% \extol{0.001}
+%% \degree{Todos}
+ 

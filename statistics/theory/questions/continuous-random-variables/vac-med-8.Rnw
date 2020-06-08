@@ -1,0 +1,51 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+x1 <- 230
+p1 <- 1 - 3420 / 10000
+x2 <- 210
+p2 <- 1 - (4936 + 3420) / 10000
+x3 <- 230
+p3 <- 1 - 1234 / 10000
+
+## QUESTION/ANSWER GENERATION
+q1 <- qnorm(p1)
+q2 <- qnorm(p2)
+q3 <- qnorm(p3)
+# Define the matrices for the system of equations
+A <- matrix(c(1, 1, q1, q2), nrow = 2)
+B <- matrix(c(x1, x2), nrow = 2)
+X <- solve(A, B)
+meanx <- X[1]
+sd <- X[2]
+meany <- x3 - q3 * sd 
+p <- pnorm(240, meanx, sd) - pnorm(200, meanx, sd)
+iqr <- qnorm(0.75, meany, sd) - qnorm(0.25, meany, sd)
+@
+
+\begin{question}
+\puntos{3.5}In a study about the cholesterol two samples of 10000 males and 10000 females was taken. It was observed that 3420 males and 1234 females had a cholesterol level above 230 mg/dl, and that 4936 males had a cholesterol level between 210 and 230 mg/dl. 
+Assuming that the cholesterol level in males and females follows a normal distribution with the same standard deviation, compute:
+\begin{enumerate}
+\item The means and the standard deviation of the distributions of cholesterol level in males and females.
+\item The percentage of males with cholesterol level between 200 and 240 mg/dl.
+\item The interquartile range of the cholesterol level of females.
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item Let $X$ be cholesterol level in males and $Y$ the cholesterol level in females, then $X\sim N(\Sexpr{round(meanx, 4)}, \Sexpr{round(sd, 4)})$ and $X\sim N(\Sexpr{round(meany, 4)}, \Sexpr{round(sd, 4)})$
+\item $P(200\leq X \leq 240) = \Sexpr{round(p, 4)}$.
+\item $IQR = \Sexpr{round(iqr, 4)}$ mg/dl.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solución}
+%% \exname{vac-med-8}
+%% \extol{0.001}
+%% \degree{Pharmacy}
+ 

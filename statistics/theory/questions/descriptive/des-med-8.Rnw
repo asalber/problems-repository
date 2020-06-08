@@ -1,0 +1,88 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+require(xtable)
+classes <- c("10-30", "30-45", "45-60", "60-90", "90-120", "120-180")
+ni <- c(2, 11, 18, 9, 8, 2)
+x <- rep(c(20, 37.5, 52.5, 75, 105, 150), ni)
+data <- data.frame(classes, ni)
+colnames(data) <- c("\\mbox{Time}", "\\mbox{Patients}")
+
+## QUESTION/ANSWER GENERATION
+# sample size
+n <- length(x)
+# cum rel frequencies
+f <- cumsum(ni)/sum(ni)
+# Quartiles 
+q1 <- 30 + (0.25-f[1])/(f[2]-f[1])*(45-30)
+q3 <- 60 + (0.75-f[3])/(f[4]-f[3])*(90-60)
+# interquartile range
+iqr <- q3-q1
+#fences
+f1 <- q1-1.5*iqr
+f2 <- q3+1.5*iqr
+# outliers
+outliers <- x[x < f1 | x > f2]
+# means
+mx <- mean(x)
+my <- 50
+# variances
+s2x <- sum(x^2)/n-mx^2
+# standard deviation
+sx <- sqrt(s2x)
+sy <- 15
+# coef. variation
+cvx <- sx/mx
+# Percentile 85
+p85 <- 90 + (0.85-f[4])/(f[5]-f[4])*(120-90)
+# coef. skewness
+g1x <- sum((x-mx)^3)/(n*sx^3)
+# coef. kurtosis
+g2x <- sum((x-mx)^4)/(n*sx^4)-3
+# standard scores
+zx <- (70-mx)/sx
+zy <- (60-my)/sy
+@
+  
+\begin{question}
+\puntos{5} The table below summarizes the time (in minutes) required to remove anesthesia after a surgery in a sample of 50 patients.
+
+$$
+<<echo=FALSE, results=tex>>=
+print(xtable(data, align="ccr", auto=T), tabular.environment="array", include.rownames = F, floating=F, hline.after = c(0,nrow(data)), sanitize.text.function = function(x) { x })
+@
+$$
+  
+\begin{enumerate}
+\item Are there some outliers in the sample?
+\item Compute the mean. Is it representative?
+\item If according to a postoperative protocol the 15\% of patients that require more time to remove the anesthesia must be monitored, above what time should a patient be monitored?
+\item If we apply a drug that is anesthesia antagonist, it is known that the time required to remove the anesthesia decreases a 25\%. How will the time decrease affect the representativeness of the mean?
+\item If it is known that another type of anesthesia $B$ has mean 50 minutes and standard deviation 15 minutes, what time is relatively greater, 70 minutes with this type of anesthesia or 60 minutes with the type $B$?.
+\end{enumerate}
+
+Use the following sums for the computations: $\sum x_in_i=\Sexpr{sum(x)}$ min, $\sum x_i^2n_i=\Sexpr{sum(x^2)}$ min$^2$, $\sum (x_i-\bar x)^3n_i=\Sexpr{round(sum((x-mx)^3),2)}$ min$^3$ y $\sum (x_i-\bar x)^4n_i=\Sexpr{round(sum((x-mx)^4),2)}$ min$^4$.\\
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item $Q_1=\Sexpr{round(q1,4)}$, $Q_3=\Sexpr{round(q3,4)}$, $IQR=\Sexpr{round(iqr,4)}$, $f_1=\Sexpr{round(f1,4)}$ and $f_2=\Sexpr{round(f2,4)}$. Since the last class contains values above the upper fence, there could be outliers. 
+\item $\bar x=\Sexpr{round(mx,4)}$ min, $s^2=\Sexpr{round(s2x,4)}$ min$^2$, $s=\Sexpr{round(sx,4)}$ min and $cv=\Sexpr{round(cvx,4)}$
+Thus the representativity of the mean is moderate.
+\item $P_{85}=\Sexpr{round(p85,4)}$ min.
+\item Applying the linear transformation $y=0.75x$, $\bar y=\Sexpr{round(0.75*mx,4)}$ min, $s_y=\Sexpr{round(0.75*sx,4)}$ min and $cv=\Sexpr{round(cvx,4)}$.
+Thus the representativity of the mean is the same.
+\item Standard score in first anesthesia: $z(70)=\Sexpr{round(zx,4)}$.\\
+Standard score in anesthesia $B$: $z(60)=\Sexpr{round(zy,4)}$.\\
+Thus, 60 min with anesthesia $B$ is relatively greater.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{\Sexpr{1}}
+%% \exname{des-gen-6}
+%% \extol{0.001}
+%% \degree{Medicina}
+

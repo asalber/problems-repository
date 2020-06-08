@@ -1,0 +1,85 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+library(xtable)
+x <- c(10, 20, 30, 40, 50, 60, 70, 80)
+y <- c(28, 46, 62, 81, 100, 132, 195, 302)
+table <- matrix(c(x,y), nrow = 2, byrow = T)
+#decimals <- matrix(c(rep(0,6), rep(2,6)), nrow = 3, ncol=6, byrow=TRUE)
+rownames(table) <- c("\\mbox{Dose (mg)}", "\\mbox{Response time ($10^{-2}$ s)}")
+## QUESTION/ANSWER GENERATION
+# colors  
+col1 <- "#05A1E6"
+# sample size
+n <- length(x)
+# means
+mx <- mean(x)
+mlogx <- mean(log(x))
+my <- mean(y)
+mlogy <- mean(log(y))
+# variances
+s2x <- sum(x^2)/n-mx^2
+s2logx <- sum(log(x)^2)/n-mlogx^2
+s2y <- sum(y^2)/n-my^2
+s2logy <- sum(log(y)^2)/n-mlogy^2
+# Covariances
+sxy <- sum(x * y) / n - mx * my
+sxlogy <- sum(x*log(y))/n-mx*mlogy
+slogxy <- sum(log(x)*y)/n-mlogx*my
+# Determination coeff
+r2xy <-  sxy^2 / (s2x * s2y)
+r2xlogy <- sxlogy^2/(s2x*s2logy)
+r2logxy <- slogxy^2/(s2logx*s2y)
+# Linear regression model
+reglin <- lm(y ~ x)
+# Exponential regression model y on x
+regexp <- lm(log(y)~x)
+# Logarithmic regression model x on y
+reglog <- lm(x~log(y))
+@
+
+\begin{question}
+\puntos{5 }The effect of a doping substance on the response time to a given stimulus was analyzed in a group of patients. The same amount of substance was administered in successive doses, from 10 to 80 mg, to all the patients. The table below shows the average response time to the stimulus, expressed in hundredths of a second:
+$$
+<<echo=FALSE, results=tex>>=
+print(xtable(table, auto=T), tabular.environment="array", include.colnames = F, floating=F, hline.after = c(0,nrow(table)), sanitize.text.function = function(x) { x })
+@
+$$
+
+\begin{enumerate}
+\item According to the linear regression model, how much will the response time increase or decrease  for each mg we increase the dose?
+\item Based on the exponential model, what will be the expected response time for a 75 mg dose?
+\item If a response time greater than one second is considered dangerous for health, from what level should the administration of the doping substance be regulated, or even prohibited, according to the logarithmic model?
+\end{enumerate}
+Use the following sums for the computations:\\
+$\sum x_i=\Sexpr{round(sum(x), 4)}$ mg, $\sum \log(x_i)=\Sexpr{round(sum(log(x)), 4)}$ $\log(\mbox{mg})$, $\sum y_j=\Sexpr{round(sum(y), 4)}$ $10^{-2}$ s, $\sum \log(y_j)=\Sexpr{round(sum(log(y)), 4)}$ $\log(\mbox{$10^{-2}$ s})$,\\
+$\sum x_i^2=\Sexpr{round(sum(x^2), 4)}$ mg$^2$, $\sum \log(x_i)^2=\Sexpr{round(sum(log(x)^2), 4)}$ $\log(\mbox{mg})^2$, $\sum y_j^2=\Sexpr{round(sum(y^2), 4)}$ $10^{-2}$ s$^2$, $\sum \log(y_j)^2=\Sexpr{round(sum(log(y)^2), 4)}$ $\log(\mbox{$10^{-2}$ s})^2$,\\
+$\sum x_iy_j=\Sexpr{round(sum(x*y), 4)}$ mg$\cdot$$10^{-2}$ s, $\sum x_i\log(y_j)=\Sexpr{round(sum(x*log(y)), 4)}$ mg$\cdot\log(\mbox{$10^{-2}$ s})$, $\sum \log(x_i)y_j=\Sexpr{round(sum(log(x)*y), 4)}$ $\log(\mbox{mg})$$10^{-2}$ s, $\sum \log(x_i)\log(y_j)=\Sexpr{round(sum(log(x)*log(y)), 4)}$ $\log(\mbox{mg})\log(\mbox{$10^{-2}$ s})$.
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item $\bar x=\Sexpr{round(mx,4)}$ mg, $s_x^2=\Sexpr{round(s2x,4)}$ mg$^2$.\\
+$\bar y=\Sexpr{round(my,4)}$ $10^{-2}$ s, $s_y^2=\Sexpr{round(s2y,4)}$ $10^{-4}$ s$^2$.\\
+$s_{xy}=\Sexpr{round(sxy,4)}$ mg$\cdot 10^{-2}$ s.\\
+$b_{yx} = \Sexpr{round(reglin$coefficients[2],4)}$ $10^{-2}$ s/mg.\\
+Therefore, the response time increases $\Sexpr{round(reglin$coefficients[2],4)}$ hundredths of a second for each mg the dose is increased.
+\item $\overline{\log(y)}=\Sexpr{round(mlogy,4)}$ log($10^{-2}$ s), $s_{\log(y)}^2=\Sexpr{round(s2logy,4)}$ log($10^{-2}$ s)$^2$.\\
+$s_{x\log(y)}=\Sexpr{round(sxlogy,4)}$ mg$\cdot\log(10^{-2}$ s).\\
+Exponential regression model: $y=e^{\Sexpr{round(regexp$coefficients[1],4)}+\Sexpr{round(regexp$coefficients[2],4)}x}$.\\
+Prediction: $y(75)=\Sexpr{round(exp(regexp$coefficients[1] + regexp$coefficients[2]*75),4)}$ $10^{-2}$ s.\\
+Exponential coefficient of determination: $r^2=\Sexpr{round(r2xlogy,4)}$\\
+Thus, the exponential model fits almost perfectly to the cloud of points of the scatter plot, but the sample is too small to get reliable predictions.
+\item Logarithmic regression model: $x=\Sexpr{round(reglog$coefficients[1],4)}+\Sexpr{round(reglog$coefficients[2],4)}\ln(y)$.\\
+Prediction: $x(100)=\Sexpr{round(reglog$coefficients[1] + reglog$coefficients[2]*log(100),4)}$ mg.\\
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{regnol-med-8}
+%% \extol{0.001}
+%% \degree{Medicine}
+ 

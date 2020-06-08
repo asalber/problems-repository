@@ -1,0 +1,120 @@
+\begin{enumerate}
+\item
+  \textbf{Question}\\
+  To study the association between the osteoporosis and the gender a
+  random sample of people between 65 and 70 years old was taken. The
+  following table summarize the results
+
+  \[\begin{array}{lcc}
+  \hline
+  & \mbox{Osteoporosis} & \mbox{Not osteoporosis}\\
+  \mbox{Women} & 480 & 2320\\
+  \mbox{Men} & 255 & 1505\\
+  \hline
+  \end{array}\]
+
+  \begin{enumerate}
+  \item
+    Compute the prevalence of the osteoporosis in the population.
+  \item
+    Compute the relative risk of osteoporosis in females with respect to
+    males and interpret it.
+  \item
+    Compute the odds ratio of osteoporosis in females with respect to
+    males and interpret it.
+  \item
+    Which of the two measures is most suitable to study the association
+    between the osteoporosis and the gender?
+  \end{enumerate}
+
+  \textbf{Solution}\\
+  Let \(D\) be the event of suffering osteoporosis.
+
+  \begin{enumerate}
+  \item
+    Prevalence: \(P(D)=0.1612\).
+  \item
+    \(RR(D)=1.1832\). Thus, the risk of suffering osteoporosis in women
+    is higher than in men but not to much. There is no strong
+    association between the osteoporosis and the gender.
+  \item
+    \(OR(D)=1.2211\). Thus, the odds of suffering osteoporosis in women
+    is higher than in men but not to much.
+  \item
+    Since we can compute the prevalence of \(D\), both statistics are
+    suitable, but relative risk is easier to interpret.
+  \end{enumerate}
+\item
+  \textbf{Question}\\
+  The risks of getting the flu in two cities \(A\) and \(B\) with the
+  same population size are 14\% and 8\% respectively.
+
+  \begin{enumerate}
+  \item
+    Compute the probability of having more than 2 persons getting the
+    flu in a random sample of 10 persons of the city \(A\).
+  \item
+    Compute the probability of having more than 2 and less than 5
+    persons getting the flu in a random sample of 50 persons of the city
+    \(B\).
+  \item
+    Compute the probability of having 2 persons getting the flu in a
+    random sample of 8 persons of the two cities.
+  \item
+    Compute the probability of having some person getting the flu in a
+    random sample of 5 persons that have been living in both cities.
+  \end{enumerate}
+
+  \textbf{Solution}\\
+
+  \begin{enumerate}
+  \item
+    Let \(X\) be the number of persons with flu in a sample of 10
+    persons from \(A\), then \(X\sim B(10, 0.14)\) and
+    \(P(X>2)=0.1545\).
+  \item
+    Let \(Y\) be the number of persons with flu in a sample of 50
+    persons from \(B\), then \(Y\sim B(50, 0.08)\approx P(4)\) and
+    \(P(2 < Y < 5) = 0.3907\).
+  \item
+    Let \(Z\) be the number of persons with flu in a sample of 8 persons
+    from \(A\) and \(B\), then \(Z\sim B(8, 0.11)\) and
+    \(P(Z = 2) = 0.1684\).
+  \item
+    Let \(U\) be the number of persons with flu in a sample of 5 persons
+    living in both cities, then \(U\sim B(5, 0.2088)\) and
+    \(P(U>0)=0.69\).
+  \end{enumerate}
+\item
+  \textbf{Question}\\
+  In a study about the cholesterol two samples of 10000 males and 10000
+  females was taken. It was observed that 3420 males and 1234 females
+  had a cholesterol level above 230 mg/dl, and that 4936 males had a
+  cholesterol level between 210 and 230 mg/dl. Assuming that the
+  cholesterol level in males and females follows a normal distribution
+  with the same standard deviation, compute:
+
+  \begin{enumerate}
+  \item
+    The means and the standard deviation of the distributions of
+    cholesterol level in males and females.
+  \item
+    The percentage of males with cholesterol level between 200 and 240
+    mg/dl.
+  \item
+    The interquartile range of the cholesterol level of females.
+  \end{enumerate}
+
+  \textbf{Solution}\\
+
+  \begin{enumerate}
+  \item
+    Let \(X\) be cholesterol level in males and \(Y\) the cholesterol
+    level in females, then \(X\sim N(224.1164, 14.4556)\) and
+    \(X\sim N(213.2581, 14.4556)\)
+  \item
+    \(P(200\leq X \leq 240) = 0.8164\).
+  \item
+    \(IQR = 19.5003\) mg/dl.
+  \end{enumerate}
+\end{enumerate}
