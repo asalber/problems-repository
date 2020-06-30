@@ -1,0 +1,37 @@
+    <<echo=FALSE, results=hide>>=
+## DATA GENERATION
+mean <- 25
+q1 <- 22
+
+## QUESTION/ANSWER GENERATION
+sd <-  (q1 - mean) / qnorm(0.25)
+p <- pnorm(30, mean, sd, lower.tail = F)
+iqr <- 2 * (mean - q1)
+@
+
+\begin{question}
+\puntos{3}The time required to cure a basketball injury with a rehabilitation technique follows a normal distribution with quartiles $Q_1 = 22$ days and $Q_2 = 25$ days.
+\begin{enumerate}
+\item Calculate the mean and standard deviation of the curation time.
+\item If a player has just been injured and has to play a match in 30 days, what is the probability that he will miss it?
+\item Calculate the interquartile range of the curation time distribution.
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item Let $X$ be the time required to cure the injury, then $X\sim N(\Sexpr{round(mean, 4)}, \Sexpr{round(sd, 4)})$.
+\item $P(X > 30) = \Sexpr{round(p, 4)}$.
+\item $IQR = \Sexpr{round(iqr, 4)}$ days.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{vac-med-10}
+%% \extol{0.001}
+%% \degree{Physiotherapy}
+ 

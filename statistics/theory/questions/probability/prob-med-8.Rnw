@@ -1,0 +1,48 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+pC <- 0.3
+pCyF <- 0.2
+pCSiF <- 0.5
+
+## QUESTION/ANSWER GENERATION
+pF <- pCyF/pCSiF
+pCoF <- pC + pF - pCyF
+pCyNoF <- pC - pCyF
+pNoCyF <- pF - pCyF
+pNoCyNoF <- 1 - pCoF
+@
+
+\begin{question}
+\puntos{3}	
+Two symptoms of COVID-19 are fever and cough. We know that 30\% of people with COVID-19 cough and 20\% have fever and cough. Also, if somebody with COVID-19 have fever then the probability of coughing 0.5.
+
+\begin{enumerate}
+\item Construct the probability tree for the sample space of the random experiment consisting in picking a random person with COVID-19 and measuring the symptoms that he or she have.
+\item Calculate the probability of having any of the symptoms.
+\item Calculate the probability of having only cough.
+\item Calculate the probability of having only fever.
+\item Calculate the probability no fever nor cough.
+\item Are the symptoms dependent or independent?
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+Let $C$ and $F$ be the events of having cough and fever respectively. According to the statement $P(C)=\Sexpr{round(pC, 4)}$, $P(C\cap F)=\Sexpr{round(pCyF, 4)}$ and $P(C|F)=\Sexpr{pCSiF}$.
+\begin{enumerate}
+\item $P(C\cup F) = \Sexpr{round(pCoF, 4)}$.
+\item $P(C\cap \overline F) = \Sexpr{round(pCyNoF, 4)}$.
+\item $P(\overline C \cap F) = \Sexpr{round(pNoCyF, 4)}$.
+\item $P(\overline C \cap \overline F) = \Sexpr{round(pNoCyNoF, 4)}$.
+\item The events are dependent since $P(C)\neq P(C|F)$.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{prob-med-8}
+%% \extol{0.001}
+%% \degree{Medicine}
+ 
