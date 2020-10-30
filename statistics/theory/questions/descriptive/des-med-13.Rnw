@@ -1,0 +1,87 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+require(xtable)
+classes <- c("(10,14]", "(14,18]", "(18,22]", "(22,26]", "(26,30]")
+xi <- xi <- seq(12, 28, by=4)
+nxi <- c(6, 10, 7, 6, 1 )
+x <- rep(xi, nxi)
+data <- data.frame(classes, nxi)
+colnames(data) <- c("\\mbox{patients}", "\\mbox{Frecuencia}")
+
+## QUESTION/ANSWER GENERATION
+# sample size
+nx <- length(x)
+# quartiles
+q1 <- quantile(x, probs = c(0.25), type=1)
+q2 <- quantile(x, probs = c(0.5), type=1)
+q3 <- quantile(x, probs = c(0.75), type=1)
+# interquartile range
+iqr <- q3-q1
+#fences
+f1 <- q1-1.5*iqr
+f2 <- q3+1.5*iqr
+# outliers
+outliers <- x[x < f1 | x > f2]
+# means
+mx <- mean(x)
+my <- 35
+# variances
+s2x <- sum(x^2)/nx-mx^2
+s2y <- 40
+# standard deviation
+sx <- sqrt(s2x)
+sy <- sqrt(s2y)
+# coef. variation
+cvx <- sx/mx
+cvy <- sy/my
+# coef. skewness
+g1x <- sum((x-mx)^3)/(nx*sx^3)
+# coef. kurtosis
+g2x <- sum((x-mx)^4)/(nx*sx^4)-3
+# standard scores
+zx <- (20-mx)/sx
+zy <- (40-my)/sy
+@
+
+\begin{question}
+\puntos{4}The table below shows the daily number of patients hospitalized in a hospital during the month of September.
+
+$$
+<<echo=FALSE, results=tex>>=
+print(xtable(data, align=c("c", "c", "r"), auto=T), tabular.environment="array", include.rownames = F, floating=F, hline.after = c(0,nrow(data)), sanitize.text.function = function(x) { x })
+@
+$$
+
+\begin{enumerate}
+\item Study the spread of the 50\% of central data.
+\item Compute the mean and study the dispersion with respect to it. 
+\item Study the normality of the patients distribution.
+\item If the mean was 35 patients and the variance 40 patients$^2$ during the month of April, which month had a higher relative variability?
+\item Which number of people hospitalized was greater, 20 persons in September or 40 in April?
+\end{enumerate}
+
+Use the following sums for the computations:\\
+$\sum x_in_i=\Sexpr{sum(x)}$ patients, $\sum x_i^2n_i=\Sexpr{sum(x^2)}$ patients$^2$, $\sum (x_i-\bar x)^3n_i=\Sexpr{round(sum((x-mx)^3),2)}$ patients$^3$ and\\ $\sum (x_i-\bar x)^4n_i = \Sexpr{round(sum((x-mx)^4),2)}$ patients$^4$.\\
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item $Q_1=\Sexpr{round(q1,4)}$, $Q_3=\Sexpr{round(q3,4)}$ and $IQR=\Sexpr{round(iqr,4)}$. Thus the central dispersion is moderate.
+\item $\bar x=\Sexpr{round(mx,4)}$, $s^2=\Sexpr{round(s2x,4)}$, $s=\Sexpr{round(sx,4)}$ and $cv=\Sexpr{round(cvx,4)}$. Thus, the dispersion with respect to the mean is small and the mean represents well.
+\item $g_1=\Sexpr{round(g1x,4)}$ and $g_2=\Sexpr{round(g2x,4)}$. As the coefficient of skewness and the coefficient of kurtosis fall between -2 and 2, we can assume that the sample comes from a normal population.
+\item Let $Y$ be the daily number of patients hospitalized during April. Then, $cv_y=\Sexpr{round(cvy,4)}$. Since the coefficient of variation in April is greater than the one in September, there is a relative higher variability in April.
+\item September: $z(20)=\Sexpr{round(zx, 4)}$.\\
+April: $z(40)=\Sexpr{round(zy, 4)}$.\\
+Thus, 40 patients hospitalized in April is relatively higher than 20 in September.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solución}
+%% \exname{des-med-13}
+%% \extol{0.001}
+%% \degree{Medicine}
+   
