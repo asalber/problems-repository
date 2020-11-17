@@ -3,9 +3,9 @@
     hospital during the month of September.
 
     $$% latex table generated in R 4.0.3 by xtable 1.8-4 package
-      % Fri Oct 30 11:26:00 2020
+      % Sat Nov 14 07:55:02 2020
       \begin{array}{cr}
-       \mbox{patients} & \mbox{Frecuencia} \\ 
+       \mbox{Patients} & \mbox{Frequency} \\ 
         \hline
       (10,14] & 6 \\ 
         (14,18] & 10 \\ 
@@ -34,12 +34,12 @@
     $\sum (x_i-\bar x)^4n_i = 25367.44$ patients$^4$.\
     **Solution**\
 
-    1.  $Q_1=16$, $Q_3=20$ and $IQR=4$. Thus the central dispersion is
-        moderate.
+    1.  $Q_1=16$ patients, $Q_3=20$ patients and $IQR=4$ patients. Thus
+        the central dispersion is small.
 
-    2.  $\bar x=18.1333$, $s^2=19.9822$, $s=4.4701$ and $cv=0.2465$.
-        Thus, the dispersion with respect to the mean is small and the
-        mean represents well.
+    2.  $\bar x=18.1333$ patients, $s^2=19.9822$ patients$^2$,
+        $s=4.4701$ patients and $cv=0.2465$. Thus, the dispersion with
+        respect to the mean is small and the mean represents well.
 
     3.  $g_1=0.2747$ and $g_2=-0.8823$. As the coefficient of skewness
         and the coefficient of kurtosis fall between -2 and 2, we can
@@ -53,7 +53,7 @@
     5.  September: $z(20)=0.4176$.\
         April: $z(40)=0.7906$.\
         Thus, 40 patients hospitalized in April is relatively higher
-        than 20 in September.
+        than 20 in September as its standard score is greater.
 
 2.  **Question**\
     The chart below shows the distribution of scores in three subjects.
@@ -83,7 +83,7 @@
 3.  **Question**\
     In a sample of 10 families with a child older than 20 it has been
     measured the height of the father ($X$), the mother ($Y$) and the
-    children ($Z$) in centimeters, getting the following results:
+    children ($Z$) in centimetres, getting the following results:
 
     $\sum x_i=1774$ cm, $\sum y_i=1630$ cm, $\sum z_i=1795$ cm,\
     $\sum x_i^2=315300$ cm$^2$, $\sum y_i^2=266150$ cm$^2$,
@@ -95,11 +95,12 @@
         linearly, the height of the father or the mother?
 
     2.  Using the best linear regression model, predict the height of a
-        child with a father 181 cm tall and a mother 163 cm tall?
+        child with a father 181 cm tall and a mother 163 cm tall.
 
-    3.  How much will increase the height of the child for each
-        centimeter that increases the height of the father? And for each
-        centimeter that increases the height of the mother?
+    3.  According to the linear model, how much will increase the height
+        of the child for each centimetre that increases the height of
+        the father? And for each centimetre that increases the height of
+        the mother?
 
     4.  How would the reliability of the prediction be if the heights
         were measured in inches? (An inch is 2.54 cm).
@@ -114,14 +115,14 @@
         child depends linearly more on the height of the father since
         the $r^2_{xz}>r^2_{yz}$.
 
-    2.  Regression line of $Z$ on $X$: $z=22.2836 + 0.8862z$ and
+    2.  Regression line of $Z$ on $X$: $z=22.2836 + 0.8862x$ and
         $z(181)=182.6904$.
 
     3.  The height of the child will increase $0.8862$ cm per cm of the
         height of the father and $0.3739$ cm per cm of the height of the
         mother.
 
-    4.  The same, as after applying the same linear transformation to
-        $X$ and $Z$, the variances are multiplied by the square of the
-        slopes and the covariance is multiplied by the product of
-        slopes.
+    4.  The reliability of the prediction will be the same, as after
+        applying the same linear transformation to $X$ and $Z$, the
+        variances are multiplied by the square of the slope and the
+        covariance is also multiplied by de square of the slope.
