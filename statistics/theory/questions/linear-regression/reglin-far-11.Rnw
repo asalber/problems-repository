@@ -1,16 +1,19 @@
 <<echo=FALSE, results=hide>>=
 ## DATA GENERATION
-sumx <- 1774
-sumy <- 1630
-sumz <- 1795
-sumx2 <- 315300
-sumy2 <- 266150
-sumz2 <- 322737
-sumxy <- 289364
-sumxz <- 318958
-sumyz <- 292757
-n <- 10
-
+x <- c(175, 182, 190, 165, 172, 183, 187, 174, 168, 178)
+y <- c(164, 175, 165, 160, 155, 172, 160, 151, 165, 163)
+z <- c(177, 180, 193, 172, 173, 188, 185, 177, 168, 182)
+sumx <- sum(x)
+sumy <- sum(y)
+sumz <- sum(z)
+sumx2 <- sum(x^2)
+sumy2 <- sum(y^2)
+sumz2 <- sum(z^2)
+sumxy <- sum(x*y)
+sumxz <- sum(x*z)
+sumyz <- sum(y*z)
+n <- length(x)
+  
 ## QUESTION/ANSWER GENERATION
 # means
 mx <- sumx / n
@@ -26,26 +29,26 @@ syz <- sumyz/n-my*mz
 # Detercmation coeff
 r2xz <- sxz^2/(s2x*s2z)
 r2yz <- syz^2/(s2y*s2z)
-# Slopes
-bzx <- sxz/s2x
-bzy <- syz/s2y
-# Intercept
-azx <- mz - bzx * mx
-# Prediction
-predz <- azx + bzx * 181
+  # Slopes
+  bzx <- sxz/s2x
+  bzy <- syz/s2y
+  # Intercept
+  azx <- mz - bzx * mx
+  # Prediction
+  predz <- azx + bzx * 181
 @
 
 \begin{question}
-\puntos{5}In a sample of 10 families with a child older than 20 it has been measured the height of the father ($X$), the mother ($Y$) and the children ($Z$) in centimeters, getting the following results:
+\puntos{5}In a sample of 10 families with a son older than 20 it has been measured the height of the father ($X$), the mother ($Y$) and the son ($Z$) in centimetres, getting the following results:
 
 $\sum x_i=\Sexpr{sumx}$ cm, $\sum y_i=\Sexpr{sumy}$ cm, $\sum z_i=\Sexpr{sumz}$ cm,\\
 $\sum x_i^2=\Sexpr{sumx2}$ cm$^2$, $\sum y_i^2=\Sexpr{sumy2}$ cm$^2$, $\sum z_i^2=\Sexpr{sumz2}$ cm$^2$,\\
 $\sum x_iy_j=\Sexpr{sumxy}$ cm$^2$, $\sum x_iz_j=\Sexpr{sumxz}$ cm$^2$, $\sum y_iz_j=\Sexpr{sumyz}$ cm$^2$.
 
 \begin{enumerate}
-\item On which height does the height of the child depend more linearly, the height of the father or the mother?
-\item Using the best linear regression model, predict the height of a child with a father 181 cm tall and a mother 163 cm tall?
-\item How much will increase the height of the child for each centimeter that increases the height of the father? And for each centimeter that increases the height of the mother?
+\item On which height does the height of the son depend more linearly, the height of the father or the mother?
+\item Using the best linear regression model, predict the height of a son with a father 181 cm tall and a mother 163 cm tall.
+\item According to the linear model, how much the height of the son will increase for each centimetre that increases the height of the father? And for each centimetre that increases the height of the mother?
 \item How would the reliability of the prediction be if the heights were measured in inches? (An inch is 2.54 cm).
 \end{enumerate} 
 \end{question}
@@ -58,10 +61,10 @@ $\sum x_iy_j=\Sexpr{sumxy}$ cm$^2$, $\sum x_iz_j=\Sexpr{sumxz}$ cm$^2$, $\sum y_
 $\bar y=\Sexpr{round(my,4)}$ cm, $s_y^2=\Sexpr{round(s2y,4)}$ cm$^2$,\\
 $\bar z=\Sexpr{round(mz,4)}$ cm, $s_z^2=\Sexpr{round(s2z,4)}$ cm$^2$,\\
 $s_{xz}=\Sexpr{round(sxz,4)}$ cm$^2$ and $s_{yz}=\Sexpr{round(syz,4)}$ cm$^2$.\\
-$r^2_{xz}=\Sexpr{round(r2xz,4)}$ and $r^2_{yz}=\Sexpr{round(r2yz,4)}$, thus the height of the child depends linearly more on the height of the father since the $r^2_{xz}>r^2_{yz}$.
-\item Regression line of $Z$ on $X$: $z=\Sexpr{round(azx,4)} + \Sexpr{round(bzx,4)}z$ and $z(181)=\Sexpr{round(predz, 4)}$.
-\item The height of the child will increase $\Sexpr{round(bzx,4)}$ cm per cm of the height of the father and $\Sexpr{round(bzy,4)}$ cm per cm of the height of the mother.
-\item The same, as after applying the same linear transformation to $X$ and $Z$, the variances are multiplied by the square of the slopes and the covariance is multiplied by the product of slopes.
+$r^2_{xz}=\Sexpr{round(r2xz,4)}$ and $r^2_{yz}=\Sexpr{round(r2yz,4)}$, thus the height of the son depends linearly more on the height of the father since the $r^2_{xz}>r^2_{yz}$.
+\item Regression line of $Z$ on $X$: $z=\Sexpr{round(azx,4)} + \Sexpr{round(bzx,4)}x$ and $z(181)=\Sexpr{round(predz, 4)}$.
+\item The height of the son will increase $\Sexpr{round(bzx,4)}$ cm per cm of the height of the father and $\Sexpr{round(bzy,4)}$ cm per cm of the height of the mother.
+\item The reliability of the prediction will be the same, as after applying the same linear transformation to $X$ and $Z$, the variances are multiplied by the square of the slope and the covariance is also multiplied by de square of the slope.
 \end{enumerate}
 \end{solution}
 

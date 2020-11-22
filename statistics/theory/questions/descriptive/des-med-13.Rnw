@@ -6,7 +6,7 @@ xi <- xi <- seq(12, 28, by=4)
 nxi <- c(6, 10, 7, 6, 1 )
 x <- rep(xi, nxi)
 data <- data.frame(classes, nxi)
-colnames(data) <- c("\\mbox{patients}", "\\mbox{Frecuencia}")
+colnames(data) <- c("\\mbox{Patients}", "\\mbox{Frequency}")
 
 ## QUESTION/ANSWER GENERATION
 # sample size
@@ -68,13 +68,13 @@ $\sum x_in_i=\Sexpr{sum(x)}$ patients, $\sum x_i^2n_i=\Sexpr{sum(x^2)}$ patients
 %% SOLUTIONS
 \begin{solution}
 \begin{enumerate}
-\item $Q_1=\Sexpr{round(q1,4)}$, $Q_3=\Sexpr{round(q3,4)}$ and $IQR=\Sexpr{round(iqr,4)}$. Thus the central dispersion is moderate.
-\item $\bar x=\Sexpr{round(mx,4)}$, $s^2=\Sexpr{round(s2x,4)}$, $s=\Sexpr{round(sx,4)}$ and $cv=\Sexpr{round(cvx,4)}$. Thus, the dispersion with respect to the mean is small and the mean represents well.
+\item $Q_1=\Sexpr{round(q1,4)}$ patients, $Q_3=\Sexpr{round(q3,4)}$ patients and $IQR=\Sexpr{round(iqr,4)}$ patients. Thus the central dispersion is small. 
+\item $\bar x=\Sexpr{round(mx,4)}$ patients, $s^2=\Sexpr{round(s2x,4)}$ patients$^2$, $s=\Sexpr{round(sx,4)}$ patients and $cv=\Sexpr{round(cvx,4)}$. Thus, the dispersion with respect to the mean is small and the mean represents well.
 \item $g_1=\Sexpr{round(g1x,4)}$ and $g_2=\Sexpr{round(g2x,4)}$. As the coefficient of skewness and the coefficient of kurtosis fall between -2 and 2, we can assume that the sample comes from a normal population.
 \item Let $Y$ be the daily number of patients hospitalized during April. Then, $cv_y=\Sexpr{round(cvy,4)}$. Since the coefficient of variation in April is greater than the one in September, there is a relative higher variability in April.
 \item September: $z(20)=\Sexpr{round(zx, 4)}$.\\
 April: $z(40)=\Sexpr{round(zy, 4)}$.\\
-Thus, 40 patients hospitalized in April is relatively higher than 20 in September.
+Thus, 40 patients hospitalized in April is relatively higher than 20 in September as its standard score is greater.
 \end{enumerate}
 \end{solution}
 

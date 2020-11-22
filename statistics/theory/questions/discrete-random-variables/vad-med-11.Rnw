@@ -1,0 +1,45 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+mean.day <- 12
+hours <- 1
+patients <- 4
+employees <- patients
+hours.day <- 6
+
+## QUESTION/ANSWER GENERATION
+lambda1 <- mean.day/hours.day*hours
+sol1 <- ppois(patients, lambda1, lower.tail = F)
+sol2 <- pbinom(0, hours.day, sol1, lower.tail = F)
+sol3 <- ppois(patients+1, lambda1, lower.tail = F)
+sol4 <- pbinom(0, hours.day, sol3, lower.tail = F)
+@
+
+\begin{question}
+\puntos{2.5}A newborn baby affected by Moebius syndrome blinks, on average, twice a minute.
+\begin{enumerate}
+\item Compute the probability that a newborn blinks twice in half a minute.
+\item In a hospital five children have been born with Moebius syndrome. Compute the probability that at least 3 of them blink in their first minute of life.
+\item In which distribution is more representative the mean, in the number of times that a newborn blinks in a minute or in the number of times that a newborn blinks in half a minute?
+\end{enumerate}
+\end{question}  
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item Sea $X$ el número de pacientes que llegan en \Sexpr{hours} horas. 
+$X\sim P(\Sexpr{lambda1})$ y $P(X>\Sexpr{patients})=\Sexpr{round(sol1,4)}$.
+\item Sea $Y$ el número de horas en un día en las que algún paciente no puede ser atendido. 
+$Y\sim B(\Sexpr{hours.day}, \Sexpr{round(sol1,4)})$ y $P(Y>0)=\Sexpr{round(sol2,4)}$.
+Se necesitan 5 empleados para que esta probabilidad sea menor del 10\%.\\
+Se necesitan 5 empleados para que esta probabilidad sea menor del 10\%, ya que $P(X>\Sexpr{patients+1})=\Sexpr{round(sol1,4)}$ y $P(Y>0)=\Sexpr{round(sol4,4)}$, siendo ahora $Y\sim B(\Sexpr{hours.day}, \Sexpr{round(sol3,4)})$.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solución}
+%% \exname{vad-fis-2}
+%% \extol{0.01}
+%% \degree{Fisioterapia}
+ 

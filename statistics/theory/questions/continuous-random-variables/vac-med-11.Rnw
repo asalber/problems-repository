@@ -1,0 +1,42 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+# m1 <- 26
+# s1 <- 2.1
+# m2 <- 15
+# s2 <- 2.8
+# 
+# x1 <- 46
+# x2 <- 49
+# p1 <- 0.8
+## QUESTION/ANSWER GENERATION
+# sol1 <- pnorm(x1, m, s, lower.tail = F)
+# sol2 <- pnorm(x2, m, s) - pnorm(x1, m, s)
+# a <- qnorm((1-p1)/2, m, s)
+# b <- qnorm(1-(1-p1)/2, m, s)
+@
+
+\begin{question}
+\puntos{3}The prolactin level in pregnant and non-pregnant females follows a normal distribution with different means but with the same variance. When the prolactin levels exceed 15 ng/ml, females secrete milk through their mammary glands. It is known that 95\% of pregnant females secrete milk but only 1\% of non-pregnant females secret milk.
+
+\begin{enumerate}
+\item If the median of the prolactin level in pregnant females is 16 ng/ml, what are the means and the standard deviation of the prolactin level in both populations?\\
+Remark: If you are not able to compute the mean or the standard deviation for pregnant females, use $\mu=17$ ng/ml and $\sigma=2$ ng/ml for the next parts.
+\item Compute the percentage of pregnant females with a prolactin level between 15.5 and 17 ng/ml.
+\item Compute the prolactin level such that 20\% of pregnant females are above that level.
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solución}
+%% \exname{vac-opt-2}
+%% \extol{0.001}
+%% \degree{Óptica}
+ 
+  

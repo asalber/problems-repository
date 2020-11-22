@@ -1,0 +1,42 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+sen <- 0.91
+spe <- 0.98
+pre <- 0.2
+## QUESTION/ANSWER GENERATION
+tp <- pre*sen
+fn <- pre*(1-sen)
+fp <- (1-pre)*(1-spe)
+tn <- (1-pre)*spe
+ppv <- tp/(tp+fp)
+npv <- tn/(tn+fn)
+@
+
+\begin{question}
+  \puntos{2.5} A test to detect the COVID19 was applied to 850 persons infected by COVID19 with a positive outcome in 800 of them, and it was also applied to 9150 non-infected persons with a positive outcome in 10\% of them.
+\begin{enumerate}
+\item Compute the sensitivity and the specificity of the test.
+\item Compute the positive and the negative predictive values and interpret them. 
+\item Compute the probability of a correct diagnostic.
+\end{enumerate}
+\end{question}
+
+%% SOLUTIONS
+\begin{solution}
+Sea $E$ el suceso consistente en tener la enfermedad y $+$ y $-$ los sucesos correspondientes a obtener un resultado positivo y negativo respectivamente en el test.
+\begin{enumerate}
+\item $VPP=\Sexpr{round(ppv,4)}$.
+\item $VPN=\Sexpr{round(npv,4)}$.
+\item Es más fiable para descartar la enfermedad ya que el valor predictivo negativo es mayor que el valor predictivo positivo.
+\item $P(E\cap +)+P(\overline E\cap -) = \Sexpr{round(tp+tn,4)}$.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solución}
+%% \exname{test-med-1}
+%% \extol{0.001}
+%% \degree{Medicina}
+ 
+  

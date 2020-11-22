@@ -1,0 +1,39 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+pA <- 4/5
+pB <- 0.5
+pNoANoB <- 1/20
+
+## QUESTION/ANSWER GENERATION
+pAoB <- 1-pNoANoB
+pAB <- pA + pB - pAoB
+pNoAB <- pB-pAB
+pNoA <- 1-pA
+pNoB <- 1-pB
+pBSiA <- pAB/pA
+pBSiNoA <- pNoAB/pNoA
+@
+
+\begin{question}
+\puntos{2}An organism has the same chance of being infected by a virus and a bacteria. At the same time, the probability of being infected by a virus doubles when the organism has been previously infected by a bacteria. On the other hand, the probability of being infected by no pathogen (neither virus nor bacteria) is $0.52$.
+\begin{enumerate}
+\item What is the probability of being infected by a virus and a bacteria at the same time?
+\item What is the probability of being infected by a bacteria if it has been infected by a virus?
+\item What is the probability of being infected only by a virus?
+\item Are the events of being infected by a virus an a bacteria independent?
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solución}
+%% \exname{prob-med-9}
+%% \extol{0.001}
+%% \degree{Medicina}
+ 

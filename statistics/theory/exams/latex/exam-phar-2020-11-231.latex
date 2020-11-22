@@ -1,0 +1,120 @@
+\begin{enumerate}
+\item
+  \textbf{Question}\\
+  Se está desarrollando un test diagnóstico para detectar COVID19. Para
+  ello, se ha realizado un estudio sobre 10000 personas, de las cuales,
+  850 padecían infección por COVID19. En éstas el test dio positivo en
+  800 de ellas. En las personas sanas el test dio positivo en el 10\% de
+  los casos.
+
+  \begin{enumerate}
+  \item
+    ¿Cuál es la sensibilidad y especificidad del test?
+  \item
+    ¿Cuáles son los valores predictivos positivo y negativo?
+  \item
+    ¿Cuál es la probabilidad de que el test acierte?
+  \end{enumerate}
+
+  \textbf{Solution}\\
+  Sea \(E\) el suceso consistente en tener la enfermedad y \(+\) y \(-\)
+  los sucesos correspondientes a obtener un resultado positivo y
+  negativo respectivamente en el test.
+
+  \begin{enumerate}
+  \item
+    \(VPP=0.9192\).
+  \item
+    \(VPN=0.9776\).
+  \item
+    Es más fiable para descartar la enfermedad ya que el valor
+    predictivo negativo es mayor que el valor predictivo positivo.
+  \item
+    \(P(E\cap +)+P(\overline E\cap -) = 0.966\).
+  \end{enumerate}
+\item
+  \textbf{Question}\\
+  Un recién nacido afectado por el síndrome de Moebius parpadea, en
+  término medio, 2 veces por minuto.
+
+  \begin{enumerate}
+  \item
+    Calcula la probabilidad de que el recién nacido parpadee 2 veces en
+    medio minuto.
+  \item
+    En un hospital nacen 5 niños con síndrome de Moebius. Calcula la
+    probabilidad de que al menos 3 de ellos parpadeen en su primer
+    minuto de vida.
+  \item
+    ¿En qué distribución es más representativa la media, en la del
+    número de veces que parpadea en un minunto o en la del número de
+    veces que parpadea en medio minuto?
+  \end{enumerate}
+
+  \textbf{Solution}\\
+
+  \begin{enumerate}
+  \item
+    Sea \(X\) el número de pacientes que llegan en 1 horas.
+    \(X\sim P(2)\) y \(P(X>4)=0.0527\).
+  \item
+    Sea \(Y\) el número de horas en un día en las que algún paciente no
+    puede ser atendido. \(Y\sim B(6, 0.0527)\) y \(P(Y>0)=0.2771\). Se
+    necesitan 5 empleados para que esta probabilidad sea menor del
+    10\%.\\
+    Se necesitan 5 empleados para que esta probabilidad sea menor del
+    10\%, ya que \(P(X>5)=0.0527\) y \(P(Y>0)=0.0954\), siendo ahora
+    \(Y\sim B(6, 0.0166)\).
+  \end{enumerate}
+\item
+  \textbf{Question}\\
+  El nivel de prolactina en mujeres embarazadas y no embarazadas sigue
+  una distribución normal con distintas medias \(\mu_1\) y \(\mu_2\)
+  respectivamente, pero con la misma varianza. Cuando los niveles de
+  prolactina superan los 15 ng/ml, la mujer segrega leche por las
+  glándulas mamarias. Se sabe que el 95\% de las mujeres embarazadas
+  segregan leche pero esto sólo lo hacen el 1\% de las mujeres no
+  embarazas.
+
+  \begin{enumerate}
+  \item
+    Si se sabe que la mediana del nivel de prolactina en las mujeres
+    embarazadas es 16 ng/ml, ¿cuánto valen las medias y desviación
+    típica de ambas variables?\\
+    Nota: Si no se ha sabido calcular la media y la desviación típica
+    para mujeres embarazadas tomar \(\mu_1=17\) ng/ml, \(\sigma=2\)
+    ng/ml para los siguientes apartados.
+  \item
+    ¿Cuál sería la probabilidad de que una mujer embarazada tenga un
+    nivel de prolactina entre \(15.5\) ng/ml y 17 ng/ml?
+  \item
+    ¿Qué nivel mínimo de prolactina tienen el 20\% de las mujeres
+    embarazadas con mayores niveles?
+  \end{enumerate}
+
+  \textbf{Solution}\\
+\item
+  \textbf{Question}\\
+  An organism has the same chance of being infected by a virus and a
+  bacteria. At the same time, the probability of being infecte by a
+  virus doubles when the organism has been previously infected by a
+  bacteria. On the other hand, the probability of being infected by no
+  pathogen () probabilidad de que el organismo no sea infectado por
+  ningún patógeno (neither virus nor bacteria) is \(0.52\).
+
+  \begin{enumerate}
+  \item
+    What is the probability of being infected by a virus and a bacteria
+    at the same time?
+  \item
+    What is the probability of being infected by a bacteria if it has
+    been infected by a virus?
+  \item
+    What is the probability of being infected only by a virus?
+  \item
+    Are the events of being infected by a virus an a bacteria
+    independent?
+  \end{enumerate}
+
+  \textbf{Solution}\\
+\end{enumerate}
