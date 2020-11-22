@@ -1,0 +1,102 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+library(xtable)
+x <- c(175, 182, 190, 165, 172, 183, 187, 174, 168, 178)
+y <- c(164, 175, 165, 160, 155, 172, 160, 151, 165, 163)
+z <- c(177, 180, 193, 172, 173, 188, 185, 177, 168, 182)
+data <- data.frame(x, y, z)
+colnames(data) <- c("\\mbox{Father's height}", "\\mbox{Mother's height}", "\\mbox{Son's height}")
+n <- length(x)
+
+## QUESTION/ANSWER GENERATION
+# Sample size
+nx <- length(x)
+ny <- length(y)
+nz <- length(z)
+# Quartiles
+q1 <- quantile(z, probs = c(0.25), type=1)
+q2 <- quantile(z, probs = c(0.5), type=1)
+q3 <- quantile(z, probs = c(0.75), type=1)
+# IQR
+iqr <- q3-q1
+# Fences
+f1 <- q1-1.5*iqr
+f2 <- q3+1.5*iqr
+# Outliers
+outliers <- z[z < f1 | z > f2]
+# Mean
+mx <- mean(x)
+my <- mean(y)
+mz <- mean(z)
+# Varianza
+s2x <- sum(x^2)/nx-mx^2
+s2y <- sum(y^2)/ny-my^2
+s2z <- sum(z^2)/nz-mz^2
+# St.deviation
+sx <- sqrt(s2x)
+sy <- sqrt(s2y)
+sz <- sqrt(s2z)
+# Coef. variation
+cvx <- sx/mx
+cvy <- sy/my
+cvz <- sz/mz
+# Coef. skewness
+g1x <- sum((x-mx)^3)/(nx*sx^3)
+g1y <- sum((y-my)^3)/(ny*sy^3)
+g1z <- sum((z-mz)^3)/(nz*sz^3)
+# Coef. kurtosis
+g2x <- sum((x-mx)^4)/(nx*sx^4)-3
+g2y <- sum((y-my)^4)/(ny*sy^4)-3
+g2z <- sum((z-mz)^4)/(nz*sz^4)-3
+# Standard scores
+zy <- (165-my)/sy
+zz <- (178-mz)/sz
+@
+
+\begin{question}
+\puntos{5}In a sample of 10 families with a son older than 20 it has been measured the height of the father ($X$), the mother ($Y$) and the son ($Z$) in centimetres, getting the following results: 
+
+$$
+<<echo=FALSE, results=tex>>=
+print(xtable(data, align=c("c", "c", "c", "c"), auto=T), tabular.environment="array", include.rownames = F, floating=F, hline.after = c(0,nrow(data)), sanitize.text.function = function(x) { x })
+@
+$$
+
+\begin{enumerate}
+\item In which sample is the mean more representative, in the sample of fathers or mothers?
+\item Are there outliers in the sample of sons? 
+\item According to the shape of the distribution, can the sample of mothers come from a normal population?
+\item Who is higher in her/his sample, a mother 165 cm tall or a son 178 cm tall?
+\item If we had measured the heights in meters, how the representativity of the mean would have been affected?
+
+\end{enumerate}
+
+Use the following sums for the computations:\\
+Father's height: $\sum x_i=\Sexpr{sum(x)}$ cm, $\sum x_i^2=\Sexpr{sum(x^2)}$ cm$^2$, $\sum (x_i-\bar x)^3=\Sexpr{round(sum((x-mx)^3),2)}$ cm$^3$ y $\sum (x_i-\bar x)^4=\Sexpr{round(sum((x-mx)^4),2)}$ cm$^4$.\\
+Mother's height: $\sum y_i=\Sexpr{sum(y)}$ cm, $\sum y_i^2=\Sexpr{sum(y^2)}$ cm$^2$, $\sum (y_i-\bar y)^3=\Sexpr{round(sum((y-my)^3),2)}$ cm$^3$ y $\sum (y_i-\bar y)^4=\Sexpr{round(sum((y-my)^4),2)}$ cm$^4$. \\
+Son's height: $\sum z_i=\Sexpr{sum(z)}$ cm, $\sum z_i^2=\Sexpr{sum(z^2)}$ cm$^2$, $\sum (z_i-\bar z)^3=\Sexpr{round(sum((z-mz)^3),2)}$ cm$^3$ y $\sum (z_i-\bar z)^4=\Sexpr{round(sum((z-mz)^4),2)}$ cm$^4$.
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item Padres: $\bar x=\Sexpr{round(mx,4)}$ cm, $s^2=\Sexpr{round(s2x,4)}$ cm$^2$, $s=\Sexpr{round(sx,4)}$ cm y $cv=\Sexpr{round(cvx,4)}$.\\
+Madres: $\bar y=\Sexpr{round(my,4)}$ cm, $s^2=\Sexpr{round(s2y,4)}$ cm$^2$, $s=\Sexpr{round(sy,4)}$ cm y $cv=\Sexpr{round(cvy,4)}$.\\
+La estatura media es un poco más representativa en el grupo de las madres.
+\item Las vallas en la muestra de hijos son $f_1=\Sexpr{round(f1,2)}$ cm y $f_2=\Sexpr{round(f2,2)}$ cm por lo que no hay estaturas atípicas entre los hijos.
+\item $g_{1y}=\Sexpr{round(g1y,4)}$ y $g_{2y}=\Sexpr{round(g2y,4)}$. Como el coeficiente de asimetría y el de apuntamiento están dentro del intervalo de -2 a 2, podemos asumir que la muestra de estaturas de madres proviene de una población normal.
+\item  Puntuación típica madres: $z(165)=\Sexpr{round(zy, 4)}$.\\
+Puntuación típica hijos: $z(178)=\Sexpr{round(zz, 4)}$.\\
+Así pues, una madre de 165 cm es relativamente más alta que un hijo de 178 cm.
+\item La respresentatividad de las medias no cambiaría ya que tanto las medias como las desviaciones típicas estarían divididas por 100.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{des-gen-15}
+%% \extol{0.001}
+%% \degree{Optics}
+ 
