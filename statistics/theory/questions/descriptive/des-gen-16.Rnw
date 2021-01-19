@@ -1,0 +1,88 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+library(xtable)
+library(ggplot2)
+x <- c(-1.2, -0.7, -0.4, -0.9, -1.6, 0.5, 0.2, -1.8, 0.8)
+y <- c(-2.1, -0.5, -0.7, -1.9, 0.2, -2.8, -1)
+n <- length(x)
+
+## QUESTION/ANSWER GENERATION
+# Sample size
+nx <- length(x)
+ny <- length(y)
+# Mean
+mx <- mean(x)
+my <- mean(y)
+# Varianza
+s2x <- sum(x^2)/nx-mx^2
+s2y <- sum(y^2)/ny-my^2
+# St.deviation
+sx <- sqrt(s2x)
+sy <- sqrt(s2y)
+# Coef. variation
+cvx <- sx/abs(mx)
+cvy <- sy/abs(my)
+# Coef. skewness
+g1x <- sum((x-mx)^3)/(nx*sx^3)
+g1y <- sum((y-my)^3)/(ny*sy^3)
+# Coef. kurtosis
+g2x <- sum((x-mx)^4)/(nx*sx^4)-3
+g2y <- sum((y-my)^4)/(ny*sy^4)-3
+# Standard scores
+zx <- (-0.5-mx)/sx
+zy <- (-1-my)/sy
+@
+
+\begin{question}
+\puntos{5}The table below contains the differences between the grades in the final school exam and the entrance exam in a sample of public high schools ($X$) and private high schools ($Y$):   
+
+$$
+\begin{array}{lrrrrrrrrr}
+\hline
+\mbox{Public schools} & -1.2 & -0.7 & -0.4 & -0.9 & -1.6 & 0.5 & 0.2 & -1.8 & 0.8\\
+\mbox{Private schools} & -2.1 & -0.5 & -0.7 & -1.9 & 0.2 & -2.8 & -1\\  
+\hline
+\end{array}
+$$
+
+\begin{enumerate}
+\item Which of the following box plots corresponds to each variable? Compare the central dispersion of the two variables according to the box plots. In which variable is smaller the median?
+
+<<boxplot-grades, fig=T, echo=F, height=4, width=6, dev="svg", fig.path="img">>=
+boxplot(y, x, horizontal=T)
+@
+
+\item In which type of schools is more representative the mean of grades?
+\item In which type of schools is more symmetric the distribution of grades?
+\item In which type of schools is more peaked the distribution of grades?
+\item Which difference is relativey smaller, $-0.5$ points in a public high school or $-1$ points in a private high school?
+\end{enumerate}
+
+Use the following sums for the computations:\\
+Public: $\sum x_i=\Sexpr{sum(x)}$, $\sum x_i^2=\Sexpr{sum(x^2)}$, $\sum (x_i-\bar x)^3=\Sexpr{round(sum((x-mx)^3),2)}$ and $\sum (x_i-\bar x)^4=\Sexpr{round(sum((x-mx)^4),2)}$.\\
+Private: $\sum y_i=\Sexpr{sum(y)}$, $\sum y_i^2=\Sexpr{sum(y^2)}$, $\sum (y_i-\bar y)^3=\Sexpr{round(sum((y-my)^3),2)}$ and $\sum (y_i-\bar y)^4=\Sexpr{round(sum((y-my)^4),2)}$. \\
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item The box plot 1 corresponds to private schools and the box plot 2 to public schools. The central dispersion is pretty similar in both variables. The median is smaller in private schools.
+\item Public schools: $\bar x=\Sexpr{round(mx,4)}$ , $s^2=\Sexpr{round(s2x,4)}$ , $s=\Sexpr{round(sx,4)}$  y $cv=\Sexpr{round(cvx,4)}$.\\
+Private schools: $\bar y=\Sexpr{round(my,4)}$ , $s^2=\Sexpr{round(s2y,4)}$ , $s=\Sexpr{round(sy,4)}$  y $cv=\Sexpr{round(cvy,4)}$.\\
+Thus, the mean of the grade is more respresentative in private schools.
+\item $g_{1x}=\Sexpr{round(g1x,4)}$ and $g_{1y}=\Sexpr{round(g1y,4)}$. Thus, the distribution of grades in private schools is more symmetric as the coefficient of skewness is closer to 0.
+\item $g_{2x}=\Sexpr{round(g2x,4)}$ and $g_{2y}=\Sexpr{round(g2y,4)}$. Thus, the distribution of grades in private schools is more peaked.
+\item Public schools: $z(-0.5)=\Sexpr{round(zx, 4)}$.\\
+Private schools: $z(-1)=\Sexpr{round(zy, 4)}$.\\
+Thus, a difference of grades -0.5 in a public schools is relatively smaller than a difference of -1 in a private school. 
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{des-gen-15}
+%% \extol{0.001}
+%% \degree{Optics}
+ 

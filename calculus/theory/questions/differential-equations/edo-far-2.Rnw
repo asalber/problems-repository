@@ -1,0 +1,30 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+
+## QUESTION/ANSWER GENERATION
+# sample size
+
+@
+
+\begin{question}
+\puntos{3.5} A drug is administered intravenously at a speed of 15 mg/hour. At the same time, the body methabolizes the drug at a rate of 80\% of the amount in the body per hour. 
+
+\begin{enumerate}
+\item If the drug is administered continuously, what will the maximum amount of drug in the body be? Assume that there was no drug in the body at the beginning of the process.
+\item If administration is stopped when the amount administered is 150 mg, how long from that point will it take for the patient to have only 10 mg of drug in the body?
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{edo-far-1}
+%% \extol{0.001}
+%% \degree{Pharmacy}
+ 

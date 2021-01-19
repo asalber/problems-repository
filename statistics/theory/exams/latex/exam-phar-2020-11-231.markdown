@@ -1,89 +1,100 @@
 1.  **Question**\
-    Se está desarrollando un test diagnóstico para detectar COVID19.
-    Para ello, se ha realizado un estudio sobre 10000 personas, de las
-    cuales, 850 padecían infección por COVID19. En éstas el test dio
-    positivo en 800 de ellas. En las personas sanas el test dio positivo
-    en el 10% de los casos.
+    A test to detect the COVID19 was applied to 850 persons infected by
+    COVID19 with a positive outcome in 800 of them, and it was also
+    applied to 9150 non-infected persons with a positive outcome in 10%
+    of them.
 
-    1.  ¿Cuál es la sensibilidad y especificidad del test?
+    1.  Compute the sensitivity and the specificity of the test.
 
-    2.  ¿Cuáles son los valores predictivos positivo y negativo?
+    2.  Compute the positive and the negative predictive values and
+        interpret them.
 
-    3.  ¿Cuál es la probabilidad de que el test acierte?
+    3.  Compute the probability of a correct diagnostic.
 
     **Solution**\
-    Sea $E$ el suceso consistente en tener la enfermedad y $+$ y $-$ los
-    sucesos correspondientes a obtener un resultado positivo y negativo
-    respectivamente en el test.
+    Let $D$ the event corresponding to suffering COVID19 and $+$ and $-$
+    the events corresponding to get a positive and a negative outcome
+    respectively.
 
-    1.  $VPP=0.9192$.
+    1.  The sensitivity is $P(+|D) = 0.9412$ and specificity
+        $P(-|\overline D) = 0.9$.
 
-    2.  $VPN=0.9776$.
+    2.  Positive predictive value $P(D|+) = 0.4665$ and negative
+        predictive value $P(\overline D|-) = 0.994$. As de positive
+        predictive value is less than 0.5 we can not use this test to
+        confirm COVID19, but we can use it to rule it out with a strong
+        confidence since the negative predictive value is pretty close
+        to 1.
 
-    3.  Es más fiable para descartar la enfermedad ya que el valor
-        predictivo negativo es mayor que el valor predictivo positivo.
-
-    4.  $P(E\cap +)+P(\overline E\cap -) = 0.966$.
+    3.  $P(D\cap +) + P(\overline D\cap -) = 0.9035$.
 
 2.  **Question**\
-    Un recién nacido afectado por el síndrome de Moebius parpadea, en
-    término medio, 2 veces por minuto.
+    A newborn baby affected by Moebius syndrome blinks, on average,
+    twice a minute.
 
-    1.  Calcula la probabilidad de que el recién nacido parpadee 2 veces
-        en medio minuto.
+    1.  Compute the probability that a newborn blinks twice in half a
+        minute.
 
-    2.  En un hospital nacen 5 niños con síndrome de Moebius. Calcula la
-        probabilidad de que al menos 3 de ellos parpadeen en su primer
-        minuto de vida.
+    2.  In a hospital five children have been born with Moebius
+        syndrome. Compute the probability that at least 3 of them blink
+        in their first minute of life.
 
-    3.  ¿En qué distribución es más representativa la media, en la del
-        número de veces que parpadea en un minunto o en la del número de
-        veces que parpadea en medio minuto?
+    3.  In which distribution is more representative the mean, in the
+        number of times that a newborn blinks in a minute or in the
+        number of times that a newborn blinks in half a minute?
 
     **Solution**\
 
-    1.  Sea $X$ el número de pacientes que llegan en 1 horas.
-        $X\sim P(2)$ y $P(X>4)=0.0527$.
+    1.  Let $X$ be the number of times that a newborn blinks in half a
+        minute, then $X\sim P(1)$ and $P(X=2)=0.1839$.
 
-    2.  Sea $Y$ el número de horas en un día en las que algún paciente
-        no puede ser atendido. $Y\sim B(6, 0.0527)$ y $P(Y>0)=0.2771$.
-        Se necesitan 5 empleados para que esta probabilidad sea menor
-        del 10%.\
-        Se necesitan 5 empleados para que esta probabilidad sea menor
-        del 10%, ya que $P(X>5)=0.0527$ y $P(Y>0)=0.0954$, siendo ahora
-        $Y\sim B(6, 0.0166)$.
+    2.  Let $Y$ be the number of newborns that blink in their first
+        minute of life in a sample of 5 newborns, then
+        $Y\sim B(5, 0.8647)$ and $P(Y\geq 3)=0.98$.
+
+    3.  Let $Z$ be the number of times that a newborn blinks in a
+        minute, then $cv_z = 0.7071$ and $cv_x = 1$. Thus, the mean of
+        $Z$ represents better since its coefficient of variation is
+        smaller.
 
 3.  **Question**\
-    El nivel de prolactina en mujeres embarazadas y no embarazadas sigue
-    una distribución normal con distintas medias $\mu_1$ y $\mu_2$
-    respectivamente, pero con la misma varianza. Cuando los niveles de
-    prolactina superan los 15 ng/ml, la mujer segrega leche por las
-    glándulas mamarias. Se sabe que el 95% de las mujeres embarazadas
-    segregan leche pero esto sólo lo hacen el 1% de las mujeres no
-    embarazas.
+    The prolactin level in pregnant and non-pregnant females follows a
+    normal distribution with different means but with the same variance.
+    When the prolactin levels exceed 15 ng/ml, females secrete milk
+    through their mammary glands. It is known that 95% of pregnant
+    females secrete milk but only 1% of non-pregnant females secret
+    milk.
 
-    1.  Si se sabe que la mediana del nivel de prolactina en las mujeres
-        embarazadas es 16 ng/ml, ¿cuánto valen las medias y desviación
-        típica de ambas variables?\
-        Nota: Si no se ha sabido calcular la media y la desviación
-        típica para mujeres embarazadas tomar $\mu_1=17$ ng/ml,
-        $\sigma=2$ ng/ml para los siguientes apartados.
+    1.  If the median of the prolactin level in pregnant females is 16
+        ng/ml, what are the means and the standard deviation of the
+        prolactin level in both populations?\
+        Remark: If you are not able to compute the mean or the standard
+        deviation for pregnant females, use $\mu=17$ ng/ml and
+        $\sigma=2$ ng/ml for the next parts.
 
-    2.  ¿Cuál sería la probabilidad de que una mujer embarazada tenga un
-        nivel de prolactina entre $15.5$ ng/ml y 17 ng/ml?
+    2.  Compute the percentage of pregnant females with a prolactin
+        level between 15.5 and 17 ng/ml.
 
-    3.  ¿Qué nivel mínimo de prolactina tienen el 20% de las mujeres
-        embarazadas con mayores niveles?
+    3.  Compute the prolactin level such that 20% of pregnant females
+        are above that level.
 
     **Solution**\
+    Let $X$ and $Y$ be the prolactin levels in pregnant and non-pregnan
+    females respectively.
+
+    1.  $\mu_x=16$ ng/ml, $\mu_y=13.5857$ ng/ml and $\sigma=0.608$
+        ng/ml.
+
+    2.  $P(15.5<X<17) = 0.7446$, so 74.4583% of pregnant females.
+
+    3.  $P_{80} = 16.5117$ ng/ml.
 
 4.  **Question**\
     An organism has the same chance of being infected by a virus and a
-    bacteria. At the same time, the probability of being infecte by a
+    bacteria. At the same time, the probability of being infected by a
     virus doubles when the organism has been previously infected by a
     bacteria. On the other hand, the probability of being infected by no
-    pathogen () probabilidad de que el organismo no sea infectado por
-    ningún patógeno (neither virus nor bacteria) is $0.52$.
+    pathogen (neither virus nor bacteria) is $0.52$.
 
     1.  What is the probability of being infected by a virus and a
         bacteria at the same time?
@@ -97,3 +108,13 @@
         independent?
 
     **Solution**\
+    Let $V$ and $B$ the events corresponding to be infected by a virus
+    and a bacteria respectively.
+
+    1.  $P(V\cap B) = 0.32$.
+
+    2.  $P(B|V) = 0.8$.
+
+    3.  $P(V\cap \overline B) = 0.08$.
+
+    4.  The events are dependents since $P(V) = 0.4 \neq 0.8 = P(V|B)$.

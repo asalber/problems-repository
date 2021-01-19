@@ -1,23 +1,25 @@
 <<echo=FALSE, results=hide>>=
 ## DATA GENERATION
-sen <- 800 / 850
-spe <- 0.9
-pre <- 850 / (850 + 9150)
+fp <- 0.01
+fn <- 0.002
+pre <- 1 / 400
 ## QUESTION/ANSWER GENERATION
-tp <- pre * sen
-fn <- pre * (1-sen)
-fp <- (1-pre) * (1-spe)
-tn <- (1-pre) * spe
-ppv <- tp / (tp + fp)
-npv <- tn / (tn + fn)
+# tp <- pre * sen
+# fn <- pre * (1-sen)
+# fp <- (1-pre) * (1-spe)
+# tn <- (1-pre) * spe
+# ppv <- tp / (tp + fp)
+# npv <- tn / (tn + fn)
 @
 
 \begin{question}
-\puntos{2.5} A test to detect the COVID19 was applied to 850 persons infected by COVID19 with a positive outcome in 800 of them, and it was also applied to 9150 non-infected persons with a positive outcome in 10\% of them.
+\puntos{3.5} A test to detect prostate cancer produces 1\% of false positives and 0.2\% false negatives. It is known that 1 in 400 males suffer this type of cancer.
 \begin{enumerate}
 \item Compute the sensitivity and the specificity of the test.
-\item Compute the positive and the negative predictive values and interpret them. 
-\item Compute the probability of a correct diagnostic.
+\item If a male got a positive outcome in the test, what is the chance of developing cancer?
+\item Compute and interpret the negative predictive value.
+\item Is this test better to predict or to rule out the cancer?
+\item To study wether there is an association between the practice of sports and this type of cancer, a sample of 1000 males was drawn, of which 700 practiced sports, and it was observed that there were 2 males with cancer in the group of males who practiced sports, and there were 3 males with cancer in the group of males who did not practice sports. Compute the relative risk and the odds ratio and interpret them. 
 \end{enumerate}
 \end{question}
 

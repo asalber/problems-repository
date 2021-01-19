@@ -1,0 +1,30 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+
+## QUESTION/ANSWER GENERATION
+# sample size
+
+@
+
+\begin{question}
+\puntos{3} A beach ball has a volumen of 50 dm$^3$ at the time when we start to pump air into it at a rate of 2 dm$^3$/min.
+\begin{enumerate}
+\item What is the speed at which the radius is changing?
+\item About when will the surface of the ball be twice its initial value?
+\end{enumerate}
+Remark: The volume of a sphere is $V(r)=\frac{4}{3}\pi r^3$ and the surface is $S(r)=4\pi r^2$.
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{edo-far-1}
+%% \extol{0.001}
+%% \degree{Pharmacy}
+ 

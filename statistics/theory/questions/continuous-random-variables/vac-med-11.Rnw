@@ -1,18 +1,19 @@
 <<echo=FALSE, results=hide>>=
 ## DATA GENERATION
-# m1 <- 26
-# s1 <- 2.1
-# m2 <- 15
-# s2 <- 2.8
-# 
-# x1 <- 46
-# x2 <- 49
-# p1 <- 0.8
+x <- 15
+p1 <- 0.95
+p2 <- 0.01
+mx <- 16
+  
 ## QUESTION/ANSWER GENERATION
-# sol1 <- pnorm(x1, m, s, lower.tail = F)
-# sol2 <- pnorm(x2, m, s) - pnorm(x1, m, s)
-# a <- qnorm((1-p1)/2, m, s)
-# b <- qnorm(1-(1-p1)/2, m, s)
+q1 <- qnorm(p1, lower.tail = F)
+q2 <- qnorm(p2, lower.tail = F)
+# Std. deviation of pregnant females
+s <- (x - mx) / q1
+# Mean of non-pregnant females
+my <- x - q2 * s  
+p3 <- pnorm(17, mx, s) - pnorm(15.5, mx, s)
+q3 <- qnorm(0.2, mx, s, lower.tail = F)
 @
 
 \begin{question}
@@ -29,14 +30,19 @@ Remark: If you are not able to compute the mean or the standard deviation for pr
 
 %% SOLUTIONS
 \begin{solution}
-
+Let $X$ and $Y$ be the prolactin levels in pregnant and non-pregnan females respectively.
+\begin{enumerate}
+\item $\mu_x=\Sexpr{round(mx, 4)}$ ng/ml, $\mu_y=\Sexpr{round(my, 4)}$ ng/ml and $\sigma=\Sexpr{round(s, 4)}$ ng/ml.
+\item $P(15.5<X<17) = \Sexpr{round(p3, 4)}$, so \Sexpr{round(p3 * 100, 4)}\% of pregnant females.
+\item $P_{80} = \Sexpr{round(q3, 4)}$ ng/ml.
+\end{enumerate}
 \end{solution}
 
 %% META-INFORMATION
 %% \extype{num}
-%% \exsolution{Solución}
-%% \exname{vac-opt-2}
+%% \exsolution{Solution}
+%% \exname{vac-med-11}
 %% \extol{0.001}
-%% \degree{Óptica}
+%% \degree{Medicine}
  
   

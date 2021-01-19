@@ -1,17 +1,14 @@
 <<echo=FALSE, results=hide>>=
 ## DATA GENERATION
-pA <- 4/5
-pB <- 0.5
-pNoANoB <- 1/20
+pB <- 0.4
+pV <- 0.4
+pVsiB <- 0.8
+pNoBNoV <- 0.52
 
 ## QUESTION/ANSWER GENERATION
-pAoB <- 1-pNoANoB
-pAB <- pA + pB - pAoB
-pNoAB <- pB-pAB
-pNoA <- 1-pA
-pNoB <- 1-pB
-pBSiA <- pAB/pA
-pBSiNoA <- pNoAB/pNoA
+pVB <- pB * pVsiB
+pBsiV <- pVB / pV
+pVnoB <- pV - pVB
 @
 
 \begin{question}
@@ -27,13 +24,19 @@ pBSiNoA <- pNoAB/pNoA
 
 %% SOLUTIONS
 \begin{solution}
-
+Let $V$ and $B$ the events corresponding to be infected by a virus and a bacteria respectively.
+\begin{enumerate}
+\item $P(V\cap B) = \Sexpr{round(pVB, 4)}$.
+\item $P(B|V) = \Sexpr{round(pBsiV, 4)}$.
+\item $P(V\cap \overline B) = \Sexpr{round(pVnoB, 4)}$.
+\item The events are dependents since $P(V) = \Sexpr{round(pV, 4)} \neq \Sexpr{round(pVsiB, 4)} = P(V|B)$.
+\end{enumerate}
 \end{solution}
 
 %% META-INFORMATION
 %% \extype{num}
-%% \exsolution{Solución}
+%% \exsolution{Solution}
 %% \exname{prob-med-9}
 %% \extol{0.001}
-%% \degree{Medicina}
+%% \degree{Medicine}
  
