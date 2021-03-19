@@ -12,7 +12,7 @@
 \item Compute the means of $X$ and $Y$.
 \item Compute the linear correlation coefficient and interpret it. 
 \end{enumerate}
-\end{question}
+\end{question}  
 
 
 %% SOLUTIONS

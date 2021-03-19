@@ -1,0 +1,512 @@
+Version = "A",
+Time = "1 hour"
+)
+)
+# Remove directory of exam images
+unlink("img/exam1", recursive = TRUE)
+exams2pandoc(questions, n=1,
+name = "exam-phar-2020-10-26",
+encoding = "UTF-8",
+type="latex",
+dir = "latex",
+edir = "../questions",
+sdir = "img",
+template = c("templates/plain.tex"),
+svg=T
+)
+pandoc("latex/exam-phar-2020-10-261.latex", format="markdown")
+questions <- c("des-med-13", "des-gen-14", "reglin-far-11")
+exams2pdf(questions, n=1, name = c("exam-phar-2020-10-26", "solution-phar-2020-10-26"), encoding = "UTF-8",
+dir = "pdf",
+edir = "../questions",
+template = c("templates/examceu.tex", "templates/solutionceu.tex"),
+header = list(
+Subject = "STATISTICS\\\\[2mm] (DESCRIPTIVE STATISTICS AND REGRESSION)",
+Degree= "Pharmacy/Biotechnology 1st year",
+Date = "October, 26 2020",
+Version = "A",
+Time = "1 hour"
+)
+)
+# Remove directory of exam images
+unlink("img/exam1", recursive = TRUE)
+exams2pandoc(questions, n=1,
+name = "exam-phar-2020-10-26",
+encoding = "UTF-8",
+type="latex",
+dir = "latex",
+edir = "../questions",
+sdir = "img",
+template = c("templates/plain.tex"),
+svg=T
+)
+pandoc("latex/exam-phar-2020-10-261.latex", format="markdown")
+questions <- c("des-med-13", "des-gen-14", "reglin-far-11")
+exams2pdf(questions, n=1, name = c("exam-phar-2020-10-26", "solution-phar-2020-10-26"), encoding = "UTF-8",
+dir = "pdf",
+edir = "../questions",
+template = c("templates/examceu.tex", "templates/solutionceu.tex"),
+header = list(
+Subject = "STATISTICS\\\\[2mm] (DESCRIPTIVE STATISTICS AND REGRESSION)",
+Degree= "Pharmacy/Biotechnology 1st year",
+Date = "October, 26 2020",
+Version = "A",
+Time = "1 hour"
+)
+)
+# Remove directory of exam images
+unlink("img/exam1", recursive = TRUE)
+exams2pandoc(questions, n=1,
+name = "exam-phar-2020-10-26",
+encoding = "UTF-8",
+type="latex",
+dir = "latex",
+edir = "../questions",
+sdir = "img",
+template = c("templates/plain.tex"),
+svg=T
+)
+pandoc("latex/exam-phar-2020-10-261.latex", format="markdown")
+questions <- c("des-med-13", "des-gen-14", "reglin-far-11")
+exams2pdf(questions, n=1, name = c("exam-phar-2020-10-26", "solution-phar-2020-10-26"), encoding = "UTF-8",
+dir = "pdf",
+edir = "../questions",
+template = c("templates/examceu.tex", "templates/solutionceu.tex"),
+header = list(
+Subject = "STATISTICS\\\\[2mm] (DESCRIPTIVE STATISTICS AND REGRESSION)",
+Degree= "Pharmacy/Biotechnology 1st year",
+Date = "October, 26 2020",
+Version = "A",
+Time = "1 hour"
+)
+)
+# Remove directory of exam images
+unlink("img/exam1", recursive = TRUE)
+exams2pandoc(questions, n=1,
+name = "exam-phar-2020-10-26",
+encoding = "UTF-8",
+type="latex",
+dir = "latex",
+edir = "../questions",
+sdir = "img",
+template = c("templates/plain.tex"),
+svg=T
+)
+pandoc("latex/exam-phar-2020-10-261.latex", format="markdown")
+source('/run/media/alf/datos/CEU/DOCENCIA/ejercicios/problems-repository/statistics/theory/exams/exam-phar-2020-10-26.R', echo=TRUE)
+questions <- c("des-med-13", "des-gen-14", "reglin-far-11")
+exams2pdf(questions, n=1, name = c("exam-phar-2020-10-26", "solution-phar-2020-10-26"), encoding = "UTF-8",
+dir = "pdf",
+edir = "../questions",
+template = c("templates/examceu.tex", "templates/solutionceu.tex"),
+header = list(
+Subject = "STATISTICS\\\\[2mm] (DESCRIPTIVE STATISTICS AND REGRESSION)",
+Degree= "Pharmacy/Biotechnology 1st year",
+Date = "October, 26 2020",
+Version = "A",
+Time = "1 hour"
+)
+)
+# Remove directory of exam images
+unlink("img/exam1", recursive = TRUE)
+exams2pandoc(questions, n=1,
+name = "exam-phar-2020-10-26",
+encoding = "UTF-8",
+type="latex",
+dir = "latex",
+edir = "../questions",
+sdir = "img",
+template = c("templates/plain.tex"),
+svg=T
+)
+pandoc("latex/exam-phar-2020-10-261.latex", format="markdown")
+source('/run/media/alf/datos/CEU/DOCENCIA/ejercicios/problems-repository/statistics/theory/exams/exam-phar-2020-10-26.R', echo=TRUE)
+library(remotes)
+source('/run/media/alf/datos/CEU/DOCENCIA/ejercicios/problems-repository/statistics/theory/exams/exam-phar-2020-10-26.R', echo=TRUE)
+## DATA GENERATION
+library(ggplot2)
+set.seed(123)
+n <- 20
+x <- rbinom(n, 10, 0.5)
+y <- rbinom(n, 10, 0.2)
+z <- rbinom(n, 10, 0.8)
+Score <- c(x, y, z)
+Subject <- c(rep('X', n), rep('Y', n), rep('Z', n))
+data <- data.frame(Score, Subject)
+p <- ggplot(data, aes(x=Score, y=Subject)) + geom_boxplot(width=0.5)
+p
+source('/run/media/alf/datos/CEU/DOCENCIA/ejercicios/problems-repository/statistics/theory/exams/exam-phar-2020-10-26.R', echo=TRUE)
+source('/datos/CEU/DOCENCIA/ejercicios/problems-repository/statistics/theory/exams/exam-phar-2020-10-26.R', echo=TRUE)
+exams2pdf(questions, n=1, name = c("exam-phar-2020-10-26", "solution-phar-2020-10-26"), encoding = "UTF-8",
+dir = "pdf",
+edir = "../questions",
+template = c("templates/examceu.tex", "templates/solutionceu.tex"),
+header = list(
+Subject = "STATISTICS\\\\[2mm] (DESCRIPTIVE STATISTICS AND REGRESSION)",
+Degree= "Pharmacy/Biotechnology 1st year",
+Date = "October, 26 2020",
+Version = "A",
+Time = "1 hour"
+)
+)
+exams2pdf(questions, n=1, name = c("exam-phar-2020-10-26", "solution-phar-2020-10-26"), encoding = "UTF-8",
+dir = "pdf",
+edir = "../questions",
+template = c("templates/examceu.tex", "templates/solutionceu.tex"),
+header = list(
+Subject = "STATISTICS\\\\[2mm] (DESCRIPTIVE STATISTICS AND REGRESSION)",
+Degree= "Pharmacy/Biotechnology 1st year",
+Date = "October, 26 2020",
+Version = "A",
+Time = "1 hour"
+)
+)
+# Remove directory of exam images
+unlink("img/exam1", recursive = TRUE)
+exams2pandoc(questions, n=1,
+name = "exam-phar-2020-10-26",
+encoding = "UTF-8",
+type="latex",
+dir = "latex",
+edir = "../questions",
+sdir = "img",
+template = c("templates/plain.tex"),
+svg=T
+)
+pandoc("latex/exam-phar-2020-10-261.latex", format="markdown")
+source('/datos/CEU/DOCENCIA/ejercicios/problems-repository/statistics/theory/exams/exam-phar-2020-11-17.R', echo=TRUE)
+exams2pdf(questions, n=1, name = c("exam-phar-2020-11-17", "solution-phar-2020-11-17"), encoding = "UTF-8",
+dir = "pdf",
+edir = "../questions",
+template = c("templates/examceu.tex", "templates/solutionceu.tex"),
+header = list(
+Subject = "STATISTICS\\\\[2mm] (DESCRIPTIVE STATISTICS AND REGRESSION)",
+Degree= "Pharmacy/Biotechnology 1st year",
+Date = "November, 17 2020",
+Version = "A",
+Time = "1 hour"
+)
+)
+exams2pdf(questions, n=1, name = c("exam-phar-2020-11-17", "solution-phar-2020-11-17"), encoding = "UTF-8",
+dir = "pdf",
+edir = "../questions",
+template = c("templates/examceu.tex", "templates/solutionceu.tex"),
+header = list(
+Subject = "STATISTICS\\\\[2mm] (DESCRIPTIVE STATISTICS AND REGRESSION)",
+Degree= "Pharmacy/Biotechnology 1st year",
+Date = "November, 17 2020",
+Version = "A",
+Time = "1 hour"
+)
+)
+source('/run/media/alf/datos/CEU/DOCENCIA/ejercicios/problems-repository/statistics/theory/exams/exam-phar-2020-11-17.R', echo=TRUE)
+## DATA GENERATION
+ntd <- 480
+nth <- 2320
+ncd <- 255
+nch <- 1505
+nt <- ntd + nth
+nc <- ncd + nch
+n <- nt + nc
+n
+## QUESTION/ANSWER GENERATION
+pre <- (ntd + ncd) / n
+pre
+480/(489+2320)
+rt
+489/(489+2320)
+480/(480+2320)
+rt
+255/(255+1505)
+rc
+rt/rc
+exp(-14)*14^4/factorial(14)
+exp(-14)*14^14/factorial(14)
+dpois(14,14)
+source('/datos/CEU/DOCENCIA/ejercicios/problems-repository/statistics/theory/exams/exam-phar-2020-11-23.R', echo=TRUE)
+exams2pdf(questions, n=1, name = c("exam-phar-2020-11-23", "solution-phar-2020-11-23"), encoding = "UTF-8",
+dir = "pdf",
+edir = "../questions",
+template = c("templates/examceu.tex", "templates/solutionceu.tex"),
+header = list(
+Subject = "STATISTICS\\\\[2mm] (PROBABILITY AND RANDOM VARIABLES)",
+Degree= "Pharmacy/Biotechnology 1st year",
+Date = "November, 23 2020",
+Version = "A",
+Time = "1 hour"
+)
+)
+exams2pdf(questions, n=1, name = c("exam-phar-2020-11-23", "solution-phar-2020-11-23"), encoding = "UTF-8",
+dir = "pdf",
+edir = "../questions",
+template = c("templates/examceu.tex", "templates/solutionceu.tex"),
+header = list(
+Subject = "STATISTICS\\\\[2mm] (PROBABILITY AND RANDOM VARIABLES)",
+Degree= "Pharmacy/Biotechnology 1st year",
+Date = "November, 23 2020",
+Version = "A",
+Time = "1 hour"
+)
+)
+exams2pdf(questions, n=1, name = c("exam-phar-2020-11-23", "solution-phar-2020-11-23"), encoding = "UTF-8",
+dir = "pdf",
+edir = "../questions",
+template = c("templates/examceu.tex", "templates/solutionceu.tex"),
+header = list(
+Subject = "STATISTICS\\\\[2mm] (PROBABILITY AND RANDOM VARIABLES)",
+Degree= "Pharmacy/Biotechnology 1st year",
+Date = "November, 23 2020",
+Version = "A",
+Time = "1 hour"
+)
+)
+exams2pdf(questions, n=1, name = c("exam-phar-2020-11-23", "solution-phar-2020-11-23"), encoding = "UTF-8",
+dir = "pdf",
+edir = "../questions",
+template = c("templates/examceu.tex", "templates/solutionceu.tex"),
+header = list(
+Subject = "STATISTICS\\\\[2mm] (PROBABILITY AND RANDOM VARIABLES)",
+Degree= "Pharmacy/Biotechnology 1st year",
+Date = "November, 23 2020",
+Version = "A",
+Time = "1 hour"
+)
+)
+exams2pdf(questions, n=1, name = c("exam-phar-2020-11-23", "solution-phar-2020-11-23"), encoding = "UTF-8",
+dir = "pdf",
+edir = "../questions",
+template = c("templates/examceu.tex", "templates/solutionceu.tex"),
+header = list(
+Subject = "STATISTICS\\\\[2mm] (PROBABILITY AND RANDOM VARIABLES)",
+Degree= "Pharmacy/Biotechnology 1st year",
+Date = "November, 23 2020",
+Version = "A",
+Time = "1 hour"
+)
+)
+exams2pdf(questions, n=1, name = c("exam-phar-2020-11-23", "solution-phar-2020-11-23"), encoding = "UTF-8",
+dir = "pdf",
+edir = "../questions",
+template = c("templates/examceu.tex", "templates/solutionceu.tex"),
+header = list(
+Subject = "STATISTICS\\\\[2mm] (PROBABILITY AND RANDOM VARIABLES)",
+Degree= "Pharmacy/Biotechnology 1st year",
+Date = "November, 23 2020",
+Version = "A",
+Time = "1 hour"
+)
+)
+exams2pdf(questions, n=1, name = c("exam-phar-2020-11-23", "solution-phar-2020-11-23"), encoding = "UTF-8",
+dir = "pdf",
+edir = "../questions",
+template = c("templates/examceu.tex", "templates/solutionceu.tex"),
+header = list(
+Subject = "STATISTICS\\\\[2mm] (PROBABILITY AND RANDOM VARIABLES)",
+Degree= "Pharmacy/Biotechnology 1st year",
+Date = "November, 23 2020",
+Version = "A",
+Time = "1 hour"
+)
+)
+exams2pdf(questions, n=1, name = c("exam-phar-2020-11-23", "solution-phar-2020-11-23"), encoding = "UTF-8",
+dir = "pdf",
+edir = "../questions",
+template = c("templates/examceu.tex", "templates/solutionceu.tex"),
+header = list(
+Subject = "STATISTICS\\\\[2mm] (PROBABILITY AND RANDOM VARIABLES)",
+Degree= "Pharmacy/Biotechnology 1st year",
+Date = "November, 23 2020",
+Version = "A",
+Time = "1 hour"
+)
+)
+## DATA GENERATION
+sen <- 800/850
+spe <- 0.9
+pre <- 850 / (850 + 9150)
+pre
+source('/datos/CEU/DOCENCIA/ejercicios/problems-repository/statistics/theory/exams/exam-phar-2020-11-23.R', echo=TRUE)
+exams2pdf(questions, n=1, name = c("exam-phar-2020-11-23", "solution-phar-2020-11-23"), encoding = "UTF-8",
+dir = "pdf",
+edir = "../questions",
+template = c("templates/examceu.tex", "templates/solutionceu.tex"),
+header = list(
+Subject = "STATISTICS\\\\[2mm] (PROBABILITY AND RANDOM VARIABLES)",
+Degree= "Pharmacy/Biotechnology 1st year",
+Date = "November, 23 2020",
+Version = "A",
+Time = "1 hour"
+)
+)
+round(sqrt(1)/1)
+round(sqrt(2)/2)
+sqrt(2)
+exams2pdf(questions, n=1, name = c("exam-phar-2020-11-23", "solution-phar-2020-11-23"), encoding = "UTF-8",
+dir = "pdf",
+edir = "../questions",
+template = c("templates/examceu.tex", "templates/solutionceu.tex"),
+header = list(
+Subject = "STATISTICS\\\\[2mm] (PROBABILITY AND RANDOM VARIABLES)",
+Degree= "Pharmacy/Biotechnology 1st year",
+Date = "November, 23 2020",
+Version = "A",
+Time = "1 hour"
+)
+)
+exams2pdf(questions, n=1, name = c("exam-phar-2020-11-23", "solution-phar-2020-11-23"), encoding = "UTF-8",
+dir = "pdf",
+edir = "../questions",
+template = c("templates/examceu.tex", "templates/solutionceu.tex"),
+header = list(
+Subject = "STATISTICS\\\\[2mm] (PROBABILITY AND RANDOM VARIABLES)",
+Degree= "Pharmacy/Biotechnology 1st year",
+Date = "November, 23 2020",
+Version = "A",
+Time = "1 hour"
+)
+)
+exams2pdf(questions, n=1, name = c("exam-phar-2020-11-23", "solution-phar-2020-11-23"), encoding = "UTF-8",
+dir = "pdf",
+edir = "../questions",
+template = c("templates/examceu.tex", "templates/solutionceu.tex"),
+header = list(
+Subject = "STATISTICS\\\\[2mm] (PROBABILITY AND RANDOM VARIABLES)",
+Degree= "Pharmacy/Biotechnology 1st year",
+Date = "November, 23 2020",
+Version = "A",
+Time = "1 hour"
+)
+)
+exams2pdf(questions, n=1, name = c("exam-phar-2020-11-23", "solution-phar-2020-11-23"), encoding = "UTF-8",
+dir = "pdf",
+edir = "../questions",
+template = c("templates/examceu.tex", "templates/solutionceu.tex"),
+header = list(
+Subject = "STATISTICS\\\\[2mm] (PROBABILITY AND RANDOM VARIABLES)",
+Degree= "Pharmacy/Biotechnology 1st year",
+Date = "November, 23 2020",
+Version = "A",
+Time = "1 hour"
+)
+)
+exams2pdf(questions, n=1, name = c("exam-phar-2020-11-23", "solution-phar-2020-11-23"), encoding = "UTF-8",
+dir = "pdf",
+edir = "../questions",
+template = c("templates/examceu.tex", "templates/solutionceu.tex"),
+header = list(
+Subject = "STATISTICS\\\\[2mm] (PROBABILITY AND RANDOM VARIABLES)",
+Degree= "Pharmacy/Biotechnology 1st year",
+Date = "November, 23 2020",
+Version = "A",
+Time = "1 hour"
+)
+)
+pnorm(15, 16, 0.608, lower.tail = F)
+pnorm(15, 13.5857, 0.608, lower.tail = F)
+pnorm(17,16,0.608)-pnorm(15.5, 16, 0.608)
+source('/datos/CEU/DOCENCIA/ejercicios/problems-repository/statistics/theory/exams/exam-phar-2020-11-23.R', echo=TRUE)
+1.5/2
+0.5-0.2266
+17+0.84*2
+source('/run/media/alf/datos/CEU/DOCENCIA/ejercicios/problems-repository/statistics/theory/exams/exam-phar-2020-11-23.R', echo=TRUE)
+dbinom(3, 5, 0.8647)
+dbinom(4, 5, 0.8647)
+dbinom(5, 5, 0.8647)
+pnorm(1)
+pnorm(-0.67)
+pnorm(1)-pnorm(-0.67)
+8/3
+pnorm(2.67)
+qnorm(0.8)
+12+0.84*3
+0.3/0.45
+0.15/0.45
+260+82+25+9633
+0.0025/0.974
+1-0.0025/0.974
+0.974*(1-0.0025/0.974)
+0.9715/(0.0082+0.9715)
+0.0178/(0.0178+0.0025)
+library("knitr")
+library("exams")
+setwd("calculus/theory/exams")
+questions <- c("edo-far-2.Rnw", "derpar-gen-2.Rnw", "der-gen-1")
+exams2pdf(questions, n=1, name = c("exam-phar-2021-01-18-calc", "solution-phar-2021-01-18-calc"), encoding = "UTF-8",
+dir = "pdf",
+edir = "../questions",
+template = c("templates/examceu.tex", "templates/solutionceu.tex"),
+header = list(
+Subject = "CALCULUS",
+Degree= "Pharmacy/Biotechnology 1st year",
+Date = "January 18, 2021",
+Version = "A",
+Time = "1 hour"
+)
+)
+# Borrar directorio de imagenes del examen
+unlink("img/exam1", recursive = TRUE)
+exams2pandoc(questions, n=1,
+name = "exam-phar-2021-01-18-calc",
+encoding = "UTF-8",
+type="latex",
+dir = "latex",
+edir = "../questions",
+sdir = "img",
+template = c("templates/plain.tex"),
+svg=T
+)
+pandoc("latex/exam-phar-2021-01-18-calc1.latex", format="markdown")
+setwd("/datos/CEU/DOCENCIA/ejercicios/problems-repository")
+setwd("statistics/theory/exams")
+questions <- c("des-gen-16", "reglin-med-13", "reglin-gen-14")
+exams2pdf(questions, n=1, name = c("exam-phar-2021-01-18-des", "solution-phar-2021-01-18-des"), encoding = "UTF-8",
+dir = "pdf",
+edir = "../questions",
+template = c("templates/examceu.tex", "templates/solutionceu.tex"),
+header = list(
+Subject = "STATISTICS\\\\[2mm] (DESCRIPTIVE STATISTICS AND REGRESSION)",
+Degree= "Pharmacy/Biotechnology 1st year",
+Date = "January, 18 2021",
+Version = "A",
+Time = "1 hour"
+)
+)
+# Remove directory of exam images
+unlink("img/exam1", recursive = TRUE)
+exams2pandoc(questions, n=1,
+name = "exam-phar-2021-01-18-des",
+encoding = "UTF-8",
+type="latex",
+dir = "latex",
+edir = "../questions",
+sdir = "img",
+template = c("templates/plain.tex"),
+svg=T
+)
+pandoc("latex/exam-phar-2021-01-18-des1.latex", format="markdown")
+questions <- c("test-med-5", "vad-opt-12", "vac-gen-12")
+exams2pdf(questions, n=1, name = c("exam-phar-2021-01-18-prob", "solution-phar-2021-01-18-prob"), encoding = "UTF-8",
+dir = "pdf",
+edir = "../questions",
+template = c("templates/examceu.tex", "templates/solutionceu.tex"),
+header = list(
+Subject = "STATISTICS\\\\[2mm] (PROBABILITY AND RANDOM VARIABLES)",
+Degree= "Pharmacy/Biotechnology 1st year",
+Date = "January 18, 2021",
+Version = "A",
+Time = "1 hour"
+)
+)
+# Remove directory of exam images
+unlink("img/exam1", recursive = TRUE)
+exams2pandoc(questions, n=1,
+name = "exam-phar-2021-01-18-prob",
+encoding = "UTF-8",
+type="latex",
+dir = "latex",
+edir = "../questions",
+sdir = "img",
+template = c("templates/plain.tex"),
+svg=T
+)
+pandoc("latex/exam-phar-2021-01-18-prob1.latex", format="markdown")

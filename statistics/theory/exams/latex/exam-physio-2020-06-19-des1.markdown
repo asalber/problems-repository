@@ -4,8 +4,8 @@
     student in the current course and in the previous year course has
     been counted, obtaining the table below.
 
-    $$% latex table generated in R 4.0.1 by xtable 1.8-4 package
-      % Tue Jun 30 20:10:47 2020
+    $$% latex table generated in R 4.0.4 by xtable 1.8-4 package
+      % Tue Mar 16 15:30:20 2021
       \begin{array}{crr}
        \mbox{Failed subjects} & \mbox{Previous year course} & \mbox{Current course} \\ 
         \hline
@@ -72,8 +72,8 @@
     concentration of the antibody ($\mu$g/ml). The table below presents
     the data collected.
 
-    $$% latex table generated in R 4.0.1 by xtable 1.8-4 package
-      % Tue Jun 30 20:10:47 2020
+    $$% latex table generated in R 4.0.4 by xtable 1.8-4 package
+      % Tue Mar 16 15:30:21 2021
       \begin{array}{lrrrrrrr}
          \hline
       \mbox{Concentration ($\mu$g/ml)} & 5 & 8 & 20 & 35 & 50 & 80 & 110 \\ 

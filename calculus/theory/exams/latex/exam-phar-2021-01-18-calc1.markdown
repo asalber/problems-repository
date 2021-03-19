@@ -12,6 +12,16 @@
         have only 10 mg of drug in the body?
 
     **Solution**\
+    Let $x(t)$ be the amount of drug in the body at any time $t$.
+
+    1.  Differential equation: $x'=15-0.8x$. Initial condition $x(0)=0$.
+        Particular solution: $x(t)=18.75-18.75e^{-0.8t}$ and the maximum
+        amount of drug in the body will be 18.75 mg.
+
+    2.  Differential equation: $x'=-0.8x$. Initial condition
+        $x(0)=18.74$. Particular solution: $x(t)=18.74e^{-0.8t}$ and the
+        time required to have 10 mg of drug in the body will be $0.7851$
+        hours.
 
 2.  **Question**\
     The function $T(x,y)=\ln(3xy+2x^2-y)$ gives the temperature of the
@@ -51,3 +61,8 @@
     surface is $S(r)=4\pi r^2$.
 
     **Solution**\
+
+    1.  $\dfrac{dr}{dt}=0.0305 dm/min$.
+
+    2.  Using the linear approximation $dt = S'/dS=35.5013$ minutes
+        approximately.

@@ -1,9 +1,16 @@
 <<echo=FALSE, results=hide>>=
 ## DATA GENERATION
-
+n1 <- 5
+n2 <- 5
+n3 <- 10000
+p1 <- 0.25
+p2 <- 0.5
+p3 <- 1 / 5000
 
 ## QUESTION/ANSWER GENERATION
-
+sol1 <- pbinom(2, n1, p1)
+sol2 <- pbinom(2, n2, p2, lower.tail = F)
+sol3 <- ppois(3, n3*p3, lower.tail = F)
 @
 
 \begin{question}
@@ -12,20 +19,24 @@ It is also known that in a population there is one color-blind male for every 50
 \begin{enumerate}
 \item If this couple has 5 children, what is the probability that at most 2 of them are color-blind males?
 \item If this couple has 5 children, and the gender of the children is equiprobable, what is the probability that 3 or more are females?
-\item In a random samble of 10000 males of this population, what is the probability that more than 3 are color-blind males?
+\item In a random sample of 10000 males of this population, what is the probability that more than 3 are color-blind males?
 \end{enumerate}
 \end{question}  
 
 
 %% SOLUTIONS
 \begin{solution}
-
+\begin{enumerate}
+\item Let $X$ be the number of color-blind sons in a sample of 5 children, then $X\sim B(\Sexpr{n1}, \Sexpr{p1})$ and $P(X\leq 2)=\Sexpr{round(sol1, 4)}$.
+\item Let $Y$ be the number of girls in a sample of 5 children, then $Y\sim B(\Sexpr{n2}, \Sexpr{p2})$ and $P(Y\geq 3)=\Sexpr{round(sol2, 4)}$.
+\item Let $Z$ be the number of color-blind males in a sample of 10000 males, then $Z\sim B(\Sexpr{n3}, \Sexpr{p3})\approx P(\Sexpr{round(n3*p3, 4)})$ and $P(Z>3)=\Sexpr{round(sol3, 4)}$.    
+\end{enumerate}
 \end{solution}
 
 %% META-INFORMATION
 %% \extype{num}
 %% \exsolution{Solution}
-%% \exname{vad-med-11}
+%% \exname{vad-opt-12}
 %% \extol{0.01}
-%% \degree{Medicine}
+%% \degree{Optics}
  

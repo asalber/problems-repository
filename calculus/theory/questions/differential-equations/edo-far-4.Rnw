@@ -1,0 +1,31 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+
+## QUESTION/ANSWER GENERATION
+# sample size
+
+@
+
+\begin{question}
+\puntos{3.5}The evolution of a fungi culture satisfies the equation $y\sqrt{2t}dy-2y^2dt=0$, where $y$ is the amount of fungi at each instant $t$ in hours. If there were 10 fungi at the beginning of the culture,
+\begin{enumerate}
+  \item How many fungi will there be after two hours?
+  \item When will there be 1000 fungi in the culture?
+\end{enumerate}
+ 
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{edo-far-4}
+%% \extol{0.001}
+%% \degree{Pharmacy}
+ 
+  

@@ -55,7 +55,7 @@ boxplot(y, x, horizontal=T)
 \item In which type of schools is more representative the mean of grades?
 \item In which type of schools is more symmetric the distribution of grades?
 \item In which type of schools is more peaked the distribution of grades?
-\item Which difference is relativey smaller, $-0.5$ points in a public high school or $-1$ points in a private high school?
+\item Which difference is relatively smaller, $-0.5$ points in a public high school or $-1$ points in a private high school?
 \end{enumerate}
 
 Use the following sums for the computations:\\
@@ -82,7 +82,7 @@ Thus, a difference of grades -0.5 in a public schools is relatively smaller than
 %% META-INFORMATION
 %% \extype{num}
 %% \exsolution{Solution}
-%% \exname{des-gen-15}
+%% \exname{des-gen-16}
 %% \extol{0.001}
-%% \degree{Optics}
+%% \degree{Pharmacy}
  

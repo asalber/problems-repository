@@ -3,7 +3,7 @@ library("exams")
 
 setwd("calculus/theory/exams")
 
-questions <- c("edo-far-2.Rnw", "derpar-gen-2.Rnw", "der-gen-1")
+questions <- c("edo-far-3.Rnw", "derpar-gen-2.Rnw", "der-gen-1")
 ## note that the currency exercise is in UTF-8 encoding
 
 

@@ -1,0 +1,82 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+library(xtable)
+x <- c(4.7, 3.6, 5.2, 6.8, 9.5, 4.8, 5.6, 5.4)
+y <- c(3.2, 4.5, 5.4, 2.1, 6.7, 5.2, 3.8, 4.3, 7.2, 2.6)
+data <- matrix(c(x, NA, NA, y), ncol=10, byrow=T)
+rownames(data) <- c("\\mbox{Men ($X$)}", "\\mbox{Women ($Y$)}")
+n <- length(y)
+
+## QUESTION/ANSWER GENERATION
+# Tamaño de la muestra
+nx <- length(x)
+ny <- length(y)
+# Media
+mx <- mean(x)
+my <- mean(y)
+# Varianza
+s2x <- sum(x^2)/nx-mx^2
+s2y <- sum(y^2)/ny-my^2
+# Desviación típica
+sx <- sqrt(s2x)
+sy <- sqrt(s2y)
+# Coef. variación
+cvx <- sx/mx
+cvy <- sy/my
+# Coef. asimetría
+g1x <- sum((x-mx)^3)/(nx*sx^3)
+g1y <- sum((y-my)^3)/(ny*sy^3)
+# Coef. apuntamiento
+g2x <- sum((x-mx)^4)/(nx*sx^4)-3
+g2y <- sum((y-my)^4)/(ny*sy^4)-3
+# Puntuaciones típicas
+zx <- (6-mx)/sx
+vy <- my + zx * sy
+@
+
+\begin{question}
+\puntos{5}The table below shows the blood uric acid concentration of 8 men and 10 women in mg/dl.
+
+$$
+<<echo=FALSE, results=tex>>=
+print(xtable(data, auto=T), tabular.environment="array", include.colnames = F, floating=F, hline.after = c(0,nrow(data)), sanitize.text.function = function(x) { x })
+@
+$$
+
+Se pide: 
+
+\begin{enumerate}
+\item In which group, men or women, is the mean more representative?
+\item In which group, men or women, is the uric acid distribucion more simmetric?
+\item In which group, men or women, is the uric acid distribution flatter?
+\item Can we assume that the uric acid sample from women comes from a normal population?
+\item What uric acid concentration must a woman have to be relative higher than 6 mg/dl in a man?
+\item If all the values of the variable $X$ are multiplied by a number, what must that number be to make the mean of the new variable as representative as the mean of $Y$?
+\end{enumerate}
+
+Use the following sums for the computations:\\
+Men: $\sum x_i=\Sexpr{sum(x)}$ mg/dl, $\sum x_i^2=\Sexpr{sum(x^2)}$ (mg/dl)$^2$, $\sum (x_i-\bar x)^3=\Sexpr{round(sum((x-mx)^3),2)}$ (mg/dl)$^3$ and $\sum (x_i-\bar x)^4=\Sexpr{round(sum((x-mx)^4),2)}$ (mg/dl)$^4$.\\
+Women: $\sum y_i=\Sexpr{sum(y)}$ mg/dl, $\sum y_i^2=\Sexpr{sum(y^2)}$ (mg/dl)$^2$, $\sum (y_i-\bar y)^3=\Sexpr{round(sum((y-my)^3),2)}$ (mg/dl)$^3$ and $\sum (y_i-\bar y)^4=\Sexpr{round(sum((y-my)^4),2)}$ (mg/dl)$^4$. \\
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item Men: $\bar x=\Sexpr{round(mx,4)}$ mg/dl, $s^2=\Sexpr{round(s2x,4)}$ (mg/dl)$^2$, $s=\Sexpr{round(sx,4)}$ mg/dl and $cv=\Sexpr{round(cvx,4)}$.\\
+Women: $\bar y=\Sexpr{round(my,4)}$ mg/dl, $s^2=\Sexpr{round(s2y,4)}$ (mg/dl)$^2$, $s=\Sexpr{round(sy,4)}$ mg/dl and $cv=\Sexpr{round(cvy,4)}$.\\
+Thus, the mean of uric acid is more representative in men than in women as the coefficient of variation is smaller.   
+\item $g_{1x}=\Sexpr{round(g1x,4)}$ and $g_{1y}=\Sexpr{round(g1y,4)}$. Thus, the distribution of uric acid in men is more symmetric as the coefficient of skewness is closer to 0.
+\item $g_{2x}=\Sexpr{round(g2x,4)}$ and $g_{2y}=\Sexpr{round(g2y,4)}$. Thus, the distribution of uric acid in men is flatter as the coefficient of kurtosis is smaller.
+\item As the coefficient of skewness and the coefficient of kurtosis are between -2 and 2 we can assume that the uric acid sample of women comes from a normal population.
+\item The uric acid must be at least $\Sexpr{round(vy,4)}$.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{des-med-17}
+%% \extol{0.001}
+%% \degree{Medicine}
+ 

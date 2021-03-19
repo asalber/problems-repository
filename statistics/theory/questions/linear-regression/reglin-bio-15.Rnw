@@ -1,0 +1,76 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+x <- c(0, 0, 3, 3, 6, 6, 10, 10, 20, 20, 30, 30)
+y <- c(33.3, 31, 29.8, 27.8, 28, 29, 25.5, 23.8, 18.3, 15.5, 11.7, 10)
+n <- length(x)
+table <- matrix(c(x,y), nrow = 2, byrow = T)
+#decimals <- matrix(rep(1,2*n), nrow = 2, ncol=9, byrow=TRUE)
+rownames(table) <- c("\\mbox{Laetisaric acid (mg/l)}", "\\mbox{Fungus growth (cm)}")
+sumx <- sum(x)
+sumy <- sum(y)
+sumx2 <- sum(x^2)
+sumy2 <- sum(y^2)
+sumxy <- sum(x*y)
+
+## QUESTION/ANSWER GENERATION
+# means
+mx <- sumx / n
+my <- sumy / n
+# variances
+s2x <- sumx2/n-mx^2
+s2y <- sumy2/n-my^2
+sx <- sqrt(s2x)
+sy <- sqrt(s2y)
+# Covariances
+sxy <- sumxy/n-mx*my
+# Detercmation coeff
+r2 <- sxy^2 / (s2x*s2y)
+r <- sxy / (sx * sy)
+# Slopes
+byx <- sxy/s2x
+# Coef of determination
+# Linear model y on x
+lm <- lm(y~x)
+@
+
+\begin{question}
+\puntos{5}Laetisaric acid is a compound that can be used to control fungal diseases in some plantations. The table below shows the radial growth (in cm) of the fungus Pleurotus ostreatus exposed to different concentrations of laetisaric acid (ing mg/l).
+
+$$
+<<echo=FALSE, results=tex>>=
+library(xtable)
+print(xtable(table, auto=T), tabular.environment="array", include.colnames = F, floating=F, hline.after = c(0,nrow(table)), sanitize.text.function = function(x) { x })
+@
+$$
+
+\begin{enumerate}
+\item Compute the equation of the regression line that best explains fungal growth as a function of acid concentration.
+\item Compute the linear correlation and determination coefficients and interpret them.
+\item How much does the fungal population increase or decrease for each one mg/dl increment in acid concentration?
+\item What are the expected fungal growths for acid concentrations of 20 and 200 mg/l? Which of these predictions is more reliable?
+\end{enumerate}
+Use the following sums for the computations:
+$\sum x_i=\Sexpr{sumx}$ mg/l, $\sum y_i=\Sexpr{sumy}$ cm, $\sum x_i^2=\Sexpr{sumx2}$ (mg/l)$^2$, $\sum y_i^2=\Sexpr{sumy2}$ cm$^2$ and $\sum x_iy_j=\Sexpr{sumxy}$ mg/l$\cdot$ cm.
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item $\bar x=\Sexpr{round(mx,4)}$ mg/dl, $s_x^2=\Sexpr{round(s2x,4)}$ (mg/dl)$^2$,\\
+$\bar y=\Sexpr{round(my,4)}$ cm, $s_y^2=\Sexpr{round(s2y,4)}$ cm$^2$,\\
+$s_{xy}=\Sexpr{round(sxy,4)}$ mg/dl $\cdot$ cm.\\
+Regression line of fungal growth on acid concentration: $y=\Sexpr{round(lm$coefficients[1], 4)}   \Sexpr{round(lm$coefficients[2], 4)}x$.
+\item $r^2 = \Sexpr{round(r2, 4)}$ and $r = \Sexpr{round(r, 4)}$. As the linear correlation coefficient is close to -1 there is a strong inverse relation between the acid concentration and the fungal growth.
+\item The fungi will decrease \Sexpr{round(abs(lm$coefficients[2]), 4)} for each one mg/l increment in the acid concentration.
+\item $y(20) = \Sexpr{round(lm$coefficients[1] + lm$coefficients[2]*20, 4)}$ cm and $y(200) = \Sexpr{round(lm$coefficients[1] + lm$coefficients[2]*200, 4)}$ cm. The prediction for 20 mg/dl is more reliable because 20 is in the range of values in the sample.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solución}
+%% \exname{reglin-bio-15}
+%% \extol{0.001}
+%% \degree{Biotecnología}
+ 

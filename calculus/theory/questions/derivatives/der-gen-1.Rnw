@@ -18,13 +18,16 @@ Remark: The volume of a sphere is $V(r)=\frac{4}{3}\pi r^3$ and the surface is $
 
 %% SOLUTIONS
 \begin{solution}
-
+\begin{enumerate}
+\item $\dfrac{dr}{dt}=0.0305 dm/min$.
+\item Using the linear approximation $dt = S'/dS=35.5013$ minutes approximately.
+\end{enumerate}
 \end{solution}
 
 %% META-INFORMATION
 %% \extype{num}
 %% \exsolution{Solution}
-%% \exname{edo-far-1}
+%% \exname{der-gen-1}
 %% \extol{0.001}
-%% \degree{Pharmacy}
+%% \degree{All}
  

@@ -1,0 +1,32 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+
+## QUESTION/ANSWER GENERATION
+
+
+@
+
+\begin{question}
+\puntos{1} In a regression study it is known that the regression line of $Y$ on $X$ is $y+2x-10=0$ and the regression line of $X$ on $Y$ is $y+3x-14=0$.
+\begin{enumerate}
+\item Compute the means of $X$ and $Y$.
+\item Compute the linear correlation coefficient and interpret it. 
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item $\bar x=4$ and $\bar y=2$.
+\item $r=-0.8165$. The linear correlation coefficient is near -1 so there is a strong inverse relation between $X$ and $Y$.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solución}
+%% \exname{reglin-gen-6}
+%% \extol{0.001}
+%% \degree{Todos}
+ 

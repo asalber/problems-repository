@@ -1,0 +1,35 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+
+## QUESTION/ANSWER GENERATION
+# sample size
+
+@
+
+\begin{question}
+\puntos{3.5}The amount of snow (in cm) that felt in Madrid during the last storm can be measured with the function
+$$f(x,y)=\frac{xy}{x^2+y^2},$$
+where $x$ represents the east component and $y$ represents the north component of the region, both in meters.
+
+\begin{enumerate}
+\item A skier is at the point $P=(0,1)$. What is the rate of change in the amount of snow if it moves south?
+
+\item In which direction should the skier move if he wants the amount of snow to increase as quickly as possible? How much does the amount of snow increase in that direction?
+
+\item Another skier observes that if he moves west the amount of snow does not change. At what points can this skier be if he knows that his north component is $y=1$?
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{derpar-gen-3}
+%% \extol{0.001}
+%% \degree{All}
+ 

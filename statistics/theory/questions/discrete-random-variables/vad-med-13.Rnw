@@ -1,0 +1,50 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+pA <- 0.9
+pB <- 0.7
+pNoANoB <- 0.05
+
+## QUESTION/ANSWER GENERATION
+pNoA <- 1 - pA
+pAB <- 0.65
+pANoB <- 0.25
+pNoAB <- 0.05
+pBSiNoA <- pNoAB / pNoA
+pAoB <- 1 - pNoANoB
+# Random variables
+p1 <- pbinom(3, 6, pA, lower.tail = F)
+p2 <- ppois(2, 5)
+p3 <- pbinom(2, 5, pAoB, lower.tail = F)
+@
+
+\begin{question}
+\puntos{5}Two treatments are being tested against Covid-19. Treatment $A$ has an effectiveness of 90 \% while treatment $B$ has an effectiveness of 70 \%. It has also been found that in 5\% of the patients affected by Covid-19 neither of the two treatments is effective.
+\begin{enumerate}
+\item Compute the probability that for a patient with Covid-19 only treatment $A$ is effective.
+\item What is the probability that treatment $B$ is effective if $A$ was not effective for a Covid-19 patient?
+\item Are independent the two treatments?
+\item Compute the probability that in a sample of 6 Covid-19 patients the treatment $A$ is effective in at least 4 of them.
+\item Compute the probability that in a sample of 100 Covid-19 patients there are less than 3 where none of the treatments are effective.
+\item Compute the probability that in a sample of 5 Covid-19 patients some of the treatments is effective in at least 3 of them.
+\end{enumerate}
+\end{question}  
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item $P(A\cap \overline B) = \Sexpr{pANoB}$.
+\item $P(B|\overline A) = \Sexpr{pBSiNoA}$.
+\item The events are dependent, since $P(B|\overline A)\neq P(B)$.
+\item Let $X$ be the number of patients with treatment A effective in a sample of 6. Then $X\sim B(6, 0.9)$ and $P(X\geq 4)=\Sexpr{round(p1, 4)}$.
+\item Let $Y$ be the number of patients with none of the treatments effective in a sample of 100. Then $X\sim B(100, 0.05)\approx P(5)$ and $P(Y<3)=\Sexpr{round(p2, 4)}$.
+\item Let $Z$ be the number of patients with some treatment effective in a sample of 5. Then $Z\sim B(5, 0.95)$ and $P(X\geq 3)=\Sexpr{round(p3, 4)}$.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{vad-med-13}
+%% \extol{0.01}
+%% \degree{Medicine}
+ 

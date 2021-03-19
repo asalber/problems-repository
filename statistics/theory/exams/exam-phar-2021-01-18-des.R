@@ -32,5 +32,5 @@ exams2pandoc(questions, n=1,
 )
 
 pandoc("latex/exam-phar-2021-01-18-des1.latex", format="markdown")
-
+  
 

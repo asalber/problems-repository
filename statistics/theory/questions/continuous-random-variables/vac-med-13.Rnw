@@ -1,0 +1,47 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+mx <- 5
+sx <- 2
+my <- 25
+sy <- 5
+pre <- 0.005
+## QUESTION/ANSWER GENERATION
+p1 <- pnorm(20, my, sy) - pnorm(15, my, sy)
+p99 <- qnorm(0.01, mx, sx, lower.tail = F)
+sen <- pnorm(12, my, sy, lower.tail = F)
+spe <- pnorm(12, mx, sx)
+fn <- (1 - sen) * pre
+fp <- (1 - spe) * (1 - pre)
+@
+
+\begin{question}
+\puntos{5}The Human chorionic gonadotropin (hCG) hormone is used to detect the pregancy during the first weeks of the gestation. A test diagnose the pregnancy when the level of hCG is above 12 mUI/ml. Knowing that the concentration of hCG in non-pregnant females follows a normal probability distribution with mean 5 mUI/ml and standard deviation 2 mUI/ml, while in pregnant females follows a normal probability distribution with mean 25 mUI/ml and standard deviation 5 mUI/ml:
+\begin{enumerate}
+\item Compute the percentage of pregnant females with a level of hCG between 15 and 20 mUI/ml.
+\item Above what level of hCG are the 1\% of non-pregnant females?
+\item Compute the sensitivity and the specificity of the test.
+\item If there are 0.5\% of pregnant females in a population, what is the percentage of false positives for the test? And the percentage of false negatives? 
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+Let $X$ be the hCG concentration in non-pregnant females. Then $X\sim N(\Sexpr{mx},\Sexpr{sx})$.\\
+Let $Y$ be the hCG concentration in pregnant females. Then $Y\sim N(\Sexpr{my},\Sexpr{sy})$.
+\begin{enumerate}
+\item $P(15\leq Y\leq 20) = \Sexpr{round(p1,4)}$.
+\item $P_{99} = \Sexpr{round(p99, 4)}$ mUI/ml.
+\item The sensitivity is $P(Y>12)=\Sexpr{round(sen, 4)}$ and the specificity is $P(X<12)=\Sexpr{round(spe, 4)}$.
+\item $\Sexpr{round(fp*100, 4)}\%$ of false positives and $\Sexpr{round(fn*100, 4)}\%$ of false negatives.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solutionn}
+%% \exname{vac-med-13}
+%% \extol{0.001}
+%% \degree{Medicine}
+ 
+  

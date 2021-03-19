@@ -12,8 +12,8 @@
 
     4.  Is this test better to predict or to rule out the cancer?
 
-    5.  To study wether there is an association between the practice of
-        sports and this type of cancer, a sample of 1000 males was
+    5.  To study wh ether there is an association between the practice
+        of sports and this type of cancer, a sample of 1000 males was
         drawn, of which 700 practiced sports, and it was observed that
         there were 2 males with cancer in the group of males who
         practiced sports, and there were 3 males with cancer in the
@@ -21,21 +21,26 @@
         risk and the odds ratio and interpret them.
 
     **Solution**\
-    Let $D$ the event corresponding to suffering COVID19 and $+$ and $-$
-    the events corresponding to get a positive and a negative outcome
-    respectively.
+    Let $D$ the event corresponding to suffering prostate cancer and $+$
+    and $-$ the events corresponding to get a positive and a negative
+    outcome respectively.
 
-    1.  The sensitivity is $P(+|D) = 0.58$ and specificity
-        $P(-|\overline D) = 0.01$.
+    1.  The sensitivity is $P(+|D) = 0.2$ and specificity
+        $P(-|\overline D) = 0.99$.
 
-    2.  Positive predictive value $P(D|+) = 0.0205$ and negative
-        predictive value $P(\overline D|-) = 0.4$. As de positive
-        predictive value is less than 0.5 we can not use this test to
-        confirm COVID19, but we can use it to rule it out with a strong
-        confidence since the negative predictive value is pretty close
-        to 1.
+    2.  Positive predictive value $P(D|+) = 0.0476$.
 
-    3.  $P(D\cap +) + P(\overline D\cap -) = 0.0297$.
+    3.  Negative predictive value $P(\overline D|-) = 0.998$.
+
+    4.  As the positive predictive value is smaller than the negative
+        predictive value, this test is better to rule out the disease.
+        In fact, we can not use this test to detect the prostate cancer
+        because the positive predictive value is less than 0.5.
+
+    5.  $RR(D)=0.2857$ and $OR(D)=0.2837$. Thus, there is an association
+        between the practice of sports and the prostate cancer and the
+        risks and the odds of developing cancer is almost one fourth
+        smaller if the male practice sports.
 
 2.  **Question**\
     The probability that a child of a mother with the color-blind gene
@@ -50,10 +55,20 @@
         equiprobable, what is the probability that 3 or more are
         females?
 
-    3.  In a random samble of 10000 males of this population, what is
+    3.  In a random sample of 10000 males of this population, what is
         the probability that more than 3 are color-blind males?
 
     **Solution**\
+
+    1.  Let $X$ be the number of color-blind sons in a sample of 5
+        children, then $X\sim B(5, 0.25)$ and $P(X\leq 2)=0.8965$.
+
+    2.  Let $Y$ be the number of girls in a sample of 5 children, then
+        $Y\sim B(5, 0.5)$ and $P(Y\geq 3)=0.5$.
+
+    3.  Let $Z$ be the number of color-blind males in a sample of 10000
+        males, then $Z\sim B(10000, 2e-04)\approx P(2)$ and
+        $P(Z>3)=0.1429$.
 
 3.  **Question**\
     The primate cranial capacity follows a normal distribution with mean
@@ -71,5 +86,15 @@
         primates and interpret it.
 
     **Solution**\
-    Let $X$ and $Y$ be the prolactin levels in pregnant and non-pregnan
-    females respectively.
+    Let $X$ be the primate cranial capacity. Then $X\sim N(1200,140)$.
+
+    1.  $P(X>1400) = 0.0766$.
+
+    2.  $P(X=1400) = 0$.
+
+    3.  $P_{80} = 1317.827$ cm$^3$.
+
+    4.  $Q_1 =  1105.5714$ cm$^3$, $Q_3 =  1294.4286$ cm$^3$ and
+        $IQR = 188.8571$ cm$^3$. Thus the 50% of central data will be
+        concentranted in an interval of width $188.8571$ cm$^3$, that is
+        a small spread.

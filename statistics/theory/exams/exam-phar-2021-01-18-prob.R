@@ -3,7 +3,7 @@ library("exams")
 
 setwd("statistics/theory/exams")
 
-questions <- c("test-med-5", "vad-opt-12", "vac-gen-12")
+questions <- c("test-med-6", "vad-opt-12", "vac-gen-12")
 
 exams2pdf(questions, n=1, name = c("exam-phar-2021-01-18-prob", "solution-phar-2021-01-18-prob"), encoding = "UTF-8",
   dir = "pdf",

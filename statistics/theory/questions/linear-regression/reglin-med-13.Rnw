@@ -32,6 +32,7 @@ lm <- lm(y~x)
 
 $$
 <<echo=FALSE, results=tex>>=
+library(xtable)
 print(xtable(table, auto=T), tabular.environment="array", include.colnames = F, floating=F, hline.after = c(0,nrow(table)), sanitize.text.function = function(x) { x })
 @
 $$
@@ -57,7 +58,7 @@ $s_{xy}=\Sexpr{round(sxy,4)}$ $10^3$€ absences.\\
 Regression line of absences on salary: $y=\Sexpr{round(lm$coefficients[1], 4)}   \Sexpr{round(lm$coefficients[2], 4)}x$.
 \item $y(29) = \Sexpr{round(lm$coefficients[1] + lm$coefficients[2]*29, 4)}$ absences.\\
 $r^2 = \Sexpr{round(r2, 4)}$, thus the model fits well as the coefficient of determination is not far from 1, but the sample size is too small to be reliable the prediction.
-\item The number of absences will decrease \Sexpr{round(abs(lm$coefficients[2]), 4)} for every increment of 1000€ in the salary.
+\item The number of absences will decrease $\Sexpr{round(abs(lm$coefficients[2]), 4)}$ for every increment of 1000€ in the salary.
 \end{enumerate}
 \end{solution}
 

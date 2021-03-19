@@ -28,8 +28,8 @@
 
 %% META-INFORMATION
 %% \extype{num}
-%% \exsolution{Solución}
-%% \exname{derpar-bio-1}
+%% \exsolution{Solution}
+%% \exname{derpar-gen-2}
 %% \extol{0.001}
-%% \degree{Biotecnología}
+%% \degree{All}
  

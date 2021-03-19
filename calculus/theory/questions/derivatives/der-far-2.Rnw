@@ -1,0 +1,32 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+
+## QUESTION/ANSWER GENERATION
+# sample size
+
+@
+
+\begin{question}
+\puntos{3} The Periodic Fever, Aphthous Stomatitis, Pharyngitis, Adenitis syndrome (PFAPA) causes repeated episodes of fever lasting from 3 to 6 days. For a patient the temperarute in one of the episodes of fever is given by the function 
+$$T(x)=36.5+e^{\frac{-(x-2)^2}{2}},$$
+where $T$ is the temperature and $x$ is the number of days from the begining of the episode of fever.
+
+\begin{enumerate}
+\item What is the maximum temperature that the patient will reach?
+\item Using the derivative, approximate the variation of the temperature one day after the benining of the episode of fever.
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{der-gen-1}
+%% \extol{0.001}
+%% \degree{All}
+ 
