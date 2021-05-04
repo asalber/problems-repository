@@ -1,0 +1,81 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+tp1 <- 87
+fn1 <- 33
+fp1 <- 14
+tn1 <- 866
+
+tp2 <- 104
+fn2 <- 16
+fp2 <- 115
+tn2 <- 765
+
+## QUESTION/ANSWER GENERATION
+n <- tp1 + fn1 + fp1 + tn1
+sen1 <- tp1 / (tp1 + fn1) 
+spe1 <- tn1 / (fp1 + tn1)
+sen2 <- tp2 / (tp2 + fn2) 
+spe2 <- tn2 / (fp2 + tn2)
+
+pp1 <- (tp1 + fp1) / n
+pp2 <- (tp2 + fp2) / n
+
+ppv1 <- tp1 / (tp1 + fp1)
+npv1 <- tn1 / (fn1 + tn1)
+ppv2 <- tp2 / (tp2 + fp2)
+npv2 <- tn2 / (fn2 + tn2)
+
+p1 <- spe1 * spe2
+p2 <- pp1 + pp2 - (pp1 * pp2)
+@
+
+\begin{question}
+\puntos{3.5} The tables below corresponds to two tests $A$ and $B$ to detect an injury that have been applied to the same sample.
+$$
+\begin{array}{lcc}
+\hline
+\mbox{Test A}& \mbox{Injury} & \mbox{No injury}\\
++ & 87 & 14\\
+- & 33 & 866\\
+\hline
+\end{array}
+\qquad
+\begin{array}{lcc}
+\hline
+\mbox{Test B}& \mbox{Injury} & \mbox{No injury}\\
++ & 104 & 115\\
+- & 16 & 765\\
+\hline
+\end{array}
+$$
+
+\begin{enumerate}
+\item Which test is more sensitive? Which one is more specific?
+\item Acording to the predictive values, which test is better to diagnose the injury? Which one is better to rule out the injury?
+\item Assuming that both tests are independent, what is the probability of getting a right diagnose with both tests if we apply both tests to a healthy person?
+\item Assuming that both tests are independent, what is the probability of getting at least a positive outcome if we apply both tests to a random person?
+\end{enumerate}
+\end{question}
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item Test $A$: sen = $\Sexpr{round(sen1, 4)}$ and spe = $\Sexpr{round(spe1, 4)}$\\
+Test $B$: sen = $\Sexpr{round(sen2, 4)}$ and spe = $\Sexpr{round(spe2, 4)}$\\
+Thus, test $A$ is more specific and test $B$ is more sensitive.
+\item Test $A$: PPV = $\Sexpr{round(ppv1, 4)}$ and NPV = $\Sexpr{round(npv1, 4)}$\\
+Test $B$: sen = $\Sexpr{round(ppv2, 4)}$ and spe = $\Sexpr{round(npv2, 4)}$\\
+Thus, test $A$ is better to diagnose the disease and test $B$ is better to rule out the disease.
+\item $P(-_1\cap -_2 | \overline{D}) = \Sexpr{round(p1, 4)}$.
+\item $P(+_1\cup +_2) = \Sexpr{round(p2, 4)}$.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{test-7-fis}
+%% \extol{0.001}
+%% \degree{Physiotherapy}
+ 
+  

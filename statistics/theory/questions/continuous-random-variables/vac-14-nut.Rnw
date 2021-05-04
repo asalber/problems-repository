@@ -1,17 +1,8 @@
 <<echo=FALSE, results=hide>>=
 ## DATA GENERATION
-mx <- 5
-sx <- 2
-my <- 25
-sy <- 5
-pre <- 0.005
+
 ## QUESTION/ANSWER GENERATION
-p1 <- pnorm(20, my, sy) - pnorm(15, my, sy)
-p99 <- qnorm(0.01, mx, sx, lower.tail = F)
-sen <- pnorm(12, my, sy, lower.tail = F)
-spe <- pnorm(12, mx, sx)
-fn <- (1 - sen) * pre
-fp <- (1 - spe) * (1 - pre)
+
 @
 
 \begin{question}
@@ -26,9 +17,10 @@ fp <- (1 - spe) * (1 - pre)
 
 %% SOLUTIONS
 \begin{solution}
+Let $X_1$ and $X_2$ be the lifetime of rats with a normal diet and a low fat diet respectively,
 \begin{enumerate}
-\item 
-\item
+\item $\mu_2=12.6673$ months and $s=1.6087$ months.
+\item $P(X<9)=0.068$.
 \end{enumerate}
 \end{solution}
 

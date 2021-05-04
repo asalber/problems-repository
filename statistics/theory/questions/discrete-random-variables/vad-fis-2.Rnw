@@ -11,7 +11,7 @@ sol2 <- pbinom(x2, n, p, lower.tail = F)
 @
 
 \begin{question}
-\puntos{1.5}The average number of injuries in an international tennis tournament is \Sexpr{lambda}. 
+\puntos{3}The average number of injuries in an international tennis tournament is \Sexpr{lambda}. 
 
 \begin{enumerate}
 \item Compute the probability that in an international tennis tournament there are more than \Sexpr{x1} injuries.
