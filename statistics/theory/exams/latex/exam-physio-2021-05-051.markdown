@@ -72,8 +72,12 @@
     more than 12 months, 5% less than 8 months, and 85% of rats with low
     fat diet lived more than 11 months,
 
-    1.  What is the mean and the standard deviation of the lifetime of
-        rats following a low fat diet?
+    1.  Compute the means and the standard deviation of the lifetime of
+        rats following a normal diet and a low fat diet?\
+        Remark: If you do not know how to compute them, for the next
+        part use a mean of 11 months and a standard deviation of $1.5$
+        months for normal diet rats, and a mean of $12.5$ months for low
+        fat diet rats.
 
     2.  If 40% of the rats were under a normal diet, and 60% of rats
         under a low fat diet, what is the probability that a random rat

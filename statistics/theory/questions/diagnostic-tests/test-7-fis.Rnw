@@ -30,7 +30,7 @@ p2 <- pp1 + pp2 - (pp1 * pp2)
 @
 
 \begin{question}
-\puntos{3.5} The tables below corresponds to two tests $A$ and $B$ to detect an injury that have been applied to the same sample.
+\puntos{4} The tables below corresponds to two tests $A$ and $B$ to detect an injury that have been applied to the same sample.
 $$
 \begin{array}{lcc}
 \hline
