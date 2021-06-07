@@ -1,0 +1,38 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+lambda <- 2
+x1 <- 2
+n <- 6
+x2 <- 0
+## QUESTION/ANSWER GENERATION
+sol1 <- ppois(x1, lambda, lower.tail = F)
+p <- ppois(0,lambda)
+sol2 <- pbinom(x2, n, p, lower.tail = F)
+@
+
+\begin{question}
+\puntos{3}It has been observed that a company of components for physiotherapy machines produces 12 defective components every 300 hours on average.
+
+\begin{enumerate}
+\item What is the probability of producing more than 2 defective components in 100 hours?
+\item What is the probability of producing at most one defective component in 50 hours?
+\item If there are 7 companies in Spain that produce these components, and assuming that all of them produce the same number of defective components on average, compute the probability that at least one company produces more than 3 defective components in 50 hours.
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item Let $X$ be the number of injuries in a tournament, then $X\sim P(\Sexpr{lambda})$ and $P(X>2)=\Sexpr{round(sol1,4)}$.
+\item Let $Y$ be the number of tournaments in the tennis circuit with no injuries, then $Y\sim B(\Sexpr{n},\Sexpr{round(p,4)})$ and $P(Y>0)=\Sexpr{round(sol2,4)}$.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{vad-fis-2}
+%% \extol{0.01}
+%% \degree{Physiotherapy}
+ 

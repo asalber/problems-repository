@@ -1,0 +1,94 @@
+```{r data generation, echo=FALSE, results="hide"}
+## DATA GENERATION
+set.seed(123)
+x <- rep(c(4.5, 5.5, 6.5, 7.5, 8.5), c(2, 5, 6, 4, 3))
+y <- rep(c(2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5), c(1, 6, 7, 3, 7, 0, 1))
+data <- data.frame(Score = c(x, y), Treatment = c(rep('Treatment', 20), rep('Placebo', 25)))
+
+## QUESTION/ANSWER GENERATION
+# Tamaño de la muestra
+nx <- length(x)
+ny <- length(y)
+# Quartiles
+q1 <- quantile(y, probs = c(0.25), type=1)
+q2 <- quantile(y, probs = c(0.5), type=1)
+q3 <- quantile(y, probs = c(0.75), type=1)
+# IQR
+iqr <- q3-q1
+# Fences
+f1 <- q1-1.5*iqr
+f2 <- q3+1.5*iqr
+# Outliers
+outliers <- y[y < f1 | y > f2]
+# Mean
+mx <- mean(x)
+my <- mean(y)
+# Variance
+s2x <- sum(x^2)/nx-mx^2
+s2y <- sum(y^2)/ny-my^2
+# Std. deviation
+sx <- sqrt(s2x)
+sy <- sqrt(s2y)
+# Coef. variation
+cvx <- sx/mx
+cvy <- sy/my
+# Coef. skewness
+g1x <- sum((x-mx)^3)/(nx*sx^3)
+g1y <- sum((y-my)^3)/(ny*sy^3)
+# Coef. kurtosis
+g2x <- sum((x-mx)^4)/(nx*sx^4)-3
+g2y <- sum((y-my)^4)/(ny*sy^4)-3
+# Standard scores
+zx <- (5-mx)/sx
+zy <- (6-my)/sy
+```
+
+Question
+========
+
+\puntos{5}To study the effectiveness of a new treatment for the polymyalgia rheumatica a sample of patients with polymyalgia was drawn and they were divided into two groups. The first group received the new treatment while the second one received a placebo. After a year following the treatment they filled out a survey. The chart below shows the distribution of the survey score of the two groups of patients (the greater the score the better the treatment).
+
+```{r}
+knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
+```
+
+
+```{r back-back-scores-distribution, fig=T, echo=F, dev="png", fig.path="img"}
+# Histogram by sex
+library(Hmisc)
+options(digits=1)
+blueceulight <- rgb(137, 211, 243, 255, maxColorValue = 255) #89D3F3
+orangeceu <- rgb(248, 131, 121, 255, maxColorValue = 255)#F88379
+out <- histbackback(split(data$Score, data$Treatment), xlim=c(-8,8), main = 'Frequency distribution of scores', axes = F)
+axis(side = 1, at = -8:8, labels = c(8:0,1:8))
+axis(side = 2, at = seq(0, 7, 1), labels = 2:9)
+mtext("Score", side = 2, line = 3, cex = par("cex.lab"))
+mtext("Placebo                              Treatment", side = 1, line = 3, cex = par("cex.lab"))
+abline(v= (-8:8)*2 , col ="gray" , lty =3) 
+barplot(-out$left, col=blueceulight , horiz = T, space = 0, add = T, axes = F) 
+barplot(out$right, col=orangeceu, horiz = T, space = 0, add = T, axes = F) 
+```
+
+1. Construct the frequency table of the scores for the placebo group and plot the ogive.
+2. Compute the interquartile range of the scores for the placebo group.
+3. Are there outliers in the placebo group?
+4. In which group the score mean represents better?
+5. Which distribution is more normal regarding the kurtosis?
+6. Which score is relatively better, a score of 5 in the placebo group or a score of 6 in the treatment group?
+
+Use the following sums for the computations: \\
+Treatment: $\sum x_i=`r round(sum(x), 2)`$.
+
+
+Solution
+========
+
+
+META-INFORMATION
+================
+extype: num
+exsolution: Solution
+exname: des-18-gen
+exto: 0.001
+degree: All
+ 

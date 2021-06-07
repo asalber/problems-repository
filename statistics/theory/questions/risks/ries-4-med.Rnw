@@ -1,0 +1,50 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+ntd <- 120
+nth <- 1250
+ncd <- 880
+nch <- 2750
+nt <- ntd + nth
+nc <- ncd + nch
+n <- nt + nc
+## QUESTION/ANSWER GENERATION
+pre <- (ntd + ncd) / n
+rt <- ntd / nt
+rc <- ncd / nc
+rr <- rt / rc
+ot <- ntd / nth
+oc <- ncd / nch
+or <- ot / oc
+@
+
+\begin{question}
+\puntos{4}	
+We want to study the risk for a new vaccine to cause thrombi compared with a traditional vaccine. After applying the new vaccine to 1000 persons and the traditional vaccine to 3000 persons, we observed 30 persons with thrombi in the new vaccine group and 42 persons with thrombi in the traditional vaccine group.
+
+\begin{enumerate}
+\item Compute the relative risk of suffering thrombi with the new vaccine and interpret it.
+\item Compute the odds ratio of suffering thrombi with the new vaccine and interpret it.
+\item Which association measure is more reliable? 
+\item In a random experiment we applied both vaccines (in different moments) to a sample and we observed that 4\% of persons suffered some thrombi (due to the new vaccine or to the traditional vaccine). Compute the probability of suffering thrombi with the new vaccine and no with the traditional one.
+\item Are the events corresponding to suffering thrombi with the new vaccine and the traditional vaccine independent?
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+Let $D$ be the event of being infected.
+\begin{enumerate}
+\item $RR(D)=\Sexpr{round(rr, 4)}$. Thus, the risk of being infected with face mask is almost one third of the likelihood of been infected without face mask.
+\item $OR(D)=\Sexpr{round(or, 4)}$. Thus, the odds of being infected with face mask is less than one third of the likelihood of been infected without face mask.
+\item As we can not compute the prevalence of $D$, the odds ratio is more reliable.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solución}
+%% \exname{ries-med-2}
+%% \extol{0.001}
+%% \degree{Pharmacy}
+ 

@@ -1,0 +1,35 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+
+## QUESTION/ANSWER GENERATION
+
+@
+
+\begin{question}
+\puntos{3} In women, the shoulder circumference follows a normal distribution with mean 98 cm and standard deviation 5 cm.
+
+\begin{enumerate}
+\item Compute the percentage of women in the population with a shoulder circumference between 95 and 105 cm.
+\item Above what value are the 5\% of women with a highest shoulder circumference?
+\item Compute the probability that in a sample of 50 women there is at least 2 with a shoulder circumference less than 90 cm.
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+Let $X_1$ and $X_2$ be the lifetime of rats with a normal diet and a low fat diet respectively,
+\begin{enumerate}
+\item $\mu_2=12.6673$ months and $s=1.6087$ months.
+\item $P(X<9)=0.068$.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solutionn}
+%% \exname{vac-med-13}
+%% \extol{0.001}
+%% \degree{Medicine}
+ 
+  

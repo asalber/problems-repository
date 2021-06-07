@@ -1,0 +1,86 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+library(xtable)
+x <- c(0.2, 0.7, 1, 1.5, 2, 2.4, 2.8, 3)
+y <- c(40, 32, 28, 20, 18, 15, 12, 11)
+table <- matrix(c(x,y), nrow = 2, byrow = T)
+decimals <- matrix(c(rep(1,9), rep(0,9)), nrow = 2, ncol=9, byrow=TRUE)
+rownames(table) <- c("\\mbox{Dose ($\\mu$g)}", "\\mbox{Bacteria}")
+## QUESTION/ANSWER GENERATION
+# colors  
+col1 <- "#05A1E6"
+# sample size
+n <- length(x)
+# means
+mx <- mean(x)
+mlogx <- mean(log(x))
+my <- mean(y)
+mlogy <- mean(log(y))
+# variances
+s2x <- sum(x^2)/n-mx^2
+s2logx <- sum(log(x)^2)/n-mlogx^2
+s2y <- sum(y^2)/n-my^2
+s2logy <- sum(log(y)^2)/n-mlogy^2
+# Covariances
+sxy <- sum(x * y) / n - mx * my
+sxlogy <- sum(x*log(y))/n-mx*mlogy
+slogxy <- sum(log(x)*y)/n-mlogx*my
+# Determination coeff
+r2xy <-  sxy^2 / (s2x * s2y)
+r2xlogy <- sxlogy^2/(s2x*s2logy)
+r2logxy <- slogxy^2/(s2logx*s2y)
+# Linear regression model
+reglin <- lm(y ~ x)
+# Exponential regression model y on x
+regexp <- lm(log(x)~y)
+# Logarithmic regression model x on y
+reglog <- lm(y~log(x))
+@
+
+\begin{question}
+\puntos{5 } 	
+We have applied different doses of an antibiotic to a culture of bacteria. The table below shows the number of residual bacteria corresponding to the different doses.
+$$
+<<echo=FALSE, results=tex>>=
+print(xtable(table, auto=T, digits=decimals), tabular.environment="array", include.colnames = F, floating=F, hline.after = c(0,nrow(table)), sanitize.text.function = function(x) { x })
+@
+$$
+
+\begin{enumerate}
+\item Which regression model explains better the number of residual bacteria as a function of the antibiotic dose, the linear or the exponential?
+\item Use the best of the two previous regression models to predict the number of residual bacteria for an antibiotic dose of 3.5 $\mu$g. Is this prediction reliable?
+\item According to the linear regression model, what is the expected decrease in the number of residual bacteria per each $\mu$g more of antibiotic?
+\end{enumerate}
+Use the following sums for the computations ($X$=Antibiotic dose and $Y$=Number of bacteria):\\
+$\sum x_i=\Sexpr{round(sum(x), 4)}$ $\mu$g, $\sum \log(x_i)=\Sexpr{round(sum(log(x)), 4)}$ $\log(\mbox{$\mu$g})$, $\sum y_j=\Sexpr{round(sum(y), 4)}$ bacteria, $\sum \log(y_j)=\Sexpr{round(sum(log(y)), 4)}$ $\log(\mbox{bacteria})$,\\
+$\sum x_i^2=\Sexpr{round(sum(x^2), 4)}$ $\mu$g$^2$, $\sum \log(x_i)^2=\Sexpr{round(sum(log(x)^2), 4)}$ $\log(\mbox{$\mu$g})^2$, $\sum y_j^2=\Sexpr{round(sum(y^2), 4)}$ bacteria$^2$, $\sum \log(y_j)^2=\Sexpr{round(sum(log(y)^2), 4)}$ $\log(\mbox{bacteria})^2$,\\
+$\sum x_iy_j=\Sexpr{round(sum(x*y), 4)}$ $\mu$g$\cdot$bacteria, $\sum x_i\log(y_j)=\Sexpr{round(sum(x*log(y)), 4)}$ $\mu$g$\cdot\log(\mbox{bacteria})$, $\sum \log(x_i)y_j=\Sexpr{round(sum(log(x)*y), 4)}$ $\log(\mbox{$\mu$g})$bacteria, $\sum \log(x_i)\log(y_j)=\Sexpr{round(sum(log(x)*log(y)), 4)}$ $\log(\mbox{$\mu$g})\log(\mbox{bacteria})$.
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item $\overline{x}=\Sexpr{round(mx,4)}$ $\mu$g, $s_x^2=\Sexpr{round(s2x,4)}$ $\mu$g$^2$.\\
+$\bar y=\Sexpr{round(my,4)}$ bacteria, $s_y^2=\Sexpr{round(s2y,4)}$ bacteria$^2$.\\
+$s_{xy}=\Sexpr{round(sxy,4)}$ $\mu$g$\cdot$bacteria.\\
+As the covariance is positive, there is a direct linear relation between the number of $\mu$g of rehabilitation and the knee flexion angle.
+\item $b_{yx}=\Sexpr{round(reglin$coefficients[2], 4)}$, therefore the knee flexion angle will increase $\Sexpr{round(reglin$coefficients[2], 4)}$ bacteria per day of rehabilitation.
+\item $\overline{\log(x)}=\Sexpr{round(mlogx,4)}$ log($\mu$g), $s_{\log(x)}^2=\Sexpr{round(s2logx,4)}$ log($\mu$g)$^2$.\\
+$s_{\log(x)y}=\Sexpr{round(slogxy,4)}$ log($\mu$g)bacteria.\\
+Logarithmic regression model: $y=\Sexpr{round(reglog$coefficients[1],4)}+\Sexpr{round(reglog$coefficients[2],4)}\log(x)$.\\
+Prediction: $y(32)=\Sexpr{round(reglog$coefficients[1] + reglog$coefficients[2]*log(32),4)}$ bacteria.\\
+The logarithmic coefficient of determination is $\Sexpr{round(r2logxy, 4)}$ and the linear coefficient of determination is $\Sexpr{round(r2xy, 4)}$. Thus, the prediction with the logarithmic model is more reliable as the coefficient of determination of the logarithmic model is greater. 
+\item Exponential regression model: $y=e^{\Sexpr{round(regexp$coefficients[1],4)}+\Sexpr{round(regexp$coefficients[2],4)}y}$.\\
+Prediction: $y(120)=\Sexpr{round(exp(regexp$coefficients[1] + regexp$coefficients[2]*120),4)}$ $\mu$g.\\
+This prediction is not reliable as 120 bacteria falls far away of the range of values observed in the sample for the knee flexion angle.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{regnol-10-fis}
+%% \extol{0.001}
+%% \degree{Physiotherapy}
+ 
