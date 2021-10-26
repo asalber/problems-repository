@@ -1,0 +1,97 @@
+1.  **Question**\
+    In women, the shoulder circumference follows a normal distribution
+    with mean 98 cm and standard deviation 5 cm.
+
+    1.  Compute the percentage of women in the population with a
+        shoulder circumference between 95 and 105 cm.
+
+    2.  Above what value are the 5% of women with a highest shoulder
+        circumference?
+
+    3.  Compute the probability that in a sample of 50 women there is at
+        least 2 with a shoulder circumference less than 90 cm.
+
+    **Solution**\
+    Let $X$ be the shoulder circumference, then $X\sim N(98, 5)$.
+
+    1.  $P(95\leq X\leq 105) = 0.645$, that is $6.45\%$.
+
+    2.  $P_{95} = 106.22$ cm.
+
+    3.  Let $Y$ be the number of women with a shoulder circumference
+        less than 90 cm in a sample of 50 women. Then,
+        $Y\sim B(50, 0.0548) \approx P(2.74)$, and
+        $P(Y\geq 2) = 0.7585$.
+
+2.  **Question**\
+    It has been observed that a company of components for physiotherapy
+    machines produces 12 defective components every 300 hours on
+    average.
+
+    1.  What is the probability of producing more than 2 defective
+        components in 100 hours?
+
+    2.  What is the probability of producing at most one defective
+        component in 50 hours?
+
+    3.  If there are 7 companies in Spain that produce these components,
+        and assuming that all of them produce the same number of
+        defective components on average, compute the probability that at
+        least one company produces more than 3 defective components in
+        50 hours.
+
+    **Solution**\
+
+    1.  Let $X$ be the number of defective components in 100 hours, then
+        $X\sim P(4)$, and $P(X>2) = 0.7619$.
+
+    2.  Let $Y$ be the number of defective components in 50 hours, then
+        $X\sim P(2)$, and $P(X\leq 1) = 0.406$.
+
+    3.  Let $Z$ be the number of companies that produce more than 3
+        defective components in 50 hours in a sample of 7 companies,
+        then $Z\sim B(7, 0.1429)$, and $P(Y\geq 1) = 0.6601$.
+
+3.  **Question**\
+    We want to study the risk for a new vaccine to cause thrombi
+    compared with a traditional vaccine. After applying the new vaccine
+    to 1000 persons and the traditional vaccine to 3000 persons, we
+    observed 30 persons with thrombi in the new vaccine group and 42
+    persons with thrombi in the traditional vaccine group.
+
+    1.  Compute the relative risk of suffering thrombi with the new
+        vaccine and interpret it.
+
+    2.  Compute the odds ratio of suffering thrombi with the new vaccine
+        and interpret it.
+
+    3.  Which association measure is more reliable?
+
+    4.  In a random experiment we applied both vaccines (in different
+        moments) to a sample and we observed that 4% of persons suffered
+        some thrombi (due to the new vaccine or to the traditional
+        vaccine). Compute the probability of suffering thrombi with the
+        new vaccine and no with the traditional one.
+
+    5.  Are the events corresponding to suffering thrombi with the new
+        vaccine and the traditional vaccine independent?
+
+    **Solution**\
+    Let $T$ be the event of suffering thrombi.
+
+    1.  $RR(T)=2.1429$. Thus, the risk of suffering thrombi with the new
+        vaccine is more than the double that with traditional vaccine.
+
+    2.  $OR(T)=2.1782$. Thus, the odds of suffering thrombi with the new
+        vaccine is more than the double that with traditional vaccine.
+
+    3.  Both measures are reliable because the study is prospective and
+        we can estimate the incidence, but the relative risk is easier
+        to interpret.
+
+    4.  Let $T_n$ and $T_t$ the events of suffering thrombi with the new
+        and the traditional vaccines, respectively.
+        $P(T_n\cap \overline{T_t}) = 0.026$.
+
+    5.  $P(T_t|T_n) = 0.1333 \neq P(T_t) = 0.014$, thus the events are
+        dependent.

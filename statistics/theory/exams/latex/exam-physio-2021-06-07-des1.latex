@@ -29,19 +29,57 @@
   \end{enumerate}
 
   Use the following sums for the computations:\\
-  Treatment: \(\sum x_i=131\), \(\sum x_i^2=887\),
-  \(\sum (x_i-\bar x)^3=2.66\) and \(\sum (x_i-\bar x)^4=88.03\).\\
   Placebo: \(\sum x_i=125.5\), \(\sum x_i^2=680.25\),
-  \(\sum (x_i-\bar x)^3=27.11\) and \(\sum (x_i-\bar x)^4=253.27\).
+  \(\sum (x_i-\bar x)^3=27.11\) and \(\sum (x_i-\bar x)^4=253.27\).\\
+  Treatment: \(\sum x_i=131\), \(\sum x_i^2=887\),
+  \(\sum (x_i-\bar x)^3=2.66\) and \(\sum (x_i-\bar x)^4=88.03\).
 
   \textbf{Solution}\\
+
+  \begin{enumerate}
+  \item
+    \[\begin{array}{lrrrr}
+     \mbox{Score} & n_i & f_i & N_i & F_i \\ 
+      \hline
+    [2,3] & 1 & 0.04 & 1 & 0.0 \\ 
+      (3,4] & 6 & 0.24 & 7 & 0.3 \\ 
+      (4,5] & 7 & 0.28 & 14 & 0.6 \\ 
+      (5,6] & 3 & 0.12 & 17 & 0.7 \\ 
+      (6,7] & 7 & 0.28 & 24 & 1.0 \\ 
+      (7,8] & 0 & 0.00 & 24 & 1.0 \\ 
+      (8,9] & 1 & 0.04 & 25 & 1.0 \\ 
+       \hline
+    \end{array}\]
+
+    \includegraphics{media/supplements1/exercise1/des-19-fis-ogive-polymyalgia.svg}
+  \item
+    \(Q_1= 3.875\), \(Q_3= 6.25\) and \(IQR=2.375\).
+  \item
+    \(f_1 = 0.3125\) and \(f_2=9.8125\). Thus, there are no outliers in
+    the placebo sample because all the values fall between the fences.
+  \item
+    Placebo: \(\bar x=5.02\), \(s^2=2.0096\), \(s=1.4176\) and
+    \(cv=0.2824\).\\
+    Treatment: \(\bar x=6.55\), \(s^2=1.4475\), \(s=1.2031\) and
+    \(cv=0.1837\).
+  \item
+    Placebo: \(g_2=-0.4914\). Treatment: \(g_2=-0.8992\). Thus, the
+    distribution of the placebo group is more normal as the coef. of
+    kurtosis is closer to 0.
+  \item
+    Standard score for the placebo: \(z(5)=-0.0141\)\\
+    Standard score for the treatment: \(z(6)=-0.4571\)\\
+    As the standard score of \(5\) in the placebo group is greater than
+    the standard score of \(6\) in the treatment group, a score of 5 in
+    the placebo group is better.
+  \end{enumerate}
 \item
   \textbf{Question}\\
   We have applied different doses of an antibiotic to a culture of
   bacteria. The table below shows the number of residual bacteria
   corresponding to the different doses.
   \[% latex table generated in R 4.1.0 by xtable 1.8-4 package
-  % Sun Jun  6 13:07:30 2021
+  % Thu Jun 17 19:55:11 2021
   \begin{array}{lrrrrrrrr}
      \hline
   \mbox{Dose ($\mu$g)} & 0.2 & 0.7 &  1 & 1.5 &  2 & 2.4 & 2.8 &  3 \\ 
@@ -85,27 +123,21 @@
     \(\overline{x}=1.7\) \(\mu\)g, \(s_x^2=0.9075\) \(\mu\)g\(^2\).\\
     \(\bar y=22\) bacteria, \(s_y^2=93.75\) bacteria\(^2\).\\
     \(s_{xy}=-9.025\) \(\mu\)g\(\cdot\)bacteria.\\
-    As the covariance is positive, there is a direct linear relation
-    between the number of \(\mu\)g of rehabilitation and the knee
-    flexion angle.
+    Linear coefficient of determination \(r^2 = 0.9574\).\\
+    \(\overline{\log(y)}=2.9955\) log(bacteria),
+    \(s_{\log(y)}^2=0.1908\) log(bacteria)\(^2\).\\
+    \(s_{x\log(y)}=-0.4147\) \(\mu\)g\(\cdot\) log(bacteria).\\
+    Exponential coefficient of determination \(r^2 = 0.9928\).\\
+    Thus, the exponential model explains better the number of residual
+    bacteria as a function of the antibiotic dose because the
+    exponential coef. of determination is greater.
   \item
-    \(b_{yx}=-9.9449\), therefore the knee flexion angle will increase
-    \(-9.9449\) bacteria per day of rehabilitation.
+    Exponential regression model: \(y=e^{3.7723+-0.4569x}\).\\
+    Prediction: \(y(3.5)=8.7845\) bacteria.\\
+    Although the coef. of determination is close to 1, the this
+    prediction is not reliable because the sample size is very small.
   \item
-    \(\overline{\log(x)}=0.267\) log(\(\mu\)g), \(s_{\log(x)}^2=0.7282\)
-    log(\(\mu\)g)\(^2\).\\
-    \(s_{\log(x)y}=-8.0787\) log(\(\mu\)g)bacteria.\\
-    Logarithmic regression model: \(y=24.9625+-11.0943\log(x)\).\\
-    Prediction: \(y(32)=-13.4875\) bacteria.\\
-    The logarithmic coefficient of determination is \(0.956\) and the
-    linear coefficient of determination is \(0.9574\). Thus, the
-    prediction with the logarithmic model is more reliable as the
-    coefficient of determination of the logarithmic model is greater.
-  \item
-    Exponential regression model: \(y=e^{2.1628+-0.0862y}\).\\
-    Prediction: \(y(120)=3e-04\) \(\mu\)g.\\
-    This prediction is not reliable as 120 bacteria falls far away of
-    the range of values observed in the sample for the knee flexion
-    angle.
+    \(b_{yx}=-9.9449\), therefore the number of bacteria decreases
+    \(-9.9449\) per each \(\mu\)g more of antibiotic.
   \end{enumerate}
 \end{enumerate}

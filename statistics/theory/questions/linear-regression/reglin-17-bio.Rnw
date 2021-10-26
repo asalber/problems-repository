@@ -1,0 +1,78 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+x <- c(90, 230, 240, 260, 330, 400, 410, 550, 590, 610, 700, 790)
+y <- c(110, 200, 130, 150, 180, 160, 230, 180, 230, 260, 320, 370)
+n <- length(x)
+table <- matrix(c(x,y), nrow = 2, byrow = T)
+#decimals <- matrix(rep(1,2*n), nrow = 2, ncol=9, byrow=TRUE)
+rownames(table) <- c("\\mbox{Altitude}", "\\mbox{Respiration rate}")
+sumx <- sum(x)
+sumy <- sum(y)
+sumx2 <- sum(x^2)
+sumy2 <- sum(y^2)
+sumxy <- sum(x*y)
+
+## QUESTION/ANSWER GENERATION
+# means
+mx <- sumx / n
+my <- sumy / n
+# variances
+s2x <- sumx2/n-mx^2
+s2y <- sumy2/n-my^2
+sx <- sqrt(s2x)
+sy <- sqrt(s2y)
+# Covariances
+sxy <- sumxy/n-mx*my
+# Deternl/(mg$\cdot$ h)ation coeff
+r2 <- sxy^2 / (s2x*s2y)
+r <- sxy / (sx * sy)
+# Slopes
+byx <- sxy/s2x
+# Coef of determination
+# Linear model y on x
+lm <- lm(y~x)
+@
+
+\begin{question}
+\puntos{4}The rowan is a species of tree that grows at different altitudes. In order to study how the rowan adapts to different habitats, we have collected a sample of branches of 12 trees at different altitudes in Scotland. In the laboratory, the respiration rate of each branch was observed during the night. The following table shows the altitude (in meters) of each branch and the respiration rate (in nl of O$_2$ per hour per mg of weight).
+
+$$
+<<echo=FALSE, results=tex>>=
+library(xtable)
+print(xtable(table, auto=T), tabular.environment="array", include.colnames = F, floating=F, hline.after = c(0,nrow(table)), sanitize.text.function = function(x) { x })
+@
+$$
+
+\begin{enumerate}
+\item Is there a linear relationship between altitude and respiration rate of rowan. How is this relationship?
+\item How much increases the respiration rate per each increment of 100 meters in the altitude?
+\item What respiration rate is expected for a rowan at 500 meters of altitude? And for a rowan at the sea level?
+\item Are these predictions reliable?
+\end{enumerate}
+Use the following sums for the computations ($X$=Altitude and $Y$=Respiration rate):
+$\sum x_i=\Sexpr{sumx}$ m, $\sum y_i=\Sexpr{sumy}$ 
+nl/(mg$\cdot$ h), $\sum x_i^2=\Sexpr{sumx2}$ (m)$^2$, $\sum y_i^2=\Sexpr{sumy2}$ nl/(mg$\cdot$ h)$^2$ and $\sum x_iy_j=\Sexpr{sumxy}$ m$\cdot$ nl/(mg$\cdot$ h).
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item $\bar x=\Sexpr{round(mx,4)}$ m, $s_x^2=\Sexpr{round(s2x,4)}$ (m)$^2$,\\
+$\bar y=\Sexpr{round(my,4)}$ nl/(mg$\cdot$ h), $s_y^2=\Sexpr{round(s2y,4)}$ nl/(mg$\cdot$ h)$^2$,\\
+$s_{xy}=\Sexpr{round(sxy,4)}$ m $\cdot$ nl/(mg$\cdot$ h).\\
+As the covariance is positive, there is a direct linear relation between the altitude and the respiration rate.
+\item The respiration rate increases $b_{yx} = \Sexpr{round(byx,4)}$ nl/(mg$\cdot$h) per meter, or what is the same, $\Sexpr{round(byx *100,4)}$ nl/(mg$\cdot$h) per 100 meters.
+\item Regression line of the respiration rate on the altitude: $y=\Sexpr{round(lm$coefficients[1], 4)} + \Sexpr{round(lm$coefficients[2], 4)}x$.\\
+Predictions: $y(500) = \Sexpr{round(lm$coefficients[1] + lm$coefficients[2]*500, 4)}$ nl/(mg$\cdot$ h) and $y(0) = \Sexpr{round(lm$coefficients[1] + lm$coefficients[2]*0, 4)}$ nl/(mg$\cdot$ h).
+\item $r^2 = \Sexpr{round(r2, 4)}$. As the coefficient of determination is not far from 1, the regression line fits well, but the sample size is too small to have reliable predictions. In addition, the prediction for the sea level is less reliable because it falls outside the range of values of the sample.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{reglin-17-bio}
+%% \extol{0.001}
+%% \degree{Biotechnology}
+ 

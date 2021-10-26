@@ -1,0 +1,122 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+library(xtable)
+#library(rkTeaching)  // I get an error in the compilation
+x <- c(rep(0,12),rep(1,36),rep(2,39),rep(3,24), rep(4, 6), rep(5, 3))
+df <- data.frame(Drinks = x)
+
+## QUESTION/ANSWER GENERATION
+# Sample size
+nx <- length(x)
+# Quartiles
+q1 <- quantile(x, 0.25, type = 1)
+q2 <- quantile(x, 0.5, type = 1)
+q3 <- quantile(x, 0.75, type = 1)
+# IQR
+iqr <- q3-q1
+# Fences
+f1 <- q1-1.5*iqr
+f2 <- q3+1.5*iqr
+# Outliers
+outliers <- x[x < f1 | x > f2]
+# Mean
+mx <- mean(x)
+my <- 2.1
+# Variance
+s2x <- sum(x^2)/nx-mx^2
+s2y <- 1.5
+# Std. deviation
+sx <- sqrt(s2x)
+sy <- sqrt(s2y)
+# Coef. variation
+cvx <- sx/mx
+cvy <- sy/my
+# Coef. skewness
+g1x <- sum((x-mx)^3)/(nx*sx^3)
+# Coef. kurtosis
+g2x <- sum((x-mx)^4)/(nx*sx^4)-3
+# Standard scores
+zx <- (3 - mx) / sx
+zy <- (4 - my) / sy
+@
+
+\begin{question}
+\puntos{5}The table below shows the number of daily sugary drinks drunk by a sample of 16-years-old people.
+
+$$
+\begin{array}{|c|r|r|r|r|}
+\hline
+\mbox{Drinks} & n_i & f_i & N_i & F_i\\
+\hline
+0 &    & 0.1 &     &      \\
+\hline
+1 &    &     & 48  &      \\
+\hline
+2 &    &     &     & 0.725\\
+\hline
+3 & 24 &     &     &      \\
+\hline
+4 &    &     &     & 0.975\\
+\hline
+5 &    &     & 120 &      \\
+\hline
+\end{array}
+$$
+
+\begin{enumerate}
+\item Complete the table explaining how.
+\item Plot the cumulative frequency polygon.
+\item Are there outliers?
+\item Study the normality of the distribution.
+\item If another sample of 18-years-old people has a mean $2.1$ drinks and a variance $1.5$ drinks$^2$, in which distribution is more representative the mean?
+\item Who consumes a higher relative amount of sugary drinks, a 16-years-old who consumes 3 drinks a day or a 18-years-old who consumes 4?
+\end{enumerate}
+
+Use the following sums for the computations: $\sum x_i= \Sexpr{sum(x)}$ drinks, $\sum x_i^2=\Sexpr{sum(x^2)}$ drinks$^2$, $\sum (x_i-\bar x)^3=\Sexpr{round(sum((x-mx)^3),2)}$ drinks$^3$ and $\sum (x_i-\bar x)^4=\Sexpr{round(sum((x-mx)^4),2)}$ drinks$^4$.
+
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item 
+$$
+<<echo = F, comment = NA, results=tex>>=
+table <- rkTeaching::frequencyTable(df, "Drinks")
+print(xtable(table, auto=T), tabular.environment="array", include.rownames = F,  floating=F, hline.after = c(0,nrow(table)), sanitize.text.function = function(x) { x })
+@
+$$
+
+\item 
+<<cumulative-distribution-subjects, fig=T, echo=F, height=4, width=6, dev="svg", fig.path="img">>=
+Ni <- cumsum(table(x))
+xi <- c(-0.5, rep(sort(unique(x)), each=2), 5.5)
+Ni <- c(0, 0, rep(Ni, each=2))
+plot(xi, Ni, type="l", col="blue",
+     main = "Distribution of daily sugary drinks",
+     xlab = "Num of drinks",
+     ylab = "Cumulative frequency")
+abline(h=seq(0,120,20), col = "gray", lty=2)
+lines(xi, Ni, col="blue")
+@
+
+\item Quartiles: $Q_1=\Sexpr{q1}$ drinks, $Q_2=\Sexpr{q2}$ drinks, $Q_3=\Sexpr{q3}$ drinks\\
+$IQR = \Sexpr{iqr}$ drinks\\
+Fences: $f_1=\Sexpr{f1}$ drinks and $f_2=\Sexpr{f2}$ drinks.
+\item $\bar x=\Sexpr{round(mx,4)}$ drinks, $s^2=\Sexpr{round(s2x,4)}$ drinks$^2$, $s=\Sexpr{round(sx,4)}$ drinks, 
+$g_1=\Sexpr{round(g1x,4)}$ and $g_2=\Sexpr{round(g2x,4)}$. As the coefficient of skewness and the coefficient of kurtosis are between -2 and 2 we can assume that the sample comes from a normal population.
+\item Let $Y$ be the daily sugary drinks drunk by 18-year-old people. Then, $cv_x=\Sexpr{round(cvx,4)}$ and $cv_y=\Sexpr{round(cvy,4)}$. As the coefficient of variation of 18-year-old is a little bit smaller than the one of 16-year-old, the mean of the 18-year-old is a little bit more representative.
+\item Standard score for 16-year-old: $z(3)=\Sexpr{round(zx, 4)}$\\
+Standard score for 18-year-old: $z(4)=\Sexpr{round(zy, 4)}$\\
+As the standard score of 4 for a 18-year-old is greater than the standard score of 3 for a 16-years-old, 4 drinks is relatively higher.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{des-21-nut}
+%% \extol{0.001}
+%% \degree{Nutrition}
+ 

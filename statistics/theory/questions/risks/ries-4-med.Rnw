@@ -1,9 +1,9 @@
 <<echo=FALSE, results=hide>>=
 ## DATA GENERATION
-ntd <- 120
-nth <- 1250
-ncd <- 880
-nch <- 2750
+ntd <- 30
+nth <- 970
+ncd <- 42
+nch <- 2958
 nt <- ntd + nth
 nc <- ncd + nch
 n <- nt + nc
@@ -33,18 +33,20 @@ We want to study the risk for a new vaccine to cause thrombi compared with a tra
 
 %% SOLUTIONS
 \begin{solution}
-Let $D$ be the event of being infected.
+Let $T$ be the event of suffering thrombi.
 \begin{enumerate}
-\item $RR(D)=\Sexpr{round(rr, 4)}$. Thus, the risk of being infected with face mask is almost one third of the likelihood of been infected without face mask.
-\item $OR(D)=\Sexpr{round(or, 4)}$. Thus, the odds of being infected with face mask is less than one third of the likelihood of been infected without face mask.
-\item As we can not compute the prevalence of $D$, the odds ratio is more reliable.
+\item $RR(T)=\Sexpr{round(rr, 4)}$. Thus, the risk of suffering thrombi with the new vaccine is more than the double that with traditional vaccine.
+\item $OR(T)=\Sexpr{round(or, 4)}$. Thus, the odds of suffering thrombi with the new vaccine is more than the double that with traditional vaccine.
+\item Both measures are reliable because the study is prospective and we can estimate the incidence, but the relative risk is easier to interpret.
+\item Let $T_n$ and $T_t$ the events of suffering thrombi with the new and the traditional vaccines, respectively. $P(T_n\cap \overline{T_t}) = 0.026$.
+\item $P(T_t|T_n) = 0.1333 \neq P(T_t) = 0.014$, thus the events are dependent.
 \end{enumerate}
 \end{solution}
 
 %% META-INFORMATION
 %% \extype{num}
 %% \exsolution{Solución}
-%% \exname{ries-med-2}
+%% \exname{ries-4-med}
 %% \extol{0.001}
-%% \degree{Pharmacy}
+%% \degree{Medicine}
  

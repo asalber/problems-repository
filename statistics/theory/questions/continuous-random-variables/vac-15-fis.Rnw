@@ -18,18 +18,19 @@
 
 %% SOLUTIONS
 \begin{solution}
-Let $X_1$ and $X_2$ be the lifetime of rats with a normal diet and a low fat diet respectively,
+Let $X$ be the shoulder circumference, then $X\sim N(98, 5)$.
 \begin{enumerate}
-\item $\mu_2=12.6673$ months and $s=1.6087$ months.
-\item $P(X<9)=0.068$.
+\item $P(95\leq X\leq 105) = 0.645$, that is $6.45\%$.
+\item $P_{95} = 106.22$ cm.
+\item Let $Y$ be the number of women with a shoulder circumference less than 90 cm in a sample of 50 women. Then, $Y\sim B(50, 0.0548) \approx P(2.74)$, and $P(Y\geq 2) = 0.7585$.
 \end{enumerate}
 \end{solution}
 
 %% META-INFORMATION
 %% \extype{num}
 %% \exsolution{Solutionn}
-%% \exname{vac-med-13}
+%% \exname{vac-15-fis}
 %% \extol{0.001}
-%% \degree{Medicine}
+%% \degree{Physio}
  
   

@@ -1,18 +1,16 @@
 <<echo=FALSE, results=hide>>=
 ## DATA GENERATION
-set.seed(123)
-x <- rep(c(4.5, 5.5, 6.5, 7.5, 8.5), c(2, 5, 6, 4, 3))
-y <- rep(c(2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5), c(1, 6, 7, 3, 7, 0, 1))
-data <- data.frame(Score = c(x, y), Treatment = c(rep('Treatment', 20), rep('Placebo', 25)))
+y <- rep(c(4.5, 5.5, 6.5, 7.5, 8.5), c(2, 5, 6, 4, 3))
+x <- rep(c(2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5), c(1, 6, 7, 3, 7, 0, 1))
+data <- data.frame(Score = c(y, x), Treatment = c(rep('Treatment', 20), rep('Placebo', 25)))
 
 ## QUESTION/ANSWER GENERATION
 # Tamaño de la muestra
 nx <- length(x)
 ny <- length(y)
 # Quartiles
-q1 <- quantile(y, probs = c(0.25), type=1)
-q2 <- quantile(y, probs = c(0.5), type=1)
-q3 <- quantile(y, probs = c(0.75), type=1)
+q1 <- 3.875
+q3 <- 6.25
 # IQR
 iqr <- q3-q1
 # Fences
@@ -72,38 +70,51 @@ barplot(out$right, col=orangeceu, horiz = T, space = 0, add = T, axes = F)
 \end{enumerate}
 
 Use the following sums for the computations: \\
-Treatment: $\sum x_i=\Sexpr{round(sum(x), 2)}$, $\sum x_i^2=\Sexpr{round(sum(x^2), 4)}$, $\sum (x_i-\bar x)^3=\Sexpr{round(sum((x-mx)^3),2)}$ and $\sum (x_i-\bar x)^4=\Sexpr{round(sum((x-mx)^4),2)}$.\\
-Placebo: $\sum x_i=\Sexpr{round(sum(y), 4)}$, $\sum x_i^2=\Sexpr{round(sum(y^2), 4)}$, $\sum (x_i-\bar x)^3=\Sexpr{round(sum((y-my)^3),2)}$ and $\sum (x_i-\bar x)^4=\Sexpr{round(sum((y-my)^4),2)}$.
+Placebo: $\sum x_i=\Sexpr{round(sum(x), 2)}$, $\sum x_i^2=\Sexpr{round(sum(x^2), 4)}$, $\sum (x_i-\bar x)^3=\Sexpr{round(sum((x-mx)^3),2)}$ and $\sum (x_i-\bar x)^4=\Sexpr{round(sum((x-mx)^4),2)}$.\\
+Treatment: $\sum x_i=\Sexpr{round(sum(y), 4)}$, $\sum x_i^2=\Sexpr{round(sum(y^2), 4)}$, $\sum (x_i-\bar x)^3=\Sexpr{round(sum((y-my)^3),2)}$ and $\sum (x_i-\bar x)^4=\Sexpr{round(sum((y-my)^4),2)}$.
 \end{question}
 
 
 %% SOLUTIONS
 \begin{solution}
-% \begin{enumerate}
-% \item Quartiles: $Q_1=\Sexpr{q1}$ subjects, $Q_2=\Sexpr{q2}$ subjects, $Q_3=\Sexpr{q3}$ subjects.\\
-% $IQR = \Sexpr{iqr}$ subjects.\\
-% Fences: $f_1=\Sexpr{f1}$ subjects and $f_2=\Sexpr{f2}$ subjects.
-% 
-% <<boxplot-subjects, fig=T, echo=F, height=4, width=6, dev="svg", fig.path="img">>=
-% boxplot(x, horizontal=T, col=rgb(5, 161, 230, maxColorValue = 255), main="Box plot of passed subjects\nby first year students of a degree", xlab="Subjects")
-% @
-% 
-% \item $\bar x=\Sexpr{round(mx,4)}$ subjects, $Me=\Sexpr{q2}$ subjects and $Mo=6$ subjects.
-% \item $s^2=\Sexpr{round(s2x,4)}$ (subjects)$^2$, $s=\Sexpr{round(sx,4)}$ subjects and $cv=\Sexpr{round(cvx,4)}$.\\
-% $g_1=\Sexpr{round(g1x,4)}$, so that the distribution is slightly skewed to the right.\\
-% $g_2=\Sexpr{round(g2x,4)}$, so that the distribution flatter than a Gauss bell.\\
-% We can assume that the sample comes from a normal population as both, the coefficient of skewness, and the coefficient of curtosis are between -2 and 2.
-% \item Let $Y$ the number of subjects passed the second year. Then, $cv_x=\Sexpr{round(cvx,4)}$ and $cv_y=\Sexpr{round(cvy,4)}$. As the coefficient of variation of the first year is a little bit smaller than the one of the second year, the mean of the first year is a little bit more representative.
-% \item Standard score for the first year: $z(7)=\Sexpr{round(zx,4)}$\\
-% Standard score for the second year: $z(6)=\Sexpr{round(zy,4)}$\\
-% As the standard score of $7$ the first year is greater than the standard score of $6$ the second year, the firs year student is better. 
-% \end{enumerate}
+\begin{enumerate}
+\item 
+$$
+\begin{array}{lrrrr}
+ \mbox{Score} & n_i & f_i & N_i & F_i \\ 
+  \hline
+[2,3] & 1 & 0.04 & 1 & 0.0 \\ 
+  (3,4] & 6 & 0.24 & 7 & 0.3 \\ 
+  (4,5] & 7 & 0.28 & 14 & 0.6 \\ 
+  (5,6] & 3 & 0.12 & 17 & 0.7 \\ 
+  (6,7] & 7 & 0.28 & 24 & 1.0 \\ 
+  (7,8] & 0 & 0.00 & 24 & 1.0 \\ 
+  (8,9] & 1 & 0.04 & 25 & 1.0 \\ 
+   \hline
+\end{array}
+$$
+
+<<ogive-polymyalgia, fig=T, echo=F, height=4, width=6, dev="svg", fig.path="img">>=
+.df = data.frame(Score = 2:9, Cum.Rel.Freq. = c(0.00, 0.04, 0.28, 0.56, 0.68, 0.96, 0.96, 1))
+ggplot(data=.df, aes(x=Score, y=Cum.Rel.Freq.)) + geom_line()
+@
+
+\item $Q_1= \Sexpr{q1}$, $Q_3= \Sexpr{q3}$ and $IQR=\Sexpr{iqr}$.
+\item $f_1 = \Sexpr{f1}$ and $f_2=\Sexpr{f2}$. Thus, there are no outliers in the placebo sample because all the values fall between the fences.
+\item Placebo: $\bar x=\Sexpr{round(mx,4)}$, $s^2=\Sexpr{round(s2x,4)}$, $s=\Sexpr{round(sx,4)}$ and $cv=\Sexpr{round(cvx,4)}$.\\
+Treatment: $\bar x=\Sexpr{round(my,4)}$, $s^2=\Sexpr{round(s2y,4)}$, $s=\Sexpr{round(sy,4)}$ and $cv=\Sexpr{round(cvy,4)}$.
+\item Placebo: $g_2=\Sexpr{round(g2x,4)}$. Treatment: $g_2=\Sexpr{round(g2y,4)}$. Thus, the distribution of the placebo group is more normal as the coef. of kurtosis is closer to 0.
+\item Standard score for the placebo: $z(5)=\Sexpr{round(zx,4)}$\\
+Standard score for the treatment: $z(6)=\Sexpr{round(zy,4)}$\\
+As the standard score of $5$ in the placebo group is greater than the standard score of $6$ in the treatment group, a score of 5 in the placebo group is better.
+
+\end{enumerate}
 \end{solution}
 
 %% META-INFORMATION
 %% \extype{num}
 %% \exsolution{Solution}
-%% \exname{des-18-gen}
+%% \exname{des-19-fis}
 %% \extol{0.001}
-%% \degree{All}
+%% \degree{Physio}
  

@@ -14,8 +14,6 @@ iqr <- q3-q1
 # Fences
 f1 <- q1-1.5*iqr
 f2 <- q3+1.5*iqr
-# Outliers
-outliers <- z[z < f1 | z > f2]
 # Mean
 mx <- mean(x)
 my <- 5.5

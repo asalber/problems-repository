@@ -17,14 +17,18 @@
   \end{enumerate}
 
   \textbf{Solution}\\
-  Let \(X_1\) and \(X_2\) be the lifetime of rats with a normal diet and
-  a low fat diet respectively,
+  Let \(X\) be the shoulder circumference, then \(X\sim N(98, 5)\).
 
   \begin{enumerate}
   \item
-    \(\mu_2=12.6673\) months and \(s=1.6087\) months.
+    \(P(95\leq X\leq 105) = 0.645\), that is \(6.45\%\).
   \item
-    \(P(X<9)=0.068\).
+    \(P_{95} = 106.22\) cm.
+  \item
+    Let \(Y\) be the number of women with a shoulder circumference less
+    than 90 cm in a sample of 50 women. Then,
+    \(Y\sim B(50, 0.0548) \approx P(2.74)\), and
+    \(P(Y\geq 2) = 0.7585\).
   \end{enumerate}
 \item
   \textbf{Question}\\
@@ -49,11 +53,15 @@
 
   \begin{enumerate}
   \item
-    Let \(X\) be the number of injuries in a tournament, then
-    \(X\sim P(2)\) and \(P(X>2)=0.3233\).
+    Let \(X\) be the number of defective components in 100 hours, then
+    \(X\sim P(4)\), and \(P(X>2) = 0.7619\).
   \item
-    Let \(Y\) be the number of tournaments in the tennis circuit with no
-    injuries, then \(Y\sim B(6,0.1353)\) and \(P(Y>0)=0.5821\).
+    Let \(Y\) be the number of defective components in 50 hours, then
+    \(X\sim P(2)\), and \(P(X\leq 1) = 0.406\).
+  \item
+    Let \(Z\) be the number of companies that produce more than 3
+    defective components in 50 hours in a sample of 7 companies, then
+    \(Z\sim B(7, 0.1429)\), and \(P(Y\geq 1) = 0.6601\).
   \end{enumerate}
 \item
   \textbf{Question}\\
@@ -84,19 +92,25 @@
   \end{enumerate}
 
   \textbf{Solution}\\
-  Let \(D\) be the event of being infected.
+  Let \(T\) be the event of suffering thrombi.
 
   \begin{enumerate}
   \item
-    \(RR(D)=0.3613\). Thus, the risk of being infected with face mask is
-    almost one third of the likelihood of been infected without face
-    mask.
+    \(RR(T)=2.1429\). Thus, the risk of suffering thrombi with the new
+    vaccine is more than the double that with traditional vaccine.
   \item
-    \(OR(D)=0.3\). Thus, the odds of being infected with face mask is
-    less than one third of the likelihood of been infected without face
-    mask.
+    \(OR(T)=2.1782\). Thus, the odds of suffering thrombi with the new
+    vaccine is more than the double that with traditional vaccine.
   \item
-    As we can not compute the prevalence of \(D\), the odds ratio is
-    more reliable.
+    Both measures are reliable because the study is prospective and we
+    can estimate the incidence, but the relative risk is easier to
+    interpret.
+  \item
+    Let \(T_n\) and \(T_t\) the events of suffering thrombi with the new
+    and the traditional vaccines, respectively.
+    \(P(T_n\cap \overline{T_t}) = 0.026\).
+  \item
+    \(P(T_t|T_n) = 0.1333 \neq P(T_t) = 0.014\), thus the events are
+    dependent.
   \end{enumerate}
 \end{enumerate}

@@ -24,15 +24,16 @@ sol2 <- pbinom(x2, n, p, lower.tail = F)
 %% SOLUTIONS
 \begin{solution}
 \begin{enumerate}
-\item Let $X$ be the number of injuries in a tournament, then $X\sim P(\Sexpr{lambda})$ and $P(X>2)=\Sexpr{round(sol1,4)}$.
-\item Let $Y$ be the number of tournaments in the tennis circuit with no injuries, then $Y\sim B(\Sexpr{n},\Sexpr{round(p,4)})$ and $P(Y>0)=\Sexpr{round(sol2,4)}$.
+\item Let $X$ be the number of defective components in 100 hours, then $X\sim P(4)$, and $P(X>2) = 0.7619$.
+\item Let $Y$ be the number of defective components in 50 hours, then $X\sim P(2)$, and $P(X\leq 1) = 0.406$.
+\item Let $Z$ be the number of companies that produce more than 3 defective components in 50 hours in a sample of 7 companies, then $Z\sim B(7, 0.1429)$, and $P(Y\geq 1) = 0.6601$.
 \end{enumerate}
 \end{solution}
 
 %% META-INFORMATION
 %% \extype{num}
 %% \exsolution{Solution}
-%% \exname{vad-fis-2}
+%% \exname{vad-14-fis}
 %% \extol{0.01}
 %% \degree{Physiotherapy}
  

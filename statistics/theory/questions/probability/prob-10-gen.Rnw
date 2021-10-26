@@ -1,0 +1,37 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+pA <- 3/8
+pB <- 1/2
+pAyB <- 1/4
+
+## QUESTION/ANSWER GENERATION
+
+@
+
+\begin{question}
+\puntos{2.5}Let $A$ and $B$ be two events of a same sample space, such that $P(A)=3/8$, $P(B)=1/2$ and $P(A\cap B)=1/4$.
+Compute the following probabilities:
+\begin{enumerate}
+\item $P(A\cup B)$.
+\item $P(\overline{A})$ and $P(\overline{B})$.
+\item $P(\overline{A}\cap \overline{B})$.
+\item $P(A\cap \overline{B})$.
+\item $P(A|B)$.
+\item $P(A|\overline{B})$.
+\item Are $A$ and $B$ compatible? Are $A$ and $B$ dependent?
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{prob-10-gen}
+%% \extol{0.001}
+%% \degree{All}
+ 
