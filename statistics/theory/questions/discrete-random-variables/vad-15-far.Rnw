@@ -1,0 +1,37 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+lambda <- 4
+x1 <- 3
+n <- 5
+x2 <- 1
+## QUESTION/ANSWER GENERATION
+p1 <- ppois(x1, lambda, lower.tail = F)
+p <- ppois(0,lambda)
+p2 <- pbinom(x2, n, p, lower.tail = F)
+@
+
+\begin{question}
+\puntos{2.5}A pharmaceutical company produces the same drug in 5 different laboratories. It has been observed that each laboratory produces, on average, one non-marketable defective batch every three months.
+
+\begin{enumerate}
+\item What is the probability that a laboratory produce more than 3 defective batches in one year?
+\item What is the probability that at least 2 laboratories produce no defective batches in one year?
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item Let $X$ be the number of defective batches in a year, then $X\sim P(4)$, and $P(X>3) = \Sexpr{round(p1,4)}$.
+\item Let $Y$ be the number of laboratories that produce no defective batches in one year, then $Y\sim B(5, \Sexpr{round(p,4)})$, and $P(Y\geq 2) = \Sexpr{round(p2,4)}$.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{vad-15-far}
+%% \extol{0.01}
+%% \degree{Pharmacy}
+ 
