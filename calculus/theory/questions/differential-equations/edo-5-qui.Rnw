@@ -1,0 +1,38 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+
+## QUESTION/ANSWER GENERATION
+# sample size
+
+@
+
+\begin{question}
+\puntos{3.5}The ozone ($O_3$) in the atmosphere is transformed into oxygen ($O_2$) through the following chemical reaction:
+
+$$
+2O_3 \rightarrow 3O_2
+$$
+
+It was experimentally observed that the speed at which the amount of oxygen varies is inversely proportional to the amount of oxygen present. If there is initially 10 g of oxygen in a place, and after one hour this amount of oxygen doubles,
+
+\begin{enumerate}
+  \item What will the amount of oxygen be after 5 hours?
+  \item How long will it take to have 1 kg of oxygen?
+\end{enumerate}
+ 
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{edo-far-4}
+%% \extol{0.001}
+%% \degree{Pharmacy}
+ 
+  

@@ -1,0 +1,35 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+
+## QUESTION/ANSWER GENERATION
+# sample size
+
+@
+
+\begin{question}
+\puntos{3.5}To analyze the hypoxemia tolerance of mammals, in a laboratory some rats are exposed to extreme conditions with variable levels of oxygen. The rats are in a room whose oxygen level (in \%) at any position $(x,y)$ is
+
+$$O(x,y)=\frac{1}{10}x^2y^2e^{x-y}$$
+
+For the rats to survive, they must reach positions where the oxygen level is above 18\%.
+
+\begin{enumerate}
+\item A rat $A$ is at position $(3,2)$. If the rat stays in that position, will it survive?
+\item What direction should rat $A$ take in order to increase the oxygen level as quickly as possible? What is the instantaneous rate of change of the oxygen level following that direction?
+\item Another rat $B$ is at position $(2,2)$. If it starts to move in such a way that $y$ decreases the double of the increment of $x$, how will the oxygen level change?
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{derpar-gen-3}
+%% \extol{0.001}
+%% \degree{All}
+ 

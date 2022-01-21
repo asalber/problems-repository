@@ -1,0 +1,55 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+n <- 10000
+pON <- 1800 / n
+pOY <- 100 / n
+pAN <- 4200 / n
+pAY <- 400 / n
+pBN <- 2500 / n
+pBY <- 150 / n
+pABN <- 800 / n
+pABY <- 50 / n
+
+## QUESTION/ANSWER GENERATION
+
+@
+
+\begin{question}
+\puntos{2}To study the effectiveness of two antigen tests for the COVID both tests have been applied to a sample of 100 persons. The table below shows the results:
+
+$$\begin{array}{ccr}
+\hline
+\mbox{Test $A$} & \mbox{Test $B$} & \mbox{Num persons}\\
++ & + & 8\\
++ & - & 2\\
+- & + & 3\\
+- & - & 87\\
+\hline
+\end{array}
+$$
+
+Define the following events and compute its probabilities:
+
+\begin{enumerate}
+\item Get a $+$ in the test $A$.
+\item Get a $+$ in the test $A$ and a $-$ in the test $B$.
+\item Get a $+$ in some of the two tests.
+\item Get different results in the two tests.
+\item Get the same result in the two tests.
+\item Get a $+$ in the test $B$ if we got a $+$ in the test $A$.
+\end{enumerate}
+Are the outcomes of the two tests independent?
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+
+\end{solution}
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{prob-12-med}
+%% \extol{0.001}
+%% \degree{Medicine}
+ 

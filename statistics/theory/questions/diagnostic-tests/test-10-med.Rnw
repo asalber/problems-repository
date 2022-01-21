@@ -1,0 +1,52 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+fp <- 0.01
+fn <- 0.002
+pre <- 1 / 400
+# Risks
+ntd <- 2
+nth <- 698
+ncd <- 3
+nch <- 297
+## QUESTION/ANSWER GENERATION
+sen <- 1 - fn / pre
+spe <- 1 - fp / (1 - pre)
+tp <- pre * sen
+tn <- (1 - pre) * spe
+ppv <- tp / (tp + fp)
+npv <- tn / (tn + fn)
+# Risks
+nt <- ntd + nth
+nc <- ncd + nch
+n <- nt + nc
+rt <- ntd / nt
+rc <- ncd / nc
+rr <- rt / rc
+ot <- ntd / nth
+oc <- ncd / nch
+or <- ot / oc
+@
+
+\begin{question}
+\puntos{3}A diagnostic test for a disease with a prevalence of 10\% has a positive predictive value of 40\% and negative predictive value of 95\%. 
+\begin{enumerate}
+\item Compute the sensitivity and the specificity of the test.
+\item Compute the probability of a right diagnose.
+\item What must be the minimum sensitivity of the test to be able to diagnose the disease? 
+\end{enumerate}
+\end{question}
+
+%% SOLUTIONS
+\begin{solution}
+
+\end{solution}
+
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{test-10-med}
+%% \extol{0.001}
+%% \degree{Medicine}
+ 
+  

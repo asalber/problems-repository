@@ -1,0 +1,37 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+mx <- 5
+sx <- 2
+sy <- 25
+sy <- 5
+## QUESTION/ANSWER GENERATION
+
+@
+
+\begin{question}
+\puntos{5}It is known that the life of a battery for a peacemaker follows a normal distribution. It has been observed that 20\% of the batteries last more than 15 years, while 10\% last less than 12 years. 
+
+\begin{enumerate}
+\item Compute the mean and the standard deviation of the battery life.\\
+Remark: If you are not able to compute the mean and the standard deviation, use a mean of 14 years and a standard deviation of 1.5 years for the following parts.
+\item Compute the fourth decile of the battery life.
+\item If we take a sample of 5 batteries, what is the probability that more than half of them last between 13 and 14 years?
+\item If we take a sample of 100 batteries, what is the probability that some of them last less than 11 years?
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+
+\end{solution}
+
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{vac-18-med}
+%% \extol{0.001}
+%% \degree{Medicine}
+ 
+  

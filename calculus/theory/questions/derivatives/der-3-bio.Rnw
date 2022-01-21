@@ -1,0 +1,31 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+
+## QUESTION/ANSWER GENERATION
+# sample size
+
+@
+
+\begin{question}
+\puntos{3}Two insects start moving from the same point following perpendicular directions.
+\begin{enumerate}
+\item If the first insect moves at a speed of 3 cm/s and the second at a speed of 4 cm/s, at what instantaneous speed does the distance between them change 2 seconds after they start moving? And at 3 seconds?
+\item If 4 seconds after they start moving the second insect stops and the first continues moving with the same direction and speed, at what instantaneous speed does the distance between the two insects change at that moment?
+\end{enumerate}
+
+Remark: The distance between the two insects is the length of the hypotenuse of the right triangle whose sides are the distance traveled by them.
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{der-gen-1}
+%% \extol{0.001}
+%% \degree{All}
+ 
