@@ -1,0 +1,100 @@
+\begin{enumerate}
+\item
+  \textbf{Question}\\
+  The weight of male Wistar rats in a laboratory follows a normal
+  distribution with mean 400 grams and standard deviation 30 grams.
+
+  \begin{enumerate}
+  \item
+    What is the probability that a random rat weighs exactly 400 grams?
+  \item
+    What is the probability that a random rat weighs more than 450
+    grams?
+  \item
+    If a rat is chosen randomly, what is the probability that its weight
+    is an outlier?\\
+    Remark: The normal range of data is \((Q_1-1.5 IQR, Q_3+1.5IQR)\).
+  \item
+    Give an interval of weights centered on the mean in which 95\% of
+    the male Wistar rats are found.
+  \end{enumerate}
+
+  \textbf{Solution}\\
+\item
+  \textbf{Question}\\
+  To evaluate a possible displacement of the patella at the Abruna Joms
+  physiotherapy clinic, the Glide Test is used. After applying the test
+  to 1000 patients we observed that 200 suffered from patella
+  displacement and got a positive outcome, 13 suffered from patella
+  displacement and got a negative outcome and 8 did not suffer patella
+  displacement and got a positive outcome.
+
+  \begin{enumerate}
+  \item
+    Represents the data obtained by the Glide test in a table or a tree.
+  \item
+    Compute the sensitivity and specificity of the Glide test.
+  \item
+    Is the Glide test useful for diagnosing patella displacement?
+  \item
+    Is the Glide test useful for ruling out patella displacement?
+  \item
+    What is the probability of getting a right diagnose?
+  \end{enumerate}
+
+  \textbf{Solution}\\
+\item
+  \textbf{Question}\\
+  The new drug Recalnal for mitigating kidney stones produces side
+  effects in the form of liver damage in 5\% of patients taking
+  Recalnal. The drug is administered to 10 patients.
+
+  \begin{enumerate}
+  \item
+    Justify the type of distribution followed by the variable that
+    measures the number of patients with liver damage.
+  \item
+    What is the probability that at least 2 of them have liver damage?
+  \item
+    Let \(E_n\) be the event that at least one of \(n\) patients suffers
+    liver damage when receiving Recalnal. In drug feasibility
+    experiments \(P(E_n)\) is used as a criterion about how safe the
+    drug is. What is the minimum value of \(n\) such that
+    \(P(E_n)>0.9\)?
+  \end{enumerate}
+
+  In the experimental phase of Recalnal, an average of 3 doses per
+  minute are administered to volunteers.
+
+  \begin{enumerate}
+  \item
+    Justify the type of distribution followed by the variable that
+    measures the number of doses administered every 5 minutes.
+  \item
+    What is the probability that 13 doses are administered in 5 minutes?
+  \end{enumerate}
+
+  \textbf{Solution}\\
+\item
+  \textbf{Question}\\
+  In a population there are 20\% of patients who have suffered from
+  disease \(A\) but not \(B\), 30\% of patients who have suffered from
+  \(B\) but not \(A\), and 90\% of patients who have not suffered from
+  both diseases (but may have suffered from one).
+
+  \begin{enumerate}
+  \item
+    What percentage of people have suffered the disease \(A\)? And the
+    disease \(B\)?
+  \item
+    Compute the probability of suffering some of the diseases.
+  \item
+    Calculate the probability of not suffering from disease \(B\) if
+    disease \(A\) has not been suffered.
+  \item
+    What percentage of patients with disease \(B\) should there be in
+    the population for both diseases to be independent?
+  \end{enumerate}
+
+  \textbf{Solution}\\
+\end{enumerate}

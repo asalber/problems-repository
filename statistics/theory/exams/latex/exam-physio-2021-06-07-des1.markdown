@@ -72,8 +72,8 @@
     We have applied different doses of an antibiotic to a culture of
     bacteria. The table below shows the number of residual bacteria
     corresponding to the different doses.
-    $$% latex table generated in R 4.1.0 by xtable 1.8-4 package
-      % Thu Jun 17 19:55:11 2021
+    $$% latex table generated in R 4.1.2 by xtable 1.8-4 package
+      % Fri Mar 11 16:55:04 2022
       \begin{array}{lrrrrrrrr}
          \hline
       \mbox{Dose ($\mu$g)} & 0.2 & 0.7 &  1 & 1.5 &  2 & 2.4 & 2.8 &  3 \\ 

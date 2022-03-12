@@ -1,0 +1,28 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+
+## QUESTION/ANSWER GENERATION
+# sample size
+
+@
+
+\begin{question}
+
+\puntos{3}A dialysis machine works under the principle of Fick's Law, which states that the amount of waste material that passes through a membrane is proportional to the difference between the concentration of one side and the other of it. At the start of dialysis, the waste material concentration of a patient is 160 mg/dl and after 1 hour it drops to half, while the dialysate solution at the other side of the membrane remains at a constant concentration of 10 mg/dl. If dialysis finish when the patient reaches a concentration of 20 mg/dl, how long will the patient have to be on dialysis to get it?
+
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{edo-6-med}
+%% \extol{0.001}
+%% \degree{Medicine}
+ 
+  

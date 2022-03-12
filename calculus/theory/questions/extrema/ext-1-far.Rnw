@@ -1,0 +1,32 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+
+## QUESTION/ANSWER GENERATION
+# sample size
+
+@
+
+\begin{question}
+\puntos{3.5}The temperature of a gel depends on time according to the function $T(x)=x^2+\ln(1.5-x)$, where $T$ is the temperature in degrees Celsius and $x$ is the time in hours.
+
+\begin{enumerate}
+\item Compute the minimum and maximum temperature of the gel in the interval from 0 to 1.5 hours?
+\item How fast is the temperature changing at 1.2 hours? Compute approximately the value of the temperature 5 minutes after using the tangent line.
+\item At what time is the rate of change of temperature maximum?
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{ext-1-far}
+%% \extol{0.001}
+%% \degree{Pharmacy}
+ 
+  

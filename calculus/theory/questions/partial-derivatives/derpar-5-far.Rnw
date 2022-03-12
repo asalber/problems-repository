@@ -1,0 +1,34 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+
+## QUESTION/ANSWER GENERATION
+# sample size
+
+@
+
+\begin{question}
+\puntos{3.5}In a pharmacy, the amount of paracetamol $Q$ demanded by customers depends on the price of paracetamol $p$ and the price of ibuprofen $b$, according to the function
+
+$$Q(p,b) = \frac{6b}{(p-1)p}$$
+ 
+\begin{enumerate}
+\item For which values of $p$ and $b$ this function make sense in this context?
+\item If the price of paracetamol increases, will the demand for paracetamol increase or decrease?
+\item If the prices of paracetamol and ibuprofen are $p=2$ and $b=1$ €, how should the prices of paracetamol and ibuprofen vary so that the quantity demanded of paracetamol increases as much as possible?
+\item Assuming the same prices as in the previous question, how much will the quantity of paracetamol demanded change if the price of paracetamol increases half of ibuprofen price increase?
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{derpar-gen-3}
+%% \extol{0.001}
+%% \degree{All}
+ 

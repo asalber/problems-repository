@@ -1,17 +1,14 @@
 <<echo=FALSE, results=hide>>=
 ## DATA GENERATION
-n <- 10000
-pON <- 1800 / n
-pOY <- 100 / n
-pAN <- 4200 / n
-pAY <- 400 / n
-pBN <- 2500 / n
-pBY <- 150 / n
-pABN <- 800 / n
-pABY <- 50 / n
-
+n <- 100
+pAB <- 8 / n
+pAnoB <- 2 / n
+pnoAB <- 3 / n
+pnoAnoB <- 87 / n
 ## QUESTION/ANSWER GENERATION
-
+pA <- pAB + pAnoB
+pAoB <- pAB + pAnoB + pnoAB
+pBsiA <- pAB/pA
 @
 
 \begin{question}
@@ -44,6 +41,16 @@ Are the outcomes of the two tests independent?
 
 %% SOLUTIONS
 \begin{solution}
+Let $A$ and $B$ the events of getting positive outcomes in the tests $A$ and $B$ respectively.
+\begin{enumerate}
+\item $P(A)=\Sexpr{round(pA,4)}$.
+\item $P(A\cap \overline B)=\Sexpr{round(pAnoB,4)}$.
+\item $P(A\cup B) = \Sexpr{round(pAoB,4)}$.
+\item $P(A\cap \overline B) + P(\overline A \cap B) = \Sexpr{round(pAnoB + pnoAB,4)}$.
+\item $P(A\cap B) + p(\overline A \cap \overline B)= \Sexpr{round(pAB + pnoAnoB,4)}$.
+\item $P(B|A) = \Sexpr{round(pBsiA,4)}$.
+\end{enumerate}
+As $P(B|A)\neq P(B)$ the events are dependent.
 
 \end{solution}
 %% META-INFORMATION

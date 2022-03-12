@@ -1,11 +1,24 @@
 <<echo=FALSE, results=hide>>=
 ## DATA GENERATION
-mx <- 5
-sx <- 2
-sy <- 25
-sy <- 5
-## QUESTION/ANSWER GENERATION
+x1 <- 15
+p1 <- 0.8
+x2 <- 12
+p2 <- 0.1
 
+## QUESTION/ANSWER GENERATION
+q1 <- qnorm(p1)
+q2 <- qnorm(p2)
+# Define the matrices for the system of equations
+A <- matrix(c(1, 1, q1, q2), nrow = 2)
+B <- matrix(c(x1, x2), nrow = 2)
+X <- solve(A, B)
+m <- X[1]
+s <- X[2]
+d4 <- qnorm(0.4, m, s)
+p1 <- pnorm(14, m, s) - pnorm(13, m, s)
+p2 <- pbinom(3, 5, p1, lower.tail = F)
+p3 <- pnorm(11, m, s)
+p4 <- ppois(0, 100 * p3, lower.tail = F)
 @
 
 \begin{question}
@@ -23,7 +36,13 @@ Remark: If you are not able to compute the mean and the standard deviation, use 
 
 %% SOLUTIONS
 \begin{solution}
-
+Let $X$ be the duration of a battery. Then $X\sim N(\mu,\sigma)$.
+\begin{enumerate}
+\item $\mu = \Sexpr{round(m,4)}$ years and $\sigma = \Sexpr{round(s,4)}$ years.
+\item $D_4 = \Sexpr{round(d4,4)}$ years.
+\item Let $Y$ be the number of batteries lasting between 13 and 14 years in a sample of 5 batteries. Then $Y\sim B(5,\Sexpr{round(p1,4)})$ and $P(Y>2.5)=\Sexpr{round(p2,4)}$.
+\item Let $U$ be the number of batteries lasting less than 11 years in a sample of 100 batteries. Then $U\sim B(100, \Sexpr{round(p3,4)})\approx P(\Sexpr{round(100*p3,4)})$ and $P(U\geq 1)=\Sexpr{round(p4,4)}$.
+\end{enumerate}
 \end{solution}
 
 

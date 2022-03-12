@@ -1,30 +1,16 @@
 <<echo=FALSE, results=hide>>=
 ## DATA GENERATION
-fp <- 0.01
-fn <- 0.002
-pre <- 1 / 400
-# Risks
-ntd <- 2
-nth <- 698
-ncd <- 3
-nch <- 297
+ppv <- 0.4
+npv <- 0.95
+pre <- 0.1
 ## QUESTION/ANSWER GENERATION
-sen <- 1 - fn / pre
-spe <- 1 - fp / (1 - pre)
-tp <- pre * sen
-tn <- (1 - pre) * spe
-ppv <- tp / (tp + fp)
-npv <- tn / (tn + fn)
-# Risks
-nt <- ntd + nth
-nc <- ncd + nch
-n <- nt + nc
-rt <- ntd / nt
-rc <- ncd / nc
-rr <- rt / rc
-ot <- ntd / nth
-oc <- ncd / nch
-or <- ot / oc
+tp <- 0.0571
+fp <- 0.0857
+fn <- 0.0429
+tn <- 0.8143
+sen <- tp / (tp + fn)
+spe <- tn / (fp + tn)
+minspe <- 0.857
 @
 
 \begin{question}
@@ -38,7 +24,11 @@ or <- ot / oc
 
 %% SOLUTIONS
 \begin{solution}
-
+\begin{enumerate}
+\item Sensitivity $P(+|D)=\Sexpr{round(sen, 4)}$ and specificity $P(-|\overline D)=\Sexpr{round(spe, 4)}$.
+\item $P(\mbox{Right diagnose}) = P(D \cap +) + P(\overline D \cap -) = \Sexpr{round(tp + tn, 4)}$.
+\item Minimum sensitivity to diagnose the disease $P(+|D)=\Sexpr{round(minspe, 4)}$.
+\end{enumerate}
 \end{solution}
 
 

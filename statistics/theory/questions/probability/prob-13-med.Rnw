@@ -1,0 +1,35 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+n <- 100
+pAB <- 8 / n
+pAnoB <- 2 / n
+pnoAB <- 3 / n
+pnoAnoB <- 87 / n
+## QUESTION/ANSWER GENERATION
+pA <- pAB + pAnoB
+pAoB <- pAB + pAnoB + pnoAB
+pBsiA <- pAB/pA
+@
+
+\begin{question}
+\puntos{2.5}In a population there are 20\% of patients who have suffered from disease $A$ but not $B$, 30\% of patients who have suffered from $B$ but not $A$, and 90\% of patients who have not suffered from both diseases (but may have suffered from one).
+\begin{enumerate}
+\item What percentage of people have suffered the disease $A$? And the disease $B$?
+\item Compute the probability of suffering some of the diseases.
+\item Calculate the probability of not suffering from disease $B$ if disease $A$ has not been suffered.
+\item What percentage of patients with disease $B$ should there be in the population for both diseases to be independent?
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+
+\end{solution}
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{prob-13-med}
+%% \extol{0.001}
+%% \degree{Medicine}
+ 

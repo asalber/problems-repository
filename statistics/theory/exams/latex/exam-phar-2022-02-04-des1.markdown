@@ -1,0 +1,83 @@
+1.  **Question**\
+    The account of the pharmacist-tiktoker \@farmaceutikofer has
+    numerous informative-satirical videos on infectious diseases, sex
+    education and healthy habits. The duration, in seconds, of his last
+    30 videos is as follows:
+
+    $$% latex table generated in R 4.1.2 by xtable 1.8-4 package
+      % Wed Feb  2 22:54:22 2022
+      \begin{array}{rrrrrrrrrrrrrrr}
+        31 & 32 & 33 & 33 & 35 & 35 & 37 & 37 & 38 & 39 & 39 & 41 & 41 & 42 & 45 \\ 
+        46 & 46 & 47 & 48 & 48 & 48 & 52 & 52 & 54 & 55 & 55 & 56 & 57 & 59 & 61 \\ 
+        \end{array}$$
+
+    1.  Compute the average and the most frequent value of the duration
+        of the videos.
+
+    2.  How is the relative dispersion of the sample?
+
+    3.  Construct the frequency table of the sample grouping the data
+        into classes of amplitude 5 seconds and plot the histogram.
+
+    4.  Compute the interquartile range and explains its meaning.
+
+    5.  Has the distribution a normal kurtosis?
+
+    6.  The ticktoker \@pauloGsow uploads satirical videos about high
+        school teachers with a mean duration of 45 seconds and a
+        variance of 91 seconds. If both \@farmaceutikofer and
+        \@pauloGsow upload a 51-second video, which of the two tiktokers
+        has uploaded a shorter video in relation to their own account?
+
+    Use the following sums for the computations:\
+    $\sum x_i=1342$ s, $\sum x_i^2=62302$ s$^2$,
+    $\sum (x_i-\bar x)^3=2870.46$ s$^3$ y $\sum (x_i-\bar x)^4=315273.2$
+    s$^4$.
+
+    **Solution**\
+
+2.  **Question**\
+    The Regional Ministry of Health of the Community of Madrid realizes
+    a possible relationship between the level of air pollution and the
+    number of cases of pneumonia in the population in the first 10 weeks
+    of the year. To verify this, the variable $X$ registers the number
+    of pollution meters that exceed the pollution limits each week, and
+    the variable $Y$ indicates the number of people affected by
+    pneumonia in each week.
+
+    $$% latex table generated in R 4.1.2 by xtable 1.8-4 package
+      % Wed Feb  2 22:54:22 2022
+      \begin{array}{lrrrrrrrrrr}
+         \hline
+      X & 3 & 3 & 5 & 6 & 7 & 8 & 3 & 4 & 2 & 3 \\ 
+        Y & 2 & 1 & 2 & 3 & 6 & 6 & 2 & 2 & 1 & 1 \\ 
+         \hline
+      \end{array}$$
+
+    1.  Are the number of people affected by pneumonia and the number of
+        meters that exceed the pollution limits two linearly independent
+        variables?
+
+    2.  How does the number of people affected by pneumonia change in
+        relation to the number of meters that exceed the pollution
+        limits?
+
+    3.  Justify whether or not the linear relationship between the two
+        variables is well explained and in what proportion.
+
+    4.  In the week following the construction of the linear regression
+        model of $Y$ on $X$, 5 meters are expected to exceed the
+        pollution limits. How many people are expected to be affected by
+        pneumonia in that week? Is this prediction reliable?
+
+    5.  Which of the following diagrams best represents the regression
+        lines?
+
+        ![image](media/supplements1/exercise2/reglin-19-med-possible-regression-lines.svg)
+
+    Use the following sums for the computations:\
+    $\sum x_i=44$ meters, $\sum y_i=26$ persons, $\sum x_i^2=230$
+    meters$^2$, $\sum y_i^2=100$ persons$^2$ y $\sum x_iy_j=146$
+    meters$\cdot$persons.
+
+    **Solution**\

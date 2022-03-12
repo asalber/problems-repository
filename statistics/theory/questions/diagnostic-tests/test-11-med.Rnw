@@ -1,0 +1,40 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+tp <- 0.2
+fn <- 0.013
+fp <- 0.008
+tn <- 1 - (tp + fn + fp)
+## QUESTION/ANSWER GENERATION
+sen <- tp / (tp + fn)
+spe <- tn / (fp + tn)
+ppv <- tp / (tp + fp)
+npv <- tn / (fn + tn)
+right <- tp + tn
+@
+
+\begin{question}
+\puntos{2.5}To evaluate a possible displacement of the patella at the Abruna Joms physiotherapy clinic, the Glide Test is used. After applying the test to 1000 patients we observed that 200 suffered from patella displacement and got a positive outcome, 13 suffered from patella displacement and got a negative outcome and 8 did not suffer patella displacement and got a positive outcome.
+
+\begin{enumerate}
+\item Represents the data obtained by the Glide test in a table or a tree.
+\item Compute the sensitivity and specificity of the Glide test.
+\item Is the Glide test useful for diagnosing patella displacement?
+\item Is the Glide test useful for ruling out patella displacement?
+\item What is the probability of getting a right diagnose?
+\end{enumerate}
+\end{question}
+
+%% SOLUTIONS
+\begin{solution}
+
+\end{solution}
+
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{test-11-med}
+%% \extol{0.001}
+%% \degree{Medicine}
+ 
+  
