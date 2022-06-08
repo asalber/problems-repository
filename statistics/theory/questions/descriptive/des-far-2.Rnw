@@ -63,7 +63,7 @@ Is the mean representative?
 \item If we take another sample of patients with mean 18 min and standard deviation 15 min, in which group is greater a response time of 25 min?
 \end{enumerate}
 
-Use the following sums for the computations: $\sum x_i=\Sexpr{sum(x)}$ min, $\sum x_i^2=\Sexpr{sum(x^2)}$ min$^2$, $\sum (x_i-\bar x)^3=\Sexpr{round(sum((x-m)^3),2)}$ min$^3$ y $\sum (x_i-\bar x)^4=\Sexpr{round(sum((x-m)^4),2)}$ min$^4$.
+Use the following sums for the computations: $\sum x_in_i=\Sexpr{sum(x)}$ min, $\sum x_i^2n_i=\Sexpr{sum(x^2)}$ min$^2$, $\sum (x_i-\bar x)^3n_i=\Sexpr{round(sum((x-m)^3),2)}$ min$^3$ y $\sum (x_i-\bar x)^4n_i=\Sexpr{round(sum((x-m)^4),2)}$ min$^4$.
 \end{question}
 
 

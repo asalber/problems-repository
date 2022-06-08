@@ -1,0 +1,40 @@
+% LTeX: language=en-GB
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+nA = 10
+pA = 0.05
+nB = 100
+pB = 0.02
+
+## QUESTION/ANSWER GENERATION
+p1 <- pbinom(1, nA, pA)
+p2 <- ppois(3, nB * pB, lower.tail = F)
+pAoB = pA + pB - pA * pB
+@
+
+\begin{question}
+\puntos{3.5} A pharmacy sells two vaccines $A$ and $B$ against a virus. The $A$ vaccine produces 5\% of side effects, while the $B$ vaccine produces 2\% of side effects. The pharmacy has sold 10 units of the $A$ vaccine and 100 units of the $B$ vaccine.
+
+\begin{enumerate}
+\item Compute the probability of having less than 2 side effects with the $A$ vaccine.
+\item Compute the probability of having more than 3 side effects with the $B$ vaccine.
+\item If we apply both vaccines to the same person at different moments, and assuming that the production of side effects of the vaccines are independent, what is the probability that this person will have any side effect?
+\end{enumerate}
+\end{question}  
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item Let $X$ be the number of side effects in 10 applications of A vaccine. Then, $X\sim B(10, 0.05)$ and $P(X<2) = \Sexpr{round(p1, 4)}$.
+\item Let $Y$ be the number of side effects in 100 applications of B vaccine. Then, $Y\sim B(100, 0.02)\approx P(2)$ and $P(Y>3) = \Sexpr{round(p2, 4)}$.
+\item Let $A$ and $B$ the events of having side effects with vaccines A and B respectively. $P(A\cup B) = \Sexpr{round(pAoB, 4)}$.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{vad-18-med}
+%% \extol{0.01}
+%% \degree{Medicine}
+ 

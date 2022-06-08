@@ -16,11 +16,14 @@ sumxy <- sum(x*y)
 # means
 mx <- sumx / n
 my <- sumy / n
+mlogy <- mean(log(y))
 # variances
 s2x <- sumx2/n-mx^2
 s2y <- sumy2/n-my^2
+s2logy <- sum(log(y)^2)/n-mlogy^2
 # Covariances
 sxy <- sumxy/n-mx*my
+sxlogy <- sum(x*log(y))/n-mx*mlogy
 # Detercmation coeff
 r2xy <- sxy^2/(s2x*s2y)
 # Slopes
@@ -49,7 +52,7 @@ $$
 \item According to the exponential regression model, how many people are expected to be affected by pneumonia a week with 5 meters exceeding the pollution limits?
 \item Which of the following diagrams best represents the regression lines? Justify the answer.
 
-<<possible-regression-lines, fig=T, echo=F, fig.path="img">>=
+<<possible-regression-lines, fig=T, echo=F, fig.path="img", width=10, height=8>>=
 layout(matrix(1:4, ncol = 2, byrow = T))
 plot(x, y, type = "n", main = "A" )
 abline(lmyx)
@@ -75,10 +78,14 @@ $\sum x_iy_j=\Sexpr{round(sum(x*y), 4)}$ meters$\cdot$persons, $\sum x_i\log(y_j
 %% SOLUTIONS
 \begin{solution}
 \begin{enumerate}
-\item $s_{xy}=\Sexpr{round(sxy, 4)}$ meters$\cdot$persons. That means that there is a direct linear relation between the meters that exceed pollution limits and the people affected by pneumonia.
+\item $\bar{x}=\Sexpr{round(mx,4)}$ meters, $s_x^2=\Sexpr{round(s2x,4)}$ meters$^2$.\\
+$\bar y=\Sexpr{round(my,4)}$ persons, $s_y^2=\Sexpr{round(s2y,4)}$ persons$^2$.\\
+$s_{xy}=\Sexpr{round(sxy, 4)}$ meters$\cdot$persons. That means that there is a direct linear relation between the meters that exceed pollution limits and the people affected by pneumonia.
 \item $b_{yx}=\Sexpr{round(lmyx$coefficients[2],4)}$ persons/meter. Thus, the number of people affected by pneumonia increases $\Sexpr{round(lmyx$coefficients[2],4)}$ persons for every meter more that exceed the pollution limits.
 \item Linear coefficient of determination $r^2=\Sexpr{round(r2xy, 4)}$. Therefore, the linear regression model explains $\Sexpr{round(r2xy*100, 2)}$ \% of the variability of the number of people affected by pneumonia.
-\item Exponential regression model: $y=e^{\Sexpr{round(expyx$coefficients[1],4)} +  \Sexpr{round(expyx$coefficients[2],4)}x}$, and $y(5)=\Sexpr{round(expyx$coefficients[1] + expyx$coefficients[1] * 5, 4)}$ persons.
+\item $\overline{\log(y)}=\Sexpr{round(mlogy,4)}$ log(persons), $s_{\log(y)}^2=\Sexpr{round(s2logy,4)}$ log(persons)$^2$.\\
+$s_{x\log(y)}=\Sexpr{round(sxlogy,4)}$ meters$\cdot$log(persons).\\
+Exponential regression model: $y=e^{\Sexpr{round(expyx$coefficients[1],4)} +  \Sexpr{round(expyx$coefficients[2],4)}x}$, and $y(5)=\Sexpr{round(exp(expyx$coefficients[1] + expyx$coefficients[2] * 5), 4)}$ persons.
 \item Diagram $A$ because the relation is direct and very strong according to the linear coefficient of determination.
 \end{enumerate}
 \end{solution}

@@ -27,7 +27,6 @@ Remark: The normal range of data is $(Q_1-1.5 IQR, Q_3+1.5IQR)$.
 \end{enumerate}
 \end{question}
 
-
 %% SOLUTIONS
 \begin{solution}
 

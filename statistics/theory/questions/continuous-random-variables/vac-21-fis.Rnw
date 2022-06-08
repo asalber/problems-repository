@@ -1,0 +1,43 @@
+% LTeX: language=en-GB
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+mx <- 44.91
+sx <- 4
+my <- 48.02
+sy <- 4
+## QUESTION/ANSWER GENERATION
+p60 <- qnorm(0.6, mx, sx)
+p1 <- pnorm(p60, my, sy)
+p2 <- pnorm(45, mx, sx) * pnorm(45, my, sy)
+@
+
+\begin{question}
+\puntos{3}The length of the femur bone is normally distributed in both men and women with a standard deviation of 4 cm. It is also known that the first quartile in women is 42.3 cm, while the third quartile in men is 50.7 cm.
+
+\begin{enumerate}
+\item What is the difference between the means of the femur length of women and men?\\
+Remark: If you do not know how to compute the means, use a mean 44 cm for women and a mean 47 cm for men in the following parts. 
+\item Compute the 60th percentile of the femur length in women. What percentage of men have a femur length less than the 60th percentile of women?
+\item If we pick a woman and man at random, what is the probability that neither of them has a femur length less than 45 cm?
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+Let $X$ and $Y$ be the femur length of women and men respectively. Then $X\sim N(\mu_x, 4)$ and $Y\sim N(\mu_y,4)$.
+\begin{enumerate}
+\item $\mu_x = \Sexpr{mx}$ cm and $\mu_y = \Sexpr{my}$ cm.
+\item 60th percentile in women $P_{60}=\Sexpr{round(p60,4)}$ cm, and $P(Y<\Sexpr{round(p60,4)}) = \Sexpr{round(p1, 4)}$, that is, a $\Sexpr{round(p1, 4)*100}\%$ of men have a femur lenght less than the 60th percentile of women.
+\item $P(X<45 \cap Y<45) = \Sexpr{round(p2,4)}$.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{vac-21-fis}
+%% \extol{0.001}
+%% \degree{Physiotherapy}
+ 
+  

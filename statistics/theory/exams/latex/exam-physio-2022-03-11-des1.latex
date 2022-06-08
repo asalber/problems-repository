@@ -67,7 +67,7 @@
   pneumonia in each week.
 
   \[% latex table generated in R 4.1.2 by xtable 1.8-4 package
-  % Fri Mar 11 17:19:21 2022
+  % Sat Mar 12 10:14:00 2022
   \begin{array}{lrrrrrrrrrr}
      \hline
   X & 3 & 3 & 5 & 6 & 7 & 8 & 3 & 4 & 2 & 3 \\ 
@@ -113,6 +113,8 @@
 
   \begin{enumerate}
   \item
+    \(\bar{x}=4.4\) meters, \(s_x^2=3.64\) meters\(^2\).\\
+    \(\bar y=2.6\) persons, \(s_y^2=3.24\) persons\(^2\).\\
     \(s_{xy}=3.16\) meters\(\cdot\)persons. That means that there is a
     direct linear relation between the meters that exceed pollution
     limits and the people affected by pneumonia.
@@ -125,8 +127,11 @@
     linear regression model explains \(84.67\) \% of the variability of
     the number of people affected by pneumonia.
   \item
+    \(\overline{\log(y)}=0.7455\) log(persons), \(s_{\log(y)}^2=0.3992\)
+    log(persons)\(^2\).\\
+    \(s_{x\log(y)}=1.1065\) meters\(\cdot\)log(persons).\\
     Exponential regression model: \(y=e^{-0.592 +  0.304x}\), and
-    \(y(5)=-3.552\) persons.
+    \(y(5)=2.5291\) persons.
   \item
     Diagram \(A\) because the relation is direct and very strong
     according to the linear coefficient of determination.

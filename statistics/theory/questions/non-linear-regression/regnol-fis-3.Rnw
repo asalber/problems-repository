@@ -42,7 +42,7 @@ y0 <- alog+blog*3.2
 @
 
 \begin{question}
-\puntos{2.5}We have measured the average number of weekly hours of study $X$ and the score in a clinic entrance test $Y$ of 8 candidates, getting the following results:
+\puntos{5}We have measured the average number of weekly hours of study $X$ and the score in a clinic entrance test $Y$ of 8 candidates, getting the following results:
 
 $\sum x_i=\Sexpr{sumx}$, $\sum \log(x_i)=\Sexpr{sumlogx}$, $\sum y_j=\Sexpr{sumy}$, $\sum \log(y_j)=\Sexpr{sumlogy}$,\\  
 $\sum x_i^2=\Sexpr{sumx2}$, $\sum \log(x_i)^2=\Sexpr{sumlogx2}$, $\sum y_j^2=\Sexpr{sumy2}$, $\sum \log(y_j)^2=\Sexpr{sumlogy2}$,\\
@@ -50,7 +50,7 @@ $\sum x_iy_j=\Sexpr{sumxy}$, $\sum x_i\log(y_j)=\Sexpr{sumxlogy}$, $\sum \log(x_
 
 \begin{enumerate}
 \item Compute the equations of the logarithmic and exponential regression models of the score as a function of the average number of hours of study.
-\item Use the best of the previous models to predict the score for somebody that study $3.2$ hours a week.
+\item Use the best of the previous models to predict the score for somebody that study $3.2$ hours a week. Is this prediction reliable?
 \end{enumerate}
 \end{question}
 
