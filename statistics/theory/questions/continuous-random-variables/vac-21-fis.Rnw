@@ -8,7 +8,7 @@ sy <- 4
 ## QUESTION/ANSWER GENERATION
 p60 <- qnorm(0.6, mx, sx)
 p1 <- pnorm(p60, my, sy)
-p2 <- pnorm(45, mx, sx) * pnorm(45, my, sy)
+p2 <- pnorm(45, mx, sx, lower.tail = F) * pnorm(45, my, sy, lower.tail = F)
 @
 
 \begin{question}
@@ -29,7 +29,7 @@ Let $X$ and $Y$ be the femur length of women and men respectively. Then $X\sim N
 \begin{enumerate}
 \item $\mu_x = \Sexpr{mx}$ cm and $\mu_y = \Sexpr{my}$ cm.
 \item 60th percentile in women $P_{60}=\Sexpr{round(p60,4)}$ cm, and $P(Y<\Sexpr{round(p60,4)}) = \Sexpr{round(p1, 4)}$, that is, a $\Sexpr{round(p1, 4)*100}\%$ of men have a femur lenght less than the 60th percentile of women.
-\item $P(X<45 \cap Y<45) = \Sexpr{round(p2,4)}$.
+\item $P(X\geq 45 \cap Y\geq45) = \Sexpr{round(p2,4)}$.
 \end{enumerate}
 \end{solution}
 

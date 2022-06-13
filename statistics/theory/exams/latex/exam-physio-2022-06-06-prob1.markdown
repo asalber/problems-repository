@@ -80,4 +80,4 @@
         $P(Y<45.9234) = 0.3001$, that is, a $30.01\%$ of men have a
         femur lenght less than the 60th percentile of women.
 
-    3.  $P(X<45 \cap Y<45) = 0.1146$.
+    3.  $P(X\geq 45 \cap Y\geq45) = 0.3805$.
