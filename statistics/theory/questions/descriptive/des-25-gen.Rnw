@@ -1,0 +1,82 @@
+## DATA GENERATION
+z <- factor(rep(c("SS","AP","NT","SB"), c(18, 24, 15, 3)), levels = c("SS","AP","NT","SB"))
+x <- rep(c(2.5, 6, 8, 9.5), c(18, 24, 15, 3))
+df <- data.frame(z)
+y <- 10 * x + 5
+
+## QUESTION/ANSWER GENERATION
+# Tamaño de la muestra
+nx <- length(x)
+ny <- length(y)
+# Quartiles
+q1 <- 0.25/3*5
+q3 <- 7 + 2(0.75-0.7)/(0.95-0.7)
+# IQR
+iqr <- q3-q1
+# Fences
+f1 <- q1-1.5*iqr
+f2 <- q3+1.5*iqr
+# Mean
+mx <- mean(x)
+my <- mean(y)
+# Variance
+s2x <- sum(x^2)/nx-mx^2
+s2y <- sum(y^2)/ny-my^2
+# Std. deviation
+sx <- sqrt(s2x)
+sy <- sqrt(s2y)
+# Coef. variation
+cvx <- sx/mx
+cvy <- sy/my
+# Coef. skewness
+g1x <- sum((x-mx)^3)/(nx*sx^3)
+g1y <- sum((y-my)^3)/(ny*sy^3)
+# Coef. kurtosis
+g2x <- sum((x-mx)^4)/(nx*sx^4)-3
+g2y <- sum((y-my)^4)/(ny*sy^4)-3
+@
+
+\begin{question}
+\puntos{5}The chart below shows the percentage of grades in a Statistic course with 60 students. 
+
+<<pie-chart, fig=T, echo=F, height=4, dev="png", fig.path="img", fig.show="hide", results=hide>>=
+library(lessR)
+# Pie chart of grades
+PieChart(z, hole = 0, values = "%", data = df, main = "")
+@
+
+\begin{enumerate}
+\item Plot the ogive of the score, assuming the following correspondence between grades and scores
+$$
+\begin{array}{lc}
+  \mbox{Grade} & \mbox{Score}\\
+  \mbox{SS} & [0, 5)\\
+  \mbox{AP} & [5, 7)\\
+  \mbox{NT} & [7,9)\\
+  \mbox{SB} & [9,10]
+\end{array}
+$$
+\item Compute the median and interpret it.
+\item How many students got a score greater than 8?
+\item Study the dispersion of the distribution.
+\item Study the skewness of the distribution. Is it normal?
+\item If we apply the transformation $y=10x+5$ to the scores, how changes the representativeness of the mean. And the skewness?
+\end{enumerate}
+
+Use the following sums for the computations ($X$ = Score): \\
+$\sum x_in_i=\Sexpr{round(sum(x), 2)}$, $\sum x_i^2n_i=\Sexpr{round(sum(x^2), 4)}$, $\sum (x_i-\bar x)^3n_i=\Sexpr{round(sum((x-mx)^3),2)}$ and $\sum (x_i-\bar x)^4n_i=\Sexpr{round(sum((x-mx)^4),2)}$.\\
+\end{question}
+
+
+%% SOLUTION
+\begin{solution}
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{string}
+%% \exsolution{Solution}
+%% \exname{des-25-gen}
+%% \extol{0.001}
+%% \degree{General}
+ 

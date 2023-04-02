@@ -1,17 +1,17 @@
 library("knitr")
 library("exams")
 setwd('statistics/theory/exams')
+examname <- "physio-2022-06-24-des"
+questions <- c("des-25-gen.Rnw", "regnol-15-gen.Rnw")
 
-questions <- c("des-19-fis.Rmd")
-
-exams2pdf(questions, n=1, name = c("exam-physio-2021-06-07-des", "solution-physio-2021-06-07-des"), encoding = "UTF-8",
+exams2pdf(questions, n=1, name = c(paste0("exam-", examname), paste0("solution-", examname)), encoding = "UTF-8",
           dir = "pdf",
           edir = "../questions",
           template = c("templates/examceu.tex", "templates/solutionceu.tex"),
           header = list(
             Subject = "STATISTICS\\\\[2mm] (DESCRIPTIVE STATISTICS AND REGRESSION)",
             Degree= "2nd Physiotherapy",
-            Date = "June, 07 2021",
+            Date = "June, 24 2022",
             Version = "A",
             Time = "1 hour"
           )
@@ -20,7 +20,7 @@ exams2pdf(questions, n=1, name = c("exam-physio-2021-06-07-des", "solution-physi
 # Remove directory of exam images
 unlink("img/exam1", recursive = TRUE) 
 exams2pandoc(questions, n=1, 
-             name = "exam-physio-2021-06-07-des", 
+             name = paste0("exam-", examname), 
              encoding = "UTF-8", 
              type="latex",
              dir = "latex",
@@ -30,6 +30,4 @@ exams2pandoc(questions, n=1,
              svg=T
 )
 
-pandoc("latex/exam-physio-2021-06-07-des1.latex", format="markdown")
-
-
+pandoc(paste0("latex/exam-", examname, "1.latex"), format="markdown")

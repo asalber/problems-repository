@@ -1,0 +1,101 @@
+---
+lang: en
+---
+
+```{r, echo=F, results= "hide"}
+## DATA GENERATION
+z <- factor(rep(c("SS","AP","NT","SB"), c(18, 24, 15, 3)), levels = c("SS","AP","NT","SB"))
+x <- rep(c(2.5, 6, 8, 9.5), c(18, 24, 15, 3))
+df <- data.frame(z)
+y <- 10 * x + 5
+
+## QUESTION/ANSWER GENERATION
+# Tamaño de la muestra
+n <- length(x)
+# Median
+me <- 5+2*0.2/0.4
+# Cumulative frequency for 8
+F8 <- 0.7 + (0.95-0.7) / (9-7)
+N8 <- F8 * n
+# Mean
+mx <- mean(x)
+my <- mean(y)
+# Variance
+s2x <- sum(x^2)/n-mx^2
+s2y <- sum(y^2)/n-my^2
+# Std. deviation
+sx <- sqrt(s2x)
+sy <- sqrt(s2y)
+# Coef. variation
+cvx <- sx/mx
+cvy <- sy/my
+# Coef. skewness
+g1x <- sum((x-mx)^3)/(n*sx^3)
+g1y <- sum((y-my)^3)/(n*sy^3)
+# Coef. kurtosis
+g2x <- sum((x-mx)^4)/(n*sx^4)-3
+g2y <- sum((y-my)^4)/(n*sy^4)-3
+```
+
+Question
+========
+The chart below shows the percentage of grades in a Statistic course with 60 students. 
+\
+```{r pie-chart-scores, echo = FALSE, results = "hide", fig.height = 5, fig.width = 6, fig.path = "", fig.cap = ""}
+library(lessR)
+# Pie chart of grades
+PieChart(z, hole = 0, values = "%", data = df, main = "")
+```
+
+a. Plot the ogive of the score, assuming the following correspondence between grades and scores
+
+$$
+\begin{array}{lc}
+  \mbox{Grade} & \mbox{Score}\\
+  \mbox{SS} & [0, 5)\\
+  \mbox{AP} & [5, 7)\\
+  \mbox{NT} & [7,9)\\
+  \mbox{SB} & [9,10]
+\end{array}
+$$
+
+b. Compute the median and interpret it.
+c. How many students got a score greater than 8?
+d. Study the dispersion of the distribution.
+e. Study the skewness of the distribution. Is it normal?
+f. If we apply the transformation $y=10x+5$ to the scores, how changes the representativeness of the mean. And the skewness?
+
+Use the following sums for the computations ($X$ = Score):  
+$\sum x_in_i=`r round(sum(x), 2)`$, $\sum x_i^2n_i=`r round(sum(x^2), 4)`$, $\sum (x_i-\bar x)^3n_i=`r round(sum((x-mx)^3),2)`$ and $\sum (x_i-\bar x)^4n_i=`r round(sum((x-mx)^4),2)`$.
+
+Solution
+========
+
+a. 
+```{r ogive-scores, echo = FALSE, results = "hide", fig.height = 5, fig.width = 6, fig.path = "", fig.cap = ""}
+color1 <- "#00BFC4"
+plot(c(0, 5, 7, 9, 10), c(0, 0.3, 0.7, 0.95, 1), type = "l", col = color1, xlab = "Score", ylab = "Cumulative relative frequency", axes = F)
+axis(1, at = 0:10)
+axis(2, at = seq(0,1,0.1))
+box()
+```
+
+b. $Me = `r me`$ points.
+
+c. $N(8) = `r N8`$ students.
+
+d. $\bar x = `r round(mx, 4)`$ points, $s_x^2=`r round(s2x,4)`$ points$^2$, $s_x=`r round(sx,4)`$ points and $cv_x=`r round(cvx,4)`$. Thus, there is a moderate dispersion with respect to the mean.
+
+e. $g_1 = `r round(g1x,4)`$ and therefore the distribution is a little bit left skewed.
+
+f. $\bar y = `r round(my, 4)`$ points, $s_y^2=`r round(s2y,4)`$ points$^2$, $s_y=`r round(sy,4)`$ points and $cv_y=`r round(cvy,4)`$. As $cv_y < cv_x$ the representativeness of the mean increases. As the slope of the linear transformation is positive, the skewness does not change.
+
+Meta-information 
+================
+extype: string
+exname: des-25-gen
+exsolution: Solution
+extol: 0.001
+degree: All
+
+ 

@@ -1,0 +1,78 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+set.seed(12)
+x <- round(runif(40, 20, 45))
+y <- 38 + x/20 + round(rnorm(40),1)
+
+## QUESTION/ANSWER GENERATION
+# colors
+col1 <- "#05A1E6"
+# sample size
+n <- length(x)
+# means
+mx <- mean(x)
+mlogx <- mean(log(x))
+my <- mean(y)
+mlogy <- mean(log(y))
+# variances
+s2x <- sum(x^2)/n-mx^2
+s2logx <- sum(log(x)^2)/n-mlogx^2
+s2y <- sum(y^2)/n-my^2
+s2logy <- sum(log(y)^2)/n-mlogy^2
+# Covariances
+sxy <- sum(x * y) / n - mx * my
+sxlogy <- sum(x*log(y))/n-mx*mlogy
+slogxy <- sum(log(x)*y)/n-mlogx*my
+# Determination coeff
+r2xy <-  sxy^2 / (s2x * s2y)
+r2xlogy <- sxlogy^2/(s2x*s2logy)
+r2logxy <- slogxy^2/(s2logx*s2y)
+# Linear regression model
+reglin <- lm(y ~ x)
+# Exponential regression model y on x
+regexp <- lm(log(x)~y)
+# Logarithmic regression model x on y
+reglog <- lm(y~log(x))
+@
+
+\begin{question}
+\puntos{5} A study tries to determine if there is a relation between the gestation time (in weeks) and the age of the mother (in years). A sample of 40 mothers was taken and the sums below summarize the results ($X$=Age and $Y$=Gestation time):
+
+$\sum x_i=\Sexpr{round(sum(x), 4)}$ years, $\sum \log(x_i)=\Sexpr{round(sum(log(x)), 4)}$ log(years), $\sum y_j=\Sexpr{round(sum(y), 4)}$ weeks, $\sum \log(y_j)=\Sexpr{round(sum(log(y)), 4)}$ log(weeks),\\
+$\sum x_i^2=\Sexpr{round(sum(x^2), 4)}$ years$^2$, $\sum \log(x_i)^2=\Sexpr{round(sum(log(x)^2), 4)}$ log(years)$^2$, $\sum y_j^2=\Sexpr{round(sum(y^2), 4)}$ weeks$^2$, $\sum \log(y_j)^2=\Sexpr{round(sum(log(y)^2), 4)}$ log(weeks)$^2$,\\
+$\sum x_iy_j=\Sexpr{round(sum(x*y), 4)}$ years$\cdot$weeks, $\sum x_i\log(y_j)=\Sexpr{round(sum(x*log(y)), 4)}$ years$\cdot$log(weeks), $\sum \log(x_i)y_j=\Sexpr{round(sum(log(x)*y), 4)}$ log(years)$\cdot$weeks, $\sum \log(x_i)\log(y_j)=\Sexpr{round(sum(log(x)*log(y)), 4)}$ log(years)$\cdot$log(weeks).
+
+\begin{enumerate}
+\item Which regression models, linear, exponential or logarithmic, explains better the relation between the age and the gestation time? 
+\item Use the best model to predict the gestation time for a mother 45 years old. Is this prediction reliable?
+\item According to the linear model, how much increases or decreases the gestation time for every year of the mother?
+\end{enumerate}
+\end{question}
+
+%% SOLUTIONS
+\begin{solution}
+\begin{enumerate}
+\item $\overline{x}=\Sexpr{round(mx,4)}$ weeks, $s_x^2=\Sexpr{round(s2x,4)}$ weeks$^2$.\\
+$\bar y=\Sexpr{round(my,4)}$ Kg, $s_y^2=\Sexpr{round(s2y,4)}$ Kg$^2$.\\
+$s_{xy}=\Sexpr{round(sxy,4)}$ weeks$$\cdot$$Kg.\\
+Regression coefficient of $Y$ on $X$: $b_{yx} = \Sexpr{round(reglin$coefficients[2], 4)}$ Kg/week. The grip strength increases $\Sexpr{round(reglin$coefficients[2], 4)}$ Kg per week.
+\item $\overline{\ln(x)} = \Sexpr{round(mlogx, 4)}$ ln(weeks), $s_{\ln(x)}^2 = \Sexpr{round(s2logx, 4)}$  ln(weeks)$^2$ and $s_{\ln(x)y} = \Sexpr{round(slogxy, 4)}$ ln(weeks)Kg.\\
+Logarithmic regression model of $Y$ on $X$: $y = \Sexpr{round(reglog$coefficients[1], 4)} + \Sexpr{round(reglog$coefficients[2], 4)} \ln(x)$.\\
+Predictions: $y(5) = \Sexpr{round(reglog$coefficients[1] + reglog$coefficients[2] * log(5), 4)}$ Kg and $y(25) = \Sexpr{round(reglog$coefficients[1] + reglog$coefficients[2] * log(25), 4)}$ Kg.\\
+Logarithmic coefficient of determination: $r^2 = \Sexpr{round(r2logxy, 4)}$.
+The predictions are not reliable because the sample size is small.\\
+Linear coefficient of determination: $r^2 = \Sexpr{round(r2xy, 4)}$.\\
+As the linear coefficient of determination is less than the logarithmic one, the predictions with the logarithmic model are more reliable.
+\item Exponential regression model of $X$ on $Y$: $x = e^{\Sexpr{round(regexp$coefficients[1],4)} + \Sexpr{round(regexp$coefficients[2],4)}y}$.\\
+Prediction: $x(25)=\Sexpr{round(exp(regexp$coefficients[1] + regexp$coefficients[2]*25), 4)}$ Weeks.\\
+\item As $r^2 = \Sexpr{round(r2logxy, 4)}$, the exponential models explains $\Sexpr{round(r2logxy, 4) * 100}$\% of the variabilidty of the weeks.
+\end{enumerate}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{string}
+%% \exsolution{Solution}
+%% \exname{regnol-15-gen}
+%% \extol{0.001}
+%% \degree{General}
+ 

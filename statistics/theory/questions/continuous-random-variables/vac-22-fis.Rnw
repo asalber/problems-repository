@@ -1,0 +1,36 @@
+% LTeX: language=en-GB
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+mx <- 44.91
+sx <- 4
+my <- 48.02
+sy <- 4
+## QUESTION/ANSWER GENERATION
+p60 <- qnorm(0.6, mx, sx)
+p1 <- pnorm(p60, my, sy)
+p2 <- pnorm(45, mx, sx, lower.tail = F) * pnorm(45, my, sy, lower.tail = F)
+@
+
+\begin{question}
+\puntos{3}In a population of 20000 women, it is known that back width follows a normal distribution with mean $29$ cm and standard deviation $2.4$ cm.(3)
+
+\begin{enumerate}
+\item Compute the number of women with a back width greater than $32$ cm.
+\item Compute the interquartile range of women's back width.
+\item If we pick 12 random women from that population, what is the probability that there are at least 2 with a back width less than 28.5 cm?
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{vac-22-fis}
+%% \extol{0.001}
+%% \degree{Physiotherapy}
+ 
+  

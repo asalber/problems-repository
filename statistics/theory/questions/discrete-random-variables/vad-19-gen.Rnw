@@ -1,0 +1,30 @@
+% LTeX: language=en-GB
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+nA = 10
+pA = 0.05
+nB = 100
+pB = 0.02
+
+## QUESTION/ANSWER GENERATION
+p1 <- pbinom(1, nA, pA)
+p2 <- ppois(3, nB * pB, lower.tail = F)
+pAoB = pA + pB - pA * pB
+@
+
+\begin{question}
+\hspace{-2.05cm}(2 pts.)\hspace{0.6cm} A Twitter user receives on average 5 new followers per week. Calculate the probability of receiving more than 2 followers a day.
+\end{question}  
+
+%% SOLUTIONS
+\begin{solution}
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{vad-19-gen}
+%% \extol{0.01}
+%% \degree{Medicine}
+ 

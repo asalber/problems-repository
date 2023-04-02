@@ -1,0 +1,35 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+n <- 100
+pAB <- 8 / n
+pAnoB <- 2 / n
+pnoAB <- 3 / n
+pnoAnoB <- 87 / n
+## QUESTION/ANSWER GENERATION
+pA <- pAB + pAnoB
+pAoB <- pAB + pAnoB + pnoAB
+pBsiA <- pAB/pA
+@
+
+\begin{question}
+\puntos{3}There are three techniques for a surgical operation on the meniscus: technique $A$ is used in 30\% of cases, $B$ in 25\% and $C$ in 45\%. The probability of suffering osteoarthritis after a surgical operation on the meniscus is 8\% with technique $A$, 15\% with technique $B$ and  5\% with technique $C$.
+
+\begin{enumerate}
+\item What is the probability of not suffering osteoarthritis after a surgical operation on the meniscus.
+\item Knowing that a patient suffers from osteoarthritis after the operation, what is the most likely technique used in the operation?
+\item Keeping the rest of the probabilities given in the statement the same, what must the probabilities of techniques $A$ and $B$ be so that the probability of having been operated with the technique $A$ is the same as the probability having been operated with the technique $B$, if you have osteoarthritis?
+\end{enumerate}
+\end{question}
+
+
+%% SOLUTIONS
+\begin{solution}
+
+\end{solution}
+%% META-INFORMATION
+%% \extype{num}
+%% \exsolution{Solution}
+%% \exname{prob-15-med}
+%% \extol{0.001}
+%% \degree{Medicine}
+ 
