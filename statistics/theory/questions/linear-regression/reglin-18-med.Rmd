@@ -1,0 +1,80 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+# Grirls
+u <- c(7, 8, 10, 8, 9)
+v <- c(105, 110, 98, 97, 103)
+# Women
+x <- c(55, 41, 70, 34, 61)
+y <- c(145, 121, 154, 121, 155)
+n1 <- length(x)
+n2 <- length(u)
+sumx <- sum(x)
+sumy <- sum(y)
+sumx2 <- sum(x^2)
+sumy2 <- sum(y^2)
+sumxy <- sum(x*y)
+sumu <- sum(u)
+sumv <- sum(v)
+sumu2 <- sum(u^2)
+sumv2 <- sum(v^2)
+sumuv <- sum(u*v)
+
+## QUESTION/ANSWER GENERATION
+# means women
+mx <- sumx / n1
+my <- sumy / n1
+# variances
+s2x <- sumx2/n1-mx^2
+s2y <- sumy2/n1-my^2
+# Covariances
+sxy <- sumxy/n1-mx*my
+# Detercmation coeff
+r2xy <- sxy^2/(s2x*s2y)
+# Slopes
+byx <- sxy/s2x
+
+mod <- lm(y~x)
+```
+
+Question
+========
+The table below shows the age $X$ (in years) and the maximum blood pressure $Y$ (in mmHg) of a group of 5 girls and a group of 5 women.
+
+$$
+\begin{tabular}{lrrrrr|rrrrr}
+& \multicolumn{5}{c}{\mbox{Girls}} & \multicolumn{5}{c}{\mbox{Women}}\\
+\hline
+\mbox{Age} & 7 & 8 & 10 & 8 & 9 & 55 & 41 & 70 & 34 & 61\\
+\mbox{Blood pressure} & 105 & 110 & 98 & 97 & 103 & 145 & 121 & 154 & 121 & 155\\
+\hline
+\end{tabular}
+$$
+
+a. Is there a linear relation between the pressure and the age of women?
+a. How much changes the blood pressure for every year that increases the age in women?
+a. In which group the linear regression model explains a higher percentage of the variability of the blood pressure, in girls or in women? Below is the statistics summary of the linear regression model for girls.
+
+$$
+\includegraphics[width=0.5\textwidth]{/run/media/alf/datos/misrepositorios/docencia/problems-repository/statistics/theory/exams/img/exam-phar-2022-01-17/exercise1/linear-model.png}
+$$
+a. What is the expected blood pressure for a 55-year-old woman? And for a 9-year-old girl? Are these predictions reliable? Which one is more reliable?
+a. Explain why the prediction for a 55-year-old woman is not 145 mmHg as appears in the data table.
+
+
+Use the following sums for the computations:  
+Girls: $\sum x_i=`r sumx`$ years, $\sum y_i=`r sumy`$ mmHg, $\sum x_i^2=`r sumx2`$ years$^2$, $\sum y_i^2=`r sumy2`$ mmHg$^2$ and $\sum x_iy_j=`r sumxy`$ years$\cdot$mmHg.  
+Women: $\sum x_i=`r sumu`$ years, $\sum y_i=`r sumv`$ mmHg, $\sum x_i^2=`r sumu2`$ years$^2$, $\sum y_i^2=`r sumv2`$ mmHg$^2$ and $\sum x_iy_j=`r sumuv`$ years$\cdot$mmHg.
+
+Solution
+========
+
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: reglin-18-med
+extol: 0.001
+%% \degree{Biotechnology}
+ 

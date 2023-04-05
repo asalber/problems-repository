@@ -1,0 +1,63 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+data <- data.reglin.opt.12
+x <- data$x
+y <- data$y
+z <- data$z
+n <- length(x)
+## QUESTION/ANSWER GENERATION
+# means
+mx <- sum(x) / n
+my <- sum(y) / n
+mz <- sum(z) / n
+# variances
+s2x <- sum(x^2) / n - mx^2
+s2y <- sum(y^2) / n - my^2
+s2z <- sum(z^2) / n - mz^2
+# Covariances
+sxy <- sum(x*y) / n - mx*my
+sxz <- sum(x*z) / n - mx*mz
+# Detercmation coeff
+r2xy <- sxy^2 / (s2x * s2y)
+r2xz <- sxz^2 / (s2x * s2z)
+# Regression lines
+reglinexy <- lm(x~y)
+reglinexz <- lm(x~z)
+# Predicción
+pred = reglinexy$coefficients[1] + reglinexy$coefficients[2]*60.
+```
+
+Question
+========
+A variable that is usually used to diagnose the open angle glaucoma is the Bruch’s membrane opening minimum rim width ($X$) of the retina, but it is known that it depends of the age ($Y$) and the membrane opening area ($Z$). These variables have been measured in 1000 patients with the following results:
+
+$\sum x_i=`r sum(x)`$ $\mu$m, $\sum y_i=`r sum(y)`$ years, $\sum z_i=`r sum(z)`$ mm$^2$,  
+$\sum x_i^2=`r round(sum(x^2), 2)`$ $\mu$m$^2$, $\sum y_i^2=`r round(sum(y^2),2)`$ years$^2$, $\sum z_i^2=`r round(sum(z^2),2)`$ mm$^4$,  
+$\sum x_iy_j=`r round(sum(x*y),2)`$ $\mu$m$\cdot$years, $\sum x_iz_j=`r round(sum(x*z),2)`$ $\mu$m$\cdot$mm$^2$, $\sum y_iz_j=`r round(sum(y*z),2)`$ years$\cdot$mm$^2$.
+
+a. Compute the regression lines of the Bruch's membrane opening minimum rim width on the age, and the Bruch's membrane opening minimum rim width on the membrane opening area.
+a. Acording to the linear model, how much the Bruch's membrane opening minimum rim width will increase or decrease for each aditional year of the patient?
+a. What percentage of the variabilitity of  Bruch's membrane opening minimum rim width explains the two previous linear models?
+a. Using the best of the two previous linear models, predict the  Bruch's membrane opening minimum rim width of a patient 60 years old with a membrane opening area of 2 mm$^2$. How is the reliability of this prediction?
+
+Solution
+========
+a.  $\bar x=`r round(mx,4)`$ $\mu$m, $s_x^2=`r round(s2x,4)`$ $\mu$m$^2$,  
+$\bar y=`r round(my,4)`$ years, $s_y^2=`r round(s2y,4)`$ years$^2$,  
+$\bar z=`r round(mz,4)`$ mm$^2$, $s_z^2=`r round(s2z,4)`$ mm$^4$,  
+$s_{xy}=`r round(sxy,4)`$ $\mu$m$\cdot$years y $s_{xz}=`r round(sxz,4)`$ $\mu$m$\cdot$mm$^2$.  
+Recta de regresión de $X$ sobre $Y$: $x=`r round(reglinexy$coefficients[1],4)` + `r round(reglinexy$coefficients[2],4)`y$.  
+Recta de regresión de $X$ sobre $Z$: $x=`r round(reglinexz$coefficients[1],4)` + `r round(reglinexz$coefficients[2],4)`z$.
+a. La distancia mínima al borde de la abertura de la membrana de Bruch disminuye $`r round(abs(reglinexy$coefficients[2]),4)`$ $\mu$m por cada año más del paciente.
+a. $r^2_{xy}=`r round(r2xy,4)`$, de manera que la recta de regresión de $X$ sobre $Y$ explica el $`r round(r2xy*100,2)`$%: de la variabilidad de la distancia mínima al borde de la abertura de la membrana de Bruch, y $r^2_{xz}=`r round(r2xz,4)`$, de manera que la recta de regresión de $X$ sobre $Z$ explica el $`r round(r2xz*100,2)`$%: de la variabilidad de la distancia mínima al borde de la abertura de la membrana de Bruch.
+a. $x(60)=`r round(pred, 4)`$ $\mu$m.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: reglin-far-8
+extol: 0.001
+degree: Pharmacy
+ 

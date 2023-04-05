@@ -1,0 +1,45 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+m1 <- 90
+s1 <- 8
+m2 <- 120
+s2 <- 10
+x1 <- 105
+pre <- 0.1
+p5 <- 0.95
+## QUESTION/ANSWER GENERATION
+sen <- pnorm(x1, m2, s2, lower.tail = F)
+spe <- pnorm(x1, m1, s1)
+pcorrect <- pre * sen + (1-pre) * spe
+cut <- qnorm(p5, m2, s2, lower.tail = F)
+spe2 <- pnorm(cut, m1, s1)
+```
+
+Question
+========
+It has been observed that the concentration of a metabolite in urine can be used as a diagnostic test for a disease.
+The concentration (in mg/dl) in healthy individuals follows a normal distribution with mean 90 and standard deviation 8, while in sick individuals follows a normal distribution with mean 120 and standard deviation 10.
+
+a. If the cut-off point is set at 105 mg/dl (positive above and negative below), what is the sensitivity and the specificity of the test?
+a. If the cut-off point is set at 105 mg/dl and we assume a prevalence of 10%:, what is the probability of a correct diagnostic?
+a. If we want a sensitivity of 95%:, where must we set the cut-off point? What would the specificity of the test be  ?
+
+Solution
+========
+Let $X$ and $Y$ be the distributions of the concentration of metabolitte in healthy and sick individuals respectively.
+
+a. Sensitivity: $P(+|D) = P(Y>105) = `r round(sen, 4)`$.  
+Specificity: $P(-|\overline D) = P(X<105) = `r round(spe, 4)`$.
+a. $P(\mbox{correct diagnostic}) = P(D\cap +) + P(\overline D \cap -) = `r round(pcorrect, 4)`$. 
+a. Cut-off point $`r round(cut, 4)`$ mg/dl.  
+Specificity: $P(-|\overline D) = P(X<`r round(cut, 4)`) = `r round(spe2, 4)`$.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: vac-med-1
+extol: 0.001
+degree: Medicine
+ 

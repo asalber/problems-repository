@@ -1,9 +1,11 @@
 ---
 lang: en
 ---
-
 ```{r, echo=F, results= "hide"}
 ## DATA GENERATION
+library(knitr)
+knitr::opts_chunk$set(echo = F, message = F, warning = F)
+library(kableExtra)
 z <- factor(rep(c("SS","AP","NT","SB"), c(18, 24, 15, 3)), levels = c("SS","AP","NT","SB"))
 x <- rep(c(2.5, 6, 8, 9.5), c(18, 24, 15, 3))
 df <- data.frame(z)
@@ -51,10 +53,10 @@ a. Plot the ogive of the score, assuming the following correspondence between gr
 
 $$
 \begin{array}{lc}
-  \mbox{Grade} & \mbox{Score}\\
-  \mbox{SS} & [0, 5)\\
-  \mbox{AP} & [5, 7)\\
-  \mbox{NT} & [7,9)\\
+  \mbox{Grade} & \mbox{Score}  
+  \mbox{SS} & [0, 5)  
+  \mbox{AP} & [5, 7)  
+  \mbox{NT} & [7,9)  
   \mbox{SB} & [9,10]
 \end{array}
 $$
@@ -67,7 +69,6 @@ f. If we apply the transformation $y=10x+5$ to the scores, how changes the repre
 
 Use the following sums for the computations ($X$ = Score):  
 $\sum x_in_i=`r round(sum(x), 2)`$, $\sum x_i^2n_i=`r round(sum(x^2), 4)`$, $\sum (x_i-\bar x)^3n_i=`r round(sum((x-mx)^3),2)`$ and $\sum (x_i-\bar x)^4n_i=`r round(sum((x-mx)^4),2)`$.
-
 Solution
 ========
 
@@ -91,7 +92,7 @@ e. $g_1 = `r round(g1x,4)`$ and therefore the distribution is a little bit left 
 f. $\bar y = `r round(my, 4)`$ points, $s_y^2=`r round(s2y,4)`$ points$^2$, $s_y=`r round(sy,4)`$ points and $cv_y=`r round(cvy,4)`$. As $cv_y < cv_x$ the representativeness of the mean increases. As the slope of the linear transformation is positive, the skewness does not change.
 
 Meta-information 
-================
+================ 
 extype: string
 exname: des-25-gen
 exsolution: Solution

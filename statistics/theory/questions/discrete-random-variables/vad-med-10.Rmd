@@ -1,0 +1,49 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+sen <- 0.58
+spe <- 0.01
+tp <- 0.02
+n1 <- 10
+n2 <- 60
+
+## QUESTION/ANSWER GENERATION
+pre <- tp / sen
+fn <- pre * (1 - sen)
+fp <- (1 - pre) * (1 - spe)
+tn <- (1 - pre) * spe
+ppv <- tp / (tp + fp)
+npv <- tn / (tn + fn)
+p1 <- fp / (1 - pre)
+p2 <- tp + tn
+lambda <- n2 * p2
+sol1 <- pbinom(8, n1, p1, lower.tail = F)
+sol2 <- ppois(1, lambda, lower.tail = F)
+```
+
+Question
+========
+The sensitivity and specificity of a diagnostic test are 0.58 and 0.01, respectively, and the probability of a true positive is 0.02.
+
+a. Calculate the prevalence of the disease.
+a. Calculate predictive values.
+a. Is the test more useful to rule out or confirm the disease?
+a. If we have 10 non-sick patients, what is the probability that more than 9 have a misdiagnosis?
+a. If we have 60 patients, what is the probability that at least two of them have a correct diagnosis?
+
+Solution
+========
+a. $P(D) = `r round(pre, 4)`$.
+a. $PPV = P(D|+) = `r round(ppv, 4)`$ and $NPV = P(\overline D|-) = `r round(npv, 4)`$.
+a. The test is not helpful to confirm nor to rule out the disease, since both the positive and the negative predictive values are below 0.5.
+a. Let $X$ be the number non sick patients with a positive outcome, then $X\sim B(`r n1`, `r round(p1, 4)`)$, and $P(X\geq 9)=`r round(sol1, 4)`$.
+a. Let $Y$ be the number of patients with a right diagnose, then $Y\sim B(`r n2`, `r round(p2, 4)`)\approx P(`r round(lambda, 4)`)$, and $P(Y\geq 2)=`r round(sol2, 4)`$.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: vad-med-10
+extol: 0.001
+degree: Medicine
+ 

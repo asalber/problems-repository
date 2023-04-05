@@ -1,0 +1,56 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+ntd <- 480
+nth <- 2320
+ncd <- 255
+nch <- 1505
+nt <- ntd + nth
+nc <- ncd + nch
+n <- nt + nc
+## QUESTION/ANSWER GENERATION
+pre <- (ntd + ncd) / n
+rt <- ntd / nt
+rc <- ncd / nc
+rr <- rt / rc
+ot <- ntd / nth
+oc <- ncd / nch
+or <- ot / oc
+```
+
+Question
+========
+To study the association between the osteoporosis and the gender a random sample of people between 65 and 70 years old was taken.
+The following table summarize the results
+
+$$
+\begin{array}{lcc}
+\hline
+& \mbox{Osteoporosis} & \mbox{Not osteoporosis}  
+\mbox{Women} & 480 & 2320\\
+\mbox{Men} & 255 & 1505\\
+\hline
+\end{array}
+$$
+
+a. Compute the prevalence of the osteoporosis in the population.
+a. Compute the relative risk of osteoporosis in females with respect to males and interpret it.
+a. Compute the odds ratio of osteoporosis in females with respect to males and interpret it.
+a. Which of the two measures is most suitable to study the association between the osteoporosis and the gender?
+
+Solution
+========
+Let $D$ be the event of suffering osteoporosis.
+a. Prevalence: $P(D)=`r round(pre,4)`$.
+a. $RR(D)=`r round(rr, 4)`$. Thus, the risk of suffering osteoporosis in women is higher than in men but not to much. There is no strong association between the osteoporosis and the gender.
+a. $OR(D)=`r round(or, 4)`$. Thus, the odds of suffering osteoporosis in women is higher than in men but not to much. 
+a. Since we can compute the prevalence of $D$, both statistics are suitable, but relative risk is easier to interpret.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: ries-med-2
+extol: 0.001
+degree: Pharmacy
+ 

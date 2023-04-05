@@ -1,0 +1,58 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+n <- 100
+pAB <- 8 / n
+pAnoB <- 2 / n
+pnoAB <- 3 / n
+pnoAnoB <- 87 / n
+## QUESTION/ANSWER GENERATION
+pA <- pAB + pAnoB
+pAoB <- pAB + pAnoB + pnoAB
+pBsiA <- pAB/pA
+```
+
+Question
+========
+To study the effectiveness of two antigen tests for the COVID both tests have been applied to a sample of 100 persons. The table below shows the results:
+
+$$\begin{array}{ccr}
+\hline
+\mbox{Test $A$} & \mbox{Test $B$} & \mbox{Num persons}  
++ & + & 8\\
++ & - & 2\\
+- & + & 3\\
+- & - & 87\\
+\hline
+\end{array}
+$$
+
+Define the following events and compute its probabilities:
+
+a. Get a $+$ in the test $A$.
+a. Get a $+$ in the test $A$ and a $-$ in the test $B$.
+a. Get a $+$ in some of the two tests.
+a. Get different results in the two tests.
+a. Get the same result in the two tests.
+a. Get a $+$ in the test $B$ if we got a $+$ in the test $A$.
+Are the outcomes of the two tests independent?
+
+Solution
+========
+Let $A$ and $B$ the events of getting positive outcomes in the tests $A$ and $B$ respectively.
+a. $P(A)=`r round(pA,4)`$.
+a. $P(A\cap \overline B)=`r round(pAnoB,4)`$.
+a. $P(A\cup B) = `r round(pAoB,4)`$.
+a. $P(A\cap \overline B) + P(\overline A \cap B) = `r round(pAnoB + pnoAB,4)`$.
+a. $P(A\cap B) + p(\overline A \cap \overline B)= `r round(pAB + pnoAnoB,4)`$.
+a. $P(B|A) = `r round(pBsiA,4)`$.
+As $P(B|A)\neq P(B)$ the events are dependent.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: prob-12-med
+extol: 0.001
+degree: Medicine
+ 

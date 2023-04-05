@@ -1,0 +1,63 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+NegN <- 6380
+NegY <- 520
+PosN <- 6200
+PosY <- 780
+
+## QUESTION/ANSWER GENERATION
+pNegY <- NegY / (NegY + NegN)
+pPosY <- PosY / (PosY + PosN)
+rr <- pPosY / pNegY
+oNegY <- NegY / NegN
+oPosY <- PosY / PosN
+or <- oPosY / oNegY
+sen <- 0.6
+spe <- 0.95
+pNegYNeg <- pNegY * (1 - sen)
+pNegNPos <- (1 - pNegY) * (1 - spe)
+pPosYNeg <- pPosY * (1 - sen)
+pPosNPos <- (1 - pPosY) * (1 - spe)
+ppvNeg <- pNegY * sen / (pNegY * sen + (1 - pNegY) * (1 - spe))
+npvPos <- (1 - pPosY) * spe / (pPosY * (1 - sen) + (1 - pPosY) * spe) 
+```
+
+Question
+========
+To study the relation between the blood Rh and the SARS-CoV-2 infection a random sample of non-infected people was drawn from a population. The table below shows the number of people infected after one year.
+
+$$\begin{array}{llr}
+\hline
+\mbox{Blood Rh} & \mbox{Infection} & \mbox{Persons}  
+- & \mbox{Yes} & 520  
+- & \mbox{No} & 6380  
++ & \mbox{Yes} & 780  
++ & \mbox{No} & 6200\\
+\hline
+\end{array}
+$$
+
+a. Compute the relative risk and the odds ratio to study the association between the SARS-CoV-2 infection and the blood Rh. Which association measure is more suitable to explain the relation between the SARS-CoV-2 infection and the blood Rh. Interpret it.
+a. A diagnostic test for the SARS-CoV-2 has been developed with a 95%: of specificity and a 60%: of sensitivity, regardless of blood Rh.
+In which blood Rh will produce more errors? Which diagnosis will we make if we apply the test to a persons with blood Rh $-$ and we get a positive outcome? Which diagnosis will we make if we apply the test to a persons with blood Rh $+$ and we get a negative outcome?
+
+Solution
+========
+Let $I$ be the event of being infected by SARS-CoV-2.
+
+a. $RR(I) = R_+(I) / R_-(I) = `r round(rr,4)`$ and $OR(I) = O_+(I) / O_-(I) = `r round(or,4)`$.  
+The relative risk is more suitable as this is a prospective study and the incidence of infection can be estimated. Thus the risk of infection with Rh + is almost one and a half the risk with Rh -.
+a. $P(\mbox{Error}|\mbox{Rh-}) = `r round(pNegYNeg + pNegNPos, 4)`$ and $P(\mbox{Error}|\mbox{Rh+}) = `r round(pPosYNeg + pPosNPos, 4)`$. Thus, the test will produce more errors in people with Rh+.  
+Positive predictive value for Rh-: $p(I|+)=`r round(ppvNeg,4)`$. Therefore, we will diagnose no infection.
+Negative predictive value for Rh+: $p(\overline I|-)=`r round(npvPos,4)`$. Therefore, we will predict no infection.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: test-9-med
+extol: 0.001
+degree: Medicine
+ 
+  

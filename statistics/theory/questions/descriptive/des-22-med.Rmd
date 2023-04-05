@@ -1,0 +1,72 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+x <- c(rep(3,79),rep(9,266),rep(15,193),rep(21,188), rep(27,117), rep(33, 56))
+y <- c(rep(3,25),rep(9,40),rep(15,21),rep(21,12), rep(27,3))
+
+## QUESTION/ANSWER GENERATION
+# Tamaño de la muestra
+nx <- length(x)
+ny <- length(y)
+# Media
+mx <- mean(x)
+my <- mean(y)
+# Varianza
+s2x <- sum(x^2)/nx-mx^2
+s2y <- sum(y^2)/ny-my^2
+# Desviación típica
+sx <- sqrt(s2x)
+sy <- sqrt(s2y)
+# Coef. variación
+cvx <- sx/mx
+cvy <- sy/my
+# Coef. asimetría
+g1x <- sum((x-mx)^3)/(nx*sx^3)
+g1y <- sum((y-my)^3)/(ny*sy^3)
+# Coef. apuntamiento
+g2x <- sum((x-mx)^4)/(nx*sx^4)-3
+g2y <- sum((y-my)^4)/(ny*sy^4)-3
+# Puntuaciones típicas
+```
+
+Question
+========
+A study tries to determine the relation between the skin color, quantified in the Von Luschan scale, and suffering a particular skin disease. The table below summarizes the number of healthy and sick individuals in each interval of the Von Luschan scale:
+
+$$
+\begin{array}{crr}
+\hline
+\mbox{Skin color (Von Luschan)} & \mbox{Healthy} & \mbox{Sick}  
+0-6 & 79 & 25\\
+6-12 & 266 & 40\\
+12-18 & 193 & 21\\ 
+18-24 & 188 & 12\\
+24-30 & 117 & 3\\
+30-36 & 56 & 0\\
+\hline
+\end{array}
+$$
+
+a. Compute the Von Luschan value such that 30%: of individuals are above that value.
+a. In which group is the mean more representative, in healthy or in sick persons?
+a. Which distribution is more symmetric, the healthy or the sick persons distribution? And, which one is more peaked?
+a. Which individual has a relatively higher Von Luschan value, a healthy person with a score 15 or a sick person with a score 10?
+a. Taking the standard scores of healthy and sick persons, in which distribution is the mean of the standard scores more representative?
+
+
+Use the following sums for the computations:  
+Healthy: $\sum x_in_i=`r sum(x)`$, $\sum x_i^2n_i=`r sum(x^2)`$, $\sum (x_i-\bar x)^3n_i=`r round(sum((x-mx)^3),2)`$ and $\sum (x_i-\bar x)^4n_i=`r round(sum((x-mx)^4),2)`$.  
+Sick: $\sum x_in_i=`r sum(y)`$, $\sum x_i^2n_i=`r sum(y^2)`$, $\sum (x_i-\bar x)^3n_i=`r round(sum((y-my)^3),2)`$ and $\sum (x_i-\bar x)^4n_i=`r round(sum((y-my)^4),2)`$.  
+
+Solution
+========
+
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: des-22-med
+extol: 0.001
+%% \degree{Nutrition}
+ 

@@ -1,0 +1,40 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+pANoB <- 0.12
+pNoAB <- 0.24
+pBSiA <- 0.8 
+
+## QUESTION/ANSWER GENERATION
+pA <- pANoB/(1-pBSiA)
+pAB <- pA * pBSiA
+pAoB <- pAB + pANoB + pNoAB
+pNoANoB <- 1 - pAoB
+pB <- pAB + pNoAB
+```
+
+Question
+========
+In a study about the efectiveness of two flu drugs $A$ and $B$ it has been observed in a clinical trial that in 12%: of cases only drug $A$ is effective, in 24%: of cases only drug $B$ is effective and in 80%: of cases where drug $A$ was effective, also was effective the drug $B$.
+
+a. What is the probability that both drugs are efective at the same time?
+a. What is the probability that only one of the drugs is effective?
+a. What is the probability that none of the drugs are effective?
+a. Are the effectiveness of the two drugs independent?
+
+Solution
+========
+According to the problem statement, $P(A\cap \overline B) = `r pANoB`$, $P(\overline A\cap B)=`r pNoAB`$ and $P(B|A)=`r pBSiA`$.
+a. $P(A\cap B)=`r pAB`$.
+a. $P(A\cap \overline B) + P(\overline A\cap B) =`r pANoB + pNoAB`$.
+a. $P(\overline A \cap \overline B) = `r pNoANoB`$.
+a. The events are dependent because $P(B)=`r pB` \neq P(B|A)=`r pBSiA`$.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: prob-med-2
+extol: 0.001
+degree: Medicine
+ 

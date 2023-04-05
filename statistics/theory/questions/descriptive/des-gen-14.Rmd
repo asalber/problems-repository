@@ -1,0 +1,44 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+library(ggplot2)
+set.seed(123)
+n <- 20
+x <- rbinom(n, 10, 0.5)
+y <- rbinom(n, 10, 0.2)
+z <- rbinom(n, 10, 0.8)
+Score <- c(x, y, z)
+Subject <- c(rep('X', n), rep('Y', n), rep('Z', n))
+data <- data.frame(Score, Subject)
+
+## QUESTION/ANSWER GENERATION
+```
+
+Question
+========
+The chart below shows the distribution of scores in three subjects.
+```{r box-plot-scores, fig=T, echo=F, width=5, height=3, dev="svg", fig.path="img"}
+p <- ggplot(data, aes(x=Score, y=Subject)) + geom_boxplot(width=0.5)
+p
+```
+
+a. Which subject is more difficult?
+a. Which subject has more central dispersion?
+a. Which subjects have outliers?
+a. Which subject is more asymmetric?
+
+Solution
+========
+a. Subject $Y$ because its scores are smaller.
+a. Subject $X$ because the box is wider.
+a. Subject $Z$ because there is a score out of the whiskers.
+a. Subject $Z$ because the distance from the first quartile to the median (left side of the box) is greater than de distance from the third quartile to the median (right side of the box).
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: des-gen-14
+extol: 0.001
+degree: All
+ 

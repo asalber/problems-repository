@@ -1,0 +1,40 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+fp <- 0.01
+fn <- 0.002
+pre <- 1 / 400
+## QUESTION/ANSWER GENERATION
+# tp <- pre * sen
+# fn <- pre * (1-sen)
+# fp <- (1-pre) * (1-spe)
+# tn <- (1-pre) * spe
+# ppv <- tp / (tp + fp)
+# npv <- tn / (tn + fn)
+```
+
+Question
+========
+A test to detect prostate cancer produces 1%: of false positives and 0.2%: false negatives. It is known that 1 in 400 males suffer this type of cancer.
+a. Compute the sensitivity and the specificity of the test.
+a. If a male got a positive outcome in the test, what is the chance of developing cancer?
+a. Compute and interpret the negative predictive value.
+a. Is this test better to predict or to rule out the cancer?
+a. To study wether there is an association between the practice of sports and this type of cancer, a sample of 1000 males was drawn, of which 700 practiced sports, and it was observed that there were 2 males with cancer in the group of males who practiced sports, and there were 3 males with cancer in the group of males who did not practice sports. Compute the relative risk and the odds ratio and interpret them. 
+
+Solution
+========
+Let $D$ the event corresponding to suffering COVID19 and $+$ and $-$ the events corresponding to get a positive and a negative outcome respectively.
+a. The sensitivity is $P(+|D) = `r round(sen, 4)`$ and specificity $P(-|\overline D) = `r round(spe, 4)`$.
+a. Positive predictive value $P(D|+) = `r round(ppv, 4)`$ and negative predictive value $P(\overline D|-) = `r round(npv, 4)`$. As de positive predictive value is less than 0.5 we can not use this test to confirm COVID19, but we can use it to rule it out with a strong confidence since the negative predictive value is pretty close to 1. 
+a. $P(D\cap +) + P(\overline D\cap -) = `r round(tp + tn, 4)`$.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: test-med-4
+extol: 0.001
+degree: Medicine
+ 
+  

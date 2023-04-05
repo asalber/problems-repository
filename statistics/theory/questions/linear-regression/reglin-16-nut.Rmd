@@ -1,0 +1,39 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+  x <- c(20,40,60)
+  y <- c(42,40,38)
+  y2 <- c(44,40,36)
+  df <- data.frame(x,y,y2)
+## QUESTION/ANSWER GENERATION
+```
+
+Question
+========
+The relationship between basal metabolic rate and age is being studied in a sample of healthy men and the following regression lines have been obtained
+```{r regression-lines, fig=T, echo=F, height=4, width=6, dev="svg", fig.path="img"}
+plot(x, y, type="n", ylim = c(34,45), yaxt = "n", xlab="Age", ylab="Basal metabolic rate") 
+axis(1, at = seq(20,60,5), tck = 1, lty = 2, col = "gray")
+axis(2, at = 34:45, tck = 1, lty = 2, col = "gray")
+box()
+lines(x, y, col = "blue")
+lines(x, y2, col = "blue")
+```
+
+a. Compute the means of the basal metabolic rate and the age.
+a. How is the fit of the two lines?
+
+Solution
+========
+Let $X$ be the age and $Y$ the basal metabolic rate.
+a. $\bar x=40$ and $\bar y=40$.
+a. $b_{yx}=-0.1$, $b_{xy}=-5$ and $r^2 = 0.5$, thus the fit of the regression lines moderate.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: reglin-16-nut
+extol: 0.001
+%% \degree{Nutrition}
+ 

@@ -1,0 +1,29 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+
+## QUESTION/ANSWER GENERATION
+```
+
+Question
+========
+The thoracic perimeter of a male population of ages between 25 and 40 follows a normal distribution of mean 102 cm. It is also known that 20%: of the population have a perimeter above 111 cm. 
+
+a. Compute the standard deviation of the thoracic perimeter.  
+Remark: If you do not know how to compute it, use a standard deviation of 9.5 cm for the next parts.
+a. Compute the interquartile range of the thoracic perimeter distribution.
+a. What is the probability that in a sample of 100 males from this population, there are at most 3 with a thoracic perimeter less than 82 cm?
+
+Solution
+========
+
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: vac-16-fis
+extol: 0.001
+degree: Physiotherapy
+ 
+  

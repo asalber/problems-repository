@@ -1,0 +1,113 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+y <- rep(c(4.5, 5.5, 6.5, 7.5, 8.5), c(2, 5, 6, 4, 3))
+x <- rep(c(2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5), c(1, 6, 7, 3, 7, 0, 1))
+data <- data.frame(Score = c(y, x), Treatment = c(rep('Treatment', 20), rep('Placebo', 25)))
+
+## QUESTION/ANSWER GENERATION
+# Tamaño de la muestra
+nx <- length(x)
+ny <- length(y)
+# Quartiles
+q1 <- 3.875
+q3 <- 6.25
+# IQR
+iqr <- q3-q1
+# Fences
+f1 <- q1-1.5*iqr
+f2 <- q3+1.5*iqr
+# Outliers
+outliers <- y[y < f1 | y > f2]
+# Mean
+mx <- mean(x)
+my <- mean(y)
+# Variance
+s2x <- sum(x^2)/nx-mx^2
+s2y <- sum(y^2)/ny-my^2
+# Std. deviation
+sx <- sqrt(s2x)
+sy <- sqrt(s2y)
+# Coef. variation
+cvx <- sx/mx
+cvy <- sy/my
+# Coef. skewness
+g1x <- sum((x-mx)^3)/(nx*sx^3)
+g1y <- sum((y-my)^3)/(ny*sy^3)
+# Coef. kurtosis
+g2x <- sum((x-mx)^4)/(nx*sx^4)-3
+g2y <- sum((y-my)^4)/(ny*sy^4)-3
+# Standard scores
+zx <- (5-mx)/sx
+zy <- (6-my)/sy
+```
+
+Question
+========
+To study the effectiveness of a new treatment for the polymyalgia rheumatica a sample of patients with polymyalgia was drawn and they were divided into two groups. The first group received the new treatment while the second one received a placebo. After a year following the treatment they filled out a survey. The chart below shows the distribution of the survey score of the two groups of patients (the greater the score the better the treatment).
+```{r back-back-scores-distribution, fig=T, echo=F, height=5, width=5, dev="png", fig.path="img", fig.show="hide"}
+# Histogram by sex
+library(Hmisc)
+options(digits=1)
+blueceulight <- rgb(137, 211, 243, 255, maxColorValue = 255) #89D3F3
+orangeceu <- rgb(248, 131, 121, 255, maxColorValue = 255)#F88379
+out <- histbackback(split(data$Score, data$Treatment), xlim=c(-8,8), main = 'Frequency distribution of scores', axes = F)
+axis(side = 1, at = -8:8, labels = c(8:0,1:8))
+axis(side = 2, at = seq(0, 7, 1), labels = 2:9)
+mtext("Score", side = 2, line = 3, cex = par("cex.lab"))
+mtext("Placebo                              Treatment", side = 1, line = 3, cex = par("cex.lab"))
+abline(v= (-8:8)*2 , col ="gray" , lty =3) 
+barplot(-out$left, col=blueceulight , horiz = T, space = 0, add = T, axes = F) 
+barplot(out$right, col=orangeceu, horiz = T, space = 0, add = T, axes = F) 
+```
+
+a. Construct the frequency table of the scores for the placebo group and plot the ogive.
+a. Compute the interquartile range of the scores for the placebo group.
+a. Are there outliers in the placebo group?
+a. In which group the score mean represents better?
+a. Which distribution is more normal regarding the kurtosis?
+a. Which score is relatively better, a score of 5 in the placebo group or a score of 6 in the treatment group?
+
+
+Use the following sums for the computations:   
+Placebo: $\sum x_i=`r round(sum(x), 2)`$, $\sum x_i^2=`r round(sum(x^2), 4)`$, $\sum (x_i-\bar x)^3=`r round(sum((x-mx)^3),2)`$ and $\sum (x_i-\bar x)^4=`r round(sum((x-mx)^4),2)`$.  
+Treatment: $\sum x_i=`r round(sum(y), 4)`$, $\sum x_i^2=`r round(sum(y^2), 4)`$, $\sum (x_i-\bar x)^3=`r round(sum((y-my)^3),2)`$ and $\sum (x_i-\bar x)^4=`r round(sum((y-my)^4),2)`$.
+
+Solution
+========
+a. 
+$$
+\begin{array}{lrrrr}
+ \mbox{Score} & n_i & f_i & N_i & F_i \\ 
+  \hline
+[2,3] & 1 & 0.04 & 1 & 0.0 \\ 
+  (3,4] & 6 & 0.24 & 7 & 0.3 \\ 
+  (4,5] & 7 & 0.28 & 14 & 0.6 \\ 
+  (5,6] & 3 & 0.12 & 17 & 0.7 \\ 
+  (6,7] & 7 & 0.28 & 24 & 1.0 \\ 
+  (7,8] & 0 & 0.00 & 24 & 1.0 \\ 
+  (8,9] & 1 & 0.04 & 25 & 1.0 \\ 
+   \hline
+\end{array}
+```{r ogive-polymyalgia, fig=T, echo=F, height=4, width=6, dev="svg", fig.path="img"}
+.df = data.frame(Score = 2:9, Cum.Rel.Freq. = c(0.00, 0.04, 0.28, 0.56, 0.68, 0.96, 0.96, 1))
+ggplot(data=.df, aes(x=Score, y=Cum.Rel.Freq.)) + geom_line()
+```
+a. $Q_1= `r q1`$, $Q_3= `r q3`$ and $IQR=`r iqr`$.
+a. $f_1 = `r f1`$ and $f_2=`r f2`$. Thus, there are no outliers in the placebo sample because all the values fall between the fences.
+a. Placebo: $\bar x=`r round(mx,4)`$, $s^2=`r round(s2x,4)`$, $s=`r round(sx,4)`$ and $cv=`r round(cvx,4)`$.  
+Treatment: $\bar x=`r round(my,4)`$, $s^2=`r round(s2y,4)`$, $s=`r round(sy,4)`$ and $cv=`r round(cvy,4)`$.
+a. Placebo: $g_2=`r round(g2x,4)`$. Treatment: $g_2=`r round(g2y,4)`$. Thus, the distribution of the placebo group is more normal as the coef. of kurtosis is closer to 0.
+a. Standard score for the placebo: $z(5)=`r round(zx,4)`$  
+Standard score for the treatment: $z(6)=`r round(zy,4)`$  
+As the standard score of $5$ in the placebo group is greater than the standard score of $6$ in the treatment group, a score of 5 in the placebo group is better.
+
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: des-19-fis
+extol: 0.001
+degree: Physiotherapy
+ 

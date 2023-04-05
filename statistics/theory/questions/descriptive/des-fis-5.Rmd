@@ -1,0 +1,102 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+require(xtable)
+set.seed(123)
+x <- rbinom(15, 20, 0.1)
+y <- rbinom(14, 20, 0.2)
+table <- matrix(c(x, y, NA), nrow = 2, byrow = T)
+rownames(table) <- c("With prevention program", "Wihtout prevention program")
+## QUESTION/ANSWER GENERATION
+# sample size
+nx <- length(x)
+ny <- length(y)
+# quartiles
+q1x <- quantile(x, probs = c(0.25), type=1)
+q2x <- quantile(x, probs = c(0.5), type=1)
+q3x <- quantile(x, probs = c(0.75), type=1)
+q1y <- quantile(y, probs = c(0.25), type=1)
+q2y <- quantile(y, probs = c(0.5), type=1)
+q3y <- quantile(y, probs = c(0.75), type=1)
+# interquartile range
+iqrx <- q3x-q1x
+iqry <- q3y-q1y
+# means
+mx <- mean(x)
+my <- mean(y)
+# variances
+s2x <- sum(x^2)/nx-mx^2
+s2y <- sum(y^2)/ny-my^2
+# standard deviation
+sx <- sqrt(s2x)
+sy <- sqrt(s2y)
+# coef. variation
+cvx <- sx/mx
+cvy <- sy/my
+# coef. skewness
+g1x <- sum((x-mx)^3)/(nx*sx^3)
+# coef. kurtosis
+g2x <- sum((x-mx)^4)/(nx*sx^4) - 3
+g2y <- sum((y-my)^4)/(ny*sy^4) - 3
+# standard scores
+zx <- (2-mx)/sx
+zy <- (4-my)/sy
+```
+
+Question
+========
+A study tries to determine the effectiveness of an occupational risk prevention program in jobs that require to be sit a lot of hours.
+A sample of individuals between 40 and 50 years that spent more than 5 hours sitting were drawn. It was observed if they followed or not the occupational risk prevention program and the number of spinal injuries after 10 years.
+The results are shown in the table below.
+
+```{r echo=FALSE}
+kable(table) %>% kable_styling()
+```
+
+a. Plot the polygon of cumulative relative frequencies of the total sample.
+a. According to the interquartile range, which sample has more central spread of the spinal injuries, the sample of people following the prevention program or the sample of people not following the prevention program?       
+a. Which sample has a greater relative spread with respect to the mean of the spinal injuries, the sample of people following the prevention program or the sample of people not following the prevention program?
+a. Which sample has a more normal kurtosis of the number of spinal injuries, the sample of people following the prevention program or the sample of people not following the prevention program?
+a. Which number of spinal injuries is relatively greater, 2 injuries of a person following the prevention program or 4 injuries of a person not following the prevention program?
+
+
+Use the following sums for the computations:  
+With prevention program: $\sum x_i=`r sum(x)`$ injuries, $\sum x_i^2=`r sum(x^2)`$ injuries$^2$, $\sum (x_i-\bar x)^3=`r round(sum((x-mx)^3),2)`$ injuries$^3$ and $\sum (x_i-\bar x)^4=`r round(sum((x-mx)^4),2)`$ injuries$^4$.  
+Without prevention program: $\sum y_i=`r sum(y)`$ injuries, $\sum y_i^2=`r sum(y^2)`$ injuries$^2$, $\sum (y_i-\bar y)^3=`r round(sum((y-my)^3),2)`$ injuries$^3$ and $\sum (y_i-\bar y)^4=`r round(sum((y-my)^4),2)`$ injuries$^4$.
+
+Solution
+========
+a. 
+```{r cumulative-frequencies-polygon, fig=T, echo=F, height=3, width=4, dev="svg", fig.path="img"}
+require(ggplot2)
+#require(rk.Teaching)
+data <- data.frame(injuries = c(x, y))
+.df <- rk.Teaching::frequencyTable(data, "injuries")
+p <- ggplot(data=.df, aes(x=injuries, y=Cum.Rel.Freq.)) + 
+  geom_step(aes(group=1)) + xlab("Spinal injuries") + 
+  ylab("Cumulative relative frequency") +
+  scale_x_continuous(breaks = 0:9) +
+  theme(plot.title = element_text(hjust = 0.5), axis.title=element_text(size=12))
+print(p)
+```
+a. With prevention program: $Q_1=`r round(q1x,4)`$ injuries, $Q_3=`r round(q3x,4)`$ injuries, $IQR=`r round(iqrx,4)`$ injuries.  
+Without prevention program: $Q_1=`r round(q1y,4)`$ injuries, $Q_3=`r round(q3y,4)`$ injuries, $IQR=`r round(iqry,4)`$ injuries.  
+The sample not following the prevention program has more central spread since the interquartile range is greater.
+a. With prevention program: $\bar x=`r round(mx,4)`$ injuries, $s^2=`r round(s2x,4)`$ injuries$^2$, $s=`r round(sx,4)`$ injuries and $cv=`r round(cvx,4)`$.  
+Without prevention program: $\bar y=`r round(my,4)`$ injuries, $s^2=`r round(s2y,4)`$ injuries$^2$, $s=`r round(sy,4)`$ injuries and $cv=`r round(cvy,4)`$.  
+The sample following the prevention program has a greater relative spread with respect to the mean since the coef. of variation is greater.
+a. With prevention program: $g_2=`r round(g2x,4)`$.  
+Without prevention program: $g_2=`r round(g2y,4)`$.  
+Thus the sample not following the prevention program has a more normal kurtosis, since $g_2$ is closer to 0.
+a. With prevention program: $z(2)=`r round(zx,4)`$.  
+Without prevention program: $z(4)=`r round(zy,4)`$.  
+Thus 4 injuries in the sample not following the prevention program is relatively smaller, since its standard score is smaller.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: des-far-2
+extol: 0.001
+degree: Pharmacy
+ 

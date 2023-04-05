@@ -1,0 +1,31 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+lambda <- 3
+n <- 4
+
+## QUESTION/ANSWER GENERATION
+sol1 <- ppois(3, lambda, lower.tail = F)
+sol2 <- ppois(0, lambda, lower.tail = F)
+sol3 <- dbinom(4, n, sol2)
+```
+
+Question
+========
+During the COVID19 quarantine a telephone exchange with 4 telephone operators received an average of 12 calls per day. Assuming that the calls are equally distributed among the operators,
+a. Compute the probability that an operator received more than 3 calls a day. 
+a. Compute the probability that all the the operators received some call a day. 
+
+Solution
+========
+a. Let $X$ be the number of calls that arrive to one operator, then $X\sim P(`r lambda`)$, and $P(X>3)=`r round(sol1, 4)`$.
+a. Let $Y$ be the number of operators that receive some call, then $Y\sim B(4, `r round(sol2, 4)`)$, and $P(Y=4)=`r round(sol3, 4)`$.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: vad-med-9
+extol: 0.001
+degree: Medicine
+ 

@@ -1,0 +1,41 @@
+% LTeX: language=en
+```{r echo=FALSE, results=hide}
+## DATA GENERATIONpre <- 1 / 500
+pre <- 0.1
+sen <- 0.99
+pright <- 0.8
+
+## QUESTION/ANSWER GENERATION
+tp <- pre * sen
+tn <- pright - tp
+spe <- tn / (1 - pre)
+fn <- pre * (1 - sen)
+fp <- (1 - pre) * (1 - spe)
+ppv <- tp / (tp + fp)
+npv <- tn / (tn + fn)
+minpre <- 0.1825
+```
+
+Question
+========
+A diagnostic test for a cervical injury has a 99%: of sensitivity and produces 80%: of right diagnosis. Assuming that the prevalence of the injury is 10%::
+
+a. Compute the specificity of the test.
+a. Can we rule out the injury with a negative outcome of the test?
+a. Can we diagnose the injury with a positive outcome of the test? What must the minimum prevalence of the injury be to diagnose the injury with a positive outcome of the test?
+
+Solution
+========
+a. Specificity = $P(-|\overline D) = `r round(spe, 4)`$.
+a. Negative predictive value = $P(\overline D|-) = `r round(npv,4)` > 0.5$, so we can rule out the injury with a negative outcome.
+a. Positive predictive value = $P(D|+) = `r round(ppv,4)` < 0.5$, so we can not diagnose the injury with a positive outcome. The minimum prevalence required to be able to diagnose the injury with a positive outcome is $P(D)=`r round(minpre,4)`$.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: test-12-fis
+extol: 0.001
+%% \degree{Physioteraphy}
+ 
+  

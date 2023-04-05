@@ -1,0 +1,32 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+
+## QUESTION/ANSWER GENERATION
+```
+
+Question
+========
+In women, the shoulder circumference follows a normal distribution with mean 98 cm and standard deviation 5 cm.
+
+a. Compute the percentage of women in the population with a shoulder circumference between 95 and 105 cm.
+a. Above what value are the 5%: of women with a highest shoulder circumference?
+a. Compute the probability that in a sample of 50 women there is at least 2 with a shoulder circumference less than 90 cm.
+
+Solution
+========
+Let $X$ be the shoulder circumference, then $X\sim N(98, 5)$.
+
+a. $P(95\leq X\leq 105) = 0.645$, that is $6.45%:$.
+a. $P_{95} = 106.22$ cm.
+a. Let $Y$ be the number of women with a shoulder circumference less than 90 cm in a sample of 50 women. Then, $Y\sim B(50, 0.0548) \approx P(2.74)$, and $P(Y\geq 2) = 0.7585$.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: vac-15-fis
+extol: 0.001
+degree: Physiotherapy
+ 
+  

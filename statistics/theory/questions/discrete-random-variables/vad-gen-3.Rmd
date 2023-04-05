@@ -1,0 +1,44 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+m1 <- 246.2/24
+x1 <- 5
+m2 <- 237.4/12
+x2 <- 1
+x3 <- 2
+m3 <- 256.2/48
+x4 <- 1
+x5 <- 0
+n2 <- 10
+n3 <- 100
+
+## QUESTION/ANSWER GENERATION
+sol1 <- dpois(x1, m1)
+p2 <- ppois(x2, m2, lower.tail = F)
+sol2 <- pbinom(x3, n2, p2, lower.tail = F)
+p3 <- ppois(x4, m3)
+sol4 <- dbinom(x5, n3, p3)
+```
+
+Question
+========
+The employees of a courier company send an average of $246.2$ messages in a period of 12 hours. It is also known that the mean of messages sent by males is $256.2$ and by females is $237.4$ in the same period.
+
+a. Compute the probability that a random person of the company sends 5 messages in a period of half an hour.
+a. If we draw randomly 10 women of this company, what is the probability that at least 3 of them sends more than one message in a period of one hour?
+a. If we draw randomly 100 men of this company, what is the probability that none of them sends less than 2 messages in a period of a quarter of an hour?
+
+Solution
+========
+a. Let $X$ be the number of messages sent in 1 hour. Then $X\sim P(`r round(m1, 4)`)$ and $P(X=`r x1`)=`r round(sol1, 4)`$.
+a. Let $Y$ be the number of women in a sample of 10 that sent more than 1 message in 1 hour. Then $Y\sim B(`r n2`, `r round(p2, 4)`)$ and $P(Y\geq 3)=`r round(sol2, 4)`$.
+a. Let $Z$ be the number of men in a sample of 100 that sent less than 2 messages in a quarter of hour. Then $Z\sim B(`r n3`, `r round(p3, 4)`)$ and $P(Z=0)=`r round(sol3, 4)`$.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: vad-fis-2
+extol: 0.001
+degree: Physiotherapy
+ 

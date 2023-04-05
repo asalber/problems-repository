@@ -1,0 +1,39 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+s <- 8
+x1 <- 80
+p1 <- 0.9
+## QUESTION/ANSWER GENERATION
+m  <- x1 - qnorm(p1) * s
+p2 <- pnorm(75, m, s) - pnorm(60, m, s)
+p3 <- dbinom(9, 12, 0.9) + dbinom(10, 12, 0.9) + dbinom(11, 12, 0.9)
+p4 <- ppois(3, 5)
+```
+
+Question
+========
+The time required to recover from an injury follows a normal distribution with variance 64 days. 
+It is also known that 10%: of people with this injury require more than 80 days to recover.
+a. What is the expected time required to recover from the injury?  
+Remark: Use $\mu=70$ for the next part if you do not know how to compute it.
+a. What percentage of individuals will require between 60 and 75 days to recover?
+a. If we draw a random sample of 12 individuals with this injury, what is the probability of having between 9 and 11 individuals, both included, requiring less than 80 days to recover? 
+a. If we draw a random sample of 500 individuals with this injury, what is the probability of having less than 4 requiring a time above the 99th percentile to recover?
+
+Solution
+========
+Let $X$ be the time required to recover from the injury. Then $X\sim N(\mu, 8)$.
+a. $\mu=`r round(m, 4)`$ days.
+a. $P(60<X<75) = `r round(p2, 4)`$.
+a. Let $Y$ be the number of individuals with the injury requiring less than 80 days to recover in a sample of 12. Then $Y\sim B(12, 0.9)$ and $P(9\leq Y\leq 11)=`r round(p3, 4)`$.
+a. Let $Z$ be the number of individuals with the injury requiring a time above the 99th percentile to recover in a sample of 500. Then $Z\sim B(500, 0.01)\approx P(5)$ and $P(Z\leq 4)=`r round(p4, 4)`$.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: vac-med-1
+extol: 0.001
+degree: Medicine
+ 

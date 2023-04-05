@@ -1,0 +1,82 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+library(kntir)
+knitr::opts_chunk$set(echo = F, message = F, warning = F)
+library(kableExtra)
+x <- c(10, 15, 20, 25, 30, 35, 40, 45, 50)
+y <- c(45, 58, 65, 75, 82, 88, 91, 93, 94)
+table <- matrix(c(x,y), nrow = 2, byrow = T)
+#decimals <- matrix(c(rep(0,6), rep(2,6)), nrow = 3, ncol=6, byrow=TRUE)
+rownames(table) <- c("Days", "Angle")
+## QUESTION/ANSWER GENERATION
+# colors  
+col1 <- "#05A1E6"
+# sample size
+n <- length(x)
+# means
+mx <- mean(x)
+mlogx <- mean(log(x))
+my <- mean(y)
+mlogy <- mean(log(y))
+# variances
+s2x <- sum(x^2)/n-mx^2
+s2logx <- sum(log(x)^2)/n-mlogx^2
+s2y <- sum(y^2)/n-my^2
+s2logy <- sum(log(y)^2)/n-mlogy^2
+# Covariances
+sxy <- sum(x * y) / n - mx * my
+sxlogy <- sum(x*log(y))/n-mx*mlogy
+slogxy <- sum(log(x)*y)/n-mlogx*my
+# Determination coeff
+r2xy <-  sxy^2 / (s2x * s2y)
+r2xlogy <- sxlogy^2/(s2x*s2logy)
+r2logxy <- slogxy^2/(s2logx*s2y)
+# Linear regression model
+reglin <- lm(y ~ x)
+# Exponential regression model y on x
+regexp <- lm(log(x)~y)
+# Logarithmic regression model x on y
+reglog <- lm(y~log(x))
+```
+
+Question
+========
+The table below shows the number of days of rehabilitation for a knee injury, and the knee flexion angle in degrees after those days. 
+```{r echo=FALSE}
+kable(table) %>% kable_styling()
+```
+
+a. Compute the covariance of the number of days of rehabilitation and the knee flexion angle, and interpret it.
+a. According to the regression line, how many degrees increases or decreases the knee flexion angle per day of rehabilitation?
+a. According to the logarithmic model, what is the expected number of degrees of the knee flexion angle after 32 days? Is this prediction more or less reliable than the prediction of the linear model?
+a. According to the exponential model, how many days of rehabilitation are required to get a knee flexion angle of 120 degrees. Is this prediction reliable?
+Use the following sums for the computations ($X$=Days of rehabilitation and $Y$=knee flexion angle):  
+$\sum x_i=`r round(sum(x), 4)`$ days, $\sum \log(x_i)=`r round(sum(log(x)), 4)`$ $\log(\mbox{days})$, $\sum y_j=`r round(sum(y), 4)`$ degrees, $\sum \log(y_j)=`r round(sum(log(y)), 4)`$ $\log(\mbox{degrees})$,  
+$\sum x_i^2=`r round(sum(x^2), 4)`$ days$^2$, $\sum \log(x_i)^2=`r round(sum(log(x)^2), 4)`$ $\log(\mbox{days})^2$, $\sum y_j^2=`r round(sum(y^2), 4)`$ degrees$^2$, $\sum \log(y_j)^2=`r round(sum(log(y)^2), 4)`$ $\log(\mbox{degrees})^2$,  
+$\sum x_iy_j=`r round(sum(x*y), 4)`$ days$\cdot$degrees, $\sum x_i\log(y_j)=`r round(sum(x*log(y)), 4)`$ days$\cdot\log(\mbox{degrees})$, $\sum \log(x_i)y_j=`r round(sum(log(x)*y), 4)`$ $\log(\mbox{days})$degrees, $\sum \log(x_i)\log(y_j)=`r round(sum(log(x)*log(y)), 4)`$ $\log(\mbox{days})\log(\mbox{degrees})$.
+
+Solution
+========
+a. $\overline{x}=`r round(mx,4)`$ days, $s_x^2=`r round(s2x,4)`$ days$^2$.  
+$\bar y=`r round(my,4)`$ degrees, $s_y^2=`r round(s2y,4)`$ degrees$^2$.  
+$s_{xy}=`r round(sxy,4)`$ days$\cdot$degrees.  
+As the covariance is positive, there is a direct linear relation between the number of days of rehabilitation and the knee flexion angle.
+a. $b_{yx}=`r round(reglin$coefficients[2], 4)`$, therefore the knee flexion angle will increase $`r round(reglin$coefficients[2], 4)`$ degrees per day of rehabilitation.
+a. $\overline{\log(x)}=`r round(mlogx,4)`$ log(days), $s_{\log(x)}^2=`r round(s2logx,4)`$ log(days)$^2$.  
+$s_{\log(x)y}=`r round(slogxy,4)`$ log(days)degrees.  
+Logarithmic regression model: $y=`r round(reglog$coefficients[1],4)`+`r round(reglog$coefficients[2],4)`\log(x)$.  
+Prediction: $y(32)=`r round(reglog$coefficients[1] + reglog$coefficients[2]*log(32),4)`$ degrees.  
+The logarithmic coefficient of determination is $`r round(r2logxy, 4)`$ and the linear coefficient of determination is $`r round(r2xy, 4)`$. Thus, the prediction with the logarithmic model is more reliable as the coefficient of determination of the logarithmic model is greater. 
+a. Exponential regression model: $y=e^{`r round(regexp$coefficients[1],4)`+`r round(regexp$coefficients[2],4)`y}$.  
+Prediction: $y(120)=`r round(exp(regexp$coefficients[1] + regexp$coefficients[2]*120),4)`$ days.  
+This prediction is not reliable as 120 degrees falls far away of the range of values observed in the sample for the knee flexion angle.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: regnol-10-fis
+extol: 0.001
+degree: Physiotherapy
+ 

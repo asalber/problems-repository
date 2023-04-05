@@ -1,0 +1,106 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+require(xtable)
+xi <- c(0, 1, 2, 3, 4, 5, 6, 8)
+nxi <- c(7, 15, 11, 5, 4, 2, 1, 0)
+x <- rep(xi, nxi)
+nyi <- c(8, 12, 8, 7, 3, 2, 2, 1)
+y <- rep(xi, nyi)
+data <- data.frame(xi, nxi, nyi)
+colnames(data) <- c("Failed subjects", "Previous year course", "Current course")
+## QUESTION/ANSWER GENERATION
+# sample size
+nx <- length(x)
+ny <- length(y)
+# quartiles
+q1 <- quantile(x, probs = c(0.25), type=1)
+q2 <- quantile(x, probs = c(0.5), type=1)
+q3 <- quantile(x, probs = c(0.75), type=1)
+# interquartile range
+iqr <- q3-q1
+#fences
+f1 <- q1-1.5*iqr
+f2 <- q3+1.5*iqr
+# outliers
+outliers <- x[x < f1 | x > f2]
+# means
+mx <- mean(x)
+my <- mean(y)
+# variances
+s2x <- sum(x^2)/nx-mx^2
+s2y <- sum(y^2)/ny-my^2
+# standard deviation
+sx <- sqrt(s2x)
+sy <- sqrt(s2y)
+# coef. variation
+cvx <- sx/mx
+cvy <- sy/my
+# coef. skewness
+g1x <- sum((x-mx)^3)/(nx*sx^3)
+g1y <- sum((y-my)^3)/(ny*sy^3)
+# coef. kurtosis
+g2x <- sum((x-mx)^4)/(nx*sx^4)-3
+g2y <- sum((y-my)^4)/(ny*sy^4)-3
+# Transformación lineal
+myx <- 0.5 + mx * 1.45
+myy <- 0.5 + my * 1.45
+# standard scores
+zx <- (6-mx)/sx
+zy <- (7-my)/sy
+```
+
+Question
+========
+	
+To see if the confinement due to COVID-19 has influenced the performance of a course, the number of failed subjects of each student in the current course and in the previous year course has been counted, obtaining the table below.
+
+```{r echo=FALSE}
+print(xtable(data, align=c("c", "c", "r", "r"), auto=T), tabular.environment="array", include.rownames = F, floating=F, hline.after = c(0,nrow(data)), sanitize.text.function = function(x) { x })
+```
+
+Se pide:
+a. Draw the box plots of the failed subjects in the current and the previous year courses and compare them.
+a. Can we assume that both samples come from a normal population?
+a. In which sample the mean is more representative?
+a. Which number of failed subjects is greater, 7 in the current course or 6 in the previous year course?
+
+
+Use the following sums for the computations:  
+Previous year course: $\sum x_in_i=`r sum(x)`$, $\sum x_i^2n_i=`r sum(x^2)`$, $\sum (x_i-\bar x)^3n_i=`r round(sum((x-mx)^3),2)`$ y $\sum (x_i-\bar x)^4n_i=`r round(sum((x-mx)^4),2)`$.  
+Current course: $\sum y_in_i=`r sum(y)`$, $\sum y_i^2n_i=`r sum(y^2)`$, $\sum (y_i-\bar y)^3n_i=`r round(sum((y-my)^3),2)`$ y $\sum (y_i-\bar y)^4n_i=`r round(sum((y-my)^4),2)`$.
+
+Solution
+========
+a. 
+```{r box-plot-scores, fig=T, echo=F, height=3, width=4, dev="svg", fig.path="img"}
+library(ggplot2)
+failed = c(x, y)
+course = rep(c("Previous year course", "Current course"), c(nx, ny))
+data <- data.frame(failed, course)
+p <- ggplot(data, aes(x = failed, y = course, col = course)) + 
+  geom_boxplot() + 
+  labs(title = "Box plot of failed subjects", x = "Failed subjects", y = "") +
+  theme(plot.title = element_text(hjust = 0.5), axis.title=element_text(size=10), legend.position = "none")
+print(p)
+```
+
+Both distributions are pretty similar. The central dispersion is the same and both are right skewed. The only difference is that there is an outlier in the current year distribution.  
+a. Previous year course: $\bar x=`r round(mx,4)`$, $s^2=`r round(s2x,4)`$, $s=`r round(sx,4)`$, $g_1=`r round(g1x,4)`$ and $g_2=`r round(g2x,4)`$.\\ 
+Current course: $\bar y=`r round(my,4)`$, $s^2=`r round(s2y,4)`$, $s=`r round(sy,4)`$, $g_1=`r round(g1y,4)`$ and $g_2=`r round(g2y,4)`$.  
+As the coefficients of skewness and kurtosis are between -2 and 2, we can assume that both distributions come from a normal distribution.
+a. Previous year course: $cv=`r round(cvx,4)`$.  
+Current year: $cv=`r round(cvy,4)`$.  
+Thus, the mean is more representative in the previous year course, since the coefficient of variation is smaller.
+a. Previous year course: $z(6)=`r round(zx, 4)`$.  
+Current course: $z(7)=`r round(zy, 4)`$.  
+Thus, 7 failed subjects in the current course is relatively less than 6 in the previous year course, since the standard score is smaller.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: des-gen-12
+extol: 0.001
+degree: All
+   

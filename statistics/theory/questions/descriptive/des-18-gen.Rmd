@@ -1,0 +1,90 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+x <- c(5, 8, 6, 7, 5, 6, 5, 7, 5, 6, 5, 6, 5, 10, 6, 7, 7, 6, 7, 8, 7, 5, 6, 5, 8, 6, 3, 4, 4, 7, 8, 5, 7, 5, 7, 7, 5, 8, 6, 6, 6, 7, 6, 3, 6, 4, 4, 6, 6, 8, 4, 7, 8, 4, 5, 10, 6, 3, 6, 6, 5, 7, 7, 7, 7, 3, 8, 8, 8, 5, 6, 4, 5, 7, 6, 5, 5, 5, 3, 6)
+
+## QUESTION/ANSWER GENERATION
+# Tamaño de la muestra
+nx <- length(x)
+# Quartiles
+q1 <- quantile(x, probs = c(0.25), type=1)
+q2 <- quantile(x, probs = c(0.5), type=1)
+q3 <- quantile(x, probs = c(0.75), type=1)
+# IQR
+iqr <- q3-q1
+# Fences
+f1 <- q1-1.5*iqr
+f2 <- q3+1.5*iqr
+# Mean
+mx <- mean(x)
+my <- 5.5
+# Variance
+s2x <- sum(x^2)/nx-mx^2
+s2y <- 2
+# Std. deviation
+sx <- sqrt(s2x)
+sy <- sqrt(s2y)
+# Coef. variation
+cvx <- sx/mx
+cvy <- sy/my
+# Coef. skewness
+g1x <- sum((x-mx)^3)/(nx*sx^3)
+# Coef. kurtosis
+g2x <- sum((x-mx)^4)/(nx*sx^4)-3
+# Standard scores
+zx <- (7-mx)/sx
+zy <- (6-my)/sy
+```
+
+Question
+========
+The chart below shows the distribution of the number of subjects passed in a sample of first year students of a degree. 
+```{r cumulative-distribution-subjects, fig=T, echo=F, height=4, width=6, dev="svg", fig.path="img"}
+Ni <- cumsum(table(x))
+xi <- c(2.5, rep(sort(unique(x)), each=2), 10.5)
+Ni <- c(0, 0, rep(Ni, each=2))
+plot(xi, Ni, type="l", col="blue",
+     main = "Distribution of number of subjects passed",
+     xlab = "Subjects passed",
+     ylab = "Students",
+      xaxt="n", yaxt="n")
+axis(side=1, at=seq(3,10), cex.axis=0.8)
+axis(side=2, at=Ni, las="2", cex.axis=0.8)
+text(1.7, 81, labels = "80", xpd=T, cex = 0.8)
+```
+
+a. Draw the box and whiskers plot and interpret it.
+a. Compute the central tendency statistics and interpret them.
+a. How is the asymmetry of the distribution? And the kurtosis? Can we assume that the sample comes from a normal population?
+a. If the mean of subjects passed in the second year was 5.5 and the variance was 2, is the mean of the subjects passed in the first year more or less representative than the one of the second year?
+a. Which student is better, a first year student that pass 7 subjects or a second year student that pass 6 subjects? 
+
+
+Use the following sums for the computations: $\sum x_i=`r sum(x)`$ subjects, $\sum x_i^2=`r sum(x^2)`$ subjects$^2$, $\sum (x_i-\bar x)^3=`r round(sum((x-mx)^3),2)`$ subjects$^3$ and $\sum (x_i-\bar x)^4=`r round(sum((x-mx)^4),2)`$ subjects$^4$.
+
+Solution
+========
+a. Quartiles: $Q_1=`r q1`$ subjects, $Q_2=`r q2`$ subjects, $Q_3=`r q3`$ subjects.  
+$IQR = `r iqr`$ subjects.  
+Fences: $f_1=`r f1`$ subjects and $f_2=`r f2`$ subjects.
+```{r boxplot-subjects, fig=T, echo=F, height=4, width=6, dev="svg", fig.path="img"}
+boxplot(x, horizontal=T, col=rgb(5, 161, 230, maxColorValue = 255), main="Box plot of passed subjects\nby first year students of a degree", xlab="Subjects")
+```
+a. $\bar x=`r round(mx,4)`$ subjects, $Me=`r q2`$ subjects and $Mo=6$ subjects.
+a. $s^2=`r round(s2x,4)`$ (subjects)$^2$, $s=`r round(sx,4)`$ subjects and $cv=`r round(cvx,4)`$.  
+$g_1=`r round(g1x,4)`$, so that the distribution is slightly skewed to the right.  
+$g_2=`r round(g2x,4)`$, so that the distribution flatter than a Gauss bell.  
+We can assume that the sample comes from a normal population as both, the coefficient of skewness, and the coefficient of curtosis are between -2 and 2.
+a. Let $Y$ the number of subjects passed the second year. Then, $cv_x=`r round(cvx,4)`$ and $cv_y=`r round(cvy,4)`$. As the coefficient of variation of the first year is a little bit smaller than the one of the second year, the mean of the first year is a little bit more representative.
+a. Standard score for the first year: $z(7)=`r round(zx,4)`$  
+Standard score for the second year: $z(6)=`r round(zy,4)`$  
+As the standard score of $7$ the first year is greater than the standard score of $6$ the second year, the firs year student is better. 
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: des-18-gen
+extol: 0.001
+degree: All
+ 

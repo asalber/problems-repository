@@ -1,0 +1,78 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+library(kntir)
+knitr::opts_chunk$set(echo = F, message = F, warning = F)
+library(kableExtra)
+x <- c(5, 8, 20, 35, 50, 80, 110)
+y <- c(50, 70, 100, 150, 170, 190, 200)
+table <- matrix(c(x,y), nrow = 2, byrow = T)
+#decimals <- matrix(c(rep(0,6), rep(2,6)), nrow = 3, ncol=6, byrow=TRUE)
+rownames(table) <- c("Concentration ($\\mu$g/ml)", "Signal (Hz)")
+## QUESTION/ANSWER GENERATION
+# colors  
+col1 <- "#05A1E6"
+# sample size
+n <- length(x)
+# means
+mx <- mean(x)
+mlogx <- mean(log(x))
+my <- mean(y)
+mlogy <- mean(log(y))
+# variances
+s2x <- sum(x^2)/n-mx^2
+s2logx <- sum(log(x)^2)/n-mlogx^2
+s2y <- sum(y^2)/n-my^2
+s2logy <- sum(log(y)^2)/n-mlogy^2
+# Covariances
+sxy <- sum(x * y) / n - mx * my
+sxlogy <- sum(x*log(y))/n-mx*mlogy
+slogxy <- sum(log(x)*y)/n-mlogx*my
+# Determination coeff
+r2xy <-  sxy^2 / (s2x * s2y)
+r2xlogy <- sxlogy^2/(s2x*s2logy)
+r2logxy <- slogxy^2/(s2logx*s2y)
+# Linear regression model
+reglin <- lm(y ~ x)
+# Exponential regression model y on x
+regexp <- lm(log(x)~y)
+# Logarithmic regression model x on y
+reglog <- lm(y~log(x))
+```
+
+Question
+========
+A study tries to develop a new technique for detecting a certain antibody. For this, a piezoelectric immunosensor is used, which allows to measure the change in the signal in Hz by varying the concentration of the antibody ($\mu$g/ml). The table below presents the data collected.
+
+```{r echo=FALSE}
+kable(table) %>% kable_styling()
+```
+
+Se pide:
+a. Compute the logarithmic model of the change in the signal on the concentration of the antibodies.
+a. It was observed that at a concentration of 100 $\mu$g/ml the change in signal tends to stabilize. Predict the value of the signal corresponding to such concentration using the logarithmic model.
+a. Predict the antibody concentration that corresponds to a change in the signal of 120 using the exponential model.
+
+Use the following sums for the computations ($X$=Concentration and $Y$=Signal):  
+$\sum x_i=`r round(sum(x), 4)`$ Hz, $\sum \log(x_i)=`r round(sum(log(x)), 4)`$ $\log(\mbox{Hz})$, $\sum y_j=`r round(sum(y), 4)`$ $\mu$g/ml, $\sum \log(y_j)=`r round(sum(log(y)), 4)`$ $\log(\mbox{$\mu$g/ml})$,  
+$\sum x_i^2=`r round(sum(x^2), 4)`$ Hz$^2$, $\sum \log(x_i)^2=`r round(sum(log(x)^2), 4)`$ $\log(\mbox{Hz})^2$, $\sum y_j^2=`r round(sum(y^2), 4)`$ $\mu$g/ml$^2$, $\sum \log(y_j)^2=`r round(sum(log(y)^2), 4)`$ $\log(\mbox{$\mu$g/ml})^2$,  
+$\sum x_iy_j=`r round(sum(x*y), 4)`$ Hz$\cdot$$\mu$g/ml, $\sum x_i\log(y_j)=`r round(sum(x*log(y)), 4)`$ Hz$\cdot\log(\mbox{$\mu$g/ml})$, $\sum \log(x_i)y_j=`r round(sum(log(x)*y), 4)`$ $\log(\mbox{Hz})$$\mu$g/ml, $\sum \log(x_i)\log(y_j)=`r round(sum(log(x)*log(y)), 4)`$ $\log(\mbox{Hz})\log(\mbox{$\mu$g/ml})$.
+
+Solution
+========
+a. $\overline{\log(x)}=`r round(mlogx,4)`$ log($\mu$g/ml), $s_{\log(x)}^2=`r round(s2logx,4)`$ log($\mu$g/ml)$^2$.  
+$\bar y=`r round(my,4)`$ Hz, $s_y^2=`r round(s2y,4)`$ Hz$^2$.  
+$s_{\log(x)y}=`r round(slogxy,4)`$ log($\mu$g/ml)Hz.  
+Logarithmic regression model: $y=`r round(reglog$coefficients[1],4)`+`r round(reglog$coefficients[2],4)`\log(x)$.
+a. Prediction: $y(100)=`r round(reglog$coefficients[1] + reglog$coefficients[2]*log(100),4)`$ Hz.
+a. Exponential regression model: $y=e^{`r round(regexp$coefficients[1],4)`+`r round(regexp$coefficients[2],4)`y}$.  
+Prediction: $y(120)=`r round(exp(regexp$coefficients[1] + regexp$coefficients[2]*120),4)`$ $\mu$g/ml.  
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: regnol-med-9
+extol: 0.001
+degree: Medicine
+ 

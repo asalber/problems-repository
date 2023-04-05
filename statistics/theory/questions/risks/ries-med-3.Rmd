@@ -1,0 +1,44 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+ntd <- 120
+nth <- 1250
+ncd <- 880
+nch <- 2750
+nt <- ntd + nth
+nc <- ncd + nch
+n <- nt + nc
+## QUESTION/ANSWER GENERATION
+pre <- (ntd + ncd) / n
+rt <- ntd / nt
+rc <- ncd / nc
+rr <- rt / rc
+ot <- ntd / nth
+oc <- ncd / nch
+or <- ot / oc
+```
+
+Question
+========
+	
+An epidemiological study tries to determine the effectiveness of face masks to prevent the COVID19. In a sample 4000 persons without the virus and 1000 persons with it were selected. I was observed that in the group of infected people 120 had used face masks in the two previous weeks, while in the non-infected group, 1250 had used face masks in the two previous weeks. 
+
+a. Compute the relative risk of been infected with face masks.
+a. Compute the odds ratio of been infected with face masks. 
+a. Which association measure is more reliable? 
+
+Solution
+========
+Let $D$ be the event of being infected.
+a. $RR(D)=`r round(rr, 4)`$. Thus, the risk of being infected with face mask is almost one third of the likelihood of been infected without face mask.
+a. $OR(D)=`r round(or, 4)`$. Thus, the odds of being infected with face mask is less than one third of the likelihood of been infected without face mask.
+a. As we can not compute the prevalence of $D$, the odds ratio is more reliable.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: ries-med-2
+extol: 0.001
+degree: Pharmacy
+ 

@@ -1,0 +1,55 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+tp1 <- 87
+fn1 <- 33
+fp1 <- 14
+tn1 <- 866
+
+tp2 <- 104
+fn2 <- 16
+fp2 <- 115
+tn2 <- 765
+
+## QUESTION/ANSWER GENERATION
+n <- tp1 + fn1 + fp1 + tn1
+sen1 <- tp1 / (tp1 + fn1) 
+spe1 <- tn1 / (fp1 + tn1)
+sen2 <- tp2 / (tp2 + fn2) 
+spe2 <- tn2 / (fp2 + tn2)
+
+pp1 <- (tp1 + fp1) / n
+pp2 <- (tp2 + fp2) / n
+
+ppv1 <- tp1 / (tp1 + fp1)
+npv1 <- tn1 / (fn1 + tn1)
+ppv2 <- tp2 / (tp2 + fp2)
+npv2 <- tn2 / (fn2 + tn2)
+
+p1 <- spe1 * spe2
+p2 <- pp1 + pp2 - (pp1 * pp2)
+```
+
+Question
+========
+A blood analysis detects a disease in 94%: of cases when the disease exists. However, the test produce a false positive in 6%: of the patients. We also know that 10%: of the population suffer the disease.
+
+a. What is the probability that a random person has the disease if the outcome of the test is positive? Would you diagnose the disease with that probability?
+a. Compute the negative predictive value and interpret it. Is this test better to confirm or to rule out the disease?
+a. Compute the probability of a wrong diagnostic.
+a. If we pick a sample of 11 patients from this population, what is the probability of a wrong diagnostic in more than 2 patients?  
+Remark: Use $0.1$ as the probability of a wrong diagnostic if you do not know how to compute it.
+
+Solution
+========
+
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: test-8-med
+extol: 0.001
+degree: Medicine
+ 
+  

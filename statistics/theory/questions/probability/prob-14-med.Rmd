@@ -1,0 +1,34 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+n <- 100
+pAB <- 8 / n
+pAnoB <- 2 / n
+pnoAB <- 3 / n
+pnoAnoB <- 87 / n
+## QUESTION/ANSWER GENERATION
+pA <- pAB + pAnoB
+pAoB <- pAB + pAnoB + pnoAB
+pBsiA <- pAB/pA
+```
+
+Question
+========
+Respiratory allergies affect 1 out of every 15 individuals in a population, while food intolerances affect 5%: of individuals. Assuming that the two problems are independent, 
+a. Compute the probability of having at least one of the problems.
+a. Compute the probability of having an allergy but not an intolerance.
+a. Compute the probability of having neither of the two problems.
+a. Compute the probability of having an allergy if you have an intolerance.
+
+Solution
+========
+Solution
+
+Meta-information 
+================
+extype: num
+%% \exsolution{0}
+exname: prob-14-med
+extol: 0.001
+degree: Medicine
+ 

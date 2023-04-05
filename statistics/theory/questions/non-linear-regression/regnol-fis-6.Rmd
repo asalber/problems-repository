@@ -1,0 +1,79 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+library(kntir)
+knitr::opts_chunk$set(echo = F, message = F, warning = F)
+library(kableExtra)
+x <- c(2015, 2016, 2017, 2018, 2019)
+y <- c(1.4, 1.6, 1.92, 2.3, 2.91)
+table <- matrix(c(x,y), nrow = 2, byrow = T)
+decimals <- matrix(c(rep(0,6), rep(2,6)), nrow = 2, ncol=6, byrow=TRUE)
+rownames(table) <- c("Year", "Price (€)")
+## QUESTION/ANSWER GENERATION
+# colors
+col1 <- "#05A1E6"
+# sample size
+n <- length(x)
+# means
+mx <- mean(x)
+mlogx <- mean(log(x))
+my <- mean(y)
+mlogy <- mean(log(y))
+# variances
+s2x <- sum(x^2)/n-mx^2
+s2logx <- sum(log(x)^2)/n-mlogx^2
+s2y <- sum(y^2)/n-my^2
+s2logy <- sum(log(y)^2)/n-mlogy^2
+# Covariances
+sxy <- sum(x * y) / n - mx * my
+sxlogy <- sum(x*log(y))/n-mx*mlogy
+slogxy <- sum(log(x)*y)/n-mlogx*my
+# Determination coeff
+r2xy <-  sxy^2 / (s2x * s2y)
+r2xlogy <- sxlogy^2/(s2x*s2logy)
+r2logxy <- slogxy^2/(s2logx*s2y)
+# Linear regression model
+reglin <- lm(y ~ x)
+# Exponential regression model
+regexp <- lm(log(y)~x)
+# Logarithmic regression model
+reglog <- lm(y~log(x))
+```
+
+Question
+========
+The evolution of the price of a muscle relaxant between 2015 and 2019 is shown in the table below.
+
+```{r echo=FALSE}
+kable(table) %>% kable_styling()
+```
+
+a. Which regression model is better to predict the price, the linear or the exponential?
+a. Use the best of the two previous models to predict the price in 2020.
+
+
+Use the following sums for the computations:  
+$\sum x_i=`r round(sum(x), 4)`$ cigarros, $\sum \log(x_i)=`r round(sum(log(x)), 4)`$ $\log(\mbox{cigarros})$, $\sum y_j=`r round(sum(y), 4)`$ kg, $\sum \log(y_j)=`r round(sum(log(y)), 4)`$ $\log(\mbox{kg})$,  
+$\sum x_i^2=`r round(sum(x^2), 4)`$ cigarros$^2$, $\sum \log(x_i)^2=`r round(sum(log(x)^2), 4)`$ $\log(\mbox{cigarros})^2$, $\sum y_j^2=`r round(sum(y^2), 4)`$ kg$^2$, $\sum \log(y_j)^2=`r round(sum(log(y)^2), 4)`$ $\log(\mbox{kg})^2$,  
+$\sum x_iy_j=`r round(sum(x*y), 4)`$ cigarros$\cdot$kg, $\sum x_i\log(y_j)=`r round(sum(x*log(y)), 4)`$ cigarros$\cdot\log(\mbox{kg})$, $\sum \log(x_i)y_j=`r round(sum(log(x)*y), 4)`$ $\log(\mbox{cigarros})$kg, $\sum \log(x_i)\log(y_j)=`r round(sum(log(x)*log(y)), 4)`$ $\log(\mbox{cigarros})\log(\mbox{kg})$.
+
+Solution
+========
+a. $\bar x=`r round(mx,4)`$ years, $s_x^2=`r round(s2x,4)`$ years$^2$.  
+$\bar y=`r round(my,4)`$ €, $s_y^2=`r round(s2y,4)`$ €$^2$.  
+$\overline{\log(y)}=`r round(mlogy,4)`$ log(€), $s_{\log(y)}^2=`r round(s2logy,4)`$ log(€)$^2$.  
+$s_{xy}=`r round(sxy,4)`$, $s_{x\log(y)}=`r round(sxlogy,4)`$  
+Linear coef. determination: $r^2=`r round(r2xy,4)`$  
+Exponential coef. determination: $r^2=`r round(r2xlogy,4)`$  
+Thus the exponential regression model is better to predict the price since the coef. of determination is greater.
+a. Exponential regression model: $y=e^{`r round(regexp$coefficients[1],4)`+`r round(regexp$coefficients[2],4)`x}$.  
+Prediction: $y(2020)=`r round(exp(regexp$coefficients[1] + regexp$coefficients[2]*2020),4)`$ €.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: regnol-fis-4
+extol: 0.001
+degree: Physiotherapy
+ 

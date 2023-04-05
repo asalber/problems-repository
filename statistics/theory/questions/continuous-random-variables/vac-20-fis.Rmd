@@ -1,0 +1,48 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+m <- 174
+s <- 51.938
+m2 <- 350
+
+## QUESTION/ANSWER GENERATION
+spe <- pnorm(300, m, s)
+sen <- pnorm(300, m2, s, lower.tail = F)
+pre <- 0.08
+truepos <- pre * sen
+falseneg <- pre * (1 - sen)
+falsepos <- (1 - pre) * (1 - spe)
+trueneg <- (1 - pre) * (spe)
+ppv = truepos / (truepos + falsepos)
+npv = trueneg / (falseneg + trueneg)
+```
+
+Question
+========
+The creatine phosphokinase (CPK3) is an enzyme in the body that causes the phosphorylation of creatine. This enzyme is found in the skeletal muscle and can be measured in a blood analysis. The concentration of CPK3 in blood is normally distributed, and the interval centered at the mean with the reference values, that accumulates 99%: of the population, ranges from 40 to 308 IU/L in healthy adult males.
+ 
+a. Compute the mean and the standard deviation of the concentration of CPK3 in healthy males.  
+Note: If you are not able to compute the standard deviation, use $\sigma = 50$ UI/L for the next parts.
+a. A diagnostic test to detect muscular dystrophy gives a negative outcome when the concentration of CPK3 is below 300 UI/L. Compute the specificity of the test.
+a. If the concentration of CPK3 in people with muscular dystrophy also follows a normal distribution with mean 350 IU/L and the same standard deviation, what is the sensitivity of the test?
+a. Compute the predictive values of the test and interpret them assuming that the muscular dystrophy prevalence is 8%:.
+
+Solution
+========
+a. $\mu = `r m`$ IU/L and $\sigma = `r round(s,4)`$ IU/L.
+a. Specificity = $`r round(spe,4)`$.
+a. Sensitivity = $`r round(sen,4)`$.  
+The test is better to confirm the disease as the specificity is greater than the sensitivity.
+a. PPV = $`r round(ppv,4)`$. Thus, we can diagnose the disease with a positive outcome.  
+NPV = $`r round(npv,4)`$. Thus, we can rule out the disease with a negative outcome.
+
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: vac-20-fis
+extol: 0.001
+degree: Physiotherapy
+ 
+  

@@ -1,0 +1,64 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+library(kntir)
+knitr::opts_chunk$set(echo = F, message = F, warning = F)
+library(kableExtra)
+x <- c(31, 32, 33, 33, 35, 35, 37, 37, 38, 39, 39, 41, 41, 42, 45, 46, 46, 47, 48, 48, 48, 52, 52, 54, 55, 55, 56, 57, 59, 61)
+table <- matrix(c(x[1:15],x[16:30]), nrow = 2, byrow = T)
+# QUESTION/ANSWER GENERATION
+# Tamaño de la muestra
+nx <- length(x)
+# Media
+mx <- mean(x)
+# Mode
+find_mode <- function(x) {
+  u <- unique(x)
+  tab <- tabulate(match(x, u))
+  u[tab == max(tab)]
+}
+modex <- find_mode(x)
+# Varianza
+s2x <- sum(x^2)/nx-mx^2
+# Desviación típica
+sx <- sqrt(s2x)
+# Coef. variación
+cvx <- sx/mx
+# Coef. asimetría
+g1x <- sum((x-mx)^3)/(nx*sx^3)
+# Coef. apuntamiento
+g2x <- sum((x-mx)^4)/(nx*sx^4)-3
+# Puntuaciones típicas
+```
+
+Question
+========
+The account of the pharmacist-tiktoker @farmaceutikofer has numerous informative-satirical videos on infectious diseases, sex education and healthy habits. The duration, in seconds, of his last 30 videos is as follows:
+
+```{r echo=FALSE}
+kable(data) %>% kable_styling()
+```
+
+a. Compute the average and the most frequent value of the duration of the videos.
+a. How is the relative dispersion of the sample?
+a. Construct the frequency table of the sample grouping the data into classes of amplitude 5 seconds and plot the histogram.
+a. Compute the interquartile range and explains its meaning.
+a. Has the distribution a normal kurtosis?
+a. The ticktoker @pauloGsow uploads satirical videos about high school teachers with a mean duration of 45 seconds and a variance of 91 seconds. If both @farmaceutikofer and @pauloGsow upload a 51-second video, which of the two tiktokers has uploaded a shorter video in relation to their own account?
+
+
+Use the following sums for the computations:  
+$\sum x_i=`r sum(x)`$ s, $\sum x_i^2=`r sum(x^2)`$ s$^2$, $\sum (x_i-\bar x)^3=`r round(sum((x-mx)^3),2)`$ s$^3$ y $\sum (x_i-\bar x)^4=`r round(sum((x-mx)^4),2)`$  s$^4$.
+
+Solution
+========
+
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: des-22-med
+extol: 0.001
+%% \degree{Nutrition}
+ 

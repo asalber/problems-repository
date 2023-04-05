@@ -1,0 +1,40 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+m <- 1200
+s <- 140
+## QUESTION/ANSWER GENERATION
+sol1 <- pnorm(1400, m, s, lower.tail = F)
+sol2 <- 0
+p80 <- qnorm(0.8, m, s)
+q1 <- qnorm(0.25, m, s)
+q3 <- qnorm(0.75, m, s)
+iqr <- q3 - q1
+```
+
+Question
+========
+The primate cranial capacity follows a normal distribution with mean 1200 cm$^3$ and standard deviation 140 cm$^3$.
+
+a. Compute the probability that the cranial capacity of a primate is greater than 1400 cm$^3$.
+a. Compute the probability that the cranial capacity of a primate is exactly than 1400 cm$^3$.
+a. Above what cranial capacity will 20%: of primates be?
+a. Compute the interquartile range of the cranial capacity of primates and interpret it.
+
+Solution
+========
+Let $X$ be the primate cranial capacity. Then $X\sim N(`r m`,`r s`)$.
+a. $P(X>1400) = `r round(sol1, 4)`$.
+a. $P(X=1400) = 0$.
+a. $P_{80} = `r round(p80, 4)`$ cm$^3$.
+a. $Q_1 =  `r round(q1, 4)`$ cm$^3$, $Q_3 =  `r round(q3, 4)`$ cm$^3$ and $IQR = `r round(iqr, 4)`$ cm$^3$. Thus the 50%: of central data will be concentranted in an interval of width $`r round(iqr, 4)`$ cm$^3$, that is a small spread. 
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: vac-gen-12
+extol: 0.001
+degree: All
+ 
+  

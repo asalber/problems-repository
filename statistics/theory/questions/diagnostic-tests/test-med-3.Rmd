@@ -1,0 +1,26 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+sen <- 0.85
+pre <- 0.1
+## QUESTION/ANSWER GENERATION
+spe = ((1-pre)-(pre*sen))/(1-pre)
+```
+
+Question
+========
+\hspace{-2.05cm}(2 pts.)\hspace{0.6cm} In a population where the prevalence of a disease is 10%: we apply a diagnostic test with a sensitivity 85%:.
+What must be the minimum specificity of the test to diagnose the disease when the outcome of the test is positive?
+Solution
+========
+The specificity must be at least $`r round(spe,4)`$.
+
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: test-med-1
+extol: 0.001
+degree: Medicine
+ 

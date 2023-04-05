@@ -1,0 +1,82 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+library(kntir)
+knitr::opts_chunk$set(echo = F, message = F, warning = F)
+library(kableExtra)
+x <- c(4, 8, 12, 16, 20, 24)
+y <- c(25.4, 24, 22.8, 22, 21.6, 21.4)
+table <- matrix(c(x,y), nrow = 2, byrow = T)
+rownames(table) <- c("Time of exercise", "BMI")
+## QUESTION/ANSWER GENERATION
+# sample size
+n <- length(x)
+# means
+mx <- mean(x)
+mlogx <- mean(log(x))
+my <- mean(y)
+mlogy <- mean(log(y))
+# variances
+s2x <- sum(x^2)/n-mx^2
+s2logx <- sum(log(x)^2)/n-mlogx^2
+s2y <- sum(y^2)/n-my^2
+s2logy <- sum(log(y)^2)/n-mlogy^2
+# Covariances
+sxy <- sum(x*y)/n-mx*my
+sxlogy <- sum(x*log(y))/n-mx*mlogy
+slogxy <- sum(log(x)*y)/n-mlogx*my
+# Linera model
+reglin <- lm(y~x)
+# Exponential regression model
+regexp <- lm(log(y)~x)
+# Logarithmic regression model
+reglog <- lm(y~log(x))
+# Determination coeff
+r2xy <- sxy^2/(s2x*s2y)
+r2xlogy <- sxlogy^2/(s2x*s2logy)
+r2logxy <- slogxy^2/(s2logx*s2y)
+```
+
+Question
+========
+A person followed a program of exercises to reduce its body mass index (BMI).
+The table below shows the BMI at different number of weeks doing exercise.
+
+```{r echo=FALSE}
+kable(table) %>% kable_styling()
+```
+
+a. Compute the BMI after 30 weeks doing exercise  using the linear, logarithmic and exponential regression models.
+a. Which prediction is more reliable? Justify the answer.
+
+Use the following sums for the computations ($X$ time of exercise and $Y$ BMI):  
+$\sum x_i=`r sum(x)`$, $\sum \log(x_i)=`r round(sum(log(x)),4)`$, $\sum y_j=`r sum(y)`$, $\sum \log(y_j)=`r round(sum(log(y)),4)`$,  
+$\sum x_i^2=`r sum(x^2)`$, $\sum \log(x_i)^2=`r round(sum(log(x)^2),4)`$, $\sum y_j^2=`r sum(y^2)`$, $\sum \log(y_j)^2=`r round(sum(log(y)^2),4)`$,  
+$\sum x_iy_j=`r sum(x*y)`$, $\sum x_i\log(y_j)=`r round(sum(x*log(y)),4)`$, $\sum \log(x_i)y_j=`r round(sum(log(x)*y),4)`$, $\sum \log(x_i)\log(y_j)=`r round(sum(log(x)*log(y)),4)`$.
+
+Solution
+========
+a. $\bar x=`r round(mx,4)`$ min, $s_x^2=`r round(s2x,4)`$ min$^2$.  
+$\overline{\log(x)}=`r round(mlogx,4)`$ log(min), $s_{\log(x)}^2=`r round(s2logx,4)`$ log(min)$^2$.  
+$\bar y=`r round(my,4)`$ kg/m$^2$, $s_y^2=`r round(s2y,4)`$ (kg/m$^2$)$^2$.  
+$\overline{\log(y)}=`r round(mlogy,4)`$ log(kg/m$^2$), $s_{\log(y)}^2=`r round(s2logy,4)`$ log(kg/m$^2$)$^2$.  
+$s_{xy}=`r round(sxy,4)`$ min$\cdot$kg/m$^2$, $s_{x\log(y)}=`r round(sxlogy,4)`$ log(min)kg/m$^2$, $s_{\log(x)y}=`r round(slogxy,4)`$ min$\cdot$log(kg/m$^2$)  
+Linear regression model: $y=`r round(reglin$coefficients[1],4)`+`r round(reglin$coefficients[2],4)`x$.
+Predicción: $y(30)=`r round(reglin$coefficients[1] + reglin$coefficients[2]*30,4)`$ kg/m$^2$.  
+Logarithmic regression model: $y=`r round(reglog$coefficients[1],4)`+`r round(reglog$coefficients[2],4)`\log(x)$.
+Predicción: $y(30)=`r round(reglog$coefficients[1] + reglog$coefficients[2]*log(30),4)`$ kg/m$^2$.  
+Exponential regression model: $y=e^{`r round(regexp$coefficients[1],4)`+`r round(regexp$coefficients[2],4)`x}$.
+Predicción: $y(30)=`r round(exp(regexp$coefficients[1] + regexp$coefficients[2]*30),4)`$ kg/m$^2$.
+a. Linear coef. of determination: $r^2=`r round(r2xy,4)`$  
+Logarithmic coef. of determination: $r^2=`r round(r2logxy,4)`$  
+Exponential coef. of determination: $r^2=`r round(r2xlogy,4)`$  
+Therefore the prediction of the logarithmic model is more reliable sinde the logarithmic coef. of determination is greater.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: regnol-fis-2
+extol: 0.001
+degree: Physiotherapy
+ 

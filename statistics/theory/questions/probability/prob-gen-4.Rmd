@@ -1,0 +1,45 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+library(MASS)
+pA <- 0.75
+pB <- 0.25
+pAoB <- 0.8
+pAB <- 0.2
+## QUESTION/ANSWER GENERATION
+pANoB <- pA-pAB
+pNoAB <- pB-pAB
+pNoA <- 1-pA
+pNoB <- 1-pB
+pBSiA <- pAB/pA
+pASiB <- pAB/pB
+pNoANoB <- 1-pAoB
+pNoAoNoB <- 1-pAB
+```
+
+Question
+========
+Let $A$ and $B$ be two events of a random experiment, such that $A$ is three times as likely as $B$, $P(A\cup B)=0.8$ and $P(A\cap B)=0.2$.
+
+a. Compute $P(A)$ and $P(B)$.
+a. Compute $P(A-B)$ and $P(B-A)$.
+a. Compute $P(\bar A \cup \bar B)$ and $P(\bar A \cap \bar B)$.
+a. Compute $P(A|B)$ and $P(B|A)$.
+a. Are $A$ and $B$ independent?
+
+Solution
+========
+a. $P(A) = `r round(pA, 4)`$ and $P(B) = `r round(pB, 4)`$.
+a. $P(A-B) = `r round(pANoB, 4)`$ and $P(B-A) = `r round(pNoAB, 4)`$.
+a. $P(\bar A \cup \bar B) = `r round(pNoAoNoB, 4)`$ and $P(\bar A \cap \bar B) = `r round(pNoANoB, 4)`$.
+a. $P(A|B) = `r round(pASiB, 4)`$ and $P(B|A) = `r round(pBSiA, 4)`$.
+a. No, they are dependent since $P(A|B)\neq P(A)$.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: prob-fis-3
+extol: 0.001
+degree: Physiotherapy
+ 

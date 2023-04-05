@@ -1,0 +1,38 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+pB <- 0.4
+pV <- 0.4
+pVsiB <- 0.8
+pNoBNoV <- 0.52
+
+## QUESTION/ANSWER GENERATION
+pVB <- pB * pVsiB
+pBsiV <- pVB / pV
+pVnoB <- pV - pVB
+```
+
+Question
+========
+An organism has the same chance of being infected by a virus and a bacteria. At the same time, the probability of being infected by a virus doubles when the organism has been previously infected by a bacteria. On the other hand, the probability of being infected by no pathogen (neither virus nor bacteria) is $0.52$.
+a. What is the probability of being infected by a virus and a bacteria at the same time?
+a. What is the probability of being infected by a bacteria if it has been infected by a virus?
+a. What is the probability of being infected only by a virus?
+a. Are the events of being infected by a virus an a bacteria independent?
+
+Solution
+========
+Let $V$ and $B$ the events corresponding to be infected by a virus and a bacteria respectively.
+a. $P(V\cap B) = `r round(pVB, 4)`$.
+a. $P(B|V) = `r round(pBsiV, 4)`$.
+a. $P(V\cap \overline B) = `r round(pVnoB, 4)`$.
+a. The events are dependents since $P(V) = `r round(pV, 4)` \neq `r round(pVsiB, 4)` = P(V|B)$.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: prob-med-9
+extol: 0.001
+degree: Medicine
+ 

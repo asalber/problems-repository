@@ -1,0 +1,31 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+
+  
+## QUESTION/ANSWER GENERATION
+```
+
+Question
+========
+The primate cranial capacity follows a normal distribution with mean 1200 cm$^3$ and standard deviation 140 cm$^3$.
+
+a. Compute the probability that the cranial capacity of a primate is greater than 1400 cm$^3$.
+a. Compute the probability that the cranial capacity of a primate is exactly than 1400 cm$^3$.
+a. Above what cranial capacity will 20%: of primates be?
+a. Compute the interquartile range of the cranial capacity of primates and interpret it.
+
+Solution
+========
+Let $X$ and $Y$ be the prolactin levels in pregnant and non-pregnan females respectively.
+
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: vac-med-11
+extol: 0.001
+degree: Medicine
+ 
+  

@@ -1,0 +1,40 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+ppv <- 0.4
+npv <- 0.95
+pre <- 0.1
+## QUESTION/ANSWER GENERATION
+tp <- 0.0571
+fp <- 0.0857
+fn <- 0.0429
+tn <- 0.8143
+sen <- tp / (tp + fn)
+spe <- tn / (fp + tn)
+minspe <- 0.857
+```
+
+Question
+========
+A diagnostic test for a disease with a prevalence of 10%: has a positive predictive value of 40%: and negative predictive value of 95%:
+
+a. Compute the sensitivity and the specificity of the test.
+a. Compute the probability of a right diagnose.
+a. What must be the minimum sensitivity of the test to be able to diagnose the disease? 
+
+Solution
+========
+a. Sensitivity $P(+|D)=`r round(sen, 4)`$ and specificity $P(-|\overline D)=`r round(spe, 4)`$.
+a. $P(\mbox{Right diagnose}) = P(D \cap +) + P(\overline D \cap -) = `r round(tp + tn, 4)`$.
+a. Minimum sensitivity to diagnose the disease $P(+|D)=`r round(minspe, 4)`$.
+
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: test-10-med
+extol: 0.001
+degree: Medicine
+ 
+  

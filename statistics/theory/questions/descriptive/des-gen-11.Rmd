@@ -1,0 +1,93 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+require(xtable)
+classes <- c("0-2", "2-4", "4-6", "6-8", "8-10")
+xi <- c(1, 3, 5, 7, 9)
+nxi <- c(8, 15, 25, 38, 14)
+x <- rep(xi, nxi)
+nyi <- c(2, 9, 19, 11, 9)
+y <- rep(xi, nyi)
+data <- data.frame(classes, nxi, nyi)
+colnames(data) <- c("Grade", "Num non-working students", "Num working students")
+## QUESTION/ANSWER GENERATION
+# sample size
+nx <- length(x)
+ny <- length(y)
+# quartiles
+q1 <- quantile(x, probs = c(0.25), type=1)
+q2 <- quantile(x, probs = c(0.5), type=1)
+q3 <- quantile(x, probs = c(0.75), type=1)
+# interquartile range
+iqr <- q3-q1
+#fences
+f1 <- q1-1.5*iqr
+f2 <- q3+1.5*iqr
+# outliers
+outliers <- x[x < f1 | x > f2]
+# means
+mx <- mean(x)
+my <- mean(y)
+# variances
+s2x <- sum(x^2)/nx-mx^2
+s2y <- sum(y^2)/ny-my^2
+# standard deviation
+sx <- sqrt(s2x)
+sy <- sqrt(s2y)
+# coef. variation
+cvx <- sx/mx
+cvy <- sy/my
+# coef. skewness
+g1x <- sum((x-mx)^3)/(nx*sx^3)
+g1y <- sum((y-my)^3)/(ny*sy^3)
+# Transformación lineal
+myx <- 0.5 + mx * 1.45
+myy <- 0.5 + my * 1.45
+# standard scores
+zx <- (7-mx)/sx
+zy <- (6-my)/sy
+```
+
+Question
+========
+In a course there are 150 students, of which 50 are working students and the other 100 non-working students. The table below shows the frequency distribution of the grade in an exam of these two groups:
+
+```{r echo=FALSE}
+print(xtable(data, align=c("c", "c", "r", "r"), auto=T), tabular.environment="array", include.rownames = F, floating=F, hline.after = c(0,nrow(data)), sanitize.text.function = function(x) { x })
+```
+
+a. Compute the percentage of students that passed the exam (a grade 5 or above) in both groups, working and non-working students.
+a. In which group is there a higher relative dispersion of the grade with respect to the mean? 
+a. Which grade distribution is more asymmetric, the distribution of working students, or the non-working students one?
+a. To apply for a scholarship to go abroad, the grade must be transformed applying the linear transformation Y = 0.5 + X * 1.45. Compute the mean of Y for the two groups. How changes the asymmetry of the two groups?
+a. Which grade is relatively higher, 6 in the working students group, or 7 in the non-working students group?
+
+
+Use the following sums for the computations:  
+Non-working students: $\sum x_in_i=`r sum(x)`$, $\sum x_i^2n_i=`r sum(x^2)`$, $\sum (x_i-\bar x)^3n_i=`r round(sum((x-mx)^3),2)`$ y $\sum (x_i-\bar x)^4n_i=`r round(sum((x-mx)^4),2)`$.  
+Working students: $\sum y_in_i=`r sum(y)`$, $\sum y_i^2n_i=`r sum(y^2)`$, $\sum (y_i-\bar y)^3n_i=`r round(sum((y-my)^3),2)`$ y $\sum (y_i-\bar y)^4n_i=`r round(sum((y-my)^4),2)`$.
+
+Solution
+========
+a. 66.5%: of non-working stsudents passed and 59%: of working students passed.
+a. Non-working students: $\bar x=`r round(mx,4)`$, $s^2=`r round(s2x,4)`$, $s=`r round(sx,4)`$ and $cv=`r round(cvx,4)`$.  
+Working students: $\bar y=`r round(my,4)`$, $s^2=`r round(s2y,4)`$, $s=`r round(sy,4)`$ and $cv=`r round(cvy,4)`$.  
+The sample of non-working students has a slightly higher relative dispersion with respect to the mean as the coefficient of variation is greater.
+a. Non-working students: $g_1=`r round(g1x,4)`$.  
+Working students: $g_1=`r round(g1y,4)`$.  
+Thus, the sample of non-working students is more assymetric as the coefficient os skewness is further from 0.
+a. Non-working students: $\bar y=`r round(myx, 4)`$.  
+Working students: $\bar x=`r round(myy, 4)`$.  
+The coefficient of skewness does not change as the slope of the linear transformation is positive.  
+a. Non-working students: $z(7)=`r round(zx, 4)`$.  
+Working students: $z(6)=`r round(zy, 4)`$.  
+Thus, a 7 in the sample of non-working students is relatively higher than than a 6 in the sample of working students, as its standard score is greater.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: des-fis-11
+extol: 0.001
+degree: All
+   

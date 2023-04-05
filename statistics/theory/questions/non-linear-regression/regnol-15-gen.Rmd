@@ -1,9 +1,5 @@
----
-lang: en
----
 
-```{r, echo=F, results= "hide"}
-
+```{r echo=FALSE, results=hide}
 ## DATA GENERATION
 set.seed(12)
 x <- round(runif(40, 1, 40))
@@ -42,48 +38,39 @@ reglog <- lm(y~log(x))
 
 Question
 ========
-
-In a Statistics course with 40 students the grade in the final exam and the number of hours dedicated to prepare it have been measured. The sums below summarize the results ($X$=Hours and $Y$=Grade):
+In a Statistics course with 40 students it has been measured the grade in the final exam and the number of hours dedicated to prepare it. The sums below summarize the results ($X$=Hours and $Y$=Grade):
 
 $\sum x_i=`r round(sum(x), 4)`$ hours, $\sum \log(x_i)=`r round(sum(log(x)), 4)`$ log(hours), $\sum y_j=`r round(sum(y), 4)`$ points, $\sum \log(y_j)=`r round(sum(log(y)), 4)`$ log(points),  
 $\sum x_i^2=`r round(sum(x^2), 4)`$ hours$^2$, $\sum \log(x_i)^2=`r round(sum(log(x)^2), 4)`$ log(hours)$^2$, $\sum y_j^2=`r round(sum(y^2), 4)`$ points$^2$, $\sum \log(y_j)^2=`r round(sum(log(y)^2), 4)`$ log(points)$^2$,  
 $\sum x_iy_j=`r round(sum(x*y), 4)`$ hours$\cdot$points, $\sum x_i\log(y_j)=`r round(sum(x*log(y)), 4)`$ hours$\cdot$log(points), $\sum \log(x_i)y_j=`r round(sum(log(x)*y), 4)`$ log(hours)$\cdot$points, $\sum \log(x_i)\log(y_j)=`r round(sum(log(x)*log(y)), 4)`$ log(hours)$\cdot$log(points).
 
 a. Which regression models, linear, exponential or logarithmic, explains better the relation between the grade and the hours of study?
-
 a. Use the best model to predict the grade of a student who has dedicated 25 hours to prepare the final exam of Statistics. Is this prediction reliable?
-
 a. According to the linear model, how much increases the grade for each additional hour of study?
-
 a. It is known that the grade in the final exam of Physiotherapy does not depend on the hours of study in Statistics, and the average grade in the Physiotherapy exam was 7.5. What is the expected grade in the final exam of Physiotherapy of the student who has dedicated 25 hours to prepare the final exam of Statistics.
 
 Solution
 ========
-
-a. $\overline{x}=`r round(mx,4)`$ hours, $s_x^2=`r round(s2x,4)`$ hours$^2$.  
-$\bar y=`r round(my,4)`$ points, $s_y^2=`r round(s2y,4)`$ points$^2$.  
-$s_{xy}=`r round(sxy,4)`$ hours$\cdot$points.  
-Regression coefficient of $Y$ on $X$: $b_{yx} = `r round(reglin$coefficients[2], 4)`$ points/week. The grip strength increases $`r round(reglin$coefficients[2], 4)`$ points per week.
-
-a. $\overline{\ln(x)} = `r round(mlogx, 4)`$ ln(hours), $s_{\ln(x)}^2 = `r round(s2logx, 4)`$  ln(hours)$^2$ and $s_{\ln(x)y} = `r round(slogxy, 4)`$ ln(hours)points.  
+a. $\overline{x}=`r round(mx,4)`$ weeks, $s_x^2=`r round(s2x,4)`$ weeks$^2$.  
+$\bar y=`r round(my,4)`$ Kg, $s_y^2=`r round(s2y,4)`$ Kg$^2$.  
+$s_{xy}=`r round(sxy,4)`$ weeks$$\cdot$$Kg.  
+Regression coefficient of $Y$ on $X$: $b_{yx} = `r round(reglin$coefficients[2], 4)`$ Kg/week. The grip strength increases $`r round(reglin$coefficients[2], 4)`$ Kg per week.
+a. $\overline{\ln(x)} = `r round(mlogx, 4)`$ ln(weeks), $s_{\ln(x)}^2 = `r round(s2logx, 4)`$  ln(weeks)$^2$ and $s_{\ln(x)y} = `r round(slogxy, 4)`$ ln(weeks)Kg.  
 Logarithmic regression model of $Y$ on $X$: $y = `r round(reglog$coefficients[1], 4)` + `r round(reglog$coefficients[2], 4)` \ln(x)$.  
-Predictions: $y(5) = `r round(reglog$coefficients[1] + reglog$coefficients[2] * log(5), 4)`$ points and $y(25) = `r round(reglog$coefficients[1] + reglog$coefficients[2] * log(25), 4)`$ points.  
+Predictions: $y(5) = `r round(reglog$coefficients[1] + reglog$coefficients[2] * log(5), 4)`$ Kg and $y(25) = `r round(reglog$coefficients[1] + reglog$coefficients[2] * log(25), 4)`$ Kg.  
 Logarithmic coefficient of determination: $r^2 = `r round(r2logxy, 4)`$.
 The predictions are not reliable because the sample size is small.  
 Linear coefficient of determination: $r^2 = `r round(r2xy, 4)`$.  
 As the linear coefficient of determination is less than the logarithmic one, the predictions with the logarithmic model are more reliable.
-
 a. Exponential regression model of $X$ on $Y$: $x = e^{`r round(regexp$coefficients[1],4)` + `r round(regexp$coefficients[2],4)`y}$.  
-Prediction: $x(25)=`r round(exp(regexp$coefficients[1] + regexp$coefficients[2]*25), 4)`$ hours.  
-
-a. As $r^2 = `r round(r2logxy, 4)`$, the exponential models explains $`r round(r2logxy, 4) * 100`$\% of the variabilidty of the hours.
-
+Prediction: $x(25)=`r round(exp(regexp$coefficients[1] + regexp$coefficients[2]*25), 4)`$ Weeks.  
+a. As $r^2 = `r round(r2logxy, 4)`$, the exponential models explains $`r round(r2logxy, 4) * 100`$%: of the variabilidty of the weeks.
 
 Meta-information 
 ================
 extype: string
-exname: regnol-15-gen
 exsolution: Solution
+exname: regnol-15-gen
 extol: 0.001
 degree: All
  

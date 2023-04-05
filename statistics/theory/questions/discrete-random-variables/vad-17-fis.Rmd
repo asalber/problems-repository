@@ -1,0 +1,34 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+lambda1 <- 3
+lambda2 <- 12
+n <- 10
+p <- 0.05
+## QUESTION/ANSWER GENERATION
+p1 <- ppois(4, lambda1, lower.tail = F)
+p2 <- ppois(5, lambda2)
+p3 <- pbinom(0, 10, p2, lower.tail = F)
+```
+
+Question
+========
+A basketball player scores 12 points per game on average.
+
+a. What is the probability that the player scores more than 4 points in a quarter?
+a. If the player plays 10 games in a league, what is the probability of scoring less than 6 points in some game?
+
+Solution
+========
+a. Let $X$ be the points scored in a quarter by the player. Then $X\sim P(3)$, and $P(X>4)=`r round(p1, 4)`$.
+a. Let $Y$ be the number of points scored in a game by the player. Then $Y\sim P(12)$ and $P(Y<6)=`r round(p2,4)`$.  
+Let $Z$ be the number of games with less than 6 points scored by the player. Then $Z\sim B(10, `r round(p2,4)`)$, and $P(Z>0)=`r round(p3,4)`$.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: vad-17-fis
+extol: 0.001
+degree: Physiotherapy
+ 

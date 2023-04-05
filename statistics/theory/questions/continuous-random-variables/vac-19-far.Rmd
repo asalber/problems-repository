@@ -1,0 +1,41 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+m <- 400
+s <- 30
+
+## QUESTION/ANSWER GENERATION
+p1 <- pnorm(450, m, s, lower.tail = F)
+q1 <- qnorm(0.25,m,s)
+q3 <- qnorm(0.75,m,s)
+iqr <- q3 - q1
+l1 <- q1 - 1.5 * iqr
+l2 <- q3 + 1.5 * iqr
+pout <- 1 - (pnorm(l2, m, s) - pnorm(l1, m, s))
+l3 <- qnorm(0.025, m, s)
+l4 <- qnorm(0.975, m, s)
+```
+
+Question
+========
+The weight of male Wistar rats in a laboratory follows a normal distribution with mean 400 grams and standard deviation 30 grams.
+
+a. What is the probability that a random rat weighs exactly 400 grams?
+a. What is the probability that a random rat weighs more than 450 grams?
+a. If a rat is chosen randomly, what is the probability that its weight is an outlier?  
+Remark: The normal range of data is $(Q_1-1.5 IQR, Q_3+1.5IQR)$.
+a. Give an interval of weights centered on the mean in which 95%: of the male Wistar rats are found.
+
+Solution
+========
+
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: vac-19-far
+extol: 0.001
+degree: Pharmacy
+ 
+  

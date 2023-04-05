@@ -1,0 +1,83 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+library(kntir)
+knitr::opts_chunk$set(echo = F, message = F, warning = F)
+library(kableExtra)
+x <- c(25, 29, 32, 35, 38, 40, 43, 45, 47)
+y <- c(282, 846, 2798, 7818, 14557, 20630, 31481, 37558, 43103)
+z <- c(1, 25, 80, 170, 304, 425, 637, 812, 1017)
+table <- matrix(c(x,y), nrow = 2, byrow = T)
+# decimals <- matrix(c(rep(0,6), rep(2,6)), nrow = 3, ncol=6, byrow=TRUE)
+rownames(table) <- c("Days", "Infections")
+## QUESTION/ANSWER GENERATION
+# colors  
+col1 <- "#05A1E6"
+# Sample size
+n <- length(x)
+# Means
+mx <- mean(x)
+mlogx <- mean(log(x))
+my <- mean(y)
+mlogy <- mean(log(y))
+# Variances
+s2x <- sum(x^2)/n-mx^2
+s2logx <- sum(log(x)^2)/n-mlogx^2
+s2y <- sum(y^2)/n-my^2
+s2logy <- sum(log(y)^2)/n-mlogy^2
+# Covariances
+sxy <- sum(x * y) / n - mx * my
+sxlogy <- sum(x*log(y))/n-mx*mlogy
+slogxy <- sum(log(x)*y)/n-mlogx*my
+# Determination coeff
+r2xy <-  sxy^2 / (s2x * s2y)
+r2xlogy <- sxlogy^2/(s2x*s2logy)
+r2logxy <- slogxy^2/(s2logx*s2y)
+r2yz <- cor(y,z)^2
+# Linear regression model
+reglin <- lm(y ~ x)
+# Exponential regression model
+regexp <- lm(log(y)~x)
+# Regression line deaths on infections
+reglinzy <- lm(z~y)
+reglinyz <- lm(y~z)
+```
+
+Question
+========
+The table below shows the evolution of the number of coronavirus infections since the virus was detected.
+```{r echo=FALSE}
+kable(table) %>% kable_styling()
+```
+
+a. Which regression model, the linear or the exponential, is better to predict the number of coronavirus infections with time?
+a. According to the best of the two previous regression models, how many infections will there be after 100 days? Is this prediction reliable?
+a. If he number of deaths from coranvirus is linearly related to the number of infections, with a linear coefficient of determination $`r round(r2yz, 2)`$, how much will increase or decrease the number of infections for each death more if it is know that the number of deaths increases $`r round(reglinzy$coefficients[2],3)`$ for each infection more.  
+
+
+Use the following sums for the computations:  
+$\sum x_i=`r round(sum(x), 4)`$ days, $\sum \log(x_i)=`r round(sum(log(x)), 4)`$ $\log(\mbox{days})$, $\sum y_j=`r round(sum(y), 4)`$ infections, $\sum \log(y_j)=`r round(sum(log(y)), 4)`$ $\log(\mbox{infections})$,  
+$\sum x_i^2=`r round(sum(x^2), 4)`$ days$^2$, $\sum \log(x_i)^2=`r round(sum(log(x)^2), 4)`$ $\log(\mbox{days})^2$, $\sum y_j^2=`r round(sum(y^2), 4)`$ infections$^2$, $\sum \log(y_j)^2=`r round(sum(log(y)^2), 4)`$ $\log(\mbox{infections})^2$,  
+$\sum x_iy_j=`r round(sum(x*y), 4)`$ days$\cdot$infections, $\sum x_i\log(y_j)=`r round(sum(x*log(y)), 4)`$ days$\cdot\log(\mbox{infections})$, $\sum \log(x_i)y_j=`r round(sum(log(x)*y), 4)`$ $\log(\mbox{days})$infections, $\sum \log(x_i)\log(y_j)=`r round(sum(log(x)*log(y)), 4)`$ $\log(\mbox{days})\log(\mbox{infections})$.
+
+Solution
+========
+a. $\bar x=`r round(mx,4)`$ days, $s_x^2=`r round(s2x,4)`$ days$^2$.  
+$\bar y=`r round(my,4)`$ infections, $s_y^2=`r round(s2y,4)`$ infections$^2$.  
+$\overline{\log(y)}=`r round(mlogy,4)`$ log(infections), $s_{\log(y)}^2=`r round(s2logy,4)`$ log(infections)$^2$.  
+$s_{xy}=`r round(sxy,4)`$ days$\cdot$infections, $s_{x\log(y)}=`r round(sxlogy,4)`$ days$\cdot\log(infections)$.  
+Linear coefficient of determination: $r^2=`r round(r2xy,4)`$  
+Exponential coefficient of determination: $r^2=`r round(r2xlogy,4)`$  
+Thus, the exponential model is better to predict the number of infections since its coefficient of determination is greater.
+a. Exponential regression model: $y=e^{`r round(regexp$coefficients[1],4)`+`r round(regexp$coefficients[2],4)`x}$.  
+Prediction: $y(100)=`r round(exp(regexp$coefficients[1] + regexp$coefficients[2]*100),4)`$ infections. The prediction is not reliable because 100 days is far away from the range of days in the sample.
+a. According to the regression coefficient, ther will be $`r round(reglinyz$coefficients[2],3)`$ infections more for each death more. 
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: regnol-med-7
+extol: 0.001
+degree: Physiotherapy
+ 

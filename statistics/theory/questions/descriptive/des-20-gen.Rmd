@@ -1,0 +1,81 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+x <- c(48, 52, 60, 60, 24, 48, 48, 36, 39, 54, 54, 60, 12, 46)
+
+## QUESTION/ANSWER GENERATION
+# Tamaño de la muestra
+nx <- length(x)
+# Quartiles
+q1 <- quantile(x, 0.25, type = 1)
+q2 <- quantile(x, 0.5, type = 1)
+q3 <- quantile(x, 0.75, type = 1)
+# IQR
+iqr <- q3-q1
+# Fences
+f1 <- q1-1.5*iqr
+f2 <- q3+1.5*iqr
+# Outliers
+outliers <- x[x < f1 | x > f2]
+# Mean
+mx <- mean(x)
+my <- 102
+# Variance
+s2x <- sum(x^2)/nx-mx^2
+# Std. deviation
+sx <- sqrt(s2x)
+sy <- 12.5
+# Coef. variation
+cvx <- sx/mx
+cvy <- sy/my
+# Coef. skewness
+g1x <- sum((x-mx)^3)/(nx*sx^3)
+# Coef. kurtosis
+g2x <- sum((x-mx)^4)/(nx*sx^4)-3
+# Standard scores
+zx <- (50-mx)/sx
+zy <- (105-my)/sy
+```
+
+Question
+========
+The table below shows the number of credits obtained by the students of the first year of the physiotherapy grade.
+
+```{r echo = F, comment = NA}
+cat(paste(as.character(x), collapse=", "))
+```
+
+a. Compute the median and the mode and interpret them.
+a. Draw the box and whiskers plot and interpret it. Are there outliers in the sample?
+a. Can we assume that the sample comes from a normal population?
+a. If the the second year the mean of credits obtained is $102$ and the standard deviation is $12.5$, which year has a higher relative dispersion?
+a. Which number of credits is relatively higher, 50 in the first year, or 105 in the second year?
+
+
+Use the following sums for the computations:   
+$\sum x_i=`r round(sum(x), 2)`$ credits, $\sum x_i^2=`r round(sum(x^2), 4)`$ credits$^2$, $\sum (x_i-\bar x)^3=`r round(sum((x-mx)^3),2)`$ credits$^3$ and $\sum (x_i-\bar x)^4=`r round(sum((x-mx)^4),2)`$ credits$^4$.  
+
+Solution
+========
+a. $Me = `r q2`$ credits and $Mo = 48$ and $60$ credits.
+a. $Q_1= `r q1`$ credits, $Q_3= `r q3`$ credits, $IQR=`r iqr`$ credits,  $f_1= `r f1`$ credits and  $f_2= `r f2`$ credits.
+```{r boxplot-credits, fig=T, echo=F, height=4, width=6, dev="svg", fig.path="img"}
+boxplot(x, horizontal = T, xlab="Credits", main="Box and whisker plot of the distribution of credits")
+```
+
+12 credits is an outlier. 
+a. $\bar x=`r round(mx,4)`$ credits, $s^2=`r round(s2x,4)`$ credits$^2$, $s=`r round(sx,4)`$ credits.  
+$g_1=`r round(g1x,4)`$ and $g_2=`r round(g2x,4)`$. Thus, we can assume that the sample comes from a normal distribution as the coef. of skewness and the coef. of kurtosis fall between -2 and 2.
+a. First year: $cv=`r round(cvx,4)`$. Second year: $cv=`r round(cvy,4)`$. Thus, the first year has a higher relative dispersion as the coef. of variation is greater.
+a. Standard score for the first year: $z(50)=`r round(zx,4)`$  
+Standard score for the second year: $z(105)=`r round(zy,4)`$  
+As the standard score of $50$ the first year is greater than the standard score of $105$ the second year, 50 credits in the first year is relatively higher than 105 credits in the second year.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: des-20-gen
+extol: 0.001
+degree: All
+ 

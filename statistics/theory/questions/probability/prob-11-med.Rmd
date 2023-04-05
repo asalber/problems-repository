@@ -1,0 +1,59 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+n <- 10000
+pON <- 1800 / n
+pOY <- 100 / n
+pAN <- 4200 / n
+pAY <- 400 / n
+pBN <- 2500 / n
+pBY <- 150 / n
+pABN <- 800 / n
+pABY <- 50 / n
+
+## QUESTION/ANSWER GENERATION
+```
+
+Question
+========
+The table below shows the frequencies observed in a random sample from a population for the blood type and SARS-CoV-2 infection:
+
+$$\begin{array}{llr}
+\hline
+\mbox{Blood type} & \mbox{Infection} & \mbox{Persons}  
+\mbox{O} & \mbox{No} & 1800  
+\mbox{O} & \mbox{Yes} & 100  
+\mbox{A} & \mbox{No} & 4200  
+\mbox{A} & \mbox{Yes} & 400  
+\mbox{B} & \mbox{No} & 2500  
+\mbox{B} & \mbox{Yes} & 150  
+\mbox{AB} & \mbox{No} & 800  
+\mbox{AB} & \mbox{Yes} & 50\\
+\hline
+\end{array}
+$$
+
+a. Compute the probability of SARS-CoV-2 infection for a random person.
+a. Compute the probability of having a blood type A and being infected by SARS-CoV-2 for a random person.
+a. Compute the probability of having a blood type A or being infected by SARS-CoV-2 for a random person.
+a. Compute the probability of being infected by SARS-CoV-2 for a person with blood type O. 
+a. Compute the probability of having a blood type different from A and B for a person infected by SARS-CoV-2.
+a. Does the SARS-CoV-2 infection depend on the blood type?
+
+Solution
+========
+a. $P(I) = `r round(pOY + pAY + pBY + pABY, 4)`$.
+a. $P(A\cap I) = `r round(pAY, 4)`$.
+a. $P(A\cup I) = `r round(pAN + pOY + pAY + pBY + pABY, 4)`$.
+a. $P(I|O) = `r round(pOY / (pOY + pON),4)`$.
+a. $P(\overline A \cap \overline B|I) = `r round((pOY + pABY)/(pOY + pAY + pBY + pABY), 4)`$.
+a. The infection depends on the blood as, for instance,  $p(I)\neq P(I|O)$.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: prob-11-med
+extol: 0.001
+degree: Medicine
+ 

@@ -1,0 +1,44 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+# H hipertension and S smoke
+pH <- 0.36
+pHsiS <- 0.6 
+pnoSsinoH <- 0.75
+
+## QUESTION/ANSWER GENERATION
+pnoH <- 1-pH
+pnoHyS <- pnoH*(1-pnoSsinoH)
+pnoHynoS <- pnoH*pnoSsinoH
+pS <- pnoHyS/(1-pHsiS) 
+pHyS <- pS-pnoHyS
+pSsiH <- pHyS/pH
+pHynoS <- pH*(1-pSsiH)
+pHoS <- 1-pnoHynoS
+pnoHsinoS <- pnoHynoS/(1-pS)
+```
+
+Question
+========
+A study about hypertension has found that `r pH*100`%: of people suffer hypertension, that `r pHsiS*100`%: of smokers suffer hypertension and that `r pnoSsinoH*100`%: of people without hypertension are non smokers.
+
+a. Compute the probability that a person is a smoker.
+a. Compute the probability that a person is a smoker or suffers hypertension.
+a. Compute the probability that a non smoker person does not suffer hypertension.
+a. Does suffering hypertension depend on smoking?
+
+Solution
+========
+a. $P(S)=`r round(pS,4)`$.
+a. $P(H\cup S)=`r round(pHoS,4)`$.
+a. $P(\overline H|\overline S)=`r round(pnoHsinoS,4)`$.
+a. Yes, because $P(S)=`r round(pS,4)`\neq `r round(pSsiH,4)`=P(S|H)$.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: prob-med-2
+extol: 0.001
+degree: Medicine
+ 

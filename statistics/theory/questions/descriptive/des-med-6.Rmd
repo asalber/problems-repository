@@ -1,0 +1,80 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+require(xtable)
+classes <- c("(80, 90]", "(90, 100]", "(100, 110]", "(110, 120]", "(120, 130]", "(130, 140]", "(140, 150]", "(150, 160]")
+nx <- c(4, 10, 28, 24, 16, 10, 6, 2)
+ny <- c(6, 18, 30, 26, 10, 7, 2, 1)
+x <- rep(c(85, 95, 105, 115, 125, 135, 145, 155), nx)
+y <- rep(c(85, 95, 105, 115, 125, 135, 145, 155), ny)
+data <- data.frame(classes, nx, ny)
+colnames(data) <- c("Systolic blood pressure", "Num persons $A$", "Num persons $B$")
+
+## QUESTION/ANSWER GENERATION
+# sample size
+nx <- length(x)
+ny <- length(y)
+# means
+mx <- mean(x)
+my <- mean(y)
+# variances
+s2x <- sum(x^2)/nx-mx^2
+s2y <- sum(y^2)/ny-my^2
+# standard deviation
+sx <- sqrt(s2x)
+sy <- sqrt(s2y)
+# coef. variation
+cvx <- sx/mx
+cvy <- sy/my
+# coef. skewness
+g1x <- sum((x-mx)^3)/(nx*sx^3)
+g1y <- sum((y-my)^3)/(ny*sy^3)
+# coef. kurtosis
+g2x <- sum((x-mx)^4)/(nx*sx^4)-3
+g2y <- sum((y-my)^4)/(ny*sy^4)-3
+# standard scores
+zx <- (132-mx)/sx
+zy <- (130-my)/sy
+```
+  
+Question
+========
+It has been measured the systolic blood pressure (in mmHg) in two groups of 100 persons of two populations $A$ and $B$.
+The table below summarize the results.
+  
+```{r echo=FALSE}
+kable(data) %>% kable_styling()
+```
+  
+a. Which of the two systolic blood pressure distributions is less asymmetric? Which one has a higher kurtosis? According to skewness and kurtosis can we assume that populations $A$ and $B$ are normal?
+a. In which group is more representative the mean of the systolic blood pressure?
+a. Compute the value of the systolic blood pressure such that 30%: of persons of the group of population $A$ are above it?
+a. Which systolic blood pressure is relatively higher, 132 mmHg in the group of population $A$, or 130 mmHg in the group of population $B$?
+a. If we measure the systolic blood pressure of the group of population $A$ with another tensiometer, and the new pressure obtained ($Y$) is related with the first one ($X$) according to the equation $y=0.98x-1.4$, in which distribution, $X$ or $Y$, is more representative the mean?
+
+
+Use the following sums for the computations:  
+Group $A$: $\sum x_in_i=`r sum(x)`$ mmHg, $\sum x_i^2n_i=`r sum(x^2)`$ mmHg$^2$, $\sum (x_i-\bar x)^3n_i=`r round(sum((x-mx)^3),2)`$ mmHg$^3$ y $\sum (x_i-\bar x)^4n_i=`r round(sum((x-mx)^4),2)`$ mmHg$^4$.  
+Group $B$: $\sum x_in_i=`r sum(y)`$ mmHg, $\sum x_i^2n_i=`r sum(y^2)`$ mmHg$^2$, $\sum (x_i-\bar x)^3n_i=`r round(sum((y-my)^3),2)`$ mmHg$^3$ y $\sum (x_i-\bar x)^4n_i=`r round(sum((y-my)^4),2)`$ mmHg$^4$.
+
+Solution
+========
+a. 
+Group $A$: $\bar x=`r round(mx,4)`$ mmHg, $s^2=`r round(s2x,4)`$ mmHg$^2$, $s=`r round(sx,4)`$ mmHg, $g_{1A}=`r round(g1x,4)`$ and $g_{2A}=`r round(g2x,4)`$.  
+Group $B$: $\bar x=`r round(my,4)`$ mmHg, $s^2=`r round(s2y,4)`$ mmHg$^2$, $s=`r round(sy,4)`$ mmHg, $g_{1B}=`r round(g1y,4)`$ and $g_{2B}=`r round(g2y,4)`$.  
+Thus the distribution of the population $A$ group is less asymmetric since $g_{1A}$ is closer to 0 than $g_{1B}$ and the populaton $B$ group has a higher kurtosis since $g_{2B}>g_{2A}$. Both populations can be cosidered normal since $g_1$ and $g_2$ are between -2 and 2.
+a. $cv_A=`r round(cvx,4)`$ and $cv_B=`r round(cvy,4)`$, thus, the mean of group $B$ is a little bit more representative since its coef. of variation is smaller than the one of group $A$.
+a. $P_{70}\approx 125$ mmHg.
+a. The standard scores are $z_A(132)=`r round(zx,4)`$ and $z_B(130)=`r round(zy,4)`$.
+Thus, 130 mmHg in group $B$ is relatively higher than 132 mmHg in group $A$.
+a. $\bar y=`r round(0.98*mx-1.4, 4)`$, $s_y=`r round(sx*0.98, 4)`$ and $cv_y=`r round((sx*0.98)/(0.98*mx-1.4),4)`$.
+Thus the mean of $X$ is more representative than the mean of $Y$ since $cv_x<cv_y$.  
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: des-gen-6
+extol: 0.001
+degree: Medicine
+

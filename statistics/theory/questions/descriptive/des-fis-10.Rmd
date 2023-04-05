@@ -1,0 +1,102 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+require(xtable)
+classes <- c("0-1", "1-2", "2-3", "3-4", "4-5", "5-6", "6-7", "7-8")
+xi <- seq(0.5, 7.5, 1)
+nxi <- c(11, 18, 10, 8, 6, 4, 1, 2)
+x <- rep(xi, nxi)
+nyi <- c(5, 13, 6, 10, 9, 1, 0, 8)
+y <- rep(xi, nyi)
+data <- data.frame(classes, nxi, nyi)
+colnames(data) <- c("Postoperative months", "Patients without suture", "Patients with suture")
+## QUESTION/ANSWER GENERATION
+# sample size
+nx <- length(x)
+ny <- length(y)
+# quartiles
+q1 <- 1.222
+q2 <- quantile(x, probs = c(0.5), type=8)
+q3 <- 3.7502
+# interquartile range
+iqr <- q3-q1
+#fences
+f1 <- q1-1.5*iqr
+f2 <- q3+1.5*iqr
+# outliers
+outliers <- x[x < f1 | x > f2]
+# means
+mx <- mean(x)
+my <- mean(y)
+# variances
+s2x <- sum(x^2)/nx-mx^2
+s2y <- sum(y^2)/ny-my^2
+# standard deviation
+sx <- sqrt(s2x)
+sy <- sqrt(s2y)
+# coef. variation
+cvx <- sx/mx
+cvy <- sy/my
+# coef. skewness
+g1x <- sum((x-mx)^3)/(nx*sx^3)
+g1y <- sum((y-my)^3)/(ny*sy^3)
+# coef. kurtosis
+g2x <- sum((x-mx)^4)/(nx*sx^4)-3
+g2y <- sum((y-my)^4)/(ny*sy^4)-3
+# standard scores
+zx <- (5-mx)/sx
+zy <- (6-my)/sy
+```
+
+Question
+========
+In a study on the reconstruction of the anterior cruciate ligament (ACL), the postoperative recovery time was evaluated depending on whether the patients underwent a meniscal suture or not. The table below contains the results:
+
+```{r echo=FALSE}
+print(xtable(data, align=c("c", "c", "r", "r"), auto=T), tabular.environment="array", include.rownames = F, floating=F, hline.after = c(0,nrow(data)), sanitize.text.function = function(x) { x })
+```
+
+a. Plot the ogive for the sample of patients without meniscal suture.
+a. Are there outliers in the number of postoperative moths of patients without meniscal suture?
+a. In which of the two groups is more representative the mean of the postoperative months?
+a. Can we assume that the sample of patients with meniscal suture comes from a normal population?
+a. What value is relatively greater, 5 months for a patient without meniscal suture, or 6 for a patient with meniscal suture?
+
+
+Use the following sums for the computations:  
+Without meniscal suture: $\sum x_in_i=`r sum(x)`$ months, $\sum x_i^2n_i=`r sum(x^2)`$ months$^2$, $\sum (x_i-\bar x)^3n_i=`r round(sum((x-mx)^3),2)`$ months$^3$ y $\sum (x_i-\bar x)^4n_i=`r round(sum((x-mx)^4),2)`$ months$^4$.  
+With meniscal suture: $\sum y_in_i=`r sum(y)`$ months, $\sum y_i^2n_i=`r sum(y^2)`$ months$^2$, $\sum (y_i-\bar y)^3n_i=`r round(sum((y-my)^3),2)`$ months$^3$ y $\sum (y_i-\bar y)^4n_i=`r round(sum((y-my)^4),2)`$ months$^4$.
+
+Solution
+========
+a. 
+```{r cumulative-frequencies-polygon, fig=T, echo=F, height=3, width=4, dev="svg", fig.path="img"}
+library(ggplot2)
+u <- seq(0, 8)
+v <- cumsum(c(0, nxi)) / nx
+data <- data.frame(u, v)
+p <- ggplot(data, aes(x=u, y=v)) + 
+  geom_line(color='steelblue') + xlab("Postoperatory months") + 
+  ylab("Cumulative relative frequency") +
+  scale_x_continuous(breaks = 0:8) +
+  scale_y_continuous(breaks = 0:10/10) +
+  theme(plot.title = element_text(hjust = 0.5), axis.title=element_text(size=10))
+print(p)
+```
+a. $Q_1=`r round(q1,4)`$ months, $Q_3=`r round(q3,4)`$ months, $IQR=`r round(iqr,4)`$ month, $f_1=`r round(f1,4)`$ and $f_2=`r round(f2,4)`$. Since the upper limit of the last interval is greater than the upper fence, there could be outliers in the sample.
+a. Without suture: $\bar x=`r round(mx,4)`$ months, $s^2=`r round(s2x,4)`$ months$^2$, $s=`r round(sx,4)`$ months and $cv=`r round(cvx,4)`$.  
+With suture: $\bar y=`r round(my,4)`$ months, $s^2=`r round(s2y,4)`$ months$^2$, $s=`r round(sy,4)`$ months and $cv=`r round(cvy,4)`$.  
+Thus, the mean of the sample with suture is more representative since its coefficient of variation is smaller.
+a. $g_1=`r round(g1y,4)`$ and $g_2=`r round(g2y,4)`$. Since both coefficients are between -2 and 2, we can assume that the sample comes from a normal population.
+a. Without suture: $z(5)=`r round(zx,4)`$.  
+With suture: $z(6)=`r round(zy,4)`$.  
+Thus, 5 months in the sample without suture is relatively greater, since its standard score is greater.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: des-fis-8
+extol: 0.001
+%% \degree{Physioterapy}
+ 

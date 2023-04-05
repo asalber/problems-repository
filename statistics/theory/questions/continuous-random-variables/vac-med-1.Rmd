@@ -1,4 +1,5 @@
-```{r data-generation, echo=FALSE, results="hide"}
+
+```{r echo=FALSE, results=hide}
 ## DATA GENERATION
 m <- 44
 s <- 2
@@ -12,24 +13,26 @@ a <- qnorm((1-p1)/2, m, s)
 b <- qnorm(1-(1-p1)/2, m, s)
 ```
 
-## Question
-It is known that the femur length of a fetus with 25 weeks of pregnancy follows a normal distribution with mean `r m} mm and standard deviation `r s} mm. 
+Question
+========
+It is known that the femur length of a fetus with 25 weeks of pregnancy follows a normal distribution with mean `r m` mm and standard deviation `r s` mm. 
 
-1. Compute the probability that the femur length of a fetus with 25 weeks is greater than `r x1} mm.
-2. Compute the probability that the femur lenght of a fetus with 25 weeks is between `r x1} and `r x2} mm.
-3. Compute an interval $(a,b)$ centered at the mean, such that it contains `r p1*100}\% of the femur lengths of fetus with 25 weeks.
+a. Compute the probability that the femur length of a fetus with 25 weeks is greater than `r x1` mm.
+a. Compute the probability that the femur lenght of a fetus with 25 weeks is between `r x1` and `r x2` mm.
+a. Compute an interval $(a,b)$ centered at the mean, such that it contains `r p1*100`%: of the femur lengths of fetus with 25 weeks.
 
-## Solution
+Solution
+========
 Let $X\sim N(44,2)$ be the femur length of fetus with 25 weeks of pregnancy. 
-1. $P(X>`r x1})=`r round(sol1,4)`$.
-2. $P(`r x1}<X<`r x2}))=`r round(sol2,4)`$.
-3. The interval centered at $`r m`$ that contains `r p1*100}\% of the femur lengths of fetus with 25 weeks is $(`r round(a,4)},`r round(b,4)})$.
+a. $P(X>`r x1`)=`r round(sol1,4)`$.
+a. $P(`r x1`<X<`r x2`))=`r round(sol2,4)`$.
+a. The interval centered at $`r m`$ that contains `r p1*100`%: of the femur lengths of fetus with 25 weeks is $(`r round(a,4)`,`r round(b,4)`)$.
 
-Meta-information
+Meta-information 
 ================
-extype:num
-exsolution: `r 1`
+extype: num
+exsolution: Solution
 exname: vac-med-1
 extol: 0.001
 degree: Medicine
-
+ 

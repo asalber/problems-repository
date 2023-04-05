@@ -1,0 +1,68 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+x <- c(20, 22.5, 25, 27.5, 30, 32.5, 35, 37.5, 40)
+y <- c(2.3, 2, 2, 1.8, 2.2, 1.5, 1.2, 1.3, 0.6)
+table <- matrix(c(x,y), nrow = 2, byrow = T)
+decimals <- matrix(rep(1,18), nrow = 2, ncol=9, byrow=TRUE)
+rownames(table) <- c("Salary", "Absences")
+sumx <- sum(x)
+sumy <- sum(y)
+sumx2 <- sum(x^2)
+sumy2 <- sum(y^2)
+sumxy <- sum(x*y)
+n <- length(x)
+  
+## QUESTION/ANSWER GENERATION
+# means
+mx <- sumx / n
+my <- sumy / n
+# variances
+s2x <- sumx2/n-mx^2
+s2y <- sumy2/n-my^2
+# Covariances
+sxy <- sumxy/n-mx*my
+# Detercmation coeff
+r2 <- sxy^2/(s2x*s2y)
+# Regression line
+lm <- lm(y~x)
+```
+
+Question
+========
+An auditor is studying the relationship between the salary and the number of absences of a hospital warden. The following table shows the salary in thousands of euros ($X$) and the annual average of absences with that salary ($Y$).
+
+```{r echo=FALSE}
+library(kntir)
+knitr::opts_chunk$set(echo = F, message = F, warning = F)
+library(kableExtra)
+kable(table) %>% kable_styling()
+```
+
+a. Compute the regression line that best explains the absences as a function of the salary.
+a. What is the expected number of absences that will have a warden with a salary of 29000€? Is this prediction reliable?
+a. How much will the number of absences increase or decrease for every increment of 1000€ in the salary?
+
+Use the following sums for the computations:  
+$\sum x_i=`r sumx`$ $10^3$€, $\sum y_i=`r sumy`$ absences,  
+$\sum x_i^2=`r sumx2`$ ($10^3$€)$^2$, $\sum y_i^2=`r sumy2`$ absences$^2$,  
+$\sum x_iy_j=`r sumxy`$ $10^3$€ absences.
+
+Solution
+========
+a. $\bar x=`r round(mx,4)`$ $10^3$€, $s_x^2=`r round(s2x,4)`$ ($10^3$€)$^2$,  
+$\bar y=`r round(my,4)`$ absences, $s_y^2=`r round(s2y,4)`$ absences$^2$,  
+$s_{xy}=`r round(sxy,4)`$ $10^3$€ absences.  
+Regression line of absences on salary: $y=`r round(lm$coefficients[1], 4)`   `r round(lm$coefficients[2], 4)`x$.
+a. $y(29) = `r round(lm$coefficients[1] + lm$coefficients[2]*29, 4)`$ absences.  
+$r^2 = `r round(r2, 4)`$, thus the model fits well as the coefficient of determination is not far from 1, but the sample size is too small to be reliable the prediction.
+a. The number of absences will decrease $`r round(abs(lm$coefficients[2]), 4)`$ for every increment of 1000€ in the salary.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: reglin-far-11
+extol: 0.001
+degree: Pharmacy
+ 

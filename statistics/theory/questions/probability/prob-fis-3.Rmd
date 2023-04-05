@@ -1,0 +1,37 @@
+
+```{r echo=FALSE, results=hide}
+## DATA GENERATION
+library(MASS)
+pM <- 0.4 
+pF <- 0.3
+pMoF <- 0.5
+
+## QUESTION/ANSWER GENERATION
+pMyF <- pM + pF - pMoF
+pMsiF <- pMyF/pF
+pFsinoM <- (pF-pMyF)/(1-pM)
+```
+
+Question
+========
+A 40%: of a population of athletes have a very athletic mother and a 30%: a very athletic father.
+If 50%: of athletes in this population have some very athletic progenitor:
+a. Compute the probability that a radom athlete of this population have a very athletic mother if he or she has a very athletic father.
+a. Compute the probability that a radom athlete of this population have a very athletic father if he or she has a non very athletic mother.
+a. ¿Are the events corresponding to having a very athletic father and having a very athletic mother independents? Justify the answer.
+
+Solution
+========
+Let $M$ the event of having a very athletic mother and $F$ the event of having a very athletic father.
+a. $P(M|F) = `r round(pMsiF,4)`$
+a. $P(F|\overline M) = `r round(pFsinoM,4)`$
+a. No, the events are dependent since $P(M)=`r pM`\neq `r round(pMsiF,4)`=P(M|F)$.
+
+Meta-information 
+================
+extype: num
+exsolution: Solution
+exname: prob-fis-3
+extol: 0.001
+%% \degree{Physioteraphy}
+ 
