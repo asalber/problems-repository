@@ -1,4 +1,4 @@
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 mx <- 44.91
 sx <- 4
@@ -14,8 +14,11 @@ Question
 ========
 In a population of 20000 women, it is known that back width follows a normal distribution with mean $29$ cm and standard deviation $2.4$ cm.(3)
 
+
 a. Compute the number of women with a back width greater than $32$ cm.
+
 a. Compute the interquartile range of women's back width.
+
 a. If we pick 12 random women from that population, what is the probability that there are at least 2 with a back width less than 28.5 cm?
 
 Solution

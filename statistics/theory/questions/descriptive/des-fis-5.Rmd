@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 require(xtable)
 set.seed(123)
@@ -53,10 +53,15 @@ The results are shown in the table below.
 kable(table) %>% kable_styling()
 ```
 
+
 a. Plot the polygon of cumulative relative frequencies of the total sample.
+
 a. According to the interquartile range, which sample has more central spread of the spinal injuries, the sample of people following the prevention program or the sample of people not following the prevention program?       
+
 a. Which sample has a greater relative spread with respect to the mean of the spinal injuries, the sample of people following the prevention program or the sample of people not following the prevention program?
+
 a. Which sample has a more normal kurtosis of the number of spinal injuries, the sample of people following the prevention program or the sample of people not following the prevention program?
+
 a. Which number of spinal injuries is relatively greater, 2 injuries of a person following the prevention program or 4 injuries of a person not following the prevention program?
 
 
@@ -66,6 +71,7 @@ Without prevention program: $\sum y_i=`r sum(y)`$ injuries, $\sum y_i^2=`r sum(y
 
 Solution
 ========
+
 a. 
 ```{r cumulative-frequencies-polygon, fig=T, echo=F, height=3, width=4, dev="svg", fig.path="img"}
 require(ggplot2)
@@ -79,15 +85,19 @@ p <- ggplot(data=.df, aes(x=injuries, y=Cum.Rel.Freq.)) +
   theme(plot.title = element_text(hjust = 0.5), axis.title=element_text(size=12))
 print(p)
 ```
+
 a. With prevention program: $Q_1=`r round(q1x,4)`$ injuries, $Q_3=`r round(q3x,4)`$ injuries, $IQR=`r round(iqrx,4)`$ injuries.  
 Without prevention program: $Q_1=`r round(q1y,4)`$ injuries, $Q_3=`r round(q3y,4)`$ injuries, $IQR=`r round(iqry,4)`$ injuries.  
 The sample not following the prevention program has more central spread since the interquartile range is greater.
+
 a. With prevention program: $\bar x=`r round(mx,4)`$ injuries, $s^2=`r round(s2x,4)`$ injuries$^2$, $s=`r round(sx,4)`$ injuries and $cv=`r round(cvx,4)`$.  
 Without prevention program: $\bar y=`r round(my,4)`$ injuries, $s^2=`r round(s2y,4)`$ injuries$^2$, $s=`r round(sy,4)`$ injuries and $cv=`r round(cvy,4)`$.  
 The sample following the prevention program has a greater relative spread with respect to the mean since the coef. of variation is greater.
+
 a. With prevention program: $g_2=`r round(g2x,4)`$.  
 Without prevention program: $g_2=`r round(g2y,4)`$.  
 Thus the sample not following the prevention program has a more normal kurtosis, since $g_2$ is closer to 0.
+
 a. With prevention program: $z(2)=`r round(zx,4)`$.  
 Without prevention program: $z(4)=`r round(zy,4)`$.  
 Thus 4 injuries in the sample not following the prevention program is relatively smaller, since its standard score is smaller.

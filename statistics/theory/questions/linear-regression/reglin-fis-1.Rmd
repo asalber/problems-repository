@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 n <- sample(35:65,1)
 mx <- runif(1, 40, 60)

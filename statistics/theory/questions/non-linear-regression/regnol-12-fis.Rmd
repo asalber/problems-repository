@@ -1,7 +1,7 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
-library(kntir)
+library(knitr)
 knitr::opts_chunk$set(echo = F, message = F, warning = F)
 library(kableExtra)
 x <- c(89, 90, 77, 30, 51, 75, 62, 45, 90, 20)
@@ -49,10 +49,14 @@ The results of the study appears in the table below.
 ```{r echo=FALSE}
 kable(table) %>% kable_styling()
 ```
+
 a. According to the scatter plot, what model explains better the relation of the response to pain on the obesity, the linear or the logarithmic model?
+
 a. What percentage of the variability of the pain threshold explains the linear model? And the logarithmic model?
-a. According to the best regression model, what is the response to pain expected for a person with an obesity of 50%:?
+
+a. According to the best regression model, what is the response to pain expected for a person with an obesity of 50%?
 Is this prediction reliable?
+
 a. According to the best regression model, what is the expected obesity for a person with a pain threshold of
 10? Is this prediction more or less reliable than the previous one?
 Use the following sums ($X$=Obesity and $Y$=Pain threshold):  
@@ -62,17 +66,22 @@ $\sum x_iy_j=`r round(sum(x*y), 4)`$, $\sum x_i\log(y_j)=`r round(sum(x*log(y)),
 
 Solution
 ========
+
 a. $\overline{x}=`r round(mx,4)`$ $\mu$g, $s_x^2=`r round(s2x,4)`$ $\mu$g$^2$.  
 $\bar y=`r round(my,4)`$ bacteria, $s_y^2=`r round(s2y,4)`$ bacteria$^2$.  
-$s_{xy}=`r round(sxy,4)`$ $\mu$g$\cdot$bacteria.  
+$s_{xy}=`r round(sxy,4)`$ $\mu$g$\cdot$bacteri
+a.  
 Linear coefficient of determination $r^2 = `r round(r2xy, 4)`$.  
 $\overline{\log(y)}=`r round(mlogy,4)`$ log(bacteria), $s_{\log(y)}^2=`r round(s2logy,4)`$ log(bacteria)$^2$.  
 $s_{x\log(y)}=`r round(sxlogy,4)`$ $\mu$g$\cdot$ log(bacteria).  
 Exponential coefficient of determination $r^2 = `r round(r2xlogy, 4)`$.  
 Thus, the exponential model explains better the number of residual bacteria as a function of the antibiotic dose because the exponential coef. of determination is greater.
+
 a. Exponential regression model: $y=e^{`r round(regexp$coefficients[1],4)`+`r round(regexp$coefficients[2],4)`x}$.  
-Prediction: $y(3.5)=`r round(exp(regexp$coefficients[1] + regexp$coefficients[2]*3.5),4)`$ bacteria.  
+Prediction: $y(3.5)=`r round(exp(regexp$coefficients[1] + regexp$coefficients[2]*3.5),4)`$ bacteri
+a.  
 Although the coef. of determination is close to 1, the this prediction is not reliable because the sample size is very small.
+
 a. $b_{yx}=`r round(reglin$coefficients[2], 4)`$, therefore the number of bacteria decreases $`r round(reglin$coefficients[2], 4)`$ per each $\mu$g more of antibiotic.
 
 Meta-information 

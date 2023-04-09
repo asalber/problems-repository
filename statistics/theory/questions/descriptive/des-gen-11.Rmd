@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 require(xtable)
 classes <- c("0-2", "2-4", "4-6", "6-8", "8-10")
@@ -56,10 +56,15 @@ In a course there are 150 students, of which 50 are working students and the oth
 print(xtable(data, align=c("c", "c", "r", "r"), auto=T), tabular.environment="array", include.rownames = F, floating=F, hline.after = c(0,nrow(data)), sanitize.text.function = function(x) { x })
 ```
 
+
 a. Compute the percentage of students that passed the exam (a grade 5 or above) in both groups, working and non-working students.
+
 a. In which group is there a higher relative dispersion of the grade with respect to the mean? 
+
 a. Which grade distribution is more asymmetric, the distribution of working students, or the non-working students one?
+
 a. To apply for a scholarship to go abroad, the grade must be transformed applying the linear transformation Y = 0.5 + X * 1.45. Compute the mean of Y for the two groups. How changes the asymmetry of the two groups?
+
 a. Which grade is relatively higher, 6 in the working students group, or 7 in the non-working students group?
 
 
@@ -69,16 +74,21 @@ Working students: $\sum y_in_i=`r sum(y)`$, $\sum y_i^2n_i=`r sum(y^2)`$, $\sum 
 
 Solution
 ========
-a. 66.5%: of non-working stsudents passed and 59%: of working students passed.
+
+a. 66.5% of non-working stsudents passed and 59% of working students passed.
+
 a. Non-working students: $\bar x=`r round(mx,4)`$, $s^2=`r round(s2x,4)`$, $s=`r round(sx,4)`$ and $cv=`r round(cvx,4)`$.  
 Working students: $\bar y=`r round(my,4)`$, $s^2=`r round(s2y,4)`$, $s=`r round(sy,4)`$ and $cv=`r round(cvy,4)`$.  
 The sample of non-working students has a slightly higher relative dispersion with respect to the mean as the coefficient of variation is greater.
+
 a. Non-working students: $g_1=`r round(g1x,4)`$.  
 Working students: $g_1=`r round(g1y,4)`$.  
 Thus, the sample of non-working students is more assymetric as the coefficient os skewness is further from 0.
+
 a. Non-working students: $\bar y=`r round(myx, 4)`$.  
 Working students: $\bar x=`r round(myy, 4)`$.  
 The coefficient of skewness does not change as the slope of the linear transformation is positive.  
+
 a. Non-working students: $z(7)=`r round(zx, 4)`$.  
 Working students: $z(6)=`r round(zy, 4)`$.  
 Thus, a 7 in the sample of non-working students is relatively higher than than a 6 in the sample of working students, as its standard score is greater.

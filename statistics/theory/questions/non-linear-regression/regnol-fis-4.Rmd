@@ -1,7 +1,7 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
-library(kntir)
+library(knitr)
 knitr::opts_chunk$set(echo = F, message = F, warning = F)
 library(kableExtra)
 x <- c(9, 10, 11, 12, 13, 14, 15, 16, 17, 18)
@@ -43,8 +43,11 @@ In a tennis club the age ($X$) and the height ($Y$) of the ten players conformin
 kable(table) %>% kable_styling()
 ```
 
+
 a. Plot the scatter plot (Height on Age).
+
 a. Which regression model bests fits these data, the linear or the logarithmic?
+
 a. What is the expected height of a player 12.5 years old according to the best of two previous models?
 
 
@@ -55,10 +58,12 @@ $\sum x_iy_j=`r round(sum(x*y), 4)`$ years$\cdot$cm, $\sum x_i\log(y_j)=`r round
 
 Solution
 ========
+
 a. 
 ```{r scatterlot-height-age, fig=T, echo=F, dev="svg", fig.path="img"}
 plot(x, y, main="Scatterplot of Height and Age", xlab="Age", ylab="Height", col=col1, pch=16)
 ```
+
 a. $\bar x=`r round(mx,4)`$ years, $s_x^2=`r round(s2x,4)`$ years$^2$.  
 $\overline{\log(x)}=`r round(mlogx,4)`$ log(years), $s_{\log(x)}^2=`r round(s2logx,4)`$ log(years)$^2$.  
 $\bar y=`r round(my,4)`$ cm, $s_y^2=`r round(s2y,4)`$ cm$^2$.  
@@ -66,6 +71,7 @@ $s_{xy}=`r round(sxy,4)`$ years$\cdot$cm, $s_{\log(x)y}=`r round(slogxy,4)`$ log
 Linear coef. determination: $r^2=`r round(r2xy,4)`$  
 Logarithmic coef. determination: $r^2=`r round(r2logxy,4)`$  
 Therefore, both models fit pretty well, but the logarithmic model fits a little bit better.
+
 a. Logarithmic regression model: $y=`r round(reglog$coefficients[1],4)`+`r round(reglog$coefficients[2],4)`\log(x)$.  
 Prediction: $y(12.5)=`r round(reglog$coefficients[1]+reglog$coefficients[2]*log(12.5), 4)`$ cm.
 

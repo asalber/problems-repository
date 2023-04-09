@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 tp <- 0.2
 fn <- 0.013
@@ -17,10 +17,15 @@ Question
 ========
 To evaluate a possible displacement of the patella at the Abruna Joms physiotherapy clinic, the Glide Test is used. After applying the test to 1000 patients we observed that 200 suffered from patella displacement and got a positive outcome, 13 suffered from patella displacement and got a negative outcome and 8 did not suffer patella displacement and got a positive outcome.
 
+
 a. Represents the data obtained by the Glide test in a table or a tree.
+
 a. Compute the sensitivity and specificity of the Glide test.
+
 a. Is the Glide test useful for diagnosing patella displacement?
+
 a. Is the Glide test useful for ruling out patella displacement?
+
 a. What is the probability of getting a right diagnose?
 
 Solution

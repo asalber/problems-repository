@@ -49,6 +49,7 @@ library(lessR)
 PieChart(z, hole = 0, values = "%", data = df, main = "")
 ```
 
+
 a. Plot the ogive of the score, assuming the following correspondence between grades and scores
 
 $$
@@ -71,6 +72,7 @@ Use the following sums for the computations ($X$ = Score):
 $\sum x_in_i=`r round(sum(x), 2)`$, $\sum x_i^2n_i=`r round(sum(x^2), 4)`$, $\sum (x_i-\bar x)^3n_i=`r round(sum((x-mx)^3),2)`$ and $\sum (x_i-\bar x)^4n_i=`r round(sum((x-mx)^4),2)`$.
 Solution
 ========
+
 
 a. 
 ```{r ogive-scores, echo = FALSE, results = "hide", fig.height = 5, fig.width = 6, fig.path = "", fig.cap = ""}

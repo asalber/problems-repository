@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 n <- 100
 pAB <- 8 / n
@@ -29,22 +29,34 @@ $$
 
 Define the following events and compute its probabilities:
 
+
 a. Get a $+$ in the test $A$.
+
 a. Get a $+$ in the test $A$ and a $-$ in the test $B$.
+
 a. Get a $+$ in some of the two tests.
+
 a. Get different results in the two tests.
+
 a. Get the same result in the two tests.
+
 a. Get a $+$ in the test $B$ if we got a $+$ in the test $A$.
 Are the outcomes of the two tests independent?
 
 Solution
 ========
 Let $A$ and $B$ the events of getting positive outcomes in the tests $A$ and $B$ respectively.
+
 a. $P(A)=`r round(pA,4)`$.
+
 a. $P(A\cap \overline B)=`r round(pAnoB,4)`$.
+
 a. $P(A\cup B) = `r round(pAoB,4)`$.
+
 a. $P(A\cap \overline B) + P(\overline A \cap B) = `r round(pAnoB + pnoAB,4)`$.
+
 a. $P(A\cap B) + p(\overline A \cap \overline B)= `r round(pAB + pnoAnoB,4)`$.
+
 a. $P(B|A) = `r round(pBsiA,4)`$.
 As $P(B|A)\neq P(B)$ the events are dependent.
 

@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 require(xtable)
 classes <- c("(0,5]", "(5,10]", "(10,15]", "(15,20]", "(20,30]", "(30,60]")
@@ -50,23 +50,33 @@ The table below summarize the results.
 kable(data) %>% kable_styling()
 ```
 
+
 a. Are there outliers in the sample?
 Justify the answer.
-a. What is the minimum time for the 20%: of patients with highest response time?
+
+a. What is the minimum time for the 20% of patients with highest response time?
+
 a. What is the average response time?
 Is the mean representative?
+
 a. Can we assume that the sample comes from a normal population?
+
 a. If we take another sample of patients with mean 18 min and standard deviation 15 min, in which group is greater a response time of 25 min?
 
 Use the following sums for the computations: $\sum x_in_i=`r sum(x)`$ min, $\sum x_i^2n_i=`r sum(x^2)`$ min$^2$, $\sum (x_i-\bar x)^3n_i=`r round(sum((x-m)^3),2)`$ min$^3$ y $\sum (x_i-\bar x)^4n_i=`r round(sum((x-m)^4),2)`$ min$^4$.
 
 Solution
 ========
+
 a. $Q_1=`r round(q1,4)`$ min, $Q_3=`r round(q3,4)`$ min, $IQR=`r round(iqr,4)`$ min, $f_1=`r round(f1,4)`$ min and $f_2=`r round(f2,4)`$ min. Therefore there are outliers in the sample since the upper limit of the last interval is above the upper fence.
+
 a. $P_{80}=`r round(p80,4)`$ min.
+
 a. $\bar x=`r round(m,4)`$ min, $s^2=`r round(s2,4)`$ min$^2$, $s=`r round(s,4)`$ min and $cv=`r round(cv,4)`$.
 The mean is not very representative since the $cv>0.5$. 
+
 a. $g_1=`r round(g1,4)`$ and $g_2=`r round(g2,4)`$. Since $g_1$ and $g_2$ are between -2 and 2, we can assumme that the sample comes from a normal (bell-shaped) population.
+
 a. The standard score of the first sample is $z(25)=`r round(z1,4)`$ and the standard score of the second one $z(25)=`r round(z2,4)`$, thus a time of 25 min is relatively greater in the second sample.
 
 Meta-information 

@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 lambda1 <- 1
 lambda2 <- 2
@@ -14,15 +14,21 @@ sol3 <- pbinom(2, n, sol2, lower.tail = F)
 Question
 ========
 A newborn baby affected by Moebius syndrome blinks, on average, twice a minute.
+
 a. Compute the probability that a newborn blinks twice in half a minute.
+
 a. In a hospital five children have been born with Moebius syndrome. Compute the probability that at least 3 of them blink in their first minute of life.
+
 a. In which distribution is more representative the mean, in the number of times that a newborn blinks in a minute or in the number of times that a newborn blinks in half a minute?
 
 
 Solution
 ========
+
 a. Let $X$ be the number of times that a newborn blinks in half a minute, then $X\sim P(`r lambda1`)$ and $P(X=2)=`r round(sol1, 4)`$.
+
 a. Let $Y$ be the number of newborns that blink in their first minute of life in a sample of 5 newborns, then $Y\sim B(`r n`, `r round(sol2, 4)`)$ and $P(Y\geq 3)=`r round(sol3, 4)`$.
+
 a. Let $Z$ be the number of times that a newborn blinks in a minute, then $cv_z = `r round(sqrt(2)/2, 4)`$ and $cv_x = `r round(sqrt(1)/1)`$. Thus, the mean of $Z$ represents better since its coefficient of variation is smaller. 
 
 Meta-information 

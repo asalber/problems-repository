@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 pA <- 3/8
 pB <- 1/2
@@ -12,12 +12,19 @@ Question
 ========
 Let $A$ and $B$ be two events of a same sample space, such that $P(A)=3/8$, $P(B)=1/2$ and $P(A\cap B)=1/4$.
 Compute the following probabilities:
+
 a. $P(A\cup B)$.
+
 a. $P(\overline{A})$ and $P(\overline{B})$.
+
 a. $P(\overline{A}\cap \overline{B})$.
+
 a. $P(A\cap \overline{B})$.
+
 a. $P(A|B)$.
+
 a. $P(A|\overline{B})$.
+
 a. Are $A$ and $B$ compatible? Are $A$ and $B$ dependent?
 
 Solution

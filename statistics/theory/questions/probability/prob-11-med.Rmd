@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 n <- 10000
 pON <- 1800 / n
@@ -33,20 +33,32 @@ $$\begin{array}{llr}
 \end{array}
 $$
 
+
 a. Compute the probability of SARS-CoV-2 infection for a random person.
+
 a. Compute the probability of having a blood type A and being infected by SARS-CoV-2 for a random person.
+
 a. Compute the probability of having a blood type A or being infected by SARS-CoV-2 for a random person.
+
 a. Compute the probability of being infected by SARS-CoV-2 for a person with blood type O. 
+
 a. Compute the probability of having a blood type different from A and B for a person infected by SARS-CoV-2.
+
 a. Does the SARS-CoV-2 infection depend on the blood type?
 
 Solution
 ========
+
 a. $P(I) = `r round(pOY + pAY + pBY + pABY, 4)`$.
+
 a. $P(A\cap I) = `r round(pAY, 4)`$.
+
 a. $P(A\cup I) = `r round(pAN + pOY + pAY + pBY + pABY, 4)`$.
+
 a. $P(I|O) = `r round(pOY / (pOY + pON),4)`$.
+
 a. $P(\overline A \cap \overline B|I) = `r round((pOY + pABY)/(pOY + pAY + pBY + pABY), 4)`$.
+
 a. The infection depends on the blood as, for instance,  $p(I)\neq P(I|O)$.
 
 Meta-information 

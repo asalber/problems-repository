@@ -1,7 +1,7 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
-library(kntir)
+library(knitr)
 knitr::opts_chunk$set(echo = F, message = F, warning = F)
 library(kableExtra)
 x <- c(175, 182, 190, 165, 172, 183, 187, 174, 168, 178)
@@ -64,10 +64,15 @@ In a sample of 10 families with a son older than 20 it has been measured the hei
 kable(data) %>% kable_styling()
 ```
 
+
 a. In which sample is the mean more representative, in the sample of fathers or mothers?
+
 a. Are there outliers in the sample of sons? 
+
 a. According to the shape of the distribution, can the sample of mothers come from a normal population?
+
 a. Who is higher in her/his sample, a mother 165 cm tall or a son 178 cm tall?
+
 a. If we had measured the heights in meters, how the representativity of the mean would have been affected?
 
 
@@ -79,14 +84,19 @@ Son's height: $\sum z_i=`r sum(z)`$ cm, $\sum z_i^2=`r sum(z^2)`$ cm$^2$, $\sum 
 
 Solution
 ========
+
 a. Padres: $\bar x=`r round(mx,4)`$ cm, $s^2=`r round(s2x,4)`$ cm$^2$, $s=`r round(sx,4)`$ cm y $cv=`r round(cvx,4)`$.  
 Madres: $\bar y=`r round(my,4)`$ cm, $s^2=`r round(s2y,4)`$ cm$^2$, $s=`r round(sy,4)`$ cm y $cv=`r round(cvy,4)`$.  
 La estatura media es un poco más representativa en el grupo de las madres.
+
 a. Las vallas en la muestra de hijos son $f_1=`r round(f1,2)`$ cm y $f_2=`r round(f2,2)`$ cm por lo que no hay estaturas atípicas entre los hijos.
+
 a. $g_{1y}=`r round(g1y,4)`$ y $g_{2y}=`r round(g2y,4)`$. Como el coeficiente de asimetría y el de apuntamiento están dentro del intervalo de -2 a 2, podemos asumir que la muestra de estaturas de madres proviene de una población normal.
+
 a.  Puntuación típica madres: $z(165)=`r round(zy, 4)`$.  
 Puntuación típica hijos: $z(178)=`r round(zz, 4)`$.  
 Así pues, una madre de 165 cm es relativamente más alta que un hijo de 178 cm.
+
 a. La respresentatividad de las medias no cambiaría ya que tanto las medias como las desviaciones típicas estarían divididas por 100.
 
 Meta-information 

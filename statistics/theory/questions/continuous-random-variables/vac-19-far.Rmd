@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 m <- 400
 s <- 30
@@ -20,11 +20,15 @@ Question
 ========
 The weight of male Wistar rats in a laboratory follows a normal distribution with mean 400 grams and standard deviation 30 grams.
 
+
 a. What is the probability that a random rat weighs exactly 400 grams?
+
 a. What is the probability that a random rat weighs more than 450 grams?
+
 a. If a rat is chosen randomly, what is the probability that its weight is an outlier?  
 Remark: The normal range of data is $(Q_1-1.5 IQR, Q_3+1.5IQR)$.
-a. Give an interval of weights centered on the mean in which 95%: of the male Wistar rats are found.
+
+a. Give an interval of weights centered on the mean in which 95% of the male Wistar rats are found.
 
 Solution
 ========

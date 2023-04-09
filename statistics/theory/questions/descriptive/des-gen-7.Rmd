@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 x <- c(5, 12, 15, 18, 25)  
 ## QUESTION/ANSWER GENERATION
@@ -9,16 +9,20 @@ Question
 ========
 In a symmetric distribution the mean is 15, the first quartile 12 and the maximum value is 25. 
 
+
 a. Draw the box and whiskers plot.
+
 a. Could an hypothetical value of 2 be considered an outlier in this distribution? 
 
 Solution
 ========
+
 a. $Q_1=12$, $Q_2=15$, $Q_3=18$, $IQR=6$, $f_1=3$, $f_2=27$, $Min=5$ and $Max=25$.
 ```{r boxplot, fig=T, echo=F, height=3, width=4, dev="svg", fig.path="img"}
 boxplot(x, horizontal = T)
 ```
  
+
 a. Yes, because $2<f_1$.
 
 Meta-information 

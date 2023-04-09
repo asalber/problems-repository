@@ -1,7 +1,7 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
-library(kntir)
+library(knitr)
 knitr::opts_chunk$set(echo = F, message = F, warning = F)
 library(kableExtra)
 x <- c(1, 3, 6, 9, 14, 17, 21, 24)
@@ -49,9 +49,13 @@ A study tries to determine the effectiveness a training program to increase the 
 kable(table) %>% kable_styling()
 ```
 
+
 a. Compute the regression coefficient of the grip strength on the weeks and interpret it.
+
 a. According to the logarithmic regression model, what is the expected grip strength after 5 and 25 weeks. Are these predictions reliable? Would these predictions be more reliable with the linear regression model?
+
 a. According to the exponential regression model, how many weeks are required to have a grip strength of 25 Kg?
+
 a. What percentage of the total variability of the weeks is explained by the exponential model?
 
 Use the following sums ($X$=Weeks and $Y$=Grip strength):  
@@ -61,10 +65,12 @@ $\sum x_iy_j=`r round(sum(x*y), 4)`$, $\sum x_i\log(y_j)=`r round(sum(x*log(y)),
 
 Solution
 ========
+
 a. $\overline{x}=`r round(mx,4)`$ weeks, $s_x^2=`r round(s2x,4)`$ weeks$^2$.  
 $\bar y=`r round(my,4)`$ Kg, $s_y^2=`r round(s2y,4)`$ Kg$^2$.  
 $s_{xy}=`r round(sxy,4)`$ weeks$\cdot$Kg.  
 Regression coefficient of $Y$ on $X$: $b_{yx} = `r round(reglin$coefficients[2], 4)`$ Kg/weeek. The grip strength increases $`r round(reglin$coefficients[2], 4)`$ Kg per week.
+
 a. $\overline{\ln(x)} = `r round(mlogx, 4)`$ ln(weeks), $s_{\ln(x)}^2 = `r round(s2logx, 4)`$  ln(weeks)$^2$ and $s_{\ln(x)y} = `r round(slogxy, 4)`$ ln(weeks)Kg.  
 Logarithmic regression model of $Y$ on $X$: $y = `r round(reglog$coefficients[1], 4)` + `r round(reglog$coefficients[2], 4)` \ln(x)$.  
 Predictions: $y(5) = `r round(reglog$coefficients[1] + reglog$coefficients[2] * log(5), 4)`$ Kg and $y(25) = `r round(reglog$coefficients[1] + reglog$coefficients[2] * log(25), 4)`$ Kg.  
@@ -72,9 +78,11 @@ Logarithmic coefficient of determination: $r^2 = `r round(r2logxy, 4)`$.
 The predictions are not reliable because the sample size is small.  
 Linear coefficient of determination: $r^2 = `r round(r2xy, 4)`$.  
 As the linear coefficient of determination is less than the logarithmic one, the predictions with the logarithmic model are more reliable.
+
 a. Exponential regression model of $X$ on $Y$: $x = e^{`r round(regexp$coefficients[1],4)` + `r round(regexp$coefficients[2],4)`y}$.  
 Prediction: $x(25)=`r round(exp(regexp$coefficients[1] + regexp$coefficients[2]*25), 4)`$ Weeks.  
-a. As $r^2 = `r round(r2logxy, 4)`$, the exponential models explains $`r round(r2logxy, 4) * 100`$%: of the variabilidty of the weeks.
+
+a. As $r^2 = `r round(r2logxy, 4)`$, the exponential models explains $`r round(r2logxy, 4) * 100`$% of the variability of the weeks.
 
 Meta-information 
 ================

@@ -1,7 +1,7 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
-library(kntir)
+library(knitr)
 knitr::opts_chunk$set(echo = F, message = F, warning = F)
 library(kableExtra)
 x <- c(5, 8, 20, 35, 50, 80, 110)
@@ -49,8 +49,11 @@ kable(table) %>% kable_styling()
 ```
 
 Se pide:
+
 a. Compute the logarithmic model of the change in the signal on the concentration of the antibodies.
+
 a. It was observed that at a concentration of 100 $\mu$g/ml the change in signal tends to stabilize. Predict the value of the signal corresponding to such concentration using the logarithmic model.
+
 a. Predict the antibody concentration that corresponds to a change in the signal of 120 using the exponential model.
 
 Use the following sums for the computations ($X$=Concentration and $Y$=Signal):  
@@ -60,11 +63,14 @@ $\sum x_iy_j=`r round(sum(x*y), 4)`$ Hz$\cdot$$\mu$g/ml, $\sum x_i\log(y_j)=`r r
 
 Solution
 ========
+
 a. $\overline{\log(x)}=`r round(mlogx,4)`$ log($\mu$g/ml), $s_{\log(x)}^2=`r round(s2logx,4)`$ log($\mu$g/ml)$^2$.  
 $\bar y=`r round(my,4)`$ Hz, $s_y^2=`r round(s2y,4)`$ Hz$^2$.  
 $s_{\log(x)y}=`r round(slogxy,4)`$ log($\mu$g/ml)Hz.  
 Logarithmic regression model: $y=`r round(reglog$coefficients[1],4)`+`r round(reglog$coefficients[2],4)`\log(x)$.
+
 a. Prediction: $y(100)=`r round(reglog$coefficients[1] + reglog$coefficients[2]*log(100),4)`$ Hz.
+
 a. Exponential regression model: $y=e^{`r round(regexp$coefficients[1],4)`+`r round(regexp$coefficients[2],4)`y}$.  
 Prediction: $y(120)=`r round(exp(regexp$coefficients[1] + regexp$coefficients[2]*120),4)`$ $\mu$g/ml.  
 

@@ -1,7 +1,7 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
-library(kntir)
+library(knitr)
 knitr::opts_chunk$set(echo = F, message = F, warning = F)
 library(kableExtra)
 library(ggplot2)
@@ -49,13 +49,18 @@ $$
 \end{array}
 $$
 
+
 a. Which of the following box plots corresponds to each variable? Compare the central dispersion of the two variables according to the box plots. In which variable is smaller the median?
 ```{r boxplot-grades, fig=T, echo=F, height=4, width=6, dev="svg", fig.path="img"}
 boxplot(y, x, horizontal=T)
 ```
+
 a. In which type of schools is more representative the mean of grades?
+
 a. In which type of schools is more symmetric the distribution of grades?
+
 a. In which type of schools is more peaked the distribution of grades?
+
 a. Which difference is relatively smaller, $-0.5$ points in a public high school or $-1$ points in a private high school?
 
 Use the following sums for the computations:  
@@ -64,12 +69,17 @@ Private: $\sum y_i=`r sum(y)`$, $\sum y_i^2=`r sum(y^2)`$, $\sum (y_i-\bar y)^3=
 
 Solution
 ========
+
 a. The box plot 1 corresponds to private schools and the box plot 2 to public schools. The central dispersion is pretty similar in both variables. The median is smaller in private schools.
+
 a. Public schools: $\bar x=`r round(mx,4)`$ , $s^2=`r round(s2x,4)`$ , $s=`r round(sx,4)`$  y $cv=`r round(cvx,4)`$.  
 Private schools: $\bar y=`r round(my,4)`$ , $s^2=`r round(s2y,4)`$ , $s=`r round(sy,4)`$  y $cv=`r round(cvy,4)`$.  
 Thus, the mean of the grade is more respresentative in private schools.
+
 a. $g_{1x}=`r round(g1x,4)`$ and $g_{1y}=`r round(g1y,4)`$. Thus, the distribution of grades in private schools is more symmetric as the coefficient of skewness is closer to 0.
+
 a. $g_{2x}=`r round(g2x,4)`$ and $g_{2y}=`r round(g2y,4)`$. Thus, the distribution of grades in private schools is more peaked.
+
 a. Public schools: $z(-0.5)=`r round(zx, 4)`$.  
 Private schools: $z(-1)=`r round(zy, 4)`$.  
 Thus, a difference of grades -0.5 in a public schools is relatively smaller than a difference of -1 in a private school. 

@@ -1,5 +1,5 @@
     
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 x1 <- 130
 p1 <- 1 - (10 / 200)
@@ -23,15 +23,21 @@ ulim <- qnorm(0.975, mean, sd)
 Question
 ========
 In a course with 200 students the score of a test to measure the intelligence quotient follows a normal distribution. After applying the test to the students 10 of them got a score above 130 and 30 of them a score below 60.
+
 a. Compute the mean and the standard deviation of the score.
+
 a. How many students will have a score between 90 and 95?
-a. Compute the limits of the interval centered at the mean that accumulates 95%: of the scores.
+
+a. Compute the limits of the interval centered at the mean that accumulates 95% of the scores.
 
 Solution
 ========
+
 a. Let $X$ be the score of the test then $X\sim N(`r round(mean, 4)`, `r round(sd, 4)`)$
+
 a. $P(90\leq X \leq 95) = `r round(p, 4)`$, that is, around $`r round(p * 200, 4)`$ students.
-a. Interval with 95%: of probability $(`r round(llim, 4)`, `r round(ulim, 4)`)$.
+
+a. Interval with 95% of probability $(`r round(llim, 4)`, `r round(ulim, 4)`)$.
 
 Meta-information 
 ================

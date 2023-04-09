@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 x <- 15
 p1 <- 0.95
@@ -19,18 +19,24 @@ q3 <- qnorm(0.2, mx, s, lower.tail = F)
 
 Question
 ========
-The prolactin level in pregnant and non-pregnant females follows a normal distribution with different means but with the same variance. When the prolactin levels exceed 15 ng/ml, females secrete milk through their mammary glands. It is known that 95%: of pregnant females secrete milk but only 1%: of non-pregnant females secret milk.
+The prolactin level in pregnant and non-pregnant females follows a normal distribution with different means but with the same variance. When the prolactin levels exceed 15 ng/ml, females secrete milk through their mammary glands. It is known that 95% of pregnant females secrete milk but only 1% of non-pregnant females secret milk.
+
 
 a. If the median of the prolactin level in pregnant females is 16 ng/ml, what are the means and the standard deviation of the prolactin level in both populations?  
 Remark: If you are not able to compute the mean or the standard deviation for pregnant females, use $\mu=17$ ng/ml and $\sigma=2$ ng/ml for the next parts.
+
 a. Compute the percentage of pregnant females with a prolactin level between 15.5 and 17 ng/ml.
-a. Compute the prolactin level such that 20%: of pregnant females are above that level.
+
+a. Compute the prolactin level such that 20% of pregnant females are above that level.
 
 Solution
 ========
 Let $X$ and $Y$ be the prolactin levels in pregnant and non-pregnan females respectively.
+
 a. $\mu_x=`r round(mx, 4)`$ ng/ml, $\mu_y=`r round(my, 4)`$ ng/ml and $\sigma=`r round(s, 4)`$ ng/ml.
-a. $P(15.5<X<17) = `r round(p3, 4)`$, so `r round(p3 * 100, 4)`%: of pregnant females.
+
+a. $P(15.5<X<17) = `r round(p3, 4)`$, so `r round(p3 * 100, 4)`% of pregnant females.
+
 a. $P_{80} = `r round(q3, 4)`$ ng/ml.
 
 Meta-information 

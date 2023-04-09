@@ -1,5 +1,4 @@
-% LTeX: language=en-GB
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 nA = 10
 pA = 0.05
@@ -14,16 +13,21 @@ pAoB = pA + pB - pA * pB
 
 Question
 ========
-A pharmacy sells two vaccines $A$ and $B$ against a virus. The $A$ vaccine produces 5%: of side effects, while the $B$ vaccine produces 2%: of side effects. The pharmacy has sold 10 units of the $A$ vaccine and 100 units of the $B$ vaccine.
+A pharmacy sells two vaccines $A$ and $B$ against a virus. The $A$ vaccine produces 5% of side effects, while the $B$ vaccine produces 2% of side effects. The pharmacy has sold 10 units of the $A$ vaccine and 100 units of the $B$ vaccine.
 
 a. Compute the probability of having less than 2 side effects with the $A$ vaccine.
+
 a. Compute the probability of having more than 3 side effects with the $B$ vaccine.
+
 a. If we apply both vaccines to the same person at different moments, and assuming that the production of side effects of the vaccines are independent, what is the probability that this person will have any side effect?
 
 Solution
 ========
+
 a. Let $X$ be the number of side effects in 10 applications of A vaccine. Then, $X\sim B(10, 0.05)$ and $P(X<2) = `r round(p1, 4)`$.
+
 a. Let $Y$ be the number of side effects in 100 applications of B vaccine. Then, $Y\sim B(100, 0.02)\approx P(2)$ and $P(Y>3) = `r round(p2, 4)`$.
+
 a. Let $A$ and $B$ the events of having side effects with vaccines A and B respectively. $P(A\cup B) = `r round(pAoB, 4)`$.
 
 Meta-information 

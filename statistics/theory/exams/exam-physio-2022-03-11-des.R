@@ -3,7 +3,7 @@ library("exams")
 setwd('statistics/theory/exams')
 
 questions <- c("des-20-gen.Rnw", "regnol-13-med.Rnw")
-
+ 
 exams2pdf(questions, n=1, name = c("exam-physio-2022-03-11-des", "solution-physio-2022-03-11-des"), encoding = "UTF-8",
           dir = "pdf",
           edir = "../questions",

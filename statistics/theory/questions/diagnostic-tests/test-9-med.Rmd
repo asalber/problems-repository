@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 NegN <- 6380
 NegY <- 520
@@ -38,16 +38,20 @@ $$\begin{array}{llr}
 \end{array}
 $$
 
+
 a. Compute the relative risk and the odds ratio to study the association between the SARS-CoV-2 infection and the blood Rh. Which association measure is more suitable to explain the relation between the SARS-CoV-2 infection and the blood Rh. Interpret it.
-a. A diagnostic test for the SARS-CoV-2 has been developed with a 95%: of specificity and a 60%: of sensitivity, regardless of blood Rh.
+
+a. A diagnostic test for the SARS-CoV-2 has been developed with a 95% of specificity and a 60% of sensitivity, regardless of blood Rh.
 In which blood Rh will produce more errors? Which diagnosis will we make if we apply the test to a persons with blood Rh $-$ and we get a positive outcome? Which diagnosis will we make if we apply the test to a persons with blood Rh $+$ and we get a negative outcome?
 
 Solution
 ========
 Let $I$ be the event of being infected by SARS-CoV-2.
 
+
 a. $RR(I) = R_+(I) / R_-(I) = `r round(rr,4)`$ and $OR(I) = O_+(I) / O_-(I) = `r round(or,4)`$.  
 The relative risk is more suitable as this is a prospective study and the incidence of infection can be estimated. Thus the risk of infection with Rh + is almost one and a half the risk with Rh -.
+
 a. $P(\mbox{Error}|\mbox{Rh-}) = `r round(pNegYNeg + pNegNPos, 4)`$ and $P(\mbox{Error}|\mbox{Rh+}) = `r round(pPosYNeg + pPosNPos, 4)`$. Thus, the test will produce more errors in people with Rh+.  
 Positive predictive value for Rh-: $p(I|+)=`r round(ppvNeg,4)`$. Therefore, we will diagnose no infection.
 Negative predictive value for Rh+: $p(\overline I|-)=`r round(npvPos,4)`$. Therefore, we will predict no infection.

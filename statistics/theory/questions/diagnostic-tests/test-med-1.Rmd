@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 sen <- 0.91
 spe <- 0.98
@@ -15,21 +15,29 @@ npv <- tn/(tn+fn)
 
 Question
 ========
-An ultrasonic technique is used to diagnose a disease with a sensitivity of `r sen*100`%: and a specificity of `r spe*100`%:.
-The prevalence of the disease is `r pre*100`%:
+An ultrasonic technique is used to diagnose a disease with a sensitivity of `r sen*100`% and a specificity of `r spe*100`%.
+The prevalence of the disease is `r pre*100`%
+
 
 a. If we apply the technique to an individual and the outcome is positive, what is the probability of having the disease for that individual?
+
 a. If the outcome was negative,  what is the probability of not having the disease?
+
 a. Is this technique more reliable to confirm or to rule out the disease?
 Justify the answer. 
+
 a. Compute the probability of having a correct diagnose with this technique.
 
 Solution
 ========
 Let $D$ the event corresponding to have the disease and + and - the events corresponding to have a positive and negative outcome respectively in the test.
+
 a. $PPV=`r round(ppv,4)`$.
+
 a. $NPV=`r round(npv,4)`$.
+
 a. It is more reliable to rule out the disease since the NPV is greater than the PPV.
+
 a. $P(D\cap +)+P(\overline D\cap -) = `r round(tp+tn,4)`$.
 
 Meta-information 

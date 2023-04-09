@@ -1,7 +1,7 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
-library(kntir)
+library(knitr)
 knitr::opts_chunk$set(echo = F, message = F, warning = F)
 library(kableExtra)
 x <- c(10, 14, 8, 11, 7, 6, 2, 5, 9, 9, 4, 6)
@@ -47,8 +47,11 @@ A study tries to determine the effect of smoking during the pregnancy in the wei
 kable(table) %>% kable_styling()
 ```
 
+
 a. Give the equation of the regression line of the weight of newborns on the daily number of cigarettes and interpret the slope.
+
 a. Which regression model is better to predict the weight of newborns, the  logarithmic or the exponential?
+
 a. Use the best of the two previous regression models to predict the weight of a newborn whose mother smokes 12 cigarettes a day. Is this prediction reliable?
 
 Use the following sums for the computations:  
@@ -58,16 +61,19 @@ $\sum x_iy_j=`r round(sum(x*y), 4)`$ cigarettes$\cdot$kg, $\sum x_i\log(y_j)=`r 
 
 Solution
 ========
+
 a. $\bar x=`r round(mx,4)`$ cigarettes, $s_x^2=`r round(s2x,4)`$ cigarettes$^2$.  
 $\bar y=`r round(my,4)`$ kg, $s_y^2=`r round(s2y,4)`$ kg$^2$.  
 $s_{xy}=`r round(sxy,4)`.$ cigarettes$\cdot$kg  
 Regression line: $y=`r round(reglin$coefficients[2],4)`x + `r round(reglin$coefficients[1],4)`$.
+
 a. $\overline{\log(x)}=`r round(mlogx,4)`$ log(cigarettes), $s_{\log(x)}^2=`r round(s2logx,4)`$ log(cigarettes)$^2$.  
 $\overline{\log(y)}=`r round(mlogy,4)`$ log(kg), $s_{\log(y)}^2=`r round(s2logy,4)`$ log(kg)$^2$.  
 $s_{x\log(y)}=`r round(sxlogy,4)`$ cigarettes$\cdot$log(kg), $s_{\log(x)y}=`r round(slogxy,4)`$ log(cigarettes)$\cdot$kg  
 Logarithmic coef. determination: $r^2=`r round(r2logxy,4)`$  
 Exponential coef. determination: $r^2=`r round(r2xlogy,4)`$  
 Therefore, the logarithmic models fits better the data and is better to predict the weight.
+
 a. Logarithmic regression model: $y=`r round(reglog$coefficients[1],4)`+`r round(reglog$coefficients[2],4)`\log(x)$.  
 Prediction: $y(12)=`r round(reglog$coefficients[1]+reglog$coefficients[2]*log(12), 4)`$ kg.
 The coefficient of determination is high but the sample size small, so the prediction is not enterely reliable.

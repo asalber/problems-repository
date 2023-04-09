@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 mean.day <- 12
 hours <- 1
@@ -20,14 +20,18 @@ Question
 ========
 A physical therapy clinic opens `r hours.day` hours a day and the average number of patients that arrive to the clinic is `r mean.day` a day.
 
+
 a. Compute the probability of arriving more than `r patients` patients in `r hours` hours.
+
 a. If the clinic has `r employees` physiotherapists and each of them can treat one patient per hour, what is the probability that a day there was some hour in which some patient can not be attended?
-How many physiotherapists must be in the clinic to guarantee that this probability is less than 10%:?
+How many physiotherapists must be in the clinic to guarantee that this probability is less than 10%?
 
 Solution
 ========
+
 a. Let $X$ be the number of patients that arrive in `r hours` hours. 
 $X\sim P(`r lambda1`)$ and $P(X>`r patients`)=`r round(sol1,4)`$.
+
 a. Let $Y$ be the number of hours in a day in which some patient can not be treated.
 $Y\sim B(`r hours.day`, `r round(sol1,4)`)$ and $P(Y>0)=`r round(sol2,4)`$.  
 The clinic requires 5 phisiotherapists, since $P(X>`r patients+1`)=`r round(sol1,4)`$ and $P(Y>0)=`r round(sol4,4)`$, with $Y\sim B(`r hours.day`, `r round(sol3,4)`)$ now.

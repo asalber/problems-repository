@@ -1,7 +1,7 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
-library(kntir)
+library(knitr)
 knitr::opts_chunk$set(echo = F, message = F, warning = F)
 library(kableExtra)
 set.seed(123)
@@ -42,11 +42,15 @@ The table below shows the number of injuries of several teams during a league an
 kable(table) %>% kable_styling()
 ```
 
+
 a. Draw the scatter plot.
+
 a. Which regression model is more suitable to predict the number of injuries as a function of the warm-up time, the logarithmic or the exponential? 
 Use that regression model to predict the expected number of injuries for a team whose players warm-up 20 minutes a day.
+
 a. Which regression model is more suitable to predict the warm-up time as a function of the number of injuries, the logarithmic or the exponential? 
 Use that regression model to predict the warm-up time required to have no more than 10 injuries in a league.
+
 a. Are these predictions reliable? Which one is more reliable?
 
 Use the following sums for the computations ($X$ warm-up time and $Y$ number of injuries):  
@@ -56,10 +60,12 @@ $\sum x_iy_j=`r sum(x*y)`$, $\sum x_i\log(y_j)=`r round(sum(x*log(y)),4)`$, $\su
 
 Solution
 ========
+
 a. 
 ```{r scatterplot-injuries-warm-up, fig=T, echo=F, height=4, width=5, dev=svg, fig.path="img"}
 plot(x, y, main="Scatter plot of warm-up time and injuries", xlab = "Warm-up time", ylab="Injuries")
 ```
+
 a. $\bar x=`r round(mx,4)`$ min, $s_x^2=`r round(s2x,4)`$ min$^2$.  
 $\bar \log(x)=`r round(mlogx,4)`$ log(min), $s_{\log(x)}^2=`r round(s2logx,4)`$ log(min)$^2$.  
 $\bar y=`r round(my,4)`$ injuries, $s_y^2=`r round(s2y,4)`$ injuries$^2$.  
@@ -70,9 +76,11 @@ Logarithmic determination coefficient: $r^2=`r round(r2logxy,4)`$
 So the exponential regression model es better to predict the number of injuries as a function of the warm-up time.  
 Exponential regression model: $y=e^{`r round(regexp$coefficients[1],4)`+`r round(regexp$coefficients[2],4)`x}$.  
 Prediction: $y(20)=`r round(exp(regexp$coefficients[1] + regexp$coefficients[2]*20),4)`$ injuries.
+
 a. The logarithmic model is better to predict the warm-up time as a function of the number or injuries.  
 Logarithmic regression model: $x=`r round(reglog$coefficients[1],4)`+`r round(reglog$coefficients[2],4)`\log(y)$.  
 Prediction: $x(10)=`r round(reglog$coefficients[1]+reglog$coefficients[2]*log(10),4)`$ min.
+
 a. Both predictions are very reliable since de deternation coefficient is very high but the last one is a little less reliable as it is for a value further from the data range.
 
 Meta-information 

@@ -1,7 +1,7 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
-library(kntir)
+library(knitr)
 knitr::opts_chunk$set(echo = F, message = F, warning = F)
 library(kableExtra)
 sumx <- 15.9
@@ -52,11 +52,14 @@ $\sum x_i=`r sumx`$, $\sum \log(x_i)=`r sumlogx`$, $\sum y_j=`r sumy`$, $\sum \l
 $\sum x_i^2=`r sumx2`$, $\sum \log(x_i)^2=`r sumlogx2`$, $\sum y_j^2=`r sumy2`$, $\sum \log(y_j)^2=`r sumlogy2`$,  
 $\sum x_iy_j=`r sumxy`$, $\sum x_i\log(y_j)=`r sumxlogy`$, $\sum \log(x_i)y_j=`r sumlogxy`$.
 
+
 a. Compute the equations of the logarithmic and exponential regression models of the score as a function of the average number of hours of study.
+
 a. Use the best of the previous models to predict the score for somebody that study $3.2$ hours a week. Is this prediction reliable?
 
 Solution
 ========
+
 
 a. $\bar x=`r round(mx,4)`$ hours, $s_x^2=`r round(s2x,4)`$ hours$^2$.  
 $\overline{\log(x)}=`r round(mlogx,4)`$ log(hours), $s_{\log(x)}^2=`r round(s2logx,4)`$ log(hours)$^2$.  
@@ -65,6 +68,7 @@ $\overline{\log(y)}=`r round(mlogy,4)`$ log(points), $s_{\log(y)}^2=`r round(s2l
 $s_{x\log(y)}=`r round(sxlogy,4)`$, $s_{\log(x)y}=`r round(slogxy,4)`$  
 Logarithmic regression model: $y=`r round(alog,4)`+`r round(blog,4)`\log(x)$  
 Exponential regression model: $y=e^{`r round(aexp,4)`+`r round(bexp,4)`x}$
+
 a. Logarithmic coefficient of determination: $r^2=`r round(r2logxy,4)`$  
 Exponential coefficient of determination: $r^2=`r round(r2xlogy,4)`$  
 Therefore, the best regression model to predict is the exponential.  

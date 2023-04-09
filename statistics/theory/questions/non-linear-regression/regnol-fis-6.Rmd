@@ -1,7 +1,7 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
-library(kntir)
+library(knitr)
 knitr::opts_chunk$set(echo = F, message = F, warning = F)
 library(kableExtra)
 x <- c(2015, 2016, 2017, 2018, 2019)
@@ -48,7 +48,9 @@ The evolution of the price of a muscle relaxant between 2015 and 2019 is shown i
 kable(table) %>% kable_styling()
 ```
 
+
 a. Which regression model is better to predict the price, the linear or the exponential?
+
 a. Use the best of the two previous models to predict the price in 2020.
 
 
@@ -59,6 +61,7 @@ $\sum x_iy_j=`r round(sum(x*y), 4)`$ cigarros$\cdot$kg, $\sum x_i\log(y_j)=`r ro
 
 Solution
 ========
+
 a. $\bar x=`r round(mx,4)`$ years, $s_x^2=`r round(s2x,4)`$ years$^2$.  
 $\bar y=`r round(my,4)`$ €, $s_y^2=`r round(s2y,4)`$ €$^2$.  
 $\overline{\log(y)}=`r round(mlogy,4)`$ log(€), $s_{\log(y)}^2=`r round(s2logy,4)`$ log(€)$^2$.  
@@ -66,6 +69,7 @@ $s_{xy}=`r round(sxy,4)`$, $s_{x\log(y)}=`r round(sxlogy,4)`$
 Linear coef. determination: $r^2=`r round(r2xy,4)`$  
 Exponential coef. determination: $r^2=`r round(r2xlogy,4)`$  
 Thus the exponential regression model is better to predict the price since the coef. of determination is greater.
+
 a. Exponential regression model: $y=e^{`r round(regexp$coefficients[1],4)`+`r round(regexp$coefficients[2],4)`x}$.  
 Prediction: $y(2020)=`r round(exp(regexp$coefficients[1] + regexp$coefficients[2]*2020),4)`$ €.
 

@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 lambda <- 2
 
@@ -11,17 +11,25 @@ sol3 <- dpois(14, lambda*7)
 
 Question
 ========
-The risks of getting the flu in two cities $A$ and $B$ with the same population size are 14%: and 8%: respectively.
+The risks of getting the flu in two cities $A$ and $B$ with the same population size are 14% and 8% respectively.
  
+
 a. Compute the probability of having more than 2 persons getting the flu in a random sample of 10 persons of the city $A$.
+
 a. Compute the probability of having more than 2 and less than 5 persons getting the flu in a random sample of 50 persons of the city $B$.
+
 a. Compute the probability of having 2 persons getting the flu in a random sample of 8 persons of the two cities.
+
 a. Compute the probability of having some person getting the flu in a random sample of 5 persons that have been living in both cities.
     Solution
 ========
+
 a. Let $X$ be the number of persons with flu in a sample of 10 persons from $A$, then $X\sim B(10, 0.14)$ and $P(X>2)=`r round(pbinom(2, 10, 0.14, lower.tail=F), 4)`$.
+
 a. Let $Y$ be the number of persons with flu in a sample of 50 persons from $B$, then $Y\sim B(50, 0.08)\approx P(4)$ and $P(2 < Y < 5) = `r round(ppois(4, 4) - ppois(2, 4), 4)`$.
+
 a. Let $Z$ be the number of persons with flu in a sample of 8 persons from $A$ and $B$, then $Z\sim B(8, 0.11)$ and $P(Z = 2) = `r round(dbinom(2, 8, 0.11), 4)`$.
+
 a. Let $U$ be the number of persons with flu in a sample of 5 persons living in both cities, then $U\sim B(5, 0.2088)$ and $P(U>0)=`r round(pbinom(0, 5, 0.2088, lower.tail=F), 4)`$.
 
 Meta-information 

@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 x <- c(3, 3, 5, 6, 7, 8, 3, 4, 2, 3)
 y <- c(2, 1, 2, 3, 6, 6, 2, 2, 1, 1)
@@ -41,16 +41,21 @@ Question
 The Regional Ministry of Health of the Community of Madrid realizes a possible relationship between the level of air pollution and the number of cases of pneumonia in the population in the first 10 weeks of the year. To verify this, the variable $X$ registers the number of pollution meters that exceed the pollution limits each week, and the variable $Y$ indicates the number of people affected by pneumonia in each week.
 
 ```{r echo=FALSE}
-library(kntir)
+library(knitr)
 knitr::opts_chunk$set(echo = F, message = F, warning = F)
 library(kableExtra)
 kable(table) %>% kable_styling()
 ```
 
+
 a. Are the number of people affected by pneumonia and the number of meters that exceed the pollution limits two linearly independent variables?
+
 a. According to the linear model, how does the number of people affected by pneumonia change in relation to the number of meters that exceed the pollution limits?
+
 a. Justify whether or not the linear relationship between the two variables is well explained and in what proportion.
+
 a. According to the exponential regression model, how many people are expected to be affected by pneumonia a week with 5 meters exceeding the pollution limits?
+
 a. Which of the following diagrams best represents the regression lines? Justify the answer.
 ```{r possible-regression-lines, fig=T, echo=F, fig.path="img", width=10, height=8}
 layout(matrix(1:4, ncol = 2, byrow = T))
@@ -76,14 +81,19 @@ $\sum x_iy_j=`r round(sum(x*y), 4)`$ meters$\cdot$persons, $\sum x_i\log(y_j)=`r
 
 Solution
 ========
+
 a. $\bar{x}=`r round(mx,4)`$ meters, $s_x^2=`r round(s2x,4)`$ meters$^2$.  
 $\bar y=`r round(my,4)`$ persons, $s_y^2=`r round(s2y,4)`$ persons$^2$.  
 $s_{xy}=`r round(sxy, 4)`$ meters$\cdot$persons. That means that there is a direct linear relation between the meters that exceed pollution limits and the people affected by pneumonia.
+
 a. $b_{yx}=`r round(lmyx$coefficients[2],4)`$ persons/meter. Thus, the number of people affected by pneumonia increases $`r round(lmyx$coefficients[2],4)`$ persons for every meter more that exceed the pollution limits.
-a. Linear coefficient of determination $r^2=`r round(r2xy, 4)`$. Therefore, the linear regression model explains $`r round(r2xy*100, 2)`$ %: of the variability of the number of people affected by pneumonia.
+
+a. Linear coefficient of determination $r^2=`r round(r2xy, 4)`$. Therefore, the linear regression model explains $`r round(r2xy*100, 2)`$ % of the variability of the number of people affected by pneumonia.
+
 a. $\overline{\log(y)}=`r round(mlogy,4)`$ log(persons), $s_{\log(y)}^2=`r round(s2logy,4)`$ log(persons)$^2$.  
 $s_{x\log(y)}=`r round(sxlogy,4)`$ meters$\cdot$log(persons).  
 Exponential regression model: $y=e^{`r round(expyx$coefficients[1],4)` +  `r round(expyx$coefficients[2],4)`x}$, and $y(5)=`r round(exp(expyx$coefficients[1] + expyx$coefficients[2] * 5), 4)`$ persons.
+
 a. Diagram $A$ because the relation is direct and very strong according to the linear coefficient of determination.
 
 Meta-information 
@@ -92,5 +102,5 @@ extype: num
 exsolution: Solution
 exname: reglin-18-med
 extol: 0.001
-%% \degree{Biotechnology}
+degree: Biotechnology
  

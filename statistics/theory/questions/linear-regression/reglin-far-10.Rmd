@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 x <- c(1, 2, 3, 4, 5, 6, 9, 12, 18, 24)
 y <- c(245.61, 201.1, 164.64, 134.8, 110.36, 90.36, 49.59, 27.21, 8.2, 2.47)
@@ -49,22 +49,32 @@ $\sum x_i=668$ min, $\sum y_i=855$ min, $\sum z_i=1466$ min,
 $\sum x_i^2=25056$ min$^2$, $\sum y_i^2=42161$ min$^2$, $\sum z_i^2=123904$ min$^2$,  
 $\sum x_iy_j=31522$ min$^2$, $\sum y_jz_j=54895$ min$^2$.
 
+
 a. Is there a linear relation between the times $X$ and $Y$? And between $Y$ and $Z$? How are these linear relationships?
+
 a. According to the regression line, how much will the time $X$ increase for every minute that time $Y$ increases?
+
 a. If we want to predict the time $Y$ using a linear regression model, ¿which of the two times $X$ or $Z$ is the most suitable?    Why?
+
 a. Using the chosen linear regression model in the previous question, predict the value of $Y$ for a value of $X$ or $Z$ of 40 minutes.
+
 a. If the correlation coefficient between the times $X$ and $Z$ is $r=-0.69$, compute the regression line of $X$ on $Z$.
 
 Solution
 ========
+
 a. $\bar x=`r round(mx,4)`$ min, $s_x^2=`r round(s2x,4)`$ min$^2$,  
 $\bar y=`r round(my,4)`$ min, $s_y^2=`r round(s2y,4)`$ min$^2$,  
 $\bar z=`r round(mz,4)`$ min, $s_z^2=`r round(s2z,4)`$ min$^2$,  
 $s_{xy}=`r round(sxy,4)`$ min$^2$ and $s_{yz}=`r round(syz,4)`$ min$^2$.  
 Thus, there is a direct linear relation between $X$ and $Y$ and an inverse linear relation between $Y$ and $Z$.
+
 a. $b_{xy}=`r round(bxy,4)`$ min.
+
 a. $r^2_{xy}=`r round(r2xy,4)`$ and $r^2_{yz}=`r round(r2yz,4)`$, thus the regression line of $Y$ on $Z$ explains better $Y$ than the regression line of $Y$ on $X$ since $r^2_{yz}>r^2_{xy}$.
+
 a. Regression line of $Y$ on $Z$: $y=`r round(ayz,4)` + `r round(byz,4)`z$ and $y(40)=`r round(ayz+byz*40, 4)`$.
+
 a. $s_{xz}=`r round(sxz, 4)`$ and the regression line of $X$ on $Z$ is $x=`r round(axz,4)` + `r round(bxz,4)`z$.
 
 Meta-information 

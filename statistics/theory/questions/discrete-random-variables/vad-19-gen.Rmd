@@ -1,5 +1,5 @@
 % LTeX: language=en-GB
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 nA = 10
 pA = 0.05

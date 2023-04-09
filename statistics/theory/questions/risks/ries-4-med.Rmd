@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 ntd <- 30
 nth <- 970
@@ -23,19 +23,29 @@ Question
 	
 We want to study the risk for a new vaccine to cause thrombi compared with a traditional vaccine. After applying the new vaccine to 1000 persons and the traditional vaccine to 3000 persons, we observed 30 persons with thrombi in the new vaccine group and 42 persons with thrombi in the traditional vaccine group.
 
+
 a. Compute the relative risk of suffering thrombi with the new vaccine and interpret it.
+
 a. Compute the odds ratio of suffering thrombi with the new vaccine and interpret it.
+
 a. Which association measure is more reliable? 
-a. In a random experiment we applied both vaccines (in different moments) to a sample and we observed that 4%: of persons suffered some thrombi (due to the new vaccine or to the traditional vaccine). Compute the probability of suffering thrombi with the new vaccine and no with the traditional one.
+
+a. In a random experiment we applied both vaccines (in different moments) to a sample and we observed that 4% of persons suffered some thrombi (due to the new vaccine or to the traditional vaccine). Compute the probability of suffering thrombi with the new vaccine and no with the traditional one.
+
 a. Are the events corresponding to suffering thrombi with the new vaccine and the traditional vaccine independent?
 
 Solution
 ========
 Let $T$ be the event of suffering thrombi.
+
 a. $RR(T)=`r round(rr, 4)`$. Thus, the risk of suffering thrombi with the new vaccine is more than the double that with traditional vaccine.
+
 a. $OR(T)=`r round(or, 4)`$. Thus, the odds of suffering thrombi with the new vaccine is more than the double that with traditional vaccine.
+
 a. Both measures are reliable because the study is prospective and we can estimate the incidence, but the relative risk is easier to interpret.
+
 a. Let $T_n$ and $T_t$ the events of suffering thrombi with the new and the traditional vaccines, respectively. $P(T_n\cap \overline{T_t}) = 0.026$.
+
 a. $P(T_t|T_n) = 0.1333 \neq P(T_t) = 0.014$, thus the events are dependent.
 
 Meta-information 

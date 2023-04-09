@@ -1,7 +1,7 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
-library(kntir)
+library(knitr)
 knitr::opts_chunk$set(echo = F, message = F, warning = F)
 library(kableExtra)
 x <- c(25, 29, 32, 35, 38, 40, 43, 45, 47)
@@ -50,8 +50,11 @@ The table below shows the evolution of the number of coronavirus infections sinc
 kable(table) %>% kable_styling()
 ```
 
+
 a. Which regression model, the linear or the exponential, is better to predict the number of coronavirus infections with time?
+
 a. According to the best of the two previous regression models, how many infections will there be after 100 days? Is this prediction reliable?
+
 a. If he number of deaths from coranvirus is linearly related to the number of infections, with a linear coefficient of determination $`r round(r2yz, 2)`$, how much will increase or decrease the number of infections for each death more if it is know that the number of deaths increases $`r round(reglinzy$coefficients[2],3)`$ for each infection more.  
 
 
@@ -62,6 +65,7 @@ $\sum x_iy_j=`r round(sum(x*y), 4)`$ days$\cdot$infections, $\sum x_i\log(y_j)=`
 
 Solution
 ========
+
 a. $\bar x=`r round(mx,4)`$ days, $s_x^2=`r round(s2x,4)`$ days$^2$.  
 $\bar y=`r round(my,4)`$ infections, $s_y^2=`r round(s2y,4)`$ infections$^2$.  
 $\overline{\log(y)}=`r round(mlogy,4)`$ log(infections), $s_{\log(y)}^2=`r round(s2logy,4)`$ log(infections)$^2$.  
@@ -69,8 +73,10 @@ $s_{xy}=`r round(sxy,4)`$ days$\cdot$infections, $s_{x\log(y)}=`r round(sxlogy,4
 Linear coefficient of determination: $r^2=`r round(r2xy,4)`$  
 Exponential coefficient of determination: $r^2=`r round(r2xlogy,4)`$  
 Thus, the exponential model is better to predict the number of infections since its coefficient of determination is greater.
+
 a. Exponential regression model: $y=e^{`r round(regexp$coefficients[1],4)`+`r round(regexp$coefficients[2],4)`x}$.  
 Prediction: $y(100)=`r round(exp(regexp$coefficients[1] + regexp$coefficients[2]*100),4)`$ infections. The prediction is not reliable because 100 days is far away from the range of days in the sample.
+
 a. According to the regression coefficient, ther will be $`r round(reglinyz$coefficients[2],3)`$ infections more for each death more. 
 
 Meta-information 

@@ -1,7 +1,7 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
-library(kntir)
+library(knitr)
 knitr::opts_chunk$set(echo = F, message = F, warning = F)
 library(kableExtra)
 x <- c(31, 32, 33, 33, 35, 35, 37, 37, 38, 39, 39, 41, 41, 42, 45, 46, 46, 47, 48, 48, 48, 52, 52, 54, 55, 55, 56, 57, 59, 61)
@@ -39,11 +39,17 @@ The account of the pharmacist-tiktoker @farmaceutikofer has numerous informative
 kable(data) %>% kable_styling()
 ```
 
+
 a. Compute the average and the most frequent value of the duration of the videos.
+
 a. How is the relative dispersion of the sample?
+
 a. Construct the frequency table of the sample grouping the data into classes of amplitude 5 seconds and plot the histogram.
+
 a. Compute the interquartile range and explains its meaning.
+
 a. Has the distribution a normal kurtosis?
+
 a. The ticktoker @pauloGsow uploads satirical videos about high school teachers with a mean duration of 45 seconds and a variance of 91 seconds. If both @farmaceutikofer and @pauloGsow upload a 51-second video, which of the two tiktokers has uploaded a shorter video in relation to their own account?
 
 

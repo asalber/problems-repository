@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 pC <- 0.08
 pHsiC <- 0.040
@@ -75,23 +75,31 @@ prob/.style={font=\\footnotesize,above}
 Question
 ========
 	
-8%: of people in a population consume cocaine. It is also known that 4%: of people who consume cocaine have a heart attack and 10%: of people who have a heart attack consume cocaine.
+8% of people in a population consume cocaine. It is also known that 4% of people who consume cocaine have a heart attack and 10% of people who have a heart attack consume cocaine.
+
 
 a. Construct the probability tree for the random experiment of drawing a random person from the population and measuring if he or she consumes cocaine and if he or she has a heart attack.
+
 a. Compute the probability that a random person of the population does not consume cocaine and does not have a heart attack.
+
 a. Are the events of consuming cocaine and having a heart attack dependent?
+
 a. Compute the relative risk and the odds ratio of suffering a heart attack consuming cocaine. Which association measure is more suitable for this study? Interpret it.
 
 Solution
 ========
 Let $C$ the event of consuming cocaine and $H$ the event of having a heart attack.
+
 a. 
 ```{r tree, echo = F}
 include_tikz(graf01, name = "graf", format = typ, markup = "tex", library = "positioning", width = "7cm")
 ```
 
+
 a. $P(\overline C\cap \overline H)=`r round(pnoCnoH, 4)`$.
+
 a. The events are dependent as $P(C)=`r pC`\neq P(C|H)=`r pCsiH`$.
+
 a. $RR(H)=`r round(rr, 4)`$ and $OR(H)=`r round(or, 4)`$. The odds ratio is more suitable as the study is retrospective. That means that the odds of having a heart attack is $`r round(or, 4)`$ times greater if a person consumes cocaine.
 
 Meta-information 

@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 x <- c(0, 0, 3, 3, 6, 6, 10, 10, 20, 20, 30, 30)
 y <- c(33.3, 31, 29.8, 27.8, 28, 29, 25.5, 23.8, 18.3, 15.5, 11.7, 10)
@@ -39,15 +39,19 @@ Question
 Laetisaric acid is a compound that can be used to control fungal diseases in some plantations. The table below shows the radial growth (in cm) of the fungus Pleurotus ostreatus exposed to different concentrations of laetisaric acid (ing mg/l).
 
 ```{r echo=FALSE}
-library(kntir)
+library(knitr)
 knitr::opts_chunk$set(echo = F, message = F, warning = F)
 library(kableExtra)
 kable(table) %>% kable_styling()
 ```
 
+
 a. Compute the equation of the regression line that best explains fungal growth as a function of acid concentration.
+
 a. Compute the linear correlation and determination coefficients and interpret them.
+
 a. How much does the fungal population increase or decrease for each one mg/dl increment in acid concentration?
+
 a. What are the expected fungal growths for acid concentrations of 20 and 200 mg/l? Which of these predictions is more reliable?
 
 Use the following sums for the computations:
@@ -55,12 +59,16 @@ $\sum x_i=`r sumx`$ mg/l, $\sum y_i=`r sumy`$ cm, $\sum x_i^2=`r sumx2`$ (mg/l)$
 
 Solution
 ========
+
 a. $\bar x=`r round(mx,4)`$ mg/dl, $s_x^2=`r round(s2x,4)`$ (mg/dl)$^2$,  
 $\bar y=`r round(my,4)`$ cm, $s_y^2=`r round(s2y,4)`$ cm$^2$,  
 $s_{xy}=`r round(sxy,4)`$ mg/dl $\cdot$ cm.  
 Regression line of fungal growth on acid concentration: $y=`r round(lm$coefficients[1], 4)`   `r round(lm$coefficients[2], 4)`x$.
+
 a. $r^2 = `r round(r2, 4)`$ and $r = `r round(r, 4)`$. As the linear correlation coefficient is close to -1 there is a strong inverse relation between the acid concentration and the fungal growth.
+
 a. The fungi will decrease `r round(abs(lm$coefficients[2]), 4)` for each one mg/l increment in the acid concentration.
+
 a. $y(20) = `r round(lm$coefficients[1] + lm$coefficients[2]*20, 4)`$ cm and $y(200) = `r round(lm$coefficients[1] + lm$coefficients[2]*200, 4)`$ cm. The prediction for 20 mg/dl is more reliable because 20 is in the range of values in the sample.
 
 Meta-information 

@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 ppv <- 0.4
 npv <- 0.95
@@ -16,16 +16,22 @@ minspe <- 0.857
 
 Question
 ========
-A diagnostic test for a disease with a prevalence of 10%: has a positive predictive value of 40%: and negative predictive value of 95%:
+A diagnostic test for a disease with a prevalence of 10% has a positive predictive value of 40% and negative predictive value of 95%
+
 
 a. Compute the sensitivity and the specificity of the test.
+
 a. Compute the probability of a right diagnose.
+
 a. What must be the minimum sensitivity of the test to be able to diagnose the disease? 
 
 Solution
 ========
+
 a. Sensitivity $P(+|D)=`r round(sen, 4)`$ and specificity $P(-|\overline D)=`r round(spe, 4)`$.
+
 a. $P(\mbox{Right diagnose}) = P(D \cap +) + P(\overline D \cap -) = `r round(tp + tn, 4)`$.
+
 a. Minimum sensitivity to diagnose the disease $P(+|D)=`r round(minspe, 4)`$.
 
 

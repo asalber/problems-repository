@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 x <- c(rep(3,79),rep(9,266),rep(15,193),rep(21,188), rep(27,117), rep(33, 56))
 y <- c(rep(3,25),rep(9,40),rep(15,21),rep(21,12), rep(27,3))
@@ -47,10 +47,15 @@ $$
 \end{array}
 $$
 
-a. Compute the Von Luschan value such that 30%: of individuals are above that value.
+
+a. Compute the Von Luschan value such that 30% of individuals are above that value.
+
 a. In which group is the mean more representative, in healthy or in sick persons?
+
 a. Which distribution is more symmetric, the healthy or the sick persons distribution? And, which one is more peaked?
+
 a. Which individual has a relatively higher Von Luschan value, a healthy person with a score 15 or a sick person with a score 10?
+
 a. Taking the standard scores of healthy and sick persons, in which distribution is the mean of the standard scores more representative?
 
 

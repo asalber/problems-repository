@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 x1 <- 230
 p1 <- 1 - 3420 / 10000
@@ -28,14 +28,20 @@ Question
 In a study about the cholesterol two samples of 10000 males and 10000 females was taken. It was observed that 3420 males and 1234 females had a cholesterol level above 230 mg/dl, and that 4936 males had a cholesterol level between 210 and 230 mg/dl. 
 Assuming that the cholesterol level in males and females follows a normal distribution with the same standard deviation, compute:
 
+
 a. The means and the standard deviation of the distributions of cholesterol level in males and females.
+
 a. The percentage of males with cholesterol level between 200 and 240 mg/dl.
+
 a. The interquartile range of the cholesterol level of females.
 
 Solution
 ========
+
 a. Let $X$ be cholesterol level in males and $Y$ the cholesterol level in females, then $X\sim N(`r round(meanx, 4)`, `r round(sd, 4)`)$ and $X\sim N(`r round(meany, 4)`, `r round(sd, 4)`)$
+
 a. $P(200\leq X \leq 240) = `r round(p, 4)`$.
+
 a. $IQR = `r round(iqr, 4)`$ mg/dl.
 
 Meta-information 

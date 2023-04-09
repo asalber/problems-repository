@@ -1,7 +1,7 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
-library(kntir)
+library(knitr)
 knitr::opts_chunk$set(echo = F, message = F, warning = F)
 library(kableExtra)
 x <- c(4.7, 3.6, 5.2, 6.8, 9.5, 4.8, 5.6, 5.4)
@@ -47,11 +47,17 @@ kable(data) %>% kable_styling()
 
 Se pide: 
 
+
 a. In which group, men or women, is the mean more representative?
+
 a. In which group, men or women, is the uric acid distribucion more simmetric?
+
 a. In which group, men or women, is the uric acid distribution flatter?
+
 a. Can we assume that the uric acid sample from women comes from a normal population?
+
 a. What uric acid concentration must a woman have to be relative higher than 6 mg/dl in a man?
+
 a. If all the values of the variable $X$ are multiplied by a number, what must that number be to make the mean of the new variable as representative as the mean of $Y$?
 
 
@@ -61,12 +67,17 @@ Women: $\sum y_i=`r sum(y)`$ mg/dl, $\sum y_i^2=`r sum(y^2)`$ (mg/dl)$^2$, $\sum
 
 Solution
 ========
+
 a. Men: $\bar x=`r round(mx,4)`$ mg/dl, $s^2=`r round(s2x,4)`$ (mg/dl)$^2$, $s=`r round(sx,4)`$ mg/dl and $cv=`r round(cvx,4)`$.  
 Women: $\bar y=`r round(my,4)`$ mg/dl, $s^2=`r round(s2y,4)`$ (mg/dl)$^2$, $s=`r round(sy,4)`$ mg/dl and $cv=`r round(cvy,4)`$.  
 Thus, the mean of uric acid is more representative in men than in women as the coefficient of variation is smaller.   
+
 a. $g_{1x}=`r round(g1x,4)`$ and $g_{1y}=`r round(g1y,4)`$. Thus, the distribution of uric acid in men is more symmetric as the coefficient of skewness is closer to 0.
+
 a. $g_{2x}=`r round(g2x,4)`$ and $g_{2y}=`r round(g2y,4)`$. Thus, the distribution of uric acid in men is flatter as the coefficient of kurtosis is smaller.
+
 a. As the coefficient of skewness and the coefficient of kurtosis are between -2 and 2 we can assume that the uric acid sample of women comes from a normal population.
+
 a. The uric acid must be at least $`r round(vy,4)`$.
 
 Meta-information 

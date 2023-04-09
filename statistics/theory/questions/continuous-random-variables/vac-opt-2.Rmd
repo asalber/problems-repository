@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 m1 <- 26
 s1 <- 2.1
@@ -32,19 +32,28 @@ Question
 It is known that eye pressure in patients with glaucoma follows a normal distributions with mean $`r m1`$ mmHg and standard deviation $`r s1`$ mmHg, while in people without glaucoma follows a normal distribution with mean $`r m2`$ mmHg and standard deviation $`r s2`$ mmHg.
 A test for detecting glaucoma gives a positive outcome when the eye pressure is above `r x1` mmHg and a negative outcome if not. 
 
+
 a. Compute the sensitivity and the specificity of the test.  
 **Remark**: If you are not able to compute this values, assume a sensitivity of $0.95$ and a specificity of $0.97$ for the following parts.
-a. If there are `r pre*100`%: of persons with glaucoma in the population, what are the positive and negative predictive values of the test?
+
+a. If there are `r pre*100`% of persons with glaucoma in the population, what are the positive and negative predictive values of the test?
+
 a. If we consider `r n1` persons with a positive outcome in the test, what is the probability that more than `r x2` suffer glaucoma?
+
 a. If we apply the test to `r n2` persons, what is the probability of getting between `r x3` and `r x4` positive outcomes, both included?
 
 Solution
 ========
-a. Let $X_1$ the eye pressure in patients with glaucoma and $X_2$ in people without glaucoma.  
+
+a. Let $X_1$ the eye pressure in patients with glaucoma and $X_2$ in people without glaucom
+a.  
 Sensitivity: $P(+|D)=P(X_1>22)=`r round(sen,4)`$.  
 Specificity: $P(-|\overline{D})=P(X_2\leq 22)=`r round(spe,4)`$.
+
 a. $PPV=P(D|+)=`r round(ppv,4)`$ and $NPV=P(\overline D|-)=`r round(npv,4)`$.
+
 a. Let $Y$ be the number of persons with glaucoma in a sample of 10 persons with a positive outcome in the test. $Y\sim B(`r n1`,`r round(ppv,4)`)$ and $P(Y>`r x2`)=`r round(p1,4)`$.
+
 a. Let $U$ be the numer of persons with a positive outcome in the test in a sample of 70 persons. $U\sim B(`r n2`,`r round(p,4)`)\approx P(`r round(lambda,4)`)$ and $P(`r x3`\leq U\leq `r x4`)=`r round(p2,4)`$.
 
 Meta-information 

@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 lambda1 <- 3
 lambda2 <- 12
@@ -15,12 +15,16 @@ Question
 ========
 A basketball player scores 12 points per game on average.
 
+
 a. What is the probability that the player scores more than 4 points in a quarter?
+
 a. If the player plays 10 games in a league, what is the probability of scoring less than 6 points in some game?
 
 Solution
 ========
+
 a. Let $X$ be the points scored in a quarter by the player. Then $X\sim P(3)$, and $P(X>4)=`r round(p1, 4)`$.
+
 a. Let $Y$ be the number of points scored in a game by the player. Then $Y\sim P(12)$ and $P(Y<6)=`r round(p2,4)`$.  
 Let $Z$ be the number of games with less than 6 points scored by the player. Then $Z\sim B(10, `r round(p2,4)`)$, and $P(Z>0)=`r round(p3,4)`$.
 

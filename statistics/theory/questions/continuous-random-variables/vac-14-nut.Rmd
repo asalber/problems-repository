@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 
 ## QUESTION/ANSWER GENERATION
@@ -7,16 +7,20 @@
 
 Question
 ========
-A study tries to determine the effect of a low fat diet in the lifetime of rats. The rats where divided into two groups, one with a normal diet and another with a low fat diet. It is assumed that the lifetimes of both groups are normally distributed with the same variance but different mean. If 20%: of rats with normal diet lived more than 12 months, 5%: less than 8 months, and 85%: of rats with low fat diet lived more than 11 months,
+A study tries to determine the effect of a low fat diet in the lifetime of rats. The rats where divided into two groups, one with a normal diet and another with a low fat diet. It is assumed that the lifetimes of both groups are normally distributed with the same variance but different mean. If 20% of rats with normal diet lived more than 12 months, 5% less than 8 months, and 85% of rats with low fat diet lived more than 11 months,
+
 
 a. Compute the means and the standard deviation of the lifetime of rats following a normal diet and a low fat diet?  
 Remark: If you do not know how to compute them, for the next part use a mean of 11 months and a standard deviation of $1.5$ months for normal diet rats, and a mean of $12.5$ months for low fat diet rats.
-a. If 40%: of the rats were under a normal diet, and 60%: of rats under a low fat diet, what is the probability that a random rat die before 9 months?
+
+a. If 40% of the rats were under a normal diet, and 60% of rats under a low fat diet, what is the probability that a random rat die before 9 months?
 
 Solution
 ========
 Let $X_1$ and $X_2$ be the lifetime of rats with a normal diet and a low fat diet respectively,
+
 a. $\mu_2=12.6673$ months and $s=1.6087$ months.
+
 a. $P(X<9)=0.068$.
 
 Meta-information 

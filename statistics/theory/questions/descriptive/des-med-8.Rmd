@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 require(xtable)
 classes <- c("10-30", "30-45", "45-60", "60-90", "90-120", "120-180")
@@ -52,10 +52,15 @@ The table below summarizes the time (in minutes) required to remove anesthesia a
 kable(data) %>% kable_styling()
 ```
   
+
 a. Are there some outliers in the sample?
+
 a. Compute the mean. Is it representative?
-a. If according to a postoperative protocol the 15%: of patients that require more time to remove the anesthesia must be monitored, above what time should a patient be monitored?
-a. If we apply a drug that is anesthesia antagonist, it is known that the time required to remove the anesthesia decreases a 25%:. How will the time decrease affect the representativeness of the mean?
+
+a. If according to a postoperative protocol the 15% of patients that require more time to remove the anesthesia must be monitored, above what time should a patient be monitored?
+
+a. If we apply a drug that is anesthesia antagonist, it is known that the time required to remove the anesthesia decreases a 25%. How will the time decrease affect the representativeness of the mean?
+
 a. If it is known that another type of anesthesia $B$ has mean 50 minutes and standard deviation 15 minutes, what time is relatively greater, 70 minutes with this type of anesthesia or 60 minutes with the type $B$?.
 
 
@@ -63,12 +68,17 @@ Use the following sums for the computations: $\sum x_in_i=`r sum(x)`$ min, $\sum
 
 Solution
 ========
+
 a. $Q_1=`r round(q1,4)`$, $Q_3=`r round(q3,4)`$, $IQR=`r round(iqr,4)`$, $f_1=`r round(f1,4)`$ and $f_2=`r round(f2,4)`$. Since the last class contains values above the upper fence, there could be outliers. 
+
 a. $\bar x=`r round(mx,4)`$ min, $s^2=`r round(s2x,4)`$ min$^2$, $s=`r round(sx,4)`$ min and $cv=`r round(cvx,4)`$
 Thus the representativity of the mean is moderate.
+
 a. $P_{85}=`r round(p85,4)`$ min.
+
 a. Applying the linear transformation $y=0.75x$, $\bar y=`r round(0.75*mx,4)`$ min, $s_y=`r round(0.75*sx,4)`$ min and $cv=`r round(cvx,4)`$.
 Thus the representativity of the mean is the same.
+
 a. Standard score in first anesthesia: $z(70)=`r round(zx,4)`$.  
 Standard score in anesthesia $B$: $z(60)=`r round(zy,4)`$.  
 Thus, 60 min with anesthesia $B$ is relatively greater.

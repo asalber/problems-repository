@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 m1 <- 4.5
 s1 <- 0.2
@@ -22,13 +22,17 @@ Question
 ========
 A diagnostic test to determine doping of athletes returns a positive outcome when the concentration of a substance in blood is greater than `r x1` $\mu$g/ml.
 If the distribution of the substance concentration in doped athletes follows a normal distribution model with mean $`r m1`$ $\mu$g/ml and standard deviation $`r s1`$ $\mu$g/ml, and in non-doped athletes is normally distributed with mean $`r m2`$ $\mu$g/ml and standard deviation $`r s2`$ $\mu$g/ml,
+
 a. what is the sensitivity and specificity of the test?
-a. If there is a `r pre`%: of doped athletes in a competition, what are the positive and the negative predicted values? Interpret them.
+
+a. If there is a `r pre`% of doped athletes in a competition, what are the positive and the negative predicted values? Interpret them.
 
 Solution
 ========
 Let $X\sim N(`r m1`,`r s1`)$ be the substance concentration in doped athletes and $Y\sim N(`r m2`,`r s2`)$ the substance concentration in non-doped athletes. 
+
 a. Sensitivity $P(+|D)=P(X>`r x1`)=`r round(sen,4)`$ and specificity $P(-|\overline D)=P(Y<`r x1`)=`r round(spe,4)`$.
+
 a. PPV $P(D|+)=`r round(ppv,4)`$ and NPV $P(\overline D|-)=`r round(npv,4)`$.
 
 Meta-information 

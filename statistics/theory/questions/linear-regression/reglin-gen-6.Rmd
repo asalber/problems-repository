@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 ```
 
@@ -8,14 +8,20 @@ Question
 In a regression study about the relation between two variables $X$ and $Y$ we got $\bar x=7$ and $r^2=0.9$.
 If the equation of the regression line of $Y$ on $X$ is $y-x=1$, compute
 
+
 a. The mean of $Y$.
+
 a. The equation of the regression line of $X$ on $Y$.
+
 a. What value does this regression model predict for $x=6$? And for $y=10$?
 
 Solution
 ========
+
 a. $\bar y=8$.
+
 a. Regression line of $X$ on $Y$: $x=0.9y-0.2$.
+
 a. $y(6)=7$ and $x(10)=8.8$.
 
 Meta-information 

@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 tp <- 60
 fn <- 10
@@ -30,15 +30,21 @@ $$
 \end{array}
 $$
 
+
 a. Compute the sensitivity and the specificity of the test.
+
 a. Compute the positive and the negative predictive values. Is this test better to confirm or to rule out the infection?
-a. If another study has determined that the true prevalence of the infection is 2%:, how does this affect to the predictive values?
+
+a. If another study has determined that the true prevalence of the infection is 2%, how does this affect to the predictive values?
 
 Solution
 ========
 Let $D$ be the event corresponding to suffering the urinary infection and $+$ and $-$ the events corresponding to get a positive and negative outcome in the test respectively.
+
 a. Sensitivity = $`r round(sen, 4)`$ and Specificity = $`r round(spe, 4)`$.
+
 a. $PPV=`r round(ppv, 4)`$ and $NPV=`r round(npv,4)`$. Since the $PPV<NPV$ the test is better to rule out the infection.
+
 a. $PPV=`r round(ppv2, 4)`$ and $NPV=`r round(npv2,4)`$. The positive predictive value descreases a lot while the negative predictive value increases al little bit.
   
 Meta-information 

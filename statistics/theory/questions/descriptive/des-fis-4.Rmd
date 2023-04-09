@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 require(xtable)
 classes <- c("(30,35]", "(35,40]", "(40,45]", "(45,50]")
@@ -50,10 +50,15 @@ kable(data) %>% kable_styling()
 
 In a another race in Paris, the mean of time was 40 minutes, the standard deviation 5 minutes and the coeffitient of skewness $0.75$.
 
+
 a. What percentage of runners took less than 42 minutes to reach the finish in Madrid?
+
 a. Compute and interpret the interquartile range of the time for Madrid race.
+
 a. In which race the mean of the time is more representative?
+
 a. In which race the time have a more simmetric distribution?
+
 a. In which race a time of 39 minutes to reach the finish is relatively smaller?
 
 
@@ -61,11 +66,16 @@ Use the following sums for the computations: $\sum x_i=`r sum(x)`$ min, $\sum x_
 
 Solution
 ========
-a. $F(42)=0.66$, thus approximately $66%:$ of runners finished before 42 minutes.
-a. $Q_1=`r round(q1,4)`$ min, $Q_3=`r round(q3,4)`$ min, $IQR=`r round(iqr,4)`$ min. The central 50%: of times fall in a range of $`r round(iqr,4)`$ minutes.
+
+a. $F(42)=0.66$, thus approximately $66%$ of runners finished before 42 minutes.
+
+a. $Q_1=`r round(q1,4)`$ min, $Q_3=`r round(q3,4)`$ min, $IQR=`r round(iqr,4)`$ min. The central 50% of times fall in a range of $`r round(iqr,4)`$ minutes.
+
 a. Madrid statistics: $\bar x=`r round(mx,4)`$ min, $s^2=`r round(s2x,4)`$ min$^2$, $s=`r round(sx,4)`$ min and $cv=`r round(cvx,4)`$.  
 Paris statistics: $cv=`r round(cvy,4)`$. Thus, the mean of time in Madrid is a little bit more representative since the coef. of variation is smaller.
+
 a. $g_1=`r round(g1x,4)`$, that is closer to 0 than the distribution of times in Paris, thus the distribution of times in Madrid is more simmetric.
+
 a. The standard score of the Madrid sample is $z(39)=`r round(zx,4)`$ and the standard score of the Paris one $z(39)=`r round(zy,4)`$, thus a time of 39 min is relatively smaller in the sample of Paris.
 
 Meta-information 

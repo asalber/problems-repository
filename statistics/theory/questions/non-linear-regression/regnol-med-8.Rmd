@@ -1,7 +1,7 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
-library(kntir)
+library(knitr)
 knitr::opts_chunk$set(echo = F, message = F, warning = F)
 library(kableExtra)
 x <- c(10, 20, 30, 40, 50, 60, 70, 80)
@@ -47,8 +47,11 @@ Question
 kable(table) %>% kable_styling()
 ```
 
+
 a. According to the linear regression model, how much will the response time increase or decrease  for each mg we increase the dose?
+
 a. Based on the exponential model, what will be the expected response time for a 75 mg dose?
+
 a. If a response time greater than one second is considered dangerous for health, from what level should the administration of the doping substance be regulated, or even prohibited, according to the logarithmic model?
 
 Use the following sums for the computations:  
@@ -58,17 +61,20 @@ $\sum x_iy_j=`r round(sum(x*y), 4)`$ mg$\cdot$$10^{-2}$ s, $\sum x_i\log(y_j)=`r
 
 Solution
 ========
+
 a. $\bar x=`r round(mx,4)`$ mg, $s_x^2=`r round(s2x,4)`$ mg$^2$.  
 $\bar y=`r round(my,4)`$ $10^{-2}$ s, $s_y^2=`r round(s2y,4)`$ $10^{-4}$ s$^2$.  
 $s_{xy}=`r round(sxy,4)`$ mg$\cdot 10^{-2}$ s.  
 $b_{yx} = `r round(reglin$coefficients[2],4)`$ $10^{-2}$ s/mg.  
 Therefore, the response time increases $`r round(reglin$coefficients[2],4)`$ hundredths of a second for each mg the dose is increased.
+
 a. $\overline{\log(y)}=`r round(mlogy,4)`$ log($10^{-2}$ s), $s_{\log(y)}^2=`r round(s2logy,4)`$ log($10^{-2}$ s)$^2$.  
 $s_{x\log(y)}=`r round(sxlogy,4)`$ mg$\cdot\log(10^{-2}$ s).  
 Exponential regression model: $y=e^{`r round(regexp$coefficients[1],4)`+`r round(regexp$coefficients[2],4)`x}$.  
 Prediction: $y(75)=`r round(exp(regexp$coefficients[1] + regexp$coefficients[2]*75),4)`$ $10^{-2}$ s.  
 Exponential coefficient of determination: $r^2=`r round(r2xlogy,4)`$  
 Thus, the exponential model fits almost perfectly to the cloud of points of the scatter plot, but the sample is too small to get reliable predictions.
+
 a. Logarithmic regression model: $x=`r round(reglog$coefficients[1],4)`+`r round(reglog$coefficients[2],4)`\ln(y)$.  
 Prediction: $x(100)=`r round(reglog$coefficients[1] + reglog$coefficients[2]*log(100),4)`$ mg.  
 

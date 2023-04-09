@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 library(MASS)
 pA <- 4/5
@@ -20,16 +20,24 @@ Question
 ========
 The probability that an injury $A$ is repeated is $`r fractions(pA)`$, the probability that another injury $B$ is repeated is $`r fractions(pB)`$, and the probability that none of them are repeated is $`r fractions(pNoANoB)`$.
 Compute the probability of the following events:
+
 a. At least one injury is repeated.
+
 a. Only injury $B$ is repeated.
+
 a. Injury $B$ is repeated if injury $A$ has been repeated.
+
 a. Injury $B$ is repeated if injury $A$ has not been repeated. 
 
 Solution
 ========
+
 a. $P(A\cup B)=`r fractions(pAoB)`$.
+
 a. $P(B\cap\overline{A})=`r fractions(pNoAB)`$.
+
 a. $P(B/A)=`r fractions(pBSiA)`$.
+
 a. $P(B/\overline{A})=`r fractions(pBSiNoA)`$.
 
 Meta-information 

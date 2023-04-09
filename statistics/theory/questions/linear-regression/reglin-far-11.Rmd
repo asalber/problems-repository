@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 x <- c(175, 182, 190, 165, 172, 183, 187, 174, 168, 178)
 y <- c(164, 175, 165, 160, 155, 172, 160, 151, 165, 163)
@@ -47,21 +47,29 @@ $\sum x_i=`r sumx`$ cm, $\sum y_i=`r sumy`$ cm, $\sum z_i=`r sumz`$ cm,
 $\sum x_i^2=`r sumx2`$ cm$^2$, $\sum y_i^2=`r sumy2`$ cm$^2$, $\sum z_i^2=`r sumz2`$ cm$^2$,  
 $\sum x_iy_j=`r sumxy`$ cm$^2$, $\sum x_iz_j=`r sumxz`$ cm$^2$, $\sum y_iz_j=`r sumyz`$ cm$^2$.
 
+
 a. On which height does the height of the son depend more linearly, the height of the father or the mother?
+
 a. Using the best linear regression model, predict the height of a son with a father 181 cm tall and a mother 163 cm tall.
+
 a. According to the linear model, how much the height of the son will increase for each centimetre that increases the height of the father? And for each centimetre that increases the height of the mother?
+
 a. How would the reliability of the prediction be if the heights were measured in inches? (An inch is 2.54 cm).
 \end{enumerate} 
 
 Solution
 ========
+
 a. $\bar x=`r round(mx,4)`$ cm, $s_x^2=`r round(s2x,4)`$ cm$^2$,  
 $\bar y=`r round(my,4)`$ cm, $s_y^2=`r round(s2y,4)`$ cm$^2$,  
 $\bar z=`r round(mz,4)`$ cm, $s_z^2=`r round(s2z,4)`$ cm$^2$,  
 $s_{xz}=`r round(sxz,4)`$ cm$^2$ and $s_{yz}=`r round(syz,4)`$ cm$^2$.  
 $r^2_{xz}=`r round(r2xz,4)`$ and $r^2_{yz}=`r round(r2yz,4)`$, thus the height of the son depends linearly more on the height of the father since the $r^2_{xz}>r^2_{yz}$.
+
 a. Regression line of $Z$ on $X$: $z=`r round(azx,4)` + `r round(bzx,4)`x$ and $z(181)=`r round(predz, 4)`$.
+
 a. The height of the son will increase $`r round(bzx,4)`$ cm per cm of the height of the father and $`r round(bzy,4)`$ cm per cm of the height of the mother.
+
 a. The reliability of the prediction will be the same, as after applying the same linear transformation to $X$ and $Z$, the variances are multiplied by the square of the slope and the covariance is also multiplied by de square of the slope.
 
 Meta-information 

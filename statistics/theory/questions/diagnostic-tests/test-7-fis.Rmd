@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 tp1 <- 87
 fn1 <- 33
@@ -52,19 +52,27 @@ $$
 \end{array}
 $$
 
+
 a. Which test is more sensitive? Which one is more specific?
+
 a. Acording to the predictive values, which test is better to diagnose the injury? Which one is better to rule out the injury?
+
 a. Assuming that both tests are independent, what is the probability of getting a right diagnose with both tests if we apply both tests to a healthy person?
+
 a. Assuming that both tests are independent, what is the probability of getting at least a positive outcome if we apply both tests to a random person?
 Solution
 ========
+
 a. Test $A$: sen = $`r round(sen1, 4)`$ and spe = $`r round(spe1, 4)`$  
 Test $B$: sen = $`r round(sen2, 4)`$ and spe = $`r round(spe2, 4)`$  
 Thus, test $A$ is more specific and test $B$ is more sensitive.
+
 a. Test $A$: PPV = $`r round(ppv1, 4)`$ and NPV = $`r round(npv1, 4)`$  
 Test $B$: sen = $`r round(ppv2, 4)`$ and spe = $`r round(npv2, 4)`$  
 Thus, test $A$ is better to diagnose the disease and test $B$ is better to rule out the disease.
+
 a. $P(-_1\cap -_2 | \overline{D}) = `r round(p1, 4)`$.
+
 a. $P(+_1\cup +_2) = `r round(p2, 4)`$.
 
 Meta-information 

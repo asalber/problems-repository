@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 
 
@@ -10,8 +10,11 @@ Question
 ========
 The probability that a child of a mother with the color-blind gene and a father without the color-blind gene is a color-blind male is $0.25$.
 It is also known that in a population there is one color-blind male for every 5000 males.
+
 a. If this couple has 5 children, what is the probability that at most 2 of them are color-blind males?
+
 a. If this couple has 5 children, and the gender of the children is equiprobable, what is the probability that 3 or more are females?
+
 a. In a random samble of 10000 males of this population, what is the probability that more than 3 are color-blind males?
 
 

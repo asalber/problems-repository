@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 library(ggplot2)
 set.seed(123)
@@ -22,16 +22,24 @@ p <- ggplot(data, aes(x=Score, y=Subject)) + geom_boxplot(width=0.5)
 p
 ```
 
+
 a. Which subject is more difficult?
+
 a. Which subject has more central dispersion?
+
 a. Which subjects have outliers?
+
 a. Which subject is more asymmetric?
 
 Solution
 ========
+
 a. Subject $Y$ because its scores are smaller.
+
 a. Subject $X$ because the box is wider.
+
 a. Subject $Z$ because there is a score out of the whiskers.
+
 a. Subject $Z$ because the distance from the first quartile to the median (left side of the box) is greater than de distance from the third quartile to the median (right side of the box).
 
 Meta-information 

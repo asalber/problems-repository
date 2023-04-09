@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 n1 <- 5
 n2 <- 5
@@ -18,15 +18,21 @@ Question
 ========
 The probability that a child of a mother with the color-blind gene and a father without the color-blind gene is a color-blind male is $0.25$.
 It is also known that in a population there is one color-blind male for every 5000 males.
+
 a. If this couple has 5 children, what is the probability that at most 2 of them are color-blind males?
+
 a. If this couple has 5 children, and the gender of the children is equiprobable, what is the probability that 3 or more are females?
+
 a. In a random sample of 10000 males of this population, what is the probability that more than 3 are color-blind males?
 
 
 Solution
 ========
+
 a. Let $X$ be the number of color-blind sons in a sample of 5 children, then $X\sim B(`r n1`, `r p1`)$ and $P(X\leq 2)=`r round(sol1, 4)`$.
+
 a. Let $Y$ be the number of girls in a sample of 5 children, then $Y\sim B(`r n2`, `r p2`)$ and $P(Y\geq 3)=`r round(sol2, 4)`$.
+
 a. Let $Z$ be the number of color-blind males in a sample of 10000 males, then $Z\sim B(`r n3`, `r p3`)\approx P(`r round(n3*p3, 4)`)$ and $P(Z>3)=`r round(sol3, 4)`$.    
 
 Meta-information 

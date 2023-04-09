@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 require(xtable)
 xi <- c(0, 1, 2, 3, 4, 5, 6, 8)
@@ -60,9 +60,13 @@ print(xtable(data, align=c("c", "c", "r", "r"), auto=T), tabular.environment="ar
 ```
 
 Se pide:
+
 a. Draw the box plots of the failed subjects in the current and the previous year courses and compare them.
+
 a. Can we assume that both samples come from a normal population?
+
 a. In which sample the mean is more representative?
+
 a. Which number of failed subjects is greater, 7 in the current course or 6 in the previous year course?
 
 
@@ -72,6 +76,7 @@ Current course: $\sum y_in_i=`r sum(y)`$, $\sum y_i^2n_i=`r sum(y^2)`$, $\sum (y
 
 Solution
 ========
+
 a. 
 ```{r box-plot-scores, fig=T, echo=F, height=3, width=4, dev="svg", fig.path="img"}
 library(ggplot2)
@@ -86,12 +91,15 @@ print(p)
 ```
 
 Both distributions are pretty similar. The central dispersion is the same and both are right skewed. The only difference is that there is an outlier in the current year distribution.  
+
 a. Previous year course: $\bar x=`r round(mx,4)`$, $s^2=`r round(s2x,4)`$, $s=`r round(sx,4)`$, $g_1=`r round(g1x,4)`$ and $g_2=`r round(g2x,4)`$.\\ 
 Current course: $\bar y=`r round(my,4)`$, $s^2=`r round(s2y,4)`$, $s=`r round(sy,4)`$, $g_1=`r round(g1y,4)`$ and $g_2=`r round(g2y,4)`$.  
 As the coefficients of skewness and kurtosis are between -2 and 2, we can assume that both distributions come from a normal distribution.
+
 a. Previous year course: $cv=`r round(cvx,4)`$.  
 Current year: $cv=`r round(cvy,4)`$.  
 Thus, the mean is more representative in the previous year course, since the coefficient of variation is smaller.
+
 a. Previous year course: $z(6)=`r round(zx, 4)`$.  
 Current course: $z(7)=`r round(zy, 4)`$.  
 Thus, 7 failed subjects in the current course is relatively less than 6 in the previous year course, since the standard score is smaller.

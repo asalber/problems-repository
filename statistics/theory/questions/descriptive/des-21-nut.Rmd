@@ -1,7 +1,7 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
-library(kntir)
+library(knitr)
 knitr::opts_chunk$set(echo = F, message = F, warning = F)
 library(kableExtra)
 #library(rkTeaching)  // I get an error in the compilation
@@ -67,22 +67,30 @@ $$
 \end{array}
 $$
 
+
 a. Complete the table explaining how.
+
 a. Plot the cumulative frequency polygon.
+
 a. Are there outliers?
+
 a. Study the normality of the distribution.
+
 a. If another sample of 18-years-old people has a mean $2.1$ drinks and a variance $1.5$ drinks$^2$, in which distribution is more representative the mean?
+
 a. Who consumes a higher relative amount of sugary drinks, a 16-years-old who consumes 3 drinks a day or a 18-years-old who consumes 4?
 
 Use the following sums for the computations: $\sum x_i= `r sum(x)`$ drinks, $\sum x_i^2=`r sum(x^2)`$ drinks$^2$, $\sum (x_i-\bar x)^3=`r round(sum((x-mx)^3),2)`$ drinks$^3$ and $\sum (x_i-\bar x)^4=`r round(sum((x-mx)^4),2)`$ drinks$^4$.
 
 Solution
 ========
+
 a. 
 ```{r echo = F, comment = NA}
 table <- rkTeaching::frequencyTable(df, "Drinks")
 print(xtable(table, auto=T), tabular.environment="array", include.rownames = F,  floating=F, hline.after = c(0,nrow(table)), sanitize.text.function = function(x) { x })
 ```
+
 a. 
 ```{r cumulative-distribution-subjects, fig=T, echo=F, height=4, width=6, dev="svg", fig.path="img"}
 Ni <- cumsum(table(x))
@@ -95,12 +103,16 @@ plot(xi, Ni, type="l", col="blue",
 abline(h=seq(0,120,20), col = "gray", lty=2)
 lines(xi, Ni, col="blue")
 ```
+
 a. Quartiles: $Q_1=`r q1`$ drinks, $Q_2=`r q2`$ drinks, $Q_3=`r q3`$ drinks  
 $IQR = `r iqr`$ drinks  
 Fences: $f_1=`r f1`$ drinks and $f_2=`r f2`$ drinks.
+
 a. $\bar x=`r round(mx,4)`$ drinks, $s^2=`r round(s2x,4)`$ drinks$^2$, $s=`r round(sx,4)`$ drinks, 
 $g_1=`r round(g1x,4)`$ and $g_2=`r round(g2x,4)`$. As the coefficient of skewness and the coefficient of kurtosis are between -2 and 2 we can assume that the sample comes from a normal population.
+
 a. Let $Y$ be the daily sugary drinks drunk by 18-year-old people. Then, $cv_x=`r round(cvx,4)`$ and $cv_y=`r round(cvy,4)`$. As the coefficient of variation of 18-year-old is a little bit smaller than the one of 16-year-old, the mean of the 18-year-old is a little bit more representative.
+
 a. Standard score for 16-year-old: $z(3)=`r round(zx, 4)`$  
 Standard score for 18-year-old: $z(4)=`r round(zy, 4)`$  
 As the standard score of 4 for a 18-year-old is greater than the standard score of 3 for a 16-years-old, 4 drinks is relatively higher.

@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 ntd <- 480
 nth <- 2320
@@ -33,17 +33,25 @@ $$
 \end{array}
 $$
 
+
 a. Compute the prevalence of the osteoporosis in the population.
+
 a. Compute the relative risk of osteoporosis in females with respect to males and interpret it.
+
 a. Compute the odds ratio of osteoporosis in females with respect to males and interpret it.
+
 a. Which of the two measures is most suitable to study the association between the osteoporosis and the gender?
 
 Solution
 ========
 Let $D$ be the event of suffering osteoporosis.
+
 a. Prevalence: $P(D)=`r round(pre,4)`$.
+
 a. $RR(D)=`r round(rr, 4)`$. Thus, the risk of suffering osteoporosis in women is higher than in men but not to much. There is no strong association between the osteoporosis and the gender.
+
 a. $OR(D)=`r round(or, 4)`$. Thus, the odds of suffering osteoporosis in women is higher than in men but not to much. 
+
 a. Since we can compute the prevalence of $D$, both statistics are suitable, but relative risk is easier to interpret.
 
 Meta-information 

@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 y <- rep(c(4.5, 5.5, 6.5, 7.5, 8.5), c(2, 5, 6, 4, 3))
 x <- rep(c(2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5), c(1, 6, 7, 3, 7, 0, 1))
@@ -61,11 +61,17 @@ barplot(-out$left, col=blueceulight , horiz = T, space = 0, add = T, axes = F)
 barplot(out$right, col=orangeceu, horiz = T, space = 0, add = T, axes = F) 
 ```
 
+
 a. Construct the frequency table of the scores for the placebo group and plot the ogive.
+
 a. Compute the interquartile range of the scores for the placebo group.
+
 a. Are there outliers in the placebo group?
+
 a. In which group the score mean represents better?
+
 a. Which distribution is more normal regarding the kurtosis?
+
 a. Which score is relatively better, a score of 5 in the placebo group or a score of 6 in the treatment group?
 
 
@@ -75,6 +81,7 @@ Treatment: $\sum x_i=`r round(sum(y), 4)`$, $\sum x_i^2=`r round(sum(y^2), 4)`$,
 
 Solution
 ========
+
 a. 
 $$
 \begin{array}{lrrrr}
@@ -93,11 +100,16 @@ $$
 .df = data.frame(Score = 2:9, Cum.Rel.Freq. = c(0.00, 0.04, 0.28, 0.56, 0.68, 0.96, 0.96, 1))
 ggplot(data=.df, aes(x=Score, y=Cum.Rel.Freq.)) + geom_line()
 ```
+
 a. $Q_1= `r q1`$, $Q_3= `r q3`$ and $IQR=`r iqr`$.
+
 a. $f_1 = `r f1`$ and $f_2=`r f2`$. Thus, there are no outliers in the placebo sample because all the values fall between the fences.
+
 a. Placebo: $\bar x=`r round(mx,4)`$, $s^2=`r round(s2x,4)`$, $s=`r round(sx,4)`$ and $cv=`r round(cvx,4)`$.  
 Treatment: $\bar x=`r round(my,4)`$, $s^2=`r round(s2y,4)`$, $s=`r round(sy,4)`$ and $cv=`r round(cvy,4)`$.
+
 a. Placebo: $g_2=`r round(g2x,4)`$. Treatment: $g_2=`r round(g2y,4)`$. Thus, the distribution of the placebo group is more normal as the coef. of kurtosis is closer to 0.
+
 a. Standard score for the placebo: $z(5)=`r round(zx,4)`$  
 Standard score for the treatment: $z(6)=`r round(zy,4)`$  
 As the standard score of $5$ in the placebo group is greater than the standard score of $6$ in the treatment group, a score of 5 in the placebo group is better.

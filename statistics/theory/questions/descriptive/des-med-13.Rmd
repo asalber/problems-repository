@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 require(xtable)
 classes <- c("(10,14]", "(14,18]", "(18,22]", "(22,26]", "(26,30]")
@@ -52,10 +52,15 @@ The table below shows the daily number of patients hospitalized in a hospital du
 print(xtable(data, align=c("c", "c", "r"), auto=T), tabular.environment="array", include.rownames = F, floating=F, hline.after = c(0,nrow(data)), sanitize.text.function = function(x) { x })
 ```
 
-a. Study the spread of the 50%: of central data.
+
+a. Study the spread of the 50% of central data.
+
 a. Compute the mean and study the dispersion with respect to it. 
+
 a. Study the normality of the patients distribution.
+
 a. If the mean was 35 patients and the variance 40 patients$^2$ during the month of April, which month had a higher relative variability?
+
 a. Which number of people hospitalized was greater, 20 persons in September or 40 in April?
 
 
@@ -64,10 +69,15 @@ $\sum x_in_i=`r sum(x)`$ patients, $\sum x_i^2n_i=`r sum(x^2)`$ patients$^2$, $\
 
 Solution
 ========
+
 a. $Q_1=`r round(q1,4)`$ patients, $Q_3=`r round(q3,4)`$ patients and $IQR=`r round(iqr,4)`$ patients. Thus the central dispersion is small. 
+
 a. $\bar x=`r round(mx,4)`$ patients, $s^2=`r round(s2x,4)`$ patients$^2$, $s=`r round(sx,4)`$ patients and $cv=`r round(cvx,4)`$. Thus, the dispersion with respect to the mean is small and the mean represents well.
+
 a. $g_1=`r round(g1x,4)`$ and $g_2=`r round(g2x,4)`$. As the coefficient of skewness and the coefficient of kurtosis fall between -2 and 2, we can assume that the sample comes from a normal population.
+
 a. Let $Y$ be the daily number of patients hospitalized during April. Then, $cv_y=`r round(cvy,4)`$. Since the coefficient of variation in April is greater than the one in September, there is a relative higher variability in April.
+
 a. September: $z(20)=`r round(zx, 4)`$.  
 April: $z(40)=`r round(zy, 4)`$.  
 Thus, 40 patients hospitalized in April is relatively higher than 20 in September as its standard score is greater.

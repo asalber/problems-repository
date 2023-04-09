@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 x1 <- 15
 p1 <- 0.8
@@ -24,20 +24,28 @@ p4 <- ppois(0, 100 * p3, lower.tail = F)
 
 Question
 ========
-It is known that the life of a battery for a peacemaker follows a normal distribution. It has been observed that 20%: of the batteries last more than 15 years, while 10%: last less than 12 years. 
+It is known that the life of a battery for a peacemaker follows a normal distribution. It has been observed that 20% of the batteries last more than 15 years, while 10% last less than 12 years. 
+
 
 a. Compute the mean and the standard deviation of the battery life.  
 Remark: If you are not able to compute the mean and the standard deviation, use a mean of 14 years and a standard deviation of 1.5 years for the following parts.
+
 a. Compute the fourth decile of the battery life.
+
 a. If we take a sample of 5 batteries, what is the probability that more than half of them last between 13 and 14 years?
+
 a. If we take a sample of 100 batteries, what is the probability that some of them last less than 11 years?
 
 Solution
 ========
 Let $X$ be the duration of a battery. Then $X\sim N(\mu,\sigma)$.
+
 a. $\mu = `r round(m,4)`$ years and $\sigma = `r round(s,4)`$ years.
+
 a. $D_4 = `r round(d4,4)`$ years.
+
 a. Let $Y$ be the number of batteries lasting between 13 and 14 years in a sample of 5 batteries. Then $Y\sim B(5,`r round(p1,4)`)$ and $P(Y>2.5)=`r round(p2,4)`$.
+
 a. Let $U$ be the number of batteries lasting less than 11 years in a sample of 100 batteries. Then $U\sim B(100, `r round(p3,4)`)\approx P(`r round(100*p3,4)`)$ and $P(U\geq 1)=`r round(p4,4)`$.
 
 

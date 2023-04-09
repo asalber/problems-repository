@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 x <- c(51,63,61,44,63,57,53,63,44,59,51,56,58,59,25,30,58,58)
 y <- c(66,71,82,85,72,70,68,74)
@@ -51,12 +51,17 @@ cat(paste(as.character(ages), collapse=", "))
 ```
 \end{center}
 
+
 a. Compute the quartiles.
+
 a. Draw the box plot and identify outliers (do not group data into intervals).
+
 a. Split the sample into two groups, patients younger and older than 65.
 In which group is the mean more representative.
 Justify the answer.
+
 a. Which distribution is less symmetric, the one of patients younger than 65 or the one of patients older?
+
 a. Which age is relatively smaller with respect to its group, 50 years in the group of patients younger than 65 or 72 years in the group of patients older than 65?
 
 Use the following sums for the computations.  
@@ -65,7 +70,9 @@ Older than 65: $\sum x_i=`r sum(y)`$ years, $\sum x_i^2=`r sum(y^2)`$ years$^2$,
 
 Solution
 ========
+
 a. $Q_1=`r q1`$ years, $Q_2=`r q2`$ years and $Q_3=`r q3`$ years.
+
 a. There are `r length(outliers)` outliers: `r paste(outliers, collapse=", ")`.
 ```{r boxplot-ages, fig=T, echo=F, height=3, width=4, dev="svg", fig.path="images"}
 boxplot(ages, horizontal=T, main="Boxplot of patients ages")
@@ -77,11 +84,14 @@ boxplot(ages, horizontal=T, main="Boxplot of patients ages")
 #   theme(plot.title = element_text(hjust = 0.5))
 # print(g)
 ```
+
 a. Let $x$ be the age in patients younger than 65 and $y$ the age in patients older than 65.  
 $\bar x=`r round(mx,4)`$ years, $s_x^2=`r round(s2x,4)`$ years$^2$, $s_x=`r round(sx,4)`$ years and $cv_x=`r round(cvx,4)`$.  
 $\bar y=`r round(my,4)`$ years, $s_y^2=`r round(s2y,4)`$ years$^2$, $s_y=`r round(sy,4)`$ years and $cv_y=`r round(cvy,4)`$.  
 The mean is more representative in patients older than 65 since the coefficient of variation is smaller. 
+
 a. $g_{1x}=`r round(g1x,4)`$ and $g_{1y}=`r round(g1y,4)`$, thus the distribution of ages of people younger than 65 is less symmetric.
+
 a. The standard scores are $z_x(50)=`r round(zx,4)`$ and $z_y(72)=`r round(zy,4)`$, thus 50 years is relative smaller in the group of people younger than 65.
 
 Meta-information 

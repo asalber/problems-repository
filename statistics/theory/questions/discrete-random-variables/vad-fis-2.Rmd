@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 lambda <- 2
 x1 <- 2
@@ -15,12 +15,16 @@ Question
 ========
 The average number of injuries in an international tennis tournament is `r lambda`. 
 
+
 a. Compute the probability that in an international tennis tournament there are more than `r x1` injuries.
+
 a. If a tennis circuit has `r n` international tournaments, what is the probability that there are no injuries in some of them?
 
 Solution
 ========
+
 a. Let $X$ be the number of injuries in a tournament, then $X\sim P(`r lambda`)$ and $P(X>2)=`r round(sol1,4)`$.
+
 a. Let $Y$ be the number of tournaments in the tennis circuit with no injuries, then $Y\sim B(`r n`,`r round(p,4)`)$ and $P(Y>0)=`r round(sol2,4)`$.
 
 Meta-information 

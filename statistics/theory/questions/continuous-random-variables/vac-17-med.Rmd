@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 m <- 2
 s <- 0.5
@@ -29,10 +29,15 @@ df2 <- data.frame(x = c(2), y = c(0.2), label=c("Area = 0.95"))
 ggplot(df, aes(x, y)) + geom_area(fill=I("#FF9999"), alpha=0.5) + stat_function(fun=dnorm, colour="#FF5555", args=list(mean=2.00, sd=0.50)) + xlab("Cranial capacity (dm³)") + ylab(expression(paste("Density"," ", italic(f(x))))) + scale_x_continuous(breaks=c(1,2,3), limits=c(0.5, 3.5)) + labs(title="Cranial capacity distribution") + geom_text(x = 2, y = 0.2, label="Area = 0.95") + theme_classic()
 ```
 
+
 a. What is the mean of the cranial capacity distribution?
+
 a. Is the mean of the cranial capacity representative of the population?
+
 a. What are the coefficients of skewness and kurtosis?
+
 a. What is the interquartile range of the cranial capacity?
+
 a. If a cranial capacity outside of the interval $(Q_1-1.5IQR, Q_3+1.5IQR)$ is considered an outlier, what is the probability of observing an outlier in the cranial capacity?
 
 **Remark**: If you are not able to solve parts (a) and (b), use a mean $\mu=1.5$ dm$^3$ and a standard deviation $\sigma=0.25$ dm$^3$ for the other parts.
@@ -40,10 +45,15 @@ a. If a cranial capacity outside of the interval $(Q_1-1.5IQR, Q_3+1.5IQR)$ is c
 Solution
 ========
 Let $X$ be the cranial capacity of a primate. Then, $X\sim N(\mu, \sigma)$.
+
 a. $\mu=2$ dm$^3$
+
 a. $\sigma=0.5$ dm$^6$ and $cv=`r cv`$. As the coef. of variation is small, the mean is representative.
+
 a. As $X$ follows a normal distribution, $g_1=0$ and $g_2=0$.
+
 a. $Q_1 = `r round(q1,4)`$ dm$^3$, $Q_3=`r round(q3,4)`$ dm$^3$ and $IQR=`r round(iqr,4)`$ dm$^3$.
+
 a. Fences: $f_1=`r round(f1,4)`$ dm$^3$ and $f_2=`r round(f2,4)`$.  
 $P(X < `r round(f1,4)`) + P(X > `r round(f2,4)`) = `r round(p,4)`$.
 

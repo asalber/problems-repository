@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 
   
@@ -10,9 +10,13 @@ Question
 ========
 The primate cranial capacity follows a normal distribution with mean 1200 cm$^3$ and standard deviation 140 cm$^3$.
 
+
 a. Compute the probability that the cranial capacity of a primate is greater than 1400 cm$^3$.
+
 a. Compute the probability that the cranial capacity of a primate is exactly than 1400 cm$^3$.
-a. Above what cranial capacity will 20%: of primates be?
+
+a. Above what cranial capacity will 20% of primates be?
+
 a. Compute the interquartile range of the cranial capacity of primates and interpret it.
 
 Solution

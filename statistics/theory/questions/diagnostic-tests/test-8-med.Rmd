@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
 tp1 <- 87
 fn1 <- 33
@@ -32,11 +32,15 @@ p2 <- pp1 + pp2 - (pp1 * pp2)
 
 Question
 ========
-A blood analysis detects a disease in 94%: of cases when the disease exists. However, the test produce a false positive in 6%: of the patients. We also know that 10%: of the population suffer the disease.
+A blood analysis detects a disease in 94% of cases when the disease exists. However, the test produce a false positive in 6% of the patients. We also know that 10% of the population suffer the disease.
+
 
 a. What is the probability that a random person has the disease if the outcome of the test is positive? Would you diagnose the disease with that probability?
+
 a. Compute the negative predictive value and interpret it. Is this test better to confirm or to rule out the disease?
+
 a. Compute the probability of a wrong diagnostic.
+
 a. If we pick a sample of 11 patients from this population, what is the probability of a wrong diagnostic in more than 2 patients?  
 Remark: Use $0.1$ as the probability of a wrong diagnostic if you do not know how to compute it.
 

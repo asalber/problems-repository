@@ -1,5 +1,5 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
   x <- c(20,40,60)
   y <- c(42,40,38)
@@ -20,13 +20,17 @@ lines(x, y, col = "blue")
 lines(x, y2, col = "blue")
 ```
 
+
 a. Compute the means of the basal metabolic rate and the age.
+
 a. How is the fit of the two lines?
 
 Solution
 ========
 Let $X$ be the age and $Y$ the basal metabolic rate.
+
 a. $\bar x=40$ and $\bar y=40$.
+
 a. $b_{yx}=-0.1$, $b_{xy}=-5$ and $r^2 = 0.5$, thus the fit of the regression lines moderate.
 
 Meta-information 

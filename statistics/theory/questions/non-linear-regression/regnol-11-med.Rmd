@@ -1,7 +1,7 @@
 
-```{r echo=FALSE, results=hide}
+```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
-library(kntir)
+library(knitr)
 knitr::opts_chunk$set(echo = F, message = F, warning = F)
 library(kableExtra)
 x <- c(0.2, 0.7, 1, 1.5, 2, 2.4, 2.8, 3)
@@ -43,13 +43,17 @@ reglog <- lm(y~log(x))
 Question
 ========
 \puntos{5 } 	
-We have applied different doses of an antibiotic to a culture of bacteria. The table below shows the number of residual bacteria corresponding to the different doses.
+We have applied different doses of an antibiotic to a culture of bacteri
+a. The table below shows the number of residual bacteria corresponding to the different doses.
 ```{r echo=FALSE}
 kable(table) %>% kable_styling()
 ```
 
+
 a. Which regression model explains better the number of residual bacteria as a function of the antibiotic dose, the linear or the exponential?
+
 a. Use the best of the two previous regression models to predict the number of residual bacteria for an antibiotic dose of 3.5 $\mu$g. Is this prediction reliable?
+
 a. According to the linear regression model, what is the expected decrease in the number of residual bacteria per each $\mu$g more of antibiotic?
 Use the following sums for the computations ($X$=Antibiotic dose and $Y$=Number of bacteria):  
 $\sum x_i=`r round(sum(x), 4)`$ $\mu$g, $\sum \log(x_i)=`r round(sum(log(x)), 4)`$ $\log(\mbox{$\mu$g})$, $\sum y_j=`r round(sum(y), 4)`$ bacteria, $\sum \log(y_j)=`r round(sum(log(y)), 4)`$ $\log(\mbox{bacteria})$,  
@@ -58,17 +62,22 @@ $\sum x_iy_j=`r round(sum(x*y), 4)`$ $\mu$g$\cdot$bacteria, $\sum x_i\log(y_j)=`
 
 Solution
 ========
+
 a. $\overline{x}=`r round(mx,4)`$ $\mu$g, $s_x^2=`r round(s2x,4)`$ $\mu$g$^2$.  
 $\bar y=`r round(my,4)`$ bacteria, $s_y^2=`r round(s2y,4)`$ bacteria$^2$.  
-$s_{xy}=`r round(sxy,4)`$ $\mu$g$\cdot$bacteria.  
+$s_{xy}=`r round(sxy,4)`$ $\mu$g$\cdot$bacteri
+a.  
 Linear coefficient of determination $r^2 = `r round(r2xy, 4)`$.  
 $\overline{\log(y)}=`r round(mlogy,4)`$ log(bacteria), $s_{\log(y)}^2=`r round(s2logy,4)`$ log(bacteria)$^2$.  
 $s_{x\log(y)}=`r round(sxlogy,4)`$ $\mu$g$\cdot$ log(bacteria).  
 Exponential coefficient of determination $r^2 = `r round(r2xlogy, 4)`$.  
 Thus, the exponential model explains better the number of residual bacteria as a function of the antibiotic dose because the exponential coef. of determination is greater.
+
 a. Exponential regression model: $y=e^{`r round(regexp$coefficients[1],4)`+`r round(regexp$coefficients[2],4)`x}$.  
-Prediction: $y(3.5)=`r round(exp(regexp$coefficients[1] + regexp$coefficients[2]*3.5),4)`$ bacteria.  
+Prediction: $y(3.5)=`r round(exp(regexp$coefficients[1] + regexp$coefficients[2]*3.5),4)`$ bacteri
+a.  
 Although the coef. of determination is close to 1, the this prediction is not reliable because the sample size is very small.
+
 a. $b_{yx}=`r round(reglin$coefficients[2], 4)`$, therefore the number of bacteria decreases $`r round(reglin$coefficients[2], 4)`$ per each $\mu$g more of antibiotic.
 
 Meta-information 
