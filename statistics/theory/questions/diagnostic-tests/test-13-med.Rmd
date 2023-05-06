@@ -1,0 +1,45 @@
+```{r echo=FALSE, results="hide"}
+## DATA GENERATIONpre <- 1 / 500
+spe <- 0.8
+fn <- 0.016
+pre <- 0.02
+
+## QUESTION/ANSWER GENERATION
+tn <- (1-pre)*spe
+sen <- 1 - fn / pre
+tp <- pre * sen
+fp <- (1-pre)*(1-spe)
+tn <- (1-pre)*spe
+ppv <- tp / (tp + fp)
+minspe <- 0.9959
+```
+
+Question
+========
+(2.5 points) A diagnostic test for prostate cancer has a specificity of 80% and produces 1.6% of false negatives.
+It is known that the prevalence of prostate cancer in a population is 2%.
+
+a. Compute the sensitivity of the test. Does the outcome of the test depend on whether a man has prostate cancer?
+
+a. Is this a good test to diagnose the disease?
+
+a. What should be the minimum specificity of the test to diagnose the disease with a positive outcome?
+
+Solution
+========
+
+a. Sensitivity = $P(+|D) = `r round(sen, 4)`$. The outcome of the test does not depend on the prostate cancer.
+
+a. Positive predictive value = $P(D|+) = `r round(ppv,4)` < 0.5$, so we can not confirm the prostate cancer with a positive outcome.
+
+a. Minimum specificity $`r minspe`$.
+
+Meta-information 
+================
+extype: string
+exsolution: Solution
+exname: test-13-med
+extol: 0.001
+degree: Medicine
+ 
+  

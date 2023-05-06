@@ -1,20 +1,20 @@
 
 ```{r echo=FALSE, results="hide"}
 ## DATA GENERATION
-n <- 100
-pAB <- 8 / n
-pAnoB <- 2 / n
-pnoAB <- 3 / n
-pnoAnoB <- 87 / n
+pA <- 1/15
+pB <- 0.05
+pAB <- pA * pB 
+
 ## QUESTION/ANSWER GENERATION
-pA <- pAB + pAnoB
-pAoB <- pAB + pAnoB + pnoAB
-pBsiA <- pAB/pA
+pAoB <- pA + pB - pAB 
+pAnoB <- pA - pAB
+pnoAnoB <- 1 - pAoB
+pAsiB <- pAB / pB
 ```
 
 Question
 ========
-Respiratory allergies affect 1 out of every 15 individuals in a population, while food intolerances affect 5% of individuals. Assuming that the two problems are independent, 
+(2 points) Respiratory allergies affect 1 out of every 15 individuals in a population, while food intolerances affect 5% of individuals. Assuming that the two problems are independent, 
 
 a. Compute the probability of having at least one of the problems.
 
@@ -26,12 +26,21 @@ a. Compute the probability of having an allergy if you have an intolerance.
 
 Solution
 ========
-Solution
+
+Let $A$ the event of having respiratory allergies and $B$ the event of having food intolerance.
+
+a. $P(A\cup B) = `r round(pAoB,4)`$.
+
+a. $P(A-B) = `r round(pAnoB,4)`$.
+
+a. $P(\overline A  \cap \overline B) = `r round(pnoAnoB, 4)`$.
+
+a. $P(A|B) = `r round(pAsiB, 4)`$.
 
 Meta-information 
 ================
-extype: num
-%% \exsolution{0}
+extype: string
+exsolution: Solution
 exname: prob-14-med
 extol: 0.001
 degree: Medicine

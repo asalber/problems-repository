@@ -1,0 +1,42 @@
+```{r echo=FALSE, results="hide"}
+## DATA GENERATION
+mx <- 29
+sx <- 2.4
+## QUESTION/ANSWER GENERATION
+p1 <- pnorm(32, mx, sx, lower.tail = F)
+q1 <- qnorm(0.25, mx, sx)
+q3 <- qnorm(0.75, mx, sx)
+iqr <- q3 - q1
+p2 <- p1 / 0.25
+```
+
+Question
+========
+(2.5 points) In a population of 20000 women, it is known that back width follows a normal distribution with mean 29 cm and standard deviation 2.4 cm.
+
+a. Compute the number of women with a back width greater than 32 cm.
+
+a. Compute the interquartile range of women's back width and interpret it.
+
+a. Compute the probability that a woman with a back width above the third quartile, has a back width above 32.
+
+Solution
+========
+
+Let $X$ be the back width, then $X\sim N(`r mx`, `r sx`)$.
+
+a. $P(X>32) = `r round(p1, 4)`$ and approximately $`r round(20000*p1)`$ persons have a back width greater than 32 cm. 
+
+a. $Q_1 = `r round(q1, 4)`$ cm, $Q_3 = `r round(q3, 4)`$ cm, and $IQR = `r round(q3-q1, 4)`$ cm.
+
+a. $P(X>32| X>`r round(q3, 4)`) = `r round(p2, 4)`$.
+
+Meta-information 
+================
+extype: string
+exsolution: Solution
+exname: vac-23-fis
+extol: 0.001
+degree: Physiotherapy
+ 
+  

@@ -1,0 +1,43 @@
+```{r echo=FALSE, results="hide"}
+## DATA GENERATION
+lambda = 0.1
+n1 <- 5
+n2 <- 100
+
+## QUESTION/ANSWER GENERATION
+lambda1 <- lambda * 2
+p1 <- ppois(1, lambda1, lower.tail = F)
+p2 <- ppois(0, lambda1, lower.tail = F)
+p3 <- pbinom(0, n1, p2, lower.tail = F)
+lambda2 <- lambda / 2
+p4 <- ppois(0, lambda2, lower.tail = F)
+p5 <- ppois(4, n2 * p4)
+```
+
+Question
+========
+A water source contaminated contains 0.1 amoebas per litre on average. 
+
+a. What is the probability that 2 litres of water from this source contains more than one amoeba?
+
+a. If 5 persons drink 2 litres of water from this source, what is the probability of having some person infected with amoebas?
+
+a. If 100 persons drink half a litre of water from this source, what is the probability that less than 5 are infected with amoebas?
+
+Solution
+========
+
+a. Let $X$ be the number of amoebas in 2 litres of contaminated water. Then $X\sim P(`r lambda1`)$ and $P(X>1)=`r round(p1,4)`$.
+
+a. The probability that a person who drunk 2 litres of contaminated water is infected is $P(X\geq 1) = `r round(p2, 4)`$. Let $Y$ be the number of persons infected with amoebas in a sample of 5 persons who drunk 2 litres of contaminated water. Then $Y\sim B(`r n1`, `r round(p2, 4)`)$ and $P(Y\geq 1)=`r round(p3,4)`$.
+
+a. Let $U$ be the number of amoebas in half a litre of contaminated water. Then $U\sim P(`r lambda2`)$ and $P(U\geq 1)= `r round(p4, 4)`$. Let $V$ be the number of persons infected with amoebas in a sample of 100 persons who drunk half a litre of contaminated water. Then $V\sim B(`r n2`, `r round(p4, 4)`)\approx P(`r round(n2*p4, 4)`)$ and $P(V<5) = `r round(p5,4)`$.
+
+Meta-information 
+================
+extype: string
+exsolution: Solution
+exname: vad-20-gen
+extol: 0.001
+degree: All
+ 
