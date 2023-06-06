@@ -12,7 +12,7 @@ p2 <- p1 / 0.25
 
 Question
 ========
-(2.5 points) In a population of 20000 women, it is known that back width follows a normal distribution with mean 29 cm and standard deviation 2.4 cm.
+In a population of 20000 women, it is known that back width follows a normal distribution with mean 29 cm and standard deviation 2.4 cm.
 
 a. Compute the number of women with a back width greater than 32 cm.
 

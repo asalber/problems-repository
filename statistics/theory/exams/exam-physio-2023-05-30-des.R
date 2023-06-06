@@ -1,16 +1,17 @@
 library("knitr")
 library("exams")
 setwd('statistics/theory/exams')
-examname <- "physio-2023-05-30-prob"
-questions <- c("regnol-17-med.Rmd", "ries-6-opt.Rmd")
+examname <- "physio-2023-05-30-des"
+questions <- c("des-26-gen.Rmd", "regnol-17-med.Rmd")
 
 exams2pdf(questions, n=1, name = c(paste0("exam-", examname), paste0("solution-", examname)), encoding = "UTF-8",
           dir = "pdf",
           edir = "../questions",
-          template = c("templates/examceu2.tex", "templates/solutionceu.tex"),
+          template = c("templates/examceu.tex", "templates/solutionceu.tex"),
           header = list(
-            Subject = "STATISTICS\\\\[2mm] (PROBABILITY AND RANDOM VARIABLES)",
-            Degree= "2nd Physiotherapy",
+            Title = "STATISTICS (Descriptive Statistics and Regression)",
+            Subject = "Statistics",
+            Degree = "2nd Physiotherapy",
             Date = "May, 30 2023",
             Version = "A",
             Time = "1 hour"

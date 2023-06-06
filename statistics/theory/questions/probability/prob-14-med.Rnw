@@ -12,7 +12,7 @@ pBsiA <- pAB/pA
 @
 
 \begin{question}
-\puntos{2}Respiratory allergies affect 1 out of every 15 individuals in a population, while food intolerances affect 5\% of individuals. Assuming that the two problems are independent, 
+Respiratory allergies affect 1 out of every 15 individuals in a population, while food intolerances affect 5\% of individuals. Assuming that the two problems are independent, 
 \begin{enumerate}
 \item Compute the probability of having at least one of the problems.
 \item Compute the probability of having an allergy but not an intolerance.

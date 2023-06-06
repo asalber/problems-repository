@@ -1,0 +1,46 @@
+```{r echo=FALSE, results="hide"}
+## DATA GENERATION
+mx <- 60
+sx <- 8
+## QUESTION/ANSWER GENERATION
+p1 <- pnorm(52, mx, sx)
+p33 <- qnorm(0.33, mx, sx)
+p2 <- pnorm(84, mx, sx, lower.tail = F)
+p3 <- pnorm(54, mx, sx)
+p4 <- pbinom(0, 6, p3, lower.tail = F)
+```
+
+Question
+========
+For weightlifters, the recovery time after a lumbar vertebrae injury follows a normal distribution with a mean of 60 days and a standard deviation of 8 days. Knowing this, answer the following questions:
+
+a.  If we take a sample consisting of 200 weightlifters, how many of them will recover from the injury in 52 days or less?
+
+a.  How long should we expect to take a weightlifter in percentile 33 of our distribution to recover?
+
+a.  If the Olympic Games take place in 84 days, and a competitor has just had his lumbar vertebrae injured, what is the probability for him not to take part in the competition?
+
+a.  In 54 days, the qualifying tournament for the Weightlifting World Championship will take place, and 6 competitors have suffered lumbar vertebrae injury today. What is the probability that at least one of them will recover on time to compete in that tournament?
+
+Solution
+========
+
+Let $X$ be the recovery time after a lumbar vertebrae injury, then $X\sim N(`r mx`, `r sx`)$.
+
+a. $P(X<52) = `r round(p1, 4)`$ and approximately $`r round(200*p1)`$ weightlifters will recover in 52 days or less.
+
+a. $P_{33} = `r round(p33, 4)`$ days.
+
+a. $P(X>84) = `r round(p2, 4)`$.
+
+a.  Let $Y$ the number of weightlifters that recover in less than 54 days in a sample of 6 weightlifters just injured. Then $Y\sim B(6, `r round(p3,4)`)$ and $P(Y\geq 1) = `r round(p4,4)`$.
+
+Meta-information 
+================
+extype: string
+exsolution: Solution
+exname: vac-24-fis
+extol: 0.001
+degree: Physiotherapy
+ 
+  

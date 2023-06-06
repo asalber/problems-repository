@@ -1,7 +1,7 @@
 \documentclass[a4paper]{article}
 % Packages
 \usepackage[top=3cm, bottom=3cm, left=2.54cm, right=2.54cm]{geometry}
-\usepackage[english]{babel}
+\usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{macros}
@@ -13,6 +13,7 @@
 \usepackage{Sweave}
 \usepackage{xargs}
 \usepackage{fancyhdr}
+\usepackage{hyperref}
 
 %% Colors
 \usepackage[table]{xcolor}
@@ -21,8 +22,9 @@
 
 %% new environments
 \newenvironment{question}{\item}{}
-\newenvironment{solution}{\hrulefill\\ \textbf{\color{color2}Solution}\par}{\hrulefill}
+\newenvironment{solution}{\hrulefill\\ \textbf{\color{color2}Solución}\par}{\hrulefill}
 \newenvironment{answerlist}{\renewcommand{\labelenumi}{(\alph{enumi})}\begin{enumerate}}{\end{enumerate}}
+
 
 %% compatibility with pandoc
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -36,11 +38,13 @@
 
 %% new commands
 \makeatletter
+\newcommand{\Title}[1]{\def\@Title{#1}}
 \newcommand{\Subject}[1]{\def\@Subject{#1}}
 \newcommand{\Degree}[1]{\def\@Degree{#1}}
 \newcommand{\Date}[1]{\def\@Date{#1}}
 \newcommand{\Version}[1]{\def\@Version{#1}}
 \newcommand{\Time}[1]{\def\@Time{#1}}
+\Title{Title}
 \Subject{Subject}
 \Degree{Degree}
 \Date{Date}
@@ -49,6 +53,7 @@
 
 %% \exinput{header}
 
+\newcommand{\myTitle}{\@Title}
 \newcommand{\mySubject}{\@Subject}
 \newcommand{\myDegree}{\@Degree}
 \newcommand{\myDate}{\@Date}
@@ -59,13 +64,12 @@
 %% headings
 \pagestyle{fancy}
 \lhead{\textsc{\color{color1}CEU San Pablo University}}
-\rhead{\textsl{\textsf{\color{color1}Department of Applied Mathematics and Statistics}}}
+\rhead{\textsl{\textsf{\color{color1}Department of Mathematics and Data Science}}}
 \cfoot{}
 \renewcommand{\headrulewidth}{0pt}
 
 \begin{document}
-\exasol{\color{color1}EXAM OF \mySubject}{\color{color1}\myDegree}{\color{color1}\myDate}{\color{color1}Version \myVersion}
-\noindent\textbf{Duration}: \myTime. \vskip 1cm
+\exasol{\color{color1}EXAM OF \myTitle}{\color{color1}\myDegree}{\color{color1}\myDate}{\color{color1}Modelo \myVersion}
 
 \begin{enumerate}[leftmargin=*]
 

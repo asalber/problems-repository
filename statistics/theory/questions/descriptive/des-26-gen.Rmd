@@ -1,0 +1,91 @@
+
+```{r echo=FALSE, results="hide"}
+## DATA GENERATION
+library(knitr)
+knitr::opts_chunk$set(echo = F, message = F, warning = F)
+library(tidyverse)
+library(kableExtra)
+df <- tibble(
+    `Failed subjects` = c(0, 1, 2, 3, 4, 5, 6, 8), 
+    `Previous year course` = c(7, 15, 11, 5, 4, 2, 1, 0), 
+    `Current course` = c(8, 12, 8, 7, 3, 2, 2, 1))
+# QUESTION/ANSWER GENERATION
+x <- rep(df$`Failed subjects`, df$`Previous year course`)
+y <- rep(df$`Failed subjects`, df$`Current course`)
+# Tamaño de la muestra
+nx <- length(x)
+ny <- length(y)
+# Media
+mx <- mean(x)
+my <- mean(y)
+# Varianza
+s2x <- sum(x^2)/nx-mx^2
+s2y <- sum(y^2)/ny-my^2
+# Desviación típica
+sx <- sqrt(s2x)
+sy <- sqrt(s2y)
+# Coef. variación
+cvx <- sx/mx
+cvy <- sy/my
+# Coef. asimetría
+g1x <- sum((x-mx)^3)/(nx*sx^3)
+g1y <- sum((y-my)^3)/(ny*sy^3)
+# Coef. apuntamiento
+g2x <- sum((x-mx)^4)/(nx*sx^4)-3
+g2y <- sum((y-my)^4)/(ny*sy^4)-3
+# Puntuaciones típicas
+zx <- (6-mx)/sx
+zy <- (7-my)/sy
+```
+
+Question
+========
+To see if the confinement due to COVID-19 influenced the performance of a course, the number of failed subjects of each student in the current course and in the previous year course has been counted, obtaining the table below.
+
+```{r echo=FALSE}
+kable(df) %>% kable_styling()
+```
+
+a.  Draw the box plots of the failed subjects in the current and the previous year courses and compare them.
+
+a.  Can we assume that both samples come from a normal population?
+
+a.  In which sample is the mean more representative?
+
+a.  Which number of failed subjects is relatively greater, 7 in the current course or 6 in the previous year course?
+
+
+Use the following sums for the computations:  
+Previous year course: $\sum x_i=`r sum(x)`$ subjects, $\sum x_i^2=`r sum(x^2)`$ subjects$^2$, $\sum (x_i-\bar x)^3=`r round(sum((x-mx)^3),2)`$ subjects$^3$ y $\sum (x_i-\bar x)^4=`r round(sum((x-mx)^4),2)`$  subjects$^4$.  
+Current course: $\sum x_i=`r sum(y)`$ subjects, $\sum x_i^2=`r sum(y^2)`$ subjects$^2$, $\sum (x_i-\bar x)^3=`r round(sum((y-my)^3),2)`$ subjects$^3$ y $\sum (x_i-\bar x)^4=`r round(sum((y-my)^4),2)`$  subjects$^4$.  
+
+Solution
+========
+a.  Box plot
+
+```{r box-plot}
+tibble(Course = c(rep("Previous year course", nx), rep("Current course", ny)), `Failed subjects` = c(x, y))  %>%  
+    ggplot(aes(x = Course, y = `Failed subjects`)) +
+    geom_boxplot()
+```
+
+a.  Previous year course: $\bar x = `r round(mx, 4)`$ subjects, $s_x^2=`r round(s2x,4)`$ subjects$^2$, $s_x=`r round(sx,4)`$ subjects, $g_1 = `r round(g1x,4)`$ and $g_2 = `r round(g2x,4)`$.  
+Current course: $\bar x = `r round(my, 4)`$ subjects, $s_x^2=`r round(s2y,4)`$ subjects$^2$, $s_x=`r round(sy,4)`$ subjects, $g_1 = `r round(g1y,4)`$ and $g_2 = `r round(g2y,4)`$.  
+In both courses the coefficients of skewness and kurtosis are between -2 and 2, so we can assume that both samples come from a normal population.
+
+a.  Previous year course: $cv = `r round(cvx, 4)`$.  
+Current year course: $cv = `r round(cvy, 4)`$.  
+As the coefficient of variation of the previous year course is smaller, its mean is a little bit more representative.
+
+a.  Previous year course: $z(6) = `r round(zx, 4)`$.  
+Current course: $z(7) = `r round(zy, 4)`$.  
+Thus, 6 failed subjects is relative greater in the previous year course than 7 failed subjects in the current course.
+
+Meta-information 
+================
+extype: string
+exsolution: Solution
+exname: des-26-gen
+extol: 0.001
+degree: All
+ 

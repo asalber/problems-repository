@@ -29,9 +29,9 @@ Solution
 
 a. Let $X$ be the number of amoebas in 2 litres of contaminated water. Then $X\sim P(`r lambda1`)$ and $P(X>1)=`r round(p1,4)`$.
 
-a. The probability that a person who drunk 2 litres of contaminated water is infected is $P(X\geq 1) = `r round(p2, 4)`$. Let $Y$ be the number of persons infected with amoebas in a sample of 5 persons who drunk 2 litres of contaminated water. Then $Y\sim B(`r n1`, `r round(p2, 4)`)$ and $P(Y\geq 1)=`r round(p3,4)`$.
+a. The probability that a person who drank 2 litres of contaminated water is infected is $P(X\geq 1) = `r round(p2, 4)`$. Let $Y$ be the number of persons infected with amoebas in a sample of 5 persons who drank 2 litres of contaminated water. Then $Y\sim B(`r n1`, `r round(p2, 4)`)$ and $P(Y\geq 1)=`r round(p3,4)`$.
 
-a. Let $U$ be the number of amoebas in half a litre of contaminated water. Then $U\sim P(`r lambda2`)$ and $P(U\geq 1)= `r round(p4, 4)`$. Let $V$ be the number of persons infected with amoebas in a sample of 100 persons who drunk half a litre of contaminated water. Then $V\sim B(`r n2`, `r round(p4, 4)`)\approx P(`r round(n2*p4, 4)`)$ and $P(V<5) = `r round(p5,4)`$.
+a. Let $U$ be the number of amoebas in half a litre of contaminated water. Then $U\sim P(`r lambda2`)$ and $P(U\geq 1)= `r round(p4, 4)`$. Let $V$ be the number of persons infected with amoebas in a sample of 100 persons who drank half a litre of contaminated water. Then $V\sim B(`r n2`, `r round(p4, 4)`)\approx P(`r round(n2*p4, 4)`)$ and $P(V<5) = `r round(p5,4)`$.
 
 Meta-information 
 ================

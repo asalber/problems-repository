@@ -1,0 +1,95 @@
+```{r echo=FALSE, results="hide"}
+knitr::opts_chunk$set(echo = F, message = F, warning = F)
+options(scipen=999)
+library(kableExtra)
+## DATA GENERATION
+x <- c(50, 62, 71, 75, 82, 90, 96, 102)
+y <- c(38, 45, 60, 68, 70, 86, 88, 95)
+#y <- c(35, 54, 72, 81, 91, 94, 97, 98)
+table <- matrix(c(x,y), nrow = 2, byrow = T)
+#decimals <- matrix(c(rep(0,6), rep(2,6)), nrow = 3, ncol=6, byrow=TRUE)
+rownames(table) <- c("Dose (mg)", "Inflammation reduction (%)")
+## QUESTION/ANSWER GENERATION
+# colors  
+col1 <- "#05A1E6"
+# sample size
+n <- length(x)
+# means
+mx <- mean(x)
+mlogx <- mean(log(x))
+my <- mean(y)
+mlogy <- mean(log(y))
+# variances
+s2x <- sum(x^2)/n-mx^2
+s2logx <- sum(log(x)^2)/n-mlogx^2
+s2y <- sum(y^2)/n-my^2
+s2logy <- sum(log(y)^2)/n-mlogy^2
+# Covariances
+sxy <- sum(x * y) / n - mx * my
+sxlogy <- sum(x*log(y))/n-mx*mlogy
+slogxy <- sum(log(x)*y)/n-mlogx*my
+# Determination coeff
+r2xy <-  sxy^2 / (s2x * s2y)
+r2xlogy <- sxlogy^2/(s2x*s2logy)
+r2logxy <- slogxy^2/(s2logx*s2y)
+# Regression line of y on x
+reglinyx <- lm(y ~ x)
+# Regression line of x on y
+reglinxy <- lm(x ~ y)
+```
+
+Question
+========
+The following table shows the reduction of inflammation in trauma (in percentage) for different doses of dexketoprofen given for 4 days (in mg).
+
+```{r}
+kbl(table, format = "latex", booktabs = T) %>%
+    kable_styling(position = "center",latex_options = c("hold_position"))
+```
+
+a.  Draw the scatter diagram of inflammation reduction versus dose of dexketoprofen.
+
+a.  What percentage of inflammation reduction variability does the linear model explain? And the logarithmic model?
+
+a.  According to the best of the two previous models, what is the expected percentage of inflammation reduction if we use 75 mg of dexketoprofen? Which dose should be administered to attain an inflammation reduction of 90%? Are these predictions reliable?
+
+Use the following sums for the computation ($X$=Dose, $Y$=inflammation reduction):  
+$\sum x_i=`r round(sum(x), 4)`$ mg, $\sum \log(x_i)=`r round(sum(log(x)), 4)`$ $\log(\mbox{mg})$, $\sum y_j=`r round(sum(y), 4)`$ %, $\sum \log(y_j)=`r round(sum(log(y)), 4)`$ $\log(\mbox{\%})$,  
+$\sum x_i^2=`r round(sum(x^2), 2)`$ mg$^2$, $\sum \log(x_i)^2=`r round(sum(log(x)^2), 4)`$ $\log(\mbox{mg})^2$, $\sum y_j^2=`r round(sum(y^2), 4)`$ %$^2$, $\sum \log(y_j)^2=`r round(sum(log(y)^2), 4)`$ $\log(\mbox{\%})^2$,  
+$\sum x_iy_j=`r round(sum(x*y), 4)`$ mg$\cdot$%, $\sum x_i\log(y_j)=`r round(sum(x*log(y)), 4)`$ mg$\cdot\log(\mbox{\%})$, $\sum \log(x_i)y_j=`r round(sum(log(x)*y), 4)`$ $\log(\mbox{mg})$%, $\sum \log(x_i)\log(y_j)=`r round(sum(log(x)*log(y)), 4)`$ $\log(\mbox{mg})\log(\mbox{\%})$.
+
+
+Solution
+========
+a.  
+
+```{r scatter plot}
+plot(x, y, xlab = "Dose (mg)", ylab = "Inflammation reduction (%)", main = "Scatter plot of inflammation reduction on dose", col = "steelblue", pch=19)
+```
+
+a. **Linear model**  
+$\bar x=`r round(mx,4)`$ mg, $s_x^2=`r round(s2x,4)`$ mg$^2$.  
+$\bar y=`r round(my,4)`$ %, $s_y^2=`r round(s2y,4)`$ %$^2$.  
+$s_{xy}=`r round(sxy,4)`$ mg$\cdot$ %.  
+$r^2=`r round(r2xy,4)`$, so the linear model explains $`r round(r2xy,4)*100`$% of the variability of the inflammation reduction.  
+**Logarithmic model**  
+$\overline{\log(x)}=`r round(mlogx,4)`$ log(mg), $s_{\log(x)}^2=`r round(s2logx,4)`$ log(mg)$^2$.  
+$s_{\log(x)y}=`r round(slogxy,4)`$ log(mg)$\cdot$%.  
+$r^2=`r round(r2logxy,4)`$, so the logarithmic model explains $`r round(r2logxy,4)*100`$% of the variability of the inflammation reduction.
+
+a.  The linear model fits better than the logarithmic one as its coefficient of determination is greater.  
+Regression line of $Y$ on $X$: $y=`r round(reglinyx$coefficients[1],4)`+`r round(reglinyx$coefficients[2],4)`x$.    
+Prediction: $y(75)=`r round(reglinyx$coefficients[1] + reglinyx$coefficients[2]*75,4)`$ %.  
+Regression line of $X$ on $Y$: $x=`r round(reglinxy$coefficients[1],4)`+`r round(reglinxy$coefficients[2],4)`y$.    
+Prediction: $x(90)=`r round(reglinxy$coefficients[1] + reglinxy$coefficients[2]*90,4)`$ mg.  
+Although the linear coefficient of determination is close to 1, the sample size is too small to consider these predictions reliable.
+
+
+Meta-information 
+================
+extype: string
+exsolution: Solution
+exname: regnol-17-med
+extol: 0.001
+degree: Medecine
+ 

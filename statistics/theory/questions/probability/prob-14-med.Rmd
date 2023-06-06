@@ -14,7 +14,7 @@ pAsiB <- pAB / pB
 
 Question
 ========
-(2 points) Respiratory allergies affect 1 out of every 15 individuals in a population, while food intolerances affect 5% of individuals. Assuming that the two problems are independent, 
+Respiratory allergies affect 1 out of every 15 individuals in a population, while food intolerances affect 5% of individuals. Assuming that the two problems are independent, 
 
 a. Compute the probability of having at least one of the problems.
 

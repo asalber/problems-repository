@@ -1,0 +1,55 @@
+```{r echo=FALSE, results="hide"}
+## DATA GENERATION
+nT <- 500
+nC <- 500
+nDT <- 45
+nDC <- 125
+## QUESTION/ANSWER GENERATION
+rT <- nDT / nT
+rC <- nDC / nC
+rr <- rT / rC
+oT <- nDT / (nT-nDT)
+oC <- nDC / (nC-nDC)
+or <- oT / oC
+n <- 20
+p1 <- pbinom(1, n, rC, lower.tail = F)
+p2 <- ppois(1, 100*rT)
+```
+
+Question
+========
+
+To study the effectiveness of an exercise program in front of the computer to delay the onset of presbyopia, a sample of 1000 40-year-old people without presbyopia was taken and divided into two groups of equal size. One group followed the exercise program and the other did not. After 10 years there were 45 people who developed presbyopia in the group that followed the exercise program and 125 in the group that did not follow the program.
+
+a.  Calculate the risk of developing presbyopia without following the exercise program.
+
+a.   Calculate the relative risk of developing presbyopia if the exercise program is followed and interpret it.
+
+a.  Calculate the odds ratio of developing presbyopia if the exercise program is followed and interpret it.
+
+a.  What type of association measure is most appropriate in this study?
+
+a.  If a sample of 20 40-year-old people without presbyopia is taken, what is the probability that at least 2 will develop presbyopia if they do not follow the exercise program?
+
+a.  If a sample of 100 40-year-old people without presbyopia is taken, what is the probability that fewer than 2 will develop presbyopia if they follow the exercise program?
+
+Solution
+========
+a.  Let $D$ the event of suffering Presbyopia. Then $R_C(D) = `r round(rC, 4)`$.
+
+a.  $RR(D) = `r round(rr, 4)`$.
+
+a.  $OR(D) = `r round(or, 4)`$.
+
+a.  Let $X$ be the number of persons not following the program of exercises that develops presbyopia in a sample of 20. Then $X\sim B(20, 0.25)$ and $P(X\geq 2) = `r round(p1,4)`$.
+
+a.  Let $Y$ be the number of persons following the program of exercises that develops presbyopia in a sample of 100. Then $X\sim B(100, 0.09)\approx P(9)$ and $P(X< 2) = `r round(p2,4)`$.
+
+Meta-information 
+================
+extype: string
+exsolution: Solution
+exname: ries-6-med
+extol: 0.001
+degree: Medicine
+ 

@@ -1,0 +1,45 @@
+
+```{r echo=FALSE, results="hide"}
+## DATA GENERATION
+n <- 3.5*10^6
+nM <- 1.5*10^6
+nB <- 0.75*10^6
+nT <- 0.45*10^6
+pBsiM <- 0.3
+pTsiM <- 0.1
+pBTsiM <- 0.05
+pTsiB <- 0.15
+```
+
+Question
+========
+In a city of 3.5 million inhabitants there are three urban transport systems: metro, bus and tram. In general, on a working day, the number of travelers is 1.500.000 for the metro, 750.000 for the bus and 450.000 for the tram. Moreover, it is known that 30% of metro travelers also use the bus, 10% of metro travelers also use the tram and 5% of metro travelers also use both bus and tram. Finally, 15% of bus travelers also use the tram. (Hint: An inhabitant can take or not the urban transport).
+
+a.  Calculate the probability that, on a working day, an inhabitant uses only one of three transport systems. 
+
+a.  Calculate the probability that, in a working day, an inhabitant uses at least one transport system. 
+
+a.  When only a transport system is used, there is a 2% probability of having a delay of more than 5 minutes on a working day. However, the probability of having such a delay rises to 7% when combining more than one transport system in a working day. Calculate the probability that an inhabitant suffers a delay of more than 5 minutes on a working day.
+
+a.  With the same information as in part (c) and knowing that a traveler suffered a delay of more than 5 minutes, calculate the probability that this traveler took more than one transport system.
+
+Solution
+========
+Let $M$, $B$ and $T$ the events corresponding to picking the metro, bus and tram respectively.
+
+a.  $P(\mbox{Only one transport}) = P(M\cap\overline B\cap \overline T) + P(\overline M\cap B\cap \overline T) + P(\overline M \cap \overline B\cap T) = 0.5185$.
+
+a.  $P(\mbox{At least one transport}) = P(M\cup B\cup T) = 0.6793$.
+
+a.  Let $D$ the event of suffering a delay of more than 5 minutes. Then, $P(D) = 0.0216$.
+
+a.  $P(\mbox{More than one transport}|D) = 0.5211$.
+
+Meta-information 
+================
+extype: string
+exsolution: Solution
+exname: prob-16-gen
+extol: 0.001
+degree: All
+ 
